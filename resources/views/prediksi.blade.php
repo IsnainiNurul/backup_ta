@@ -157,6 +157,12 @@
           <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
+                <h1 style='text-align:center;'>PREDIKSI JUMLAH KASUS COVID 19 INDONESIA</h1>
+              </div>
+            </div>
+          </div><div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Real Case Kasus Corona Di Indonesia</h5>
@@ -239,14 +245,16 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Filter Data</h5>
               </div>
+
               <div class="card-body">
               <label>Tanggal Mulai</label>
                 <input type='date'> 
+                
               <label>Tanggal Berakhir</label>
                 <input type='date'>
               </div>
