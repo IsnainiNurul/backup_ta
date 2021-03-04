@@ -28,9 +28,6 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-	<script src="/assets/moment.js"></script>
-	<script src="/assets/Chart.min.js"></script>
-	<script src="/assets/utils.js"></script>
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
@@ -177,23 +174,9 @@
                 </div>
               </div>
               <div class="card-body">
-                <div style="width:1000px">
-		<p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'>asdasdasd</div></a></p>
-		<canvas id="chart1"></canvas>
-	</div>
-	<br>
-	<br>
-	Chart Type:
-	<select id="type">
-		<option value="line">Line</option>
-		<option value="bar">Bar</option>
-	</select>
-	<select id="unit">
-		<option value="day" selected>Day</option>
-		<option value="month">Month</option>
-		<option value="year">Year</option>
-	</select>
-	<button id="update">update</button>
+                <div class="chart-area">
+                  <canvas id="chartBig1"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -203,7 +186,7 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma Support Vector Regression</h5>
-                <h3 class="card-title"></i> 763 Ribu Jiwa </h3>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -216,7 +199,7 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Covid 19 di Indonesia Menggunakan Algoritma Lain</h5>
-                <h3 class="card-title"></i> 863 Ribu Jiwa </h3>
+                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 863,215</h3>
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -227,10 +210,7 @@
           </div>
           <div class="col-lg-4">
             <div class="card card-chart">
-            <div style='margin-left:20%'><div class="card-header" >
-                <button class='btn btn-sm' >Pemilihan Model SVR</button>
-                <button class='btn btn-sm' >Pemilihan Model Regresi Lain</button>
-              </div> 
+            <div style='margin-left:20%'>
                  <div class="card-header" >
                 <button class='btn btn-lg' >Train Dengan Data 3 Bulan</button>
               </div>   <div class="card-header" >
@@ -246,24 +226,29 @@
           <div class="col-lg-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Prediksi hari</h5>
+                <h5 class="card-category">Filter Data</h5>
               </div>
 
               <div class="card-body">
-              <label>Tanggal Prediksi</label>
+              <label>Tanggal Mulai</label>
+                <input type='date'> 
+                
+              <label>Tanggal Berakhir</label>
                 <input type='date'>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-4">
+          <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
                Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
               </div>
               <div class="card-body">
-                
+                <div class="chart-area">
+                  <canvas id="chartBig1"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -339,185 +324,6 @@
       </ul>
     </div>
   </div>
-	<script>
-		function generateData() {
-			var unit = document.getElementById('unit').value;
-
-			function unitLessThanDay() {
-				return unit === 'second' || unit === 'minute' || unit === 'hour';
-			}
-
-			function beforeNineThirty(date) {
-				return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
-			}
-
-			// Returns true if outside 9:30am-4pm on a weekday
-			function outsideMarketHours(date) {
-				if (date.isoWeekday() > 5) {
-					return true;
-				}
-				if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
-					return true;
-				}
-				return false;
-			}
-
-			function randomNumber(min, max) {
-				return Math.random() * (max - min) + min;
-			}
-
-			function randomBar(date, lastClose) {
-				var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-				var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
-				return {
-					t: date.valueOf(),
-					y: close
-				};
-			}
-
-			var date = moment('Feb 20 2020', 'MMM DD YYYY'); //hari kemarin
-			var now = moment();
-			var data = [];
-			var lessThanDay = unitLessThanDay();
-			for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
-				if (outsideMarketHours(date)) {
-					if (!lessThanDay || !beforeNineThirty(date)) {
-						date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
-					}
-					if (lessThanDay) {
-						date = date.hour(9).minute(30).second(0);
-					}
-				}
-				data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
-			}
-
-      document.getElementById('percobaan').textContent = JSON.stringify(data);
-			return data;
-		}
-
-		var ctx = document.getElementById('chart1').getContext('2d');
-		ctx.canvas.width = 1000;
-		ctx.canvas.height = 300;
-
-		var color = Chart.helpers.color;
-    var s1=[{
-					label: 'Konfirmasi Kasus',
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
-					data: [{ x: '2017-01-01 00:00:00', y: 90 },{ x: '2017-02-02 00:00:00', y: 105 },{ x: '2017-03-01 00:00:00', y: 140 },],
-					//data: generateData()
-					type: 'line',
-					pointRadius: 0,
-					fill: false,
-					lineTension: 0,
-					borderWidth: 2
-				},{
-					label: 'Total Kasus',
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.blue,
-					data: [{ x: '2017-01-01 00:00:00', y: 90 },{ x: '2017-02-02 00:00:00', y: 100 },{ x: '2017-03-01 00:00:00', y: 190 },],
-					//data: generateData()
-					type: 'line',
-					pointRadius: 0,
-					fill: false,
-					lineTension: 0,
-					borderWidth: 2
-				}
-        
-        
-        ];
-
-
-
-		var cfg = {
-			data: {
-				datasets: s1
-			},
-			options: {
-				animation: {
-					duration: 0
-				},
-				scales: {
-					xAxes: [{
-						type: 'time',
-						distribution: 'series',
-						offset: true,
-						ticks: {
-							major: {
-								enabled: true,
-								fontStyle: 'bold'
-							},
-							source: 'data',
-							autoSkip: true,
-							autoSkipPadding: 75,
-							maxRotation: 0,
-							sampleSize: 100
-						},
-						afterBuildTicks: function(scale, ticks) {
-							var majorUnit = scale._majorUnit;
-							var firstTick = ticks[0];
-							var i, ilen, val, tick, currMajor, lastMajor;
-
-							val = moment(ticks[0].value);
-							if ((majorUnit === 'minute' && val.second() === 0)
-									|| (majorUnit === 'hour' && val.minute() === 0)
-									|| (majorUnit === 'day' && val.hour() === 9)
-									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
-									|| (majorUnit === 'year' && val.month() === 0)) {
-								firstTick.major = true;
-							} else {
-								firstTick.major = false;
-							}
-							lastMajor = val.get(majorUnit);
-
-							for (i = 1, ilen = ticks.length; i < ilen; i++) {
-								tick = ticks[i];
-								val = moment(tick.value);
-								currMajor = val.get(majorUnit);
-								tick.major = currMajor !== lastMajor;
-								lastMajor = currMajor;
-							}
-							return ticks;
-						}
-					}],
-					yAxes: [{
-						gridLines: {
-							drawBorder: false
-						},
-						scaleLabel: {
-							display: true,
-							labelString: 'Jumlah Terinfeksi'
-						}
-					}]
-				},
-				tooltips: {
-					intersect: false,
-					mode: 'index',
-					callbacks: {
-						label: function(tooltipItem, myData) {
-							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-							if (label) {
-								label += ': ';
-							}
-							label += parseFloat(tooltipItem.value).toFixed(2);
-							return label;
-						}
-					}
-				}
-			}
-		};
-
-		var chart = new Chart(ctx, cfg);
-
-		document.getElementById('update').addEventListener('click', function() {
-			var type = document.getElementById('type').value;
-			var dataset = chart.config.data.datasets[0];
-			dataset.type = type;
-			dataset.data = generateData();
-			chart.update();
-		});
-
-	</script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
@@ -527,6 +333,7 @@
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
@@ -643,8 +450,6 @@
       });
     });
   </script>
-
-  
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

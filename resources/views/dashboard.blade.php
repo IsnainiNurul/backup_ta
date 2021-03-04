@@ -61,13 +61,13 @@
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="/perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
             </a>
