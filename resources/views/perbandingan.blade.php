@@ -183,15 +183,14 @@
 
               <div class="card-body">
               <label for="Kabupaten">Kabupaten :</label>
-              <select id="Kabupaten">
-                <option value="Bangkalan">Bangkalan</option>
-                <option value="Banyuwangi">Banyuwangi</option>
-                <option value="Bojonegoro">Bojonegoro</option>
-                <option value="Bondowoso">Bondowoso</option>
-                <option value="Gresik">Gresik</option>
-                <option value="Jember">Jember</option>
-                <option value="Jombang" selected>Jombang</option>
-              </select>
+              <form method='get' action='/perbandingan'>
+              <select id="Kabupaten" name='tetangga'>
+                @foreach($kabupaten as $k)
+                <option value="{{$k->id}}">{{$k->kabupaten}}</option>
+                @endforeach
+              </select> 
+              <input type='submit' name='submit'>
+              </form>
               </div>
               </div>
             </div>
@@ -202,7 +201,7 @@
           @foreach($tetangga as $t)
           <div class="col-lg-6">
             <div class="card card-chart">
-              <div class="card-header">{{$t}}
+              <div class="card-header" style='text-align:center'><h1>{{$t}}</h1> 
               </div>
               <div style="width:100%">
               <canvas id="canvasa{{$t}}"></canvas>
@@ -482,12 +481,12 @@
 
       var scatterChartData = {
         datasets: [{
-          label: 'Perbandingan Kabupaten A',
+          label: 'Perbandingan Kabupaten Utama',
           borderColor: window.chartColors.red,
           backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
           data: generateData()
         }, {
-          label: 'Perbandingan Kabupaten B',
+          label: 'Perbandingan Kabupaten Tetangga',
           borderColor: window.chartColors.blue,
           backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
           data: generateData()
@@ -496,7 +495,19 @@
       };
 
       window.onload = function() {
-        var ctx = document.getElementById('canvasa').getContext('2d');
+
+
+
+
+        var loop={!! json_encode($tetangga) !!};
+
+        loop.forEach(untuklooping);
+        function untuklooping(value){
+
+        idnya = 'canvasa';
+        idnya= idnya+value;
+
+       var ctx = document.getElementById(idnya).getContext('2d');
         window.myScatter = Chart.Scatter(ctx, {
           data: scatterChartData,
           options: {
@@ -506,6 +517,9 @@
           }
         });
       };
+      
+        };
+        
 
 
       document.getElementById('randomizeData').addEventListener('click', function() {

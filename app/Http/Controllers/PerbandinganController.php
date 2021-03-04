@@ -13,10 +13,11 @@ class PerbandinganController extends Controller
     public function index(Request $request)
     {
 
-        
+        $kabupaten= Tetangga::select('id','kabupaten')->get();
+        // return $kabupaten;
         $data = Tetangga::query();
         if($request->tetangga != null){
-            $data = $data->where('id','=',$request->tetangga)->get();
+            $data = $data->where('id','=',$request->tetangga)->first();
         }
         else{
             
@@ -26,6 +27,7 @@ class PerbandinganController extends Controller
 
         $tetangga = explode(",", $data->tetangga);
         // return count($tetangga);
-        return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data]);
+        // return $data;
+        return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten]);
     }
 }
