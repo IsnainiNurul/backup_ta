@@ -15,7 +15,11 @@ use App\Http\Controllers\PerbandinganController;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return view('dashboard');
+});
+
+Route::get('/berita', function () {
+    return view('berita/berita');
 });
 
 Route::get('/prediksi', function () {
