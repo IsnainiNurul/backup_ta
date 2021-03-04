@@ -21,13 +21,13 @@ class PerbandinganController extends Controller
         }
         else{
             
-            $data = $data->where('id','=',2)->first();
+            $data = $data->where('id','=',1)->first();
         // $data = $data->first();
         };
 
         $tetangga = explode(",", $data->tetangga);
         // return count($tetangga);
         // return $data;
-        return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten]);
+        return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten]);
     }
 }

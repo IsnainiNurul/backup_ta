@@ -185,6 +185,7 @@
               <label for="Kabupaten">Kabupaten :</label>
               <form method='get' action='/perbandingan'>
               <select id="Kabupaten" name='tetangga'>
+                <option value="">-</option>
                 @foreach($kabupaten as $k)
                 <option value="{{$k->id}}">{{$k->kabupaten}}</option>
                 @endforeach
@@ -201,7 +202,7 @@
           @foreach($tetangga as $t)
           <div class="col-lg-6">
             <div class="card card-chart">
-              <div class="card-header" style='text-align:center'><h1>{{$t}}</h1> 
+              <div class="card-header" style='text-align:center'><h1>{{$pilihan}} - {{$t}}</h1> 
               </div>
               <div style="width:100%">
               <canvas id="canvasa{{$t}}"></canvas>
