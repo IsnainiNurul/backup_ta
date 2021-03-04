@@ -35,13 +35,13 @@
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
-<body class="">
+<body class="white-content">
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/lambangits.png" width="120%" height="120%"> ITS
+              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -152,6 +152,7 @@
         </div>
       </div>
       <!-- End Navbar -->
+      
       <div class="content">
         <div class="row">
           <div class="col-12">
@@ -239,6 +240,7 @@
           </div>
         </div>
       </div>
+      <!-- --------------------------------------------------------------------------- -->
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">

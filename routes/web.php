@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PerbandinganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('master');
 });
 
 Route::get('/prediksi', function () {
     return view('prediksi');
 });
+
+// Route::get('/perbandingan', function () {
+//     return view('perbandingan');
+// });
+
+Route::get('/perbandingan', [PerbandinganController::class, 'index']);
