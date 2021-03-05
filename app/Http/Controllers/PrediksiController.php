@@ -20,6 +20,8 @@ class PrediksiController extends Controller
         $konfirmasi = $konfirmasi->where('x','<',$request->akhir);
          }
        $konfirmasi = $konfirmasi->get();
-       return view('prediksi',['konfirmasi'=>$konfirmasi]);
+       $count_conf = count($konfirmasi);
+    //    return $konfirmasi;
+       return view('prediksi',['konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf]);
     }
 }

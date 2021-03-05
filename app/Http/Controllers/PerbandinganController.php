@@ -12,6 +12,8 @@ class PerbandinganController extends Controller
 
     public function index(Request $request)
     {
+
+        
         $kabupaten =Tetangga::select('kabupaten','id')->get();
         
         $data = Tetangga::query();

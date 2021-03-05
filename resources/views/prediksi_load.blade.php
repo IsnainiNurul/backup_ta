@@ -209,7 +209,7 @@
               </div>
               <div class="card-body">
                 <div style="width:1000px">
-                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'>asdasdasd</div></a></p>
+                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
                     <canvas id="chart1"></canvas>
                   </div>
                   <br>
@@ -431,6 +431,19 @@
 					lineTension: 0,
 					borderWidth: 2
 				}
+       var s2={
+					label: 'Prediksi Kasus ' + {!! json_encode($prediksi[$count_pred-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.blue,
+					data: {!! json_encode($prediksi) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+      
         
         //{
 				//	label: 'Total Kasus',
@@ -447,7 +460,7 @@
         
         
         ;
-  var array_value = [s1];
+  var array_value = [s1,s2];
 
 
 		var cfg = {
