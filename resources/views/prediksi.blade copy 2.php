@@ -55,7 +55,7 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./icons.hasassaml">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
