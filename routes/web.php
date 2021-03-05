@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PerbandinganController;
+use App\Http\Controllers\BeritaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,10 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/berita', function () {
-    return view('berita/berita');
-});
+//Route::get('/berita', function () {
+//    return view('berita/berita');
+//});
+Route::get('/berita', [BeritaController::class, 'index']);
 
 Route::get('/prediksi', function () {
     return view('prediksi');

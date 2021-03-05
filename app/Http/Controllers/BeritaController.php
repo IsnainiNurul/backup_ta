@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Tetangga;
+use App\Models\DataCovid19;
 
-class PerbandinganController extends Controller
+class BeritaController extends Controller
 {
 
     public function index(Request $request)
     {
-        return view('berita',['tanggal'=>$tanggal,'jatim'=>$jatim,'jateng'=>$jateng,'jabar'=>$jabar]);
+               
+        $data = DataCovid19::all();   
+         
+        return view('berita.berita',['dates'=>$data]);
     }
 }
