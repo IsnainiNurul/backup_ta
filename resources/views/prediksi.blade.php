@@ -183,17 +183,14 @@
                   </div>
                   <br>
                   <br>
-                  Chart Type:
-                  <select id="type">
-                    <option value="line">Line</option>
-                    <option value="bar">Bar</option>
-                  </select>
-                  <select id="unit">
-                    <option value="day" selected>Day</option>
-                    <option value="month">Month</option>
-                    <option value="year">Year</option>
-                  </select>
-                  <button id="update">update</button>
+                  <form method='get' action=/prediksi>
+                  Mulai
+
+                  <input type='date' name='mulai'>
+                  Akhir
+                  <input type='date' name='akhir'>
+                  <input type='submit'>
+                  </form>
               </div>
             </div>
           </div>
@@ -405,25 +402,27 @@
 					label: 'Konfirmasi Kasus',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
-					data: [{ x: '2017-01-01 00:00:00', y: 90 },{ x: '2017-02-02 00:00:00', y: 105 },{ x: '2017-03-01 00:00:00', y: 140 },],
+					data: {!! json_encode($konfirmasi) !!},
 					//data: generateData()
 					type: 'line',
 					pointRadius: 0,
 					fill: false,
 					lineTension: 0,
 					borderWidth: 2
-				},{
-					label: 'Total Kasus',
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.blue,
-					data: [{ x: '2017-01-01 00:00:00', y: 90 },{ x: '2017-02-02 00:00:00', y: 100 },{ x: '2017-03-01 00:00:00', y: 190 },],
-					//data: generateData()
-					type: 'line',
-					pointRadius: 0,
-					fill: false,
-					lineTension: 0,
-					borderWidth: 2
-				}
+				},
+        
+        //{
+				//	label: 'Total Kasus',
+				//	backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				//	borderColor: window.chartColors.blue,
+				//	data: [{ x: '2017-01-01 00:00:00', y: 90 },{ x: '2017-02-02 00:00:00', y: 100 },{ x: '2017-03-01 00:00:00', y: 190 },],
+				//	//data: generateData()
+				//	type: 'line',
+				//	pointRadius: 0,
+				//	fill: false,
+				//	lineTension: 0,
+				//	borderWidth: 2
+			//	}
         
         
         ];
