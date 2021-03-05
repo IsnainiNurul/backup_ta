@@ -334,7 +334,7 @@
 
     var color = Chart.helpers.color;
     var s1=[{
-          label: 'Angka Kasus COVID-19',
+          label: 'Konfirmasi Kasus',
           backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
           borderColor: window.chartColors.red,
           data: {!! json_encode($data) !!},
@@ -409,7 +409,7 @@
 						},
 						scaleLabel: {
 							display: true,
-							labelString: 'Jumlah Kasus'
+							labelString: 'Jumlah Terinfeksi'
 						}
 					}]
 				},
