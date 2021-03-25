@@ -36,6 +36,7 @@
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
@@ -156,6 +157,8 @@
         </div>
       </div>
       <!-- End Navbar -->
+
+      <!-- Card COVID-19 -->
       <div class="content">
         <div class="row">
           <div class="col-12">
@@ -178,28 +181,322 @@
                 </div>
               </div>
               <div class="card-body">
-                <div style="width:1000px">
-                    <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</a></p>
-                    <canvas id="chart1"></canvas>
+                <div style="width:1000px;height:500px;position: relative;">
+                  <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</a></p>
+                
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <canvas id="chart1"></canvas>
+                    </div>
+                    <div class="col-sm-5 scroll" style="width:1000px;height:500px;overflow:auto;">
+                      @foreach($berita as $b)
+                      <div class="row">
+                        <div class="col-sm-4 div-gambar">
+                            <a href="{{$b->url}}">
+                              <img src="{{$b->img_url}}" class="img-fluid">
+                            </a>
+                          </div>
+                          
+                          <div class="col-sm-8">
+                            @if($b->news_portal=='kompas')
+                                <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+                            @else
+                                <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                            @endif
+                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+
+                          </div>
+
+                      </div>
+                         <br>
+                        @endforeach
+                    </div>
                   </div>
-                  <br>
-                  <br>
-                  <form method='get' action=/berita>
-                    <label>Tanggal</label>
-                    	<input name="datestart" type='date'>
-                    <label>-</label>
-                    	<input name="dateend" type='date'>
-                    <select name="area" id="type">
-                      <option value="Jatim">Jawa Timur</option>
-                      <option value="Jabar">Jawa Barat</option>
-                    </select>
-                    <input type='submit'>
-                  </form>
+                  <div>
+
+                  </div>
+                </div>
+                <br>
+                <br>
+                <form method='get' action=/berita>
+                  <label>Tanggal</label>
+                    <input name="datestart" type='date'>
+                  <label>-</label>
+                    <input name="dateend" type='date'>
+                  <select name="area" id="type">
+                    <option value="Jatim">Jawa Timur</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Jabar">Jawa Barat</option>
+                    <option value="Jateng">Jawa Tengah</option>
+                    <option value="DIY">D.I Yogyakarta</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Sumut">Sumatera Utara</option>
+                    <option value="Sumbar">Sumatera Barat</option>
+                    <option value="Sumsel">Sumatera Selatan</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Kep_riau">Kepulauan Riau</option>
+                    <option value="Babel">Bangka Belitung</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="Bali">Bali</option>
+                    <option value="NTT">NTT</option>
+                    <option value="NTB">NTB</option>
+                    <option value="Kalbar">Kalimantan Barat</option>
+                    <option value="Kalteng">Kalimantan Tengah</option>
+                    <option value="Kalsel">Kalimantan Selatan</option>
+                    <option value="Kaltim">Kalimantan Timur</option>
+                    <option value="Kaltara">Kalimantan Utara</option>
+                    <option value="Sulut">Sulawesi Utara</option>25
+                    <option value="Sulteng">Sulawesi Tengah</option>
+                    <option value="Sulbar">Sulawesi Barat</option>
+                    <option value="Sulsel">Sulawesi Selatan</option>
+                    <option value="Sultra">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Malut">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papbar">Papua Barat</option>
+                  </select>
+                  <input type='submit'>
+                </form>
               </div>
             </div>
           </div>
         </div>
         
+        <!-- Riwayat Berita COVID-19 -->
+        <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Riwayat Berita COVID-19</h5>
+                    <h2 class="card-title">Berita COVID-19 di Indonesia</h2>
+                  </div>
+                  <div class="col-sm-6">
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div style="width:1000px;height:500px;position: relative;">
+                    <div class="col-sm-12 scroll" style="width:1000px;height:500px;overflow:auto;">
+                      
+                        @php
+                            $counter=0;
+                        @endphp
+
+                        @foreach($berita as $b)
+                            @if($counter%3==0)
+                              <div class="row">
+
+                                  <div class="col-sm-4">
+                                  <div class="row">
+                                    <div class="col-sm-4 div-gambar">
+                                        <a href="{{$b->url}}">
+                                          <img src="{{$b->img_url}}" class="news-gambar">
+                                        </a>
+                                    </div>
+                          
+                                  <div class="col-sm-8">
+                                      @if($b->news_portal=='kompas')
+                                        <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+
+                                      @else
+                                        <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                                      @endif
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                  </div>
+                                  </div>
+                                  </div>
+                            
+                            @elseif($counter%3==1)
+                                  <div class="col-sm-4">
+                                  <div class="row">
+                                    <div class="col-sm-4 div-gambar">
+                                        <a href="{{$b->url}}">
+                                          <img src="{{$b->img_url}}" class="img-fluid">
+                                        </a>
+                                    </div>
+                          
+                                  <div class="col-sm-8">
+                                      @if($b->news_portal=='kompas')
+                                        <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+
+                                      @else
+                                        <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                                      @endif
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                  </div>
+                                  </div>
+                                  </div>
+                            
+                            @elseif($counter%3==2)
+                                  <div class="col-sm-4">
+                                  <div class="row">
+                                    <div class="col-sm-4 div-gambar">
+                                        <a href="{{$b->url}}">
+                                          <img src="{{$b->img_url}}" class="img-fluid">
+                                        </a>
+                                    </div>
+                          
+                                  <div class="col-sm-8">
+                                      @if($b->news_portal=='kompas')
+                                        <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+
+                                      @else
+                                        <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                                      @endif
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                  </div>
+                                  </div>
+                                  </div>
+                              </div>
+                              <br>
+                              <br>
+                            @endif
+                        @php
+                            $counter++;
+                        @endphp
+                        @endforeach
+        
+                      
+                      
+                    </div>
+                  
+                  <div>
+
+                  </div>
+                </div>
+                <br>
+                <br>
+                <form method='get' action=/berita>
+                  <label>Tanggal</label>
+                    <input name="datestart" type='date'>
+                  <label>-</label>
+                    <input name="dateend" type='date'>
+                  <select name="area" id="type">
+                    <option value="Jatim">Jawa Timur</option>
+                    <option value="Jabar">Jawa Barat</option>
+                    <option value="Jateng">Jawa Tengah</option>
+                    <option value="DIY">D.I Yogyakarta</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Sumut">Sumatera Utara</option>
+                    <option value="Sumbar">Sumatera Barat</option>
+                    <option value="Sumsel">Sumatera Selatan</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Kep_riau">Kepulauan Riau</option>
+                    <option value="Babel">Bangka Belitung</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="Bali">Bali</option>
+                    <option value="NTT">NTT</option>
+                    <option value="NTB">NTB</option>
+                    <option value="Kalbar">Kalimantan Barat</option>
+                    <option value="Kalteng">Kalimantan Tengah</option>
+                    <option value="Kalsel">Kalimantan Selatan</option>
+                    <option value="Kaltim">Kalimantan Timur</option>
+                    <option value="Kaltara">Kalimantan Utara</option>
+                    <option value="Sulut">Sulawesi Utara</option>25
+                    <option value="Sulteng">Sulawesi Tengah</option>
+                    <option value="Sulbar">Sulawesi Barat</option>
+                    <option value="Sulsel">Sulawesi Selatan</option>
+                    <option value="Sultra">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Malut">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papbar">Papua Barat</option>
+                  </select>
+                  <input type='submit'>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Riwayat Berita COVID-19 -->
+        <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Visualisasi Topik Berita Populer COVID-19 di Indonesia</h5>
+                    <h2 class="card-title">Topik Berita Populer COVID-19 di Indonesia</h2>
+                  </div>
+                  <div class="col-sm-6">
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div style="width:1000px;height:500px;position: relative;">
+                    <p>Berikut Merupakan Topik Berita Populer COVID-19 di Indonesia</a></p>
+                  
+                  <div>
+
+                  </div>
+                </div>
+                <br>
+                <br>
+                <form method='get' action=/berita>
+                  <label>Tanggal</label>
+                    <input name="datestart" type='date'>
+                  <label>-</label>
+                    <input name="dateend" type='date'>
+                  <select name="area" id="type">
+                    <option value="Jatim">Jawa Timur</option>
+                    <option value="Jabar">Jawa Barat</option>
+                    <option value="Jateng">Jawa Tengah</option>
+                    <option value="DIY">D.I Yogyakarta</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Sumut">Sumatera Utara</option>
+                    <option value="Sumbar">Sumatera Barat</option>
+                    <option value="Sumsel">Sumatera Selatan</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Kep_riau">Kepulauan Riau</option>
+                    <option value="Babel">Bangka Belitung</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="Bali">Bali</option>
+                    <option value="NTT">NTT</option>
+                    <option value="NTB">NTB</option>
+                    <option value="Kalbar">Kalimantan Barat</option>
+                    <option value="Kalteng">Kalimantan Tengah</option>
+                    <option value="Kalsel">Kalimantan Selatan</option>
+                    <option value="Kaltim">Kalimantan Timur</option>
+                    <option value="Kaltara">Kalimantan Utara</option>
+                    <option value="Sulut">Sulawesi Utara</option>25
+                    <option value="Sulteng">Sulawesi Tengah</option>
+                    <option value="Sulbar">Sulawesi Barat</option>
+                    <option value="Sulsel">Sulawesi Selatan</option>
+                    <option value="Sultra">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Malut">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papbar">Papua Barat</option>
+                  </select>
+                  <input type='submit'>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    
     
       </div>
       <footer class="footer">
@@ -257,6 +554,7 @@
         </li>
         <li class="button-container">
           <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
+
           <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
             Documentation
           </a>
@@ -330,7 +628,7 @@
 
     var ctx = document.getElementById('chart1').getContext('2d');
     ctx.canvas.width = 1000;
-    ctx.canvas.height = 300;
+    ctx.canvas.height = 800;
 
     var color = Chart.helpers.color;
     var s1=[{
