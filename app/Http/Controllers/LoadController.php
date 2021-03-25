@@ -40,6 +40,12 @@ class LoadController extends Controller
             $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 //	    return $process;
         }
+	if($request->model =='Prophet'){
+	    $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+	    
+
+	}
+
 	//return 'tes';
 //	return $process;        
         // return $process;

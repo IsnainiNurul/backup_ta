@@ -187,11 +187,12 @@
                 <select id="modelnya" name='model'>
                   <option value="Support Vector Regression">Support Vector Regression</option>
                   <option value="ARIMA">ARIMA</option>
+		  <option value="Prophet">FBProphet</option>
                 </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
-                <input class='btn btn-sm'  type='submit'>
+                <input class='btn btn-sm'  type='submit' value='Prediksi'>
                 </form>
                 {{-- <div class="chart-area">
                   <canvas id="chartLineGreen"></canvas>
@@ -214,7 +215,7 @@
               </div>
               <div class="card-body">
                 <div style="width:1000px">
-                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'>asdasdasd</div></a></p>
+                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
                     <canvas id="chart1"></canvas>
                   </div>
                   <br>
@@ -225,7 +226,7 @@
                   <input type='date' name='mulai'>
                   Akhir
                   <input type='date' name='akhir'>
-                  <input class='btn btn-sm' type='submit'>
+                  <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
               </div>
             </div>
