@@ -167,8 +167,8 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Prediksi Menggunakan Algoritma Support Vector Regression</h5>
-                <h3 class="card-title"></i> 763 Ribu Jiwa </h3>
+                <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
+                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,2,',','.')}} Jiwa </h3>
               </div>
               
             </div>
@@ -182,7 +182,11 @@
               <div class="card-body">
               <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi'>
+                <input type='date' name='tanggal_prediksi' required>
+                 <select id="modelnya" name='model'>
+                  <option value="Support Vector Regression">Support Vector Regression</option>
+                  <option value="ARIMA">ARIMA</option>
+                </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
@@ -228,7 +232,7 @@
         </div>
         <div class="row">
           
-          <div class="col-lg-4">
+         <!--  <div class="col-lg-4">
             <div class="card card-chart">
             <div style='margin-left:20%'><div class="card-header" >
                 <button class='btn btn-sm' >Pemilihan Model SVR</button>
@@ -246,7 +250,7 @@
               </div>
             </div>
           </div>
-
+-->
           
           {{-- <div class="col-lg-6">
             <div class="card card-chart">
@@ -268,7 +272,7 @@
               </div>
 
               <div class="card-body">
-              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
+              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan {{$metode}}
               </label>
               </div>
             </div>
@@ -420,7 +424,7 @@
 
 		var color = Chart.helpers.color;
     var s1={
-					label: 'Konfirmasi Kasus ' + {!! json_encode($konfirmasi[$count_conf-1]->y) !!} +' Jiwa',
+					label: 'Konfirmasi Kasus Hingga 10 Oktober ' + {!! json_encode($konfirmasi[$count_conf-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
 					data: {!! json_encode($konfirmasi) !!},
@@ -444,7 +448,18 @@
 					borderWidth: 2
 				}
       
-        
+       var s3={
+					label: 'Konfirmasi Kasus Terjadi ' + {!! json_encode($real[$count_real-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.green,
+					data: {!! json_encode($real) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}        
         //{
 				//	label: 'Total Kasus',
 				//	backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
@@ -460,7 +475,7 @@
         
         
         ;
-  var array_value = [s1,s2];
+  var array_value = [s1,s2,s3];
 
 
 		var cfg = {

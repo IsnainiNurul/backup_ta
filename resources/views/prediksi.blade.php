@@ -168,7 +168,7 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma Support Vector Regression</h5>
-                <h3 class="card-title"></i> 763 Ribu Jiwa </h3>
+                <h3 class="card-title"></i> - </h3>
               </div>
               
             </div>
@@ -180,13 +180,18 @@
                 <h3 class="card-title"></i> 863 Ribu Jiwa </h3> --}}
               </div>
               <div class="card-body">
-              <label>Tanggal Prediksi</label>
+              <label>Tanggal dan Model Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi'>
+                <input type='date' name='tanggal_prediksi' required>
+                
+                <select id="modelnya" name='model'>
+                  <option value="Support Vector Regression">Support Vector Regression</option>
+                  <option value="ARIMA">ARIMA</option>
+                </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
-                <input type='submit'>
+                <input class='btn btn-sm'  type='submit'>
                 </form>
                 {{-- <div class="chart-area">
                   <canvas id="chartLineGreen"></canvas>
@@ -220,7 +225,7 @@
                   <input type='date' name='mulai'>
                   Akhir
                   <input type='date' name='akhir'>
-                  <input type='submit'>
+                  <input class='btn btn-sm' type='submit'>
                   </form>
               </div>
             </div>
@@ -424,6 +429,18 @@
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
 					data: {!! json_encode($konfirmasi) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+       var s2={
+					label: 'Konfirmasi Kasus ' + {!! json_encode($real[$count_real-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.green,
+					data: {!! json_encode($real) !!},
 					//data: generateData()
 					type: 'line',
 					pointRadius: 0,
