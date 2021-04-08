@@ -20,7 +20,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">	<script type="text/javascript" src="/assets/Chart.js"></script>
+  <script type="text/javascript" src="https://www.chartjs.org/samples/latest/utils.js"></script>
   <title>
     TA History COVID
   </title>
@@ -28,23 +29,27 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-	<script src="/assets/moment.js"></script>
-	<script src="/assets/Chart.min.js"></script>
-	<script src="/assets/utils.js"></script>
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+ <link href="../assets/demo/demo.css" rel="stylesheet" /> 
 </head>
 
 <body class="white-content">
+<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
+              <img src="../assets/img/lambangits.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -52,25 +57,25 @@
         </div>
         <ul class="nav">
           <li >
-            <a href="./dashboard.html">
+            <a href="/">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
           </li>
-          <li>
-            <a href="./map.html">
+          <li class='active'>
+            <a href="./perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="./notifications.html">
+          <li class=" ">
+            <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
             </a>
@@ -90,7 +95,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
+            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/2.png" width="4%" height="4%"> ITS</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -163,7 +168,8 @@
                 <h1 style='text-align:center;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
               </div>
             </div>
-          </div><div class="col-12"><div class="col-lg-6">
+         
+          <div class="col-lg-6">
             <div class="card card-chart">
               <div class="card-header">
               </div>
@@ -190,35 +196,63 @@
               </div>
             </div>
           </div>
+
+
+          
+          @foreach($tetangga as $t)
+          <div class="col-lg-6">
+            <div class="card card-chart">
+              <div class="card-header" style='text-align:center'><h1>{{$pilihan}} - {{$t}}</h1> 
+              </div>
+              <div style="width:100%">
+              <canvas id="canvasa{{$t}}"></canvas>
+              </div>
+           </div>
+        </div>
+
+          @endforeach
+
+
+      </div>
+      
+        <!-- <div class="row">
+          <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <div class="row">
-                  
-                  <div class="col-sm-6">
-                  
-                  </div>
+               Berikut ini adalah Perbandingan Pola Penyebaran Kasus COVID-19 Kabupaten Bangkalan dengan tetangganya :
+               <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Perbandingan Kasus COVID-19 di Kabupaten Bangkalan</h5>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="canvas"></canvas>
                 </div>
               </div>
-
-              @foreach ($data_all as $semua)
-                   <div class="card-body">
-                <div style="width:1000px">
-                    <p ><h2 style='text-align:center'>{{$semua->kabupaten}} -- {{$semua->tetangga}}</h2>
-                    <canvas id="chart{{$semua->tetangga}}"></canvas>
-                  </div>
-                  <br>
-                  <br>
-                  
-              </div>
-              @endforeach
-             
-
-
             </div>
           </div>
-        </div>
-   
-      </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Perbandingan Kasus COVID-19 di Kabupaten B</h5>
+                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 863,215</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="canvas"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+               <div class="col-12">
+            </div>
+          </div>
+        </div> -->
+
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -289,170 +323,220 @@
       </ul>
     </div>
   </div>
-  <script>
-  var plugins = [
-    {
-      id: 'customPlugin',
-      beforeDraw: chart => {
-        const datasets = chart.config.data.datasets;
-        if (datasets) {
-          const { ctx } = chart.chart;
-
-          ctx.save();
-          ctx.fillStyle = 'black';
-          ctx.font = '400 12px Open Sans, sans-serif';
-
-          for (let i = 0; i < datasets.length - 1; i++) {
-            const ds = datasets[i];
-            const label = ds.label;
-            const meta = chart.getDatasetMeta(i);
-            const len = meta.data.length - 1;
-            const xOffset = chart.canvas.width - 120;
-            const yOffset = meta.data[len]._model.y-20;
-            if(label =='Data'){continue;}
-            ctx.fillText(label, xOffset, yOffset);
-          }
-          ctx.restore();
-        }
-      }
-    }
-  ];
-  </script>
-	<script>
-	
-		
-  var loop = {!! json_encode($tetangga) !!};
-
-  var data_all = {!! json_encode($data_all) !!};
-  console.log(data_all);
-  array_loop = [];
-  
-  for (var i = 0; i < data_all.length; i++) {
-    array_loop.push(i);
-  }
-  console.log(array_loop);
-
-array_loop.forEach(myFunction);
-function myFunction(item) {
-  var x = data_all[item]['x'];
-  x = x.replace('[','').replace(']','').split(',');
-  var y = data_all[item]['y'];
-  y = y.replace('[','').replace(']','').split(',');
-  console.log(y[0]);
-  var array_obj = [];
-  var xx = [];
-  var yy = [];
-  for (var i = 0; i < x.length; i++) {
-    
-  var obj={};
-   obj['x'] = x[i];
-   obj['y'] = y[i];
-  if(x[i] > 0 || x[i] <0){
-    
-  array_obj.push(obj);
-  
-  xx.push(parseFloat(x[i]));
-  yy.push(parseFloat(y[i]));
-  }
-}
-  console.log(array_obj);
-  console.log(Math.min.apply(Math, xx));
-  console.log(Math.max.apply(Math, xx));
-
-const data = {
-  
-  datasets: [{
-    type: 'scatter',
-    label: 'Data',
-    data: array_obj,
-    backgroundColor: 'rgb(0, 99, 132)'
-  }, {
-    type: 'line',
-    label: 'Minimum : '+data_all[item]['min'],
-    data: [{
-      x: Math.min.apply(Math, xx),
-      y: data_all[item]['min'],
-    }, {
-      x: Math.max.apply(Math, xx),
-      y: data_all[item]['min'],
-    },],
-    fill: false,
-    borderDash: [10, 30],//untuk bintik bintik
-    borderColor: 'rgb(255, 0, 0)'
-  },{
-    type: 'line',
-    label: 'Max : '+data_all[item]['max'],
-    data: [{
-      x: Math.min.apply(Math, xx),
-      y: data_all[item]['max'],
-    }, {
-      x: Math.max.apply(Math, xx),
-      y: data_all[item]['max'],
-    },],
-    fill: false,
-    
-    borderDash: [10, 30],//untuk bintik bintik
-    borderColor: 'rgb(255, 0, 0)'
-  },{
-    type: 'line',
-    label: 'Mean : '+data_all[item]['mean'],
-    data: [{
-      x: Math.min.apply(Math, xx),
-      y: data_all[item]['mean'],
-    },{
-      x: Math.max.apply(Math, xx),
-      y: data_all[item]['mean'],
-    },],
-    fill: false,
-    
-    borderColor: 'rgb(54, 162, 235)'
-  },{label:''}]
-};
-console.log(xx);
-console.log('Min xx =='+Math.min.apply(Math, xx));
-console.log('Max xx =='+Math.max.apply(Math, xx));
-console.log('min==='+data_all[item]['min']);
-console.log('max==='+data_all[item]['max']);
-console.log('mean==='+data_all[item]['mean']);
-
-
-var name = 'chart'+data_all[item]['tetangga'];
-
-var ctx = document.getElementById(name).getContext('2d');
-		ctx.canvas.width = 1000;
-		ctx.canvas.height = 500;
-    
-		var chart = new Chart(ctx, {
-      type: 'scatter',
-        data: data,
-        plugins:plugins,
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-
-      
-    });
-}
-	</script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../../../../dist/2.9.4/Chart.min.js"></script>
+	<script src="../../utils.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+
+  <script>
+      var color = Chart.helpers.color;
+      function generateData() {
+        var data = [];
+        for (var i = 0; i < 7; i++) {
+          data.push({
+            x: randomScalingFactor(),
+            y: randomScalingFactor()
+          });
+        }
+        return data;
+      }
+
+      var scatterChartData = {
+        datasets: [{
+          label: 'Perbandingan Kabupaten Utama',
+          borderColor: window.chartColors.red,
+          backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
+          data: generateData()
+        }, {
+          label: 'Perbandingan Kabupaten Tetangga',
+          borderColor: window.chartColors.blue,
+          backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
+          data: generateData()
+        }
+        ]
+      };
+
+      window.onload = function() {
+
+
+
+
+        var loop={!! json_encode($tetangga) !!};
+
+        loop.forEach(untuklooping);
+        function untuklooping(value){
+
+        idnya = 'canvasa';
+        idnya= idnya+value;
+
+       var ctx = document.getElementById(idnya).getContext('2d');
+        window.myScatter = Chart.Scatter(ctx, {
+          data: scatterChartData,
+          options: {
+            title: {
+              display: true,
+            },
+          }
+        });
+      };
+      
+        };
+        
+
+
+      document.getElementById('randomizeData').addEventListener('click', function() {
+        scatterChartData.datasets.forEach(function(dataset) {
+          dataset.data = dataset.data.map(function() {
+            return {
+              x: randomScalingFactor(),
+              y: randomScalingFactor()
+            };
+          });
+        });
+        window.myScatter.update();
+      });
+    </script>
+    
+
 </body>
 
 </html><!--

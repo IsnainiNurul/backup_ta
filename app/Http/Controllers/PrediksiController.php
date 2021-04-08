@@ -25,7 +25,7 @@ class PrediksiController extends Controller
          $real = $real->get();
          $count_conf = count($konfirmasi);
          $count_conf_real = count($real);
-    //    return $konfirmasi;
+       return $konfirmasi;
        return view('prediksi',['konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf,'real'=>$real,'count_real'=>$count_conf_real]);
     }
 }
