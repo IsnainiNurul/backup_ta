@@ -186,8 +186,13 @@
                  <select id="modelnya" name='model'>
                   <option value="Support Vector Regression">Support Vector Regression</option>
                   <option value="ARIMA">ARIMA</option>
-		  <option value="Prophet">FBProphet</option>
+		              <option value="Prophet">FBProphet</option>
                 </select>
+
+                <select id="tipe" name='tipe'>
+                  <option value="akumulasi">akumulasi</option>
+		              <option value="harian">harian</option>
+                </select> 
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
