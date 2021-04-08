@@ -46,7 +46,7 @@ class LoadController extends Controller
 
 	}
 
-	//return 'tes';
+//	return 'tes';
 //	return $process;        
         // return $process;
         // $input = explode(";",$process);
