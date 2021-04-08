@@ -112,15 +112,56 @@ class LoadController extends Controller
 
        }
 
+       $count_pred = count($tanggal);
 
+       $count = 0;
+       if ($request->tipe == 'harian'){
+       $y=[];
+       foreach($tanggal as $x){
+       // print($count);
+       if($count == $count_pred-1){
+        
+         break;
+       }
+       array_push($y,$tanggak[$count]);
+       
+       $y[$count]->y =   $tanggal[$count+1]->y - $tanggal[$count]->y ;
+       $count = $count+1;
+       // echo $konfirmasi[$count]->y - $konfirmasi[$count-1]->y;
+       
+      }
+       $tanggal = $y;
+       $count_pred=$count_pred-1;
 
+      }
+       
+      $count = 0;
+      if ($request->tipe == 'harian'){
+      $y=[];
+      foreach($real as $x){
+      // print($count);
+      if($count == $count_conf_real-1){
+       
+        break;
+      }
+      array_push($y,$real[$count]);
+      
+      $y[$count]->y =   $real[$count+1]->y - $real[$count]->y ;
+      $count = $count+1;
+      // echo $konfirmasi[$count]->y - $konfirmasi[$count-1]->y;
+      
+     }
+      $real = $y;
+      $count_conf_real=$count_conf_real-1;
+
+     }
 
        
 
 
 
 
-        return view('prediksi_load',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>count($tanggal),'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
+        return view('prediksi_load',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>$count_pred,'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
         // return $process;
         // return redirect('https://laravelkomber.azurewebsites.net/map');
     }
