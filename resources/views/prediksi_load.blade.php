@@ -186,11 +186,12 @@
                  <select id="modelnya" name='model'>
                   <option value="Support Vector Regression">Support Vector Regression</option>
                   <option value="ARIMA">ARIMA</option>
+		  <option value="Prophet">FBProphet</option>
                 </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
-                <input type='submit'>
+                <input class='btn btn-sm' type='submit' value='Prediksi'>
                 </form>
                 {{-- <div class="chart-area">
                   <canvas id="chartLineGreen"></canvas>
@@ -224,7 +225,7 @@
                   <input type='date' name='mulai'>
                   Akhir
                   <input type='date' name='akhir'>
-                  <input type='submit'>
+                  <input type='submit' class='btn btn-sm' value='filter'>
                   </form>
               </div>
             </div>
