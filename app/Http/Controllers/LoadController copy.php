@@ -35,13 +35,13 @@ class LoadController extends Controller
         $command = strval($akhir)." ".strval($request->last_id);
         // return $command;
         if($request->model =='Support Vector Regression'){
-            $process = shell_exec("python test.py ". $command);}
+            $process = shell_exec("python3 test.py ". $command);}
         if($request->model =='ARIMA'){
-            $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
+            $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 //	    return $process;
         }
 	if($request->model =='Prophet'){
-	    $process = shell_exec("python prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+	    $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
 	    
 
 	}
@@ -114,7 +114,6 @@ class LoadController extends Controller
 
        $count_pred = count($tanggal);
 
-       $tanggal = collect($tanggal);
        $count = 0;
        if ($request->tipe == 'harian'){
        $y=[];
@@ -124,31 +123,13 @@ class LoadController extends Controller
         
          break;
        }
-       array_push($y,collect($tanggal[$count]));
-    //    array_push($y,$tanggal[$count]);
-    //    array_push($y,$tanggal[$count]);
-    //    return $tanggal[$count+1]->y;
-    // return $y[0]['y'];
-    // return collect($tanggal[1])['y'];
-       $temp1 = collect($tanggal[$count])['y'];
-       $temp2 = collect($tanggal[$count+1])['y'];
-       $temp3 = $temp2 - $temp1;
-    //    return $y[$count]['y']=2;
-    //    json_decode($y, true);
-    //    print($count);
-       $y[$count]->y =  $temp3 ;
-    //    return $y[1]['y'];
+       array_push($y,$tanggak[$count]);
+       
+       $y[$count]->y =   $tanggal[$count+1]->y - $tanggal[$count]->y ;
        $count = $count+1;
        // echo $konfirmasi[$count]->y - $konfirmasi[$count-1]->y;
        
       }
-    //   return $y[10]->y;
-      for($xx = 0;$xx < count($y);$xx++){
-          $y[$xx]['y'] = $y[$xx]->y;
-      }
-      $y[0]['y']=$y[1]['y'];
-    //   return $y[30];
-        // unset($y[0]);
        $tanggal = $y;
        $count_pred=$count_pred-1;
 
