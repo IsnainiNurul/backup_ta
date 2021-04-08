@@ -89,6 +89,37 @@ class LoadController extends Controller
         $real = $real->get()->where('x','<',$request->tanggal_prediksi);
         $count_conf_real = count($real);
         // return $tanggal;
+
+        
+        $count = 0;
+        if ($request->tipe == 'harian'){
+        $y=[];
+        foreach($konfirmasi as $x){
+        // print($count);
+        if($count == $count_conf-1){
+         
+          break;
+        }
+        array_push($y,$konfirmasi[$count]);
+        
+        $y[$count]->y =   $konfirmasi[$count+1]->y - $konfirmasi[$count]->y ;
+        $count = $count+1;
+        // echo $konfirmasi[$count]->y - $konfirmasi[$count-1]->y;
+        
+       }
+        $konfirmasi = $y;
+        $count_conf=$count_conf-1;
+
+       }
+
+
+
+
+       
+
+
+
+
         return view('prediksi_load',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>count($tanggal),'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
         // return $process;
         // return redirect('https://laravelkomber.azurewebsites.net/map');
