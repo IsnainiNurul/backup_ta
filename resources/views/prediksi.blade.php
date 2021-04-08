@@ -168,7 +168,8 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma Support Vector Regression</h5>
-                <h3 class="card-title"></i> - </h3>
+                <h3 class="card-title"></i> 
+                  <a href='?tipe=harian'><button class='btn btn-sm' type='submit' >Harian</button> </a> <a href='?tipe=akumulasi'><button class='btn btn-sm' type='submit' >Akumulasi</button> </a></h3>
               </div>
               
             </div>
@@ -228,6 +229,7 @@
                   <input type='date' name='akhir'>
                   <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
+                  
               </div>
             </div>
           </div>
@@ -275,6 +277,7 @@
 
               <div class="card-body">
               <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
+              
               </label>
               </div>
             </div>
