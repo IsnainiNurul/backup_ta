@@ -35,7 +35,7 @@ class LoadController extends Controller
         $command = strval($akhir)." ".strval($request->last_id);
         // return $command;
         if($request->model =='Support Vector Regression'){
-            $process = shell_exec("python3 test.py ". $command);}
+            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));}
         if($request->model =='ARIMA'){
             $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 //	    return $process;
@@ -312,4 +312,5 @@ class LoadController extends Controller
     }
 
 }
+
 

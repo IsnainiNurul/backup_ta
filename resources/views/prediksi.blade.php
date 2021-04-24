@@ -192,8 +192,16 @@
                 </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
-                
+                <br>
+                 <label>Training </label><br>
+                <select id="training" name='training'>
+                  <option value="4">4 bulan</option>
+		              <option value="7">7 bulan</option>
+		              <option value="10">10 bulan</option>
+		              <option value="15">15 bulan</option>
+                </select> 
                 <input class='btn btn-sm'  type='submit' value='Prediksi'>
+               
                 </form>
                 {{-- <div class="chart-area">
                   <canvas id="chartLineGreen"></canvas>
@@ -221,12 +229,11 @@
                   </div>
                   <br>
                   <br>
-                  <form method='get' action=/prediksi>
-                  Mulai
-
-                  <input type='date' name='mulai'>
-                  Akhir
-                  <input type='date' name='akhir'>
+                  <form method='get' action=/load/semua>
+                  Tanggal
+                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                  <input type='date' name='tanggal_prediksi'>
                   <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
                   

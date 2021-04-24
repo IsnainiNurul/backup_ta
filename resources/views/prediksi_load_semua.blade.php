@@ -168,7 +168,7 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
-                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,2,',','.')}} Jiwa </h3>
+                <h3 class="card-title"></i> {{ number_format($prediksi_svr[$count_pred_svr-1]->y,2,',','.')}} Jiwa </h3>
               </div>
               
             </div>
@@ -193,14 +193,6 @@
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> 
-                <label>Training </label><br>
-                <select id="training" name='training'>
-                  <option value="4">4 bulan</option>
-		              <option value="7">7 bulan</option>
-		              <option value="10">10 bulan</option>
-		              <option value="15">15 bulan</option>
-                </select> 
-
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 
@@ -438,7 +430,7 @@
 
 		var color = Chart.helpers.color;
     var s1={
-					label: 'Konfirmasi Kasus Hingga 10 Oktober ' + {!! json_encode($konfirmasi[$count_conf-1]->y) !!} +' Jiwa',
+					label: 'Data 10 Oktober ' + {!! json_encode($konfirmasi[$count_conf-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
 					data: {!! json_encode($konfirmasi) !!},
@@ -450,10 +442,34 @@
 					borderWidth: 2
 				}
        var s2={
-					label: 'Prediksi Kasus ' + {!! json_encode($prediksi[$count_pred-1]->y) !!} +' Jiwa',
+					label: 'SVR ' + {!! json_encode($prediksi_svr[$count_pred_svr-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.blue,
-					data: {!! json_encode($prediksi) !!},
+					data: {!! json_encode($prediksi_svr) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+        var s4={
+					label: 'ARIMA ' + {!! json_encode($prediksi_arima[$count_pred_arima-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.yellow,
+					data: {!! json_encode($prediksi_arima) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+          var s5={
+					label: 'FBProphet ' + {!! json_encode($prediksi_prophet[$count_pred_prophet-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.purple,
+					data: {!! json_encode($prediksi_prophet) !!},
 					//data: generateData()
 					type: 'line',
 					pointRadius: 0,
@@ -463,7 +479,7 @@
 				}
       
        var s3={
-					label: 'Konfirmasi Kasus Terjadi ' + {!! json_encode($real[$count_real-1]->y) !!} +' Jiwa',
+					label: 'Real Case' + {!! json_encode($real[$count_real-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.green,
 					data: {!! json_encode($real) !!},
@@ -489,7 +505,7 @@
         
         
         ;
-  var array_value = [s1,s2,s3];
+  var array_value = [s1,s2,s3,s4,s5];
 
 
 		var cfg = {
@@ -740,3 +756,4 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
