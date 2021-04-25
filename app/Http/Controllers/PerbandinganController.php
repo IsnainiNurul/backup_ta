@@ -14,7 +14,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 class PerbandinganController extends Controller
 {
 
-    public function index(Request $request)
+    public function index(Request $request) // edit sini
     {
 
         
@@ -39,7 +39,9 @@ class PerbandinganController extends Controller
         return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten,'data_all'=>$data_all]);
     }
 
-	public function update(Request $request){
+
+
+	public function update(Request $request){ //Jangan Diotak atik
 
 	$process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
 
