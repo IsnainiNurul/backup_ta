@@ -38,5 +38,9 @@ Route::get('/berita', [BeritaController::class, 'index']);
 // });
 
 Route::get('/perbandingan', [PerbandinganController::class, 'index']);
+Route::get('/perbandingan/update',[PerbandinganController::class,'update']);
+
 Route::get('/prediksi', [PrediksiController::class, 'index']);
 Route::get('/load', [LoadController::class, 'index']);
+
+Route::get('/load/semua', [LoadController::class, 'all_algo']);

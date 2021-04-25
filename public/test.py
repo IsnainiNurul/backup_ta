@@ -9,7 +9,8 @@ import pickle
 try:
     import pandas as pd
     import numpy as np
-    loaded_model = pickle.load(open("SVR.sav",'rb'))
+    pilihan = int(sys.argv[3])
+    loaded_model = pickle.load(open("svr_sample_"+str(pilihan)+"bulan.sav",'rb'))
 #except Exception as e:
 #    print(e)
 #import numpy as np 
@@ -19,6 +20,7 @@ try:
 #loaded_model = pickle.load(open("SVR.sav", 'rb'))
     akhir = int(sys.argv[1])
     mulai = int(sys.argv[2])
+    
 #    print('test')
 
     selisih = akhir - mulai

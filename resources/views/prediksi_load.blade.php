@@ -193,6 +193,14 @@
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> 
+                <label>Training </label><br>
+                <select id="training" name='training'>
+                  <option value="4">4 bulan</option>
+		              <option value="7">7 bulan</option>
+		              <option value="10">10 bulan</option>
+		              <option value="15">15 bulan</option>
+                </select> 
+
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 

@@ -35,13 +35,13 @@ class LoadController extends Controller
         $command = strval($akhir)." ".strval($request->last_id);
         // return $command;
         if($request->model =='Support Vector Regression'){
-            $process = shell_exec("python test.py ". $command);}
+            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));}
         if($request->model =='ARIMA'){
-            $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
+            $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 //	    return $process;
         }
 	if($request->model =='Prophet'){
-	    $process = shell_exec("python prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+	    $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
 	    
 
 	}
@@ -185,4 +185,132 @@ class LoadController extends Controller
         // return redirect('https://laravelkomber.azurewebsites.net/map');
     }
     
+
+
+    
+    public function all_algo(Request $request){
+        
+
+        $konfirmasi = Confirmed_case::query();
+        if($request->mulai != null){
+         $konfirmasi = $konfirmasi->where('x','>',$request->mulai);
+          }
+        if($request->akhir != null){
+            $konfirmasi = $konfirmasi->where('x','<',$request->akhir);
+            }
+            $konfirmasi = $konfirmasi->get();
+            $count_conf = count($konfirmasi);
+
+
+        $tanggal_prediksi = Carbon::createFromDate($request->tanggal_prediksi);
+        $last_date = Carbon::createFromDate($request->last_date);
+        $akhir = $tanggal_prediksi->diffInDays($last_date) + $request->last_id;
+        $semua_hasil = [];
+        // return strval($akhir);
+        $command = strval($akhir)." ".strval($request->last_id);
+        // return $command;
+
+        $process = shell_exec("python3 test.py ". $command);
+        
+
+        // if($request->model =='ARIMA'){
+        //     $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
+        //           }
+
+	    // if($request->model =='Prophet'){
+	    // $process = shell_exec("python prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+	    
+
+	    //           }
+
+        $output_python =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python =  explode(" ",$output_python) ;
+        $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
+        $output_python = array_values($result);;
+        $selisih = $tanggal_prediksi->diffInDays($last_date);
+        $tanggal = [];
+        $sekarang =Carbon::createFromDate($request->last_date);
+        $id = $request->last_id+1;
+        array_push($tanggal,['id'=>$id,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[0]]);
+
+        for ($x = 0; $x <$selisih ; $x++) {
+            $sekarang = $sekarang->addDays(1);
+        
+            $object = (object)['id'=>$id+$x+1,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]];
+            array_push($tanggal,$object);
+            
+        }
+        $tanggal = collect($tanggal);
+        
+        $real = Real_case::query();
+        $real = $real->get()->where('x','<',$request->tanggal_prediksi);
+        $count_conf_real = count($real);
+
+        array_push($semua_hasil,$tanggal);
+
+        $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
+
+        $output_python =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python =  explode(" ",$output_python) ;
+        $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
+        $output_python = array_values($result);;
+        $selisih = $tanggal_prediksi->diffInDays($last_date);
+        $tanggal = [];
+        $sekarang =Carbon::createFromDate($request->last_date);
+        $id = $request->last_id+1;
+        array_push($tanggal,['id'=>$id,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[0]]);
+
+        for ($x = 0; $x <$selisih ; $x++) {
+            $sekarang = $sekarang->addDays(1);
+        
+            $object = (object)['id'=>$id+$x+1,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]];
+            array_push($tanggal,$object);
+            
+        }
+        $tanggal = collect($tanggal);
+        
+        $real = Real_case::query();
+        $real = $real->get()->where('x','<',$request->tanggal_prediksi);
+        $count_conf_real = count($real);
+
+        array_push($semua_hasil,$tanggal);
+
+        $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+
+        $output_python =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python =  explode(" ",$output_python) ;
+        $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
+        $output_python = array_values($result);;
+        $selisih = $tanggal_prediksi->diffInDays($last_date);
+        $tanggal = [];
+        $sekarang =Carbon::createFromDate($request->last_date);
+        $id = $request->last_id+1;
+        array_push($tanggal,['id'=>$id,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[0]]);
+
+        for ($x = 0; $x <$selisih ; $x++) {
+            $sekarang = $sekarang->addDays(1);
+        
+            $object = (object)['id'=>$id+$x+1,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]];
+            array_push($tanggal,$object);
+            
+        }
+        $tanggal = collect($tanggal);
+        
+        $real = Real_case::query();
+        $real = $real->get()->where('x','<',$request->tanggal_prediksi);
+        $count_conf_real = count($real);
+
+        array_push($semua_hasil,$tanggal);
+
+        $real = Real_case::query();
+        $real = $real->get()->where('x','<',$request->tanggal_prediksi);
+        $count_conf_real = count($real);
+        // return count($tanggal[]);        
+        
+        return view('prediksi_load_semua',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred_svr'=>count($semua_hasil[0]),'count_pred_arima'=>count($semua_hasil[1]),'count_pred_prophet'=>count($semua_hasil[2]),'prediksi_svr'=>$semua_hasil[0],'prediksi_arima'=>$semua_hasil[1],'prediksi_prophet'=>$semua_hasil[2],'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
+       
+    }
+
 }
+
+

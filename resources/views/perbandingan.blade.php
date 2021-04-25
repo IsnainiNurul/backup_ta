@@ -167,14 +167,15 @@
             <div class="card card-chart">
               <div class="card-header">
               </div>
-
+		<form action='/perbandingan/update' method='get'>
               <div class="card-body">
               <label>Tanggal Mulai</label>
-                <input type='date'> 
+                <input type='date' name='mulai' required> 
                 
               <label>Tanggal Berakhir</label>
-                <input type='date'>
-
+                <input type='date' name='akhir' required>
+		<input type='submit' value='update'>
+		</form>
               <div class="card-body">
               <label for="Kabupaten">Kabupaten :</label>
               <form method='get' action='/perbandingan'>

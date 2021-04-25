@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tetangga;
 use App\Models\DataTetangga;
 
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 class PerbandinganController extends Controller
 {
 
@@ -35,5 +38,14 @@ class PerbandinganController extends Controller
         // return count($tetangga);
         return view('perbandingan',['tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten,'data_all'=>$data_all]);
     }
+
+	public function update(Request $request){
+
+	$process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
+
+	return redirect()->back();
+
+		
+	}
 
 }
