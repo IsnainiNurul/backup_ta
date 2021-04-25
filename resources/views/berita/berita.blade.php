@@ -654,8 +654,8 @@
     </div>
   </div>
   <script>
-    console.log( {!! json_encode($label) !!});
-    var ctx = document.getElementById('chart2');
+  console.log( {!! json_encode($label) !!});
+  var ctx = document.getElementById('chart2');
 
   // <block:setup:1>
   const data = {
@@ -709,7 +709,6 @@
   </script>
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
-   <script  src="/assets/js/berita/graf_label.js"></script>
 	<script>
 		function generateData() {
       var unit = document.getElementById('unit').value;
