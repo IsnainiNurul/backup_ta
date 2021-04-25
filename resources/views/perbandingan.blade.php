@@ -8,7 +8,7 @@
 
 
 * Coded by  TA History COVID
-
+Edit sini
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -161,32 +161,37 @@
             <div class="card card-chart">
               <div class="card-header ">
                 <h1 style='text-align:center;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
+                <form action='/perbandingan/update' method='get'>
+                  <div class="card-body">
+                  <label>Tanggal Mulai</label>
+                  <input type='date' name='mulai' required>             
+                  <label>Tanggal Berakhir</label>
+                  <input type='date' name='akhir' required>
+	            	  <input type='submit' value='update'>
+	              </form>
+                <div class="card-body">
+                  <label for="Kabupaten">Kabupaten :</label>
+                  <form method='get' action='/perbandingan'>
+                   <select id="Kabupaten" name='tetangga'>
+                    <option value="">-</option>
+                    @foreach($kabupaten as $k)
+                   <option value="{{$k->id}}">{{$k->kabupaten}}</option>
+                    @endforeach
+                    </select> 
+                  <input type='submit' name='submit'>
+                  </form>
+                <div >
+                  <br>
+                Grafik Bland Altman menunjukkan bahwa nilai perbedaan/tingkat perbedaan pola kasus COVID-19 pada kabupaten dan Tetangganya.
+                Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang mirip, 
+                Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
+                  </div>
+              </div>
               </div>
             </div>
-          </div><div class="col-12"><div class="col-lg-6">
+          <!-- </div><div class="col-12"><div class="col-lg-6">
             <div class="card card-chart">
               <div class="card-header">
-              </div>
-		<form action='/perbandingan/update' method='get'>
-              <div class="card-body">
-              <label>Tanggal Mulai</label>
-                <input type='date' name='mulai' required> 
-                
-              <label>Tanggal Berakhir</label>
-                <input type='date' name='akhir' required>
-		<input type='submit' value='update'>
-		</form>
-              <div class="card-body">
-              <label for="Kabupaten">Kabupaten :</label>
-              <form method='get' action='/perbandingan'>
-              <select id="Kabupaten" name='tetangga'>
-                <option value="">-</option>
-                @foreach($kabupaten as $k)
-                <option value="{{$k->id}}">{{$k->kabupaten}}</option>
-                @endforeach
-              </select> 
-              <input type='submit' name='submit'>
-              </form>
               </div>
               </div>
             </div>
@@ -199,7 +204,7 @@
                   
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               @foreach ($data_all as $semua)
                    <div class="card-body">
@@ -431,7 +436,19 @@ var ctx = document.getElementById(name).getContext('2d');
           scales: {
             y: {
               beginAtZero: true
-            }
+            }, 
+          yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'rata-rata'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+          }
+        }],
           }
         }
 
