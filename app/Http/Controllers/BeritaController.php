@@ -39,22 +39,16 @@ class BeritaController extends Controller
          }
 
           if($request->datestart2 != null){
-        	$data = $data->where('tanggal','>=',$request->datestart);
-        	$berita = $berita->where('date','>=',$request->datestart);
-        	
+        	$label = $label->where('date','>=',$request->datestart);
          }
          else{
-         	$data = $data->where('tanggal','>=','2020-03-18');
-         	$berita = $berita->where('date','>=','2020-03-18');
+         	$label = $label->where('date','>=','2020-03-18');
          }
          if($request->dateend2 != null){
-        	$data = $data->where('tanggal','<=',$request->dateend);
-        	$berita = $berita->where('date','<=',$request->dateend);
-        	
+        	$label = $label->where('date','<=',$request->dateend);
          }
          else{
-         	$data = $data->where('tanggal','<=',date('Y-m-d'));
-         	$berita = $berita->where('date','<=',date('Y-m-d'));
+         	$label = $label->where('date','<=',date('Y-m-d'));
          }
 	    if($request->area != null && $request->area !="Semua"){
 
@@ -183,16 +177,47 @@ class BeritaController extends Controller
 	     // }
 	     
 	     $berita = $berita->orderBy('date', 'ASC')->limit(10)->get();
-	     $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
-	     // $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
-	     // $donation = $label->select(DB::raw('SUM(donation) as Donation'))->get();
-	     // $criticisms = $label->select(DB::raw('SUM(criticisms) as Criticisms'))->get();
-	     // $hoax = $label->select(DB::raw('SUM(hoax) as Hoax'))->get();
-	     // $other = $label->select(DB::raw('SUM(other) as Other'))->get();
-	     //print($berita);
+	     // $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
 
+	     // array_push($array_to, $label->)
+
+	   
+	     $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
+	     $donation = $label->select(DB::raw('SUM(donation) as Donation'))->get();
+	     $criticisms = $label->select(DB::raw('SUM(criticisms) as Criticisms'))->get();
+	     $hoax = $label->select(DB::raw('SUM(hoax) as Hoax'))->get();
+	     $other = $label->select(DB::raw('SUM(other) as Other'))->get();
+
+	     $nof=substr($nof,2, -2);
+	     $donation=substr($donation,2, -2);
+	     $criticisms=substr($criticisms,2, -2);
+	     $hoax=substr($hoax,2, -2);
+	     $other=substr($other,2, -2);
+
+
+	     $nof=explode(":",$nof);
+	     $donation=explode(":",$donation);
+	     $criticisms=explode(":",$criticisms);
+	     $hoax=explode(":",$hoax);
+	     $other=explode(":",$other);
+	     //print($berita);
+	     $nof=substr($nof[1],1,-1);
+	   	 $donation=substr($donation[1],1, -1);
+	     $criticisms=substr($criticisms[1],1, -1);
+	     $hoax=substr($hoax[1],1, -1);
+	     $other=substr($other[1],1, -1);
+	    
+	    
+	  	 $label_array=[$nof,$donation,$criticisms,$hoax,$other];
         //print($data);
-        return ($label);
-        //return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label]);
+	  //    $label=substr($label,2, -2);
+	  //    $label_array=array();
+	  //    $label_array[]=$label;
+	  //    $keys = array('y', 'y', 'y','y','y');
+		 // $values = array('45', '54', '25','34','12');
+	  //    $array = ['45', '54', '25','34','12'];
+	     // $array = [{"x":"donation","y":"45"},{"x":"wiki","y":"24"},{"x":"do","y":"65"},{"x":"ok","y":"43"},{"x":"wkwk","y":"30"}];
+             
+        return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array]);
     }
 }

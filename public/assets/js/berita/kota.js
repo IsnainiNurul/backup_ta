@@ -40,10 +40,13 @@ var provinces3=[sulawesi_utara,gorontalo,sulawesi_tengah,sulawesi_barat,sulawesi
 
 var provinces4 = provinces1.concat(provinces2);
 var provinces = provinces4.concat(provinces3);
+
+
 function onProvinceChanged(s) {
- var cities = document.getElementById("kotas");
-  var x=1
-  var provinsi
+ var cities = document.getElementById("kota");
+ var z = document.getElementById("label_kota");
+  var x=1;
+  var provinsi;
   if(s.value=="Jatim"){
       provinsi= 1;
   }
@@ -148,9 +151,19 @@ function onProvinceChanged(s) {
   else if(s.value=="Papbar"){
       provinsi= 34; 
   }
+  else{
+    x=0;
+  }
+  
   var v = "";
+  v += "<option value='" + "Semua" + "'>" + "Semua" + "</option>";
+  v += "<option value='" + "Other" + "'>" + "Other" + "</option>";
+  if(x==1){
     for (var i = 0; i < provinces[provinsi-1].length; i++) {
      v += "<option value='" + provinces[provinsi-1][i] + "'>" + provinces[provinsi-1][i] + "</option>"
     }
+  }
+
     cities.innerHTML = v;
+    
 }

@@ -59,7 +59,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="active ">
+          <li class="active">
             <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
@@ -167,9 +167,37 @@
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di Indonesia</h1>
               </div>
             </div>
+            <div class="card-chart">
+              <div class="row">
+                <div class="col-sm-4">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Total Kasus Covid-19</h5>
+                          <h2 class="card-title text-left">1.626.812</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Total Pasien Meninggal Covid-19</h5>
+                          <h2 class="card-title text-left">1.481.449</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Total Pasien Sembuh Covid-19</h5>
+                          <h2 class="card-title text-left">44.172</h2>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
           </div><div class="col-sm-12">
             <div class="card card-chart">
-              <div class="card-header ">
+              <div class="card-header">
                 <div class="row">
                   <div class="col-sm-7 text-left">
                     <h5 class="card-category">Graph COVID-19</h5>
@@ -181,14 +209,14 @@
                 </div>
               </div>
               <div class="card-body">
-                <div style="width:1000px;height:500px;position: relative;">
+                <div style="width:1000px;height:300px;position: relative;">
                   <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</a></p>
                 
                   <div class="row">
                     <div class="col-sm-7">
                       <canvas id="chart1"></canvas>
                     </div>
-                    <div class="col-sm-5 scroll" style="width:1500px;height:500px;overflow:auto;">
+                    <div class="col-sm-5 scroll" style="width:1500px;height:300px;overflow:auto;">
                       @foreach($berita as $b)
                       <div class="row">
                         <div class="col-sm-4 div-gambar">
@@ -217,17 +245,62 @@
                 <br>
                 <br>
                 <form method='get' action=/berita>
-                  <label>Tanggal</label>
-                    <input name="datestart" type='date'>
-                  <label>-</label>
-                    <input name="dateend" type='date'>
+                  <div class="row">
+                    <div class="col-sm-5">
+                        <label>Tanggal</label>
+                          <input name="datestart" type='date'>
+                        <label>-</label>
+                          <input name="dateend" type='date'>
+                    </div>
+                    <div class="col-sm-7">
                   <label>Provinsi</label>
-                   
-                  <label>Kota</label>
-                  <select name="kota" id="kotas">
+                  <select name="area" id="type" onchange="onProvinceChanged(this)">
+                    <option value="">Pilih Provinsi</option>
+                    <option value="Jatim">Jawa Timur</option>
+                    <option value="Jabar">Jawa Barat</option>
+                    <option value="Jateng">Jawa Tengah</option>
+                    <option value="DIY">D.I Yogyakarta</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Sumut">Sumatera Utara</option>
+                    <option value="Sumbar">Sumatera Barat</option>
+                    <option value="Sumsel">Sumatera Selatan</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Kep_riau">Kepulauan Riau</option>
+                    <option value="Babel">Bangka Belitung</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="Bali">Bali</option>
+                    <option value="NTT">NTT</option>
+                    <option value="NTB">NTB</option>
+                    <option value="Kalbar">Kalimantan Barat</option>
+                    <option value="Kalteng">Kalimantan Tengah</option>
+                    <option value="Kalsel">Kalimantan Selatan</option>
+                    <option value="Kaltim">Kalimantan Timur</option>
+                    <option value="Kaltara">Kalimantan Utara</option>
+                    <option value="Sulut">Sulawesi Utara</option>25
+                    <option value="Sulteng">Sulawesi Tengah</option>
+                    <option value="Sulbar">Sulawesi Barat</option>
+                    <option value="Sulsel">Sulawesi Selatan</option>
+                    <option value="Sultra">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Malut">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papbar">Papua Barat</option>
+                  </select>
+                
+      
+                  <label id="label_kota">Kota</label>
+                  <select name="kota" id="kota">
                     <option value="Semua">Semua</option>
                     <option value="Other">Other</option>
                   </select>
+                    </div>
+                  </div>
+                  <label>Label</label>
                   <select name="label">
                     <option>Pilih Label</option>
                     <option value="NOF">Notitification of information</option>
@@ -400,6 +473,7 @@
             </div>
           </div>
         </div>
+      </div>
 
         <!-- Card COVID-19 -->
       <div class="content">
@@ -407,52 +481,18 @@
           <div class="col-sm-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di Indonesia</h1>
-              </div>
-            </div>
-          </div><div class="col-sm-12">
-            <div class="card card-chart">
-              <div class="card-header ">
                 <div class="row">
-                  <div class="col-sm-7 text-left">
-                    <h5 class="card-category">Graph COVID-19</h5>
-                    <h2 class="card-title">Kasus COVID-19 di Indonesia pada Setiap Provinsi</h2>
-                  </div>
-                  <div class="col-sm-5 search_bar">
-                    <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
+                  <div class="col-sm-12 text-left">
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
                   </div>
                 </div>
               </div>
               <div class="card-body">
-                <div style="width:1000px;height:500px;position: relative;">
-                  <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</a></p>
-                
+                <div style="width:1000px;height:300px;position: relative;">
                   <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-12">
                       <canvas id="chart2"></canvas>
-                    </div>
-                    <div class="col-sm-5 scroll" style="width:1500px;height:500px;overflow:auto;">
-                      @foreach($berita as $b)
-                      <div class="row">
-                        <div class="col-sm-4 div-gambar">
-                            <a href="{{$b->url}}">
-                              <img src="{{$b->img_url}}" class="img-fluid">
-                            </a>
-                          </div>
-                          
-                          <div class="col-sm-8">
-                            @if($b->news_portal=='kompas')
-                                <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
-                            @else
-                                <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
-                            @endif
-                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
-
-                          </div>
-
-                      </div>
-                         <br>
-                        @endforeach
                     </div>
                   </div>
                   
@@ -461,60 +501,9 @@
                 <br>
                 <form method='get' action=/berita>
                   <label>Tanggal</label>
-                    <input name="datestart" type='date'>
+                    <input name="datestart2" type='date'>
                   <label>-</label>
-                    <input name="dateend" type='date'>
-                  <label>Provinsi</label>
-                  <select name="area" id="type" onchange="onProvinceChanged(this)">
-                    <option value="Jatim">Jawa Timur</option>
-                    <option value="Indonesia">Indonesia</option>
-                    <option value="Jabar">Jawa Barat</option>
-                    <option value="Jateng">Jawa Tengah</option>
-                    <option value="DIY">D.I Yogyakarta</option>
-                    <option value="Jakarta">Jakarta</option>
-                    <option value="Banten">Banten</option>
-                    <option value="Jambi">Jambi</option>
-                    <option value="Aceh">Aceh</option>
-                    <option value="Sumut">Sumatera Utara</option>
-                    <option value="Sumbar">Sumatera Barat</option>
-                    <option value="Sumsel">Sumatera Selatan</option>
-                    <option value="Riau">Riau</option>
-                    <option value="Kep_riau">Kepulauan Riau</option>
-                    <option value="Babel">Bangka Belitung</option>
-                    <option value="Bengkulu">Bengkulu</option>
-                    <option value="Lampung">Lampung</option>
-                    <option value="Bali">Bali</option>
-                    <option value="NTT">NTT</option>
-                    <option value="NTB">NTB</option>
-                    <option value="Kalbar">Kalimantan Barat</option>
-                    <option value="Kalteng">Kalimantan Tengah</option>
-                    <option value="Kalsel">Kalimantan Selatan</option>
-                    <option value="Kaltim">Kalimantan Timur</option>
-                    <option value="Kaltara">Kalimantan Utara</option>
-                    <option value="Sulut">Sulawesi Utara</option>25
-                    <option value="Sulteng">Sulawesi Tengah</option>
-                    <option value="Sulbar">Sulawesi Barat</option>
-                    <option value="Sulsel">Sulawesi Selatan</option>
-                    <option value="Sultra">Sulawesi Tenggara</option>
-                    <option value="Gorontalo">Gorontalo</option>
-                    <option value="Maluku">Maluku</option>
-                    <option value="Malut">Maluku Utara</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Papbar">Papua Barat</option>
-                  </select>
-                  <label>Kota</label>
-                  <select name="kota" id="kotas">
-                    <option value="Semua">Semua</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <select name="label">
-                    <option>Pilih Label</option>
-                    <option value="NOF">Notitification of information</option>
-                    <option value="Donation">Donation</option>
-                    <option value="Criticism">Criticism</option>
-                    <option value="Hoax">Hoax</option>
-                    <option value="Other">Other</option>
-                  </select>
+                    <input name="dateend2" type='date'>
                   <input type='submit'>
                 </form>
 
@@ -522,6 +511,74 @@
             </div>
           </div>
         </div>
+        <div class="card-chart">
+              <div class="row">
+                <div class="col-sm-3">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-title">Notification of Information</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Meninggal</li>
+                            <li class="list-group-item">Positif</li>
+                            <li class="list-group-item">Total</li>
+                            <li class="list-group-item">Sembuh</li>
+                            <li class="list-group-item">Update</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-title">Donation</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Salurkan</li>
+                            <li class="list-group-item">Sumbang</li>
+                            <li class="list-group-item">Terdampak</li>
+                            <li class="list-group-item">Bantuan</li>
+                            <li class="list-group-item">Bantu</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-title">Criticisms</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Pemerintah</li>
+                            <li class="list-group-item">Buruk</li>
+                            <li class="list-group-item">Gagal</li>
+                            <li class="list-group-item">Kritik</li>
+                            <li class="list-group-item">Singgung</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                 <div class="col-sm-3">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-title">Hoax</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Klarifikasi</li>
+                            <li class="list-group-item">Tegaskan</li>
+                            <li class="list-group-item">Klaim</li>
+                            <li class="list-group-item">Hoaks</li>
+                            <li class="list-group-item">Fakta</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
     
       
       </div>
@@ -596,9 +653,63 @@
       </ul>
     </div>
   </div>
+  <script>
+    console.log( {!! json_encode($label) !!});
+    var ctx = document.getElementById('chart2');
+
+  // <block:setup:1>
+  const data = {
+    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
+    datasets: [{
+      data: {!! json_encode($label) !!},
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+  
+  // </block:setup>
+
+  // <block:config:0>
+  var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      legend: {
+        display: false
+    },
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+    },
+  });
+  // </block:config>
+
+
+
+  </script>
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
-   <script src="/assets/js/berita/graf_label.js"></script>
+   <script  src="/assets/js/berita/graf_label.js"></script>
 	<script>
 		function generateData() {
       var unit = document.getElementById('unit').value;
@@ -657,7 +768,7 @@
 
     var ctx = document.getElementById('chart1').getContext('2d');
     ctx.canvas.width = 1000;
-    ctx.canvas.height = 800;
+    ctx.canvas.height = 500;
 
     var color = Chart.helpers.color;
     var s1=[{
