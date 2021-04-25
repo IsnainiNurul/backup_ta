@@ -654,6 +654,7 @@
     </div>
   </div>
   <script>
+    console.log("tes");
   console.log( {!! json_encode($label) !!});
   var ctx = document.getElementById('chart2');
 
