@@ -489,14 +489,15 @@
                 </div>
               </div>
               <div class="card-body">
-                
+                <div style="width:700px;height:300px;position: relative;">
                   <div class="row">
                     <div class="col-sm-12">
                       <canvas id="chart2"></canvas>
                     </div>
                   </div>
                   
-                
+                </div>
+                <br>
                 <br>
                 <br>
                 <form method='get' action=/berita>
