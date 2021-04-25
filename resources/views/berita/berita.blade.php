@@ -36,7 +36,7 @@
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/maisssn.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
