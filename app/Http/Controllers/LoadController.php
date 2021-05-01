@@ -16,7 +16,34 @@ class LoadController extends Controller
     //
     public function index(Request $request)
     {
-        // return 
+
+        function Corr($x, $y){
+
+            $length= count($x);
+            $mean1=array_sum($x) / $length;
+            $mean2=array_sum($y) / $length;
+            
+            $a=0;
+            $b=0;
+            $axb=0;
+            $a2=0;
+            $b2=0;
+            
+            for($i=0;$i<$length;$i++)
+            {
+            $a=$x[$i]-$mean1;
+            $b=$y[$i]-$mean2;
+            $axb=$axb+($a*$b);
+            $a2=$a2+ pow($a,2);
+            $b2=$b2+ pow($b,2);
+            }
+            
+            $corr= $axb / sqrt($a2*$b2);
+            
+            return $corr;
+            }
+            
+        // return $request;
         $konfirmasi = Confirmed_case::query();
         if($request->mulai != null){
          $konfirmasi = $konfirmasi->where('x','>',$request->mulai);
@@ -65,6 +92,7 @@ class LoadController extends Controller
         // return $output_python;
         $tanggal = [];
         // array_push($tanggal)
+        $ddd = [];
         $sekarang =Carbon::createFromDate($request->last_date);
         $id = $request->last_id+1;
         array_push($tanggal,['id'=>$id,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[0]]);
@@ -76,9 +104,11 @@ class LoadController extends Controller
             $sekarang = $sekarang->addDays(1);
         
             $object = (object)['id'=>$id+$x+1,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]];
+            array_push($ddd,(float)$output_python[$x]);
             array_push($tanggal,$object);
             
         }
+        // return $tanggal;
         // $koleksi = [];
         // array_push($koleksi,collect($object));
         // array_push($koleksi,collect($object));
@@ -176,11 +206,29 @@ class LoadController extends Controller
      }
 
        
+    //  Corr($x,$y)
+    $arr_x = [];
+    $arr_y = [];
+    $string_x ='';
+    $string_y ='';
+    // return $ddd;
+    // return var_dump($tanggal);
+    // return count($real); 
+    for ($x=0;$x<count($real);$x++){
+          array_push($arr_x,$real[$x]->y);
+          array_push($arr_y,$ddd[$x]);
+        $string_x = $string_x.';'. (string) $real[$x]->y;
+        $string_y = $string_y.';'. (string) $ddd[$x];
+     } 
+    //  return $string_y;
+     $r2 = Corr($arr_x,$arr_y);
+    //  return $arr_x;
+    //  return $arr_y;
+    //  $r2 = shell_exec("python r2.py ".$string_x." ".$string_y);
+    //  $r2 = (float) $r2;
 
-
-
-
-        return view('prediksi_load',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>$count_pred,'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
+    //  return $r2;
+        return view('prediksi_load',['r2'=>(float) $r2,'training'=>$request->training,'tanggal_prediksi'=>$request->tanggal_prediksi,'count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>$count_pred,'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
         // return $process;
         // return redirect('https://laravelkomber.azurewebsites.net/map');
     }

@@ -37,7 +37,11 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
+<style>
+canvas{
+       display:inline-block;}
 
+</style>
 <body class="white-content">
   <div class="wrapper">
     <div class="sidebar">
@@ -168,7 +172,7 @@
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
-                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,2,',','.')}} Jiwa </h3>
+                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,0,'','.')}} Jiwa </h3>
               </div>
               
             </div>
@@ -176,25 +180,68 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                {{-- <h5 class="card-category">Prediksi Covid 19 di Indonesia Menggunakan Algoritma Lain</h5>
-                <h3 class="card-title"></i> 863 Ribu Jiwa </h3> --}}
+
+                <h5 class="card-category"> Akurasi </h5>
+                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{number_format($r2,3)}} %</h1>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Real Case Kasus Corona Di Indonesia</h5>
+                    <h2 class="card-title">Indonesia</h2>
+                  </div>
+                  <div class="col-sm-8">
+                  
+                  </div>
+                </div>
               </div>
               <div class="card-body">
-              <label>Tanggal Prediksi</label>
+                <div style="width:1000px">
+                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
+                    <canvas  id="chart1" style=''></canvas> <p></p>
+                  </div>
+                  <br>
+                  <br>
+                  <form method='get' action=/load/semua>
+                  Tanggal
+                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                  <input type='date' name='tanggal_prediksi'>
+                  <input class='btn btn-sm' type='submit' value='prediksi'>
+                  </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Filter</h5>
+                    <h2 class="card-title">Covid-19 Indonesia</h2>
+                     <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi' required>
-                 <select id="modelnya" name='model'>
-                  <option value="Support Vector Regression">Support Vector Regression</option>
+                <input type='date' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
+                <label>Algoritma</label>
+                 <select id="modelnya" name='model' >
+                  <option value="Support Vector Regression">Support Vector Regression </option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
-
+                <label>Jenis Prediksi</label><br>
                 <select id="tipe" name='tipe'>
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
-                </select> 
-                <label>Training </label><br>
+                </select> <br>
+                <label>Training </label><br>  
                 <select id="training" name='training'>
+                  <option value="{{$training}}">{{$training}} bulan</option>
                   <option value="4">4 bulan</option>
 		              <option value="7">7 bulan</option>
 		              <option value="10">10 bulan</option>
@@ -203,44 +250,16 @@
 
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
-                
+                <br>
                 <input class='btn btn-sm' type='submit' value='Prediksi'>
                 </form>
-                {{-- <div class="chart-area">
-                  <canvas id="chartLineGreen"></canvas>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Real Case Kasus Corona Di Indonesia</h5>
-                    <h2 class="card-title">Indonesia</h2>
                   </div>
                   <div class="col-sm-6">
                   
                   </div>
                 </div>
               </div>
-              <div class="card-body">
-                <div style="width:1000px">
-                    <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
-                    <canvas id="chart1"></canvas>
-                  </div>
-                  <br>
-                  <br>
-                  <form method='get' action=/prediksi>
-                  Mulai
-
-                  <input type='date' name='mulai'>
-                  Akhir
-                  <input type='date' name='akhir'>
-                  <input type='submit' class='btn btn-sm' value='filter'>
-                  </form>
-              </div>
+              
             </div>
           </div>
         </div>

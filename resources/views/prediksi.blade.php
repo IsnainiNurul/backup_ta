@@ -231,8 +231,8 @@
                   <br>
                   <form method='get' action=/load/semua>
                   Tanggal
-                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
-                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                  <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                  <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                   <input type='date' name='tanggal_prediksi'>
                   <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
