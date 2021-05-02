@@ -17,11 +17,11 @@ Edit sini
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     TA History COVID
   </title>
   <!--     Fonts and icons     -->
@@ -160,71 +160,108 @@ Edit sini
           <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
+                <h1 style='text-align:center; font-family: "Bookman Old Style", serif; font-size:35px;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
+                <div>
+                  <strong>
+                  Keterangan :
+                  </strong>
+                  <br>
+                  <em style="font-family:Georgia, serif; font-size: 16px">
+                    Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
+                    Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, 
+                    Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
+                  </em>
+                  <br>
+                  <b style="font-family:Georgia, serif; font-size: 16px"">
+                    Sumbu X merupakan selisih atau perbedaan jumlah kasus COVID-19 di Kabupaten dengan tetangganya
+                    <br>
+                    Sumbu Y merupakan mean atau rata-rata jumlah kasus COVID-19 di Kabupaten dengan tetangganya
+                  </b>
+                  <br>
+                </div>
+                  <br>
+                  <em style="font-family:Georgia, serif; font-size: 17px"">
+                  Untuk mengetahui perbandingan Kabupaten dengan tetangganya dari range tanggal tertentu, silahkan input tanggal mulai dan tanggal berakhir :
+                  </em>
                 <form action='/perbandingan/update' method='get'>
                   <div class="card-body">
-                  <label>Tanggal Mulai</label>
-                  <input type='date' name='mulai' required>             
-                  <label>Tanggal Berakhir</label>
-                  <input type='date' name='akhir' required>
+                  <label style= "font-size: 14px">Tanggal Mulai</label>
+                  <input type='date' name='mulai' value='{{$mulai}}' required> 
+                  <label style= "font-size: 14px">Tanggal Berakhir</label>
+                  <input type='date' name='akhir' value='{{$akhir}}' required>
 	            	  <input type='submit' value='update'>
 	              </form>
                 <div class="card-body">
-                  <label for="Kabupaten">Kabupaten :</label>
+                  <label for="Kabupaten" style= "font-size: 14px">Kabupaten :</label>
                   <form method='get' action='/perbandingan'>
-                   <select id="Kabupaten" name='tetangga'>
-                    <option value="">-</option>
-                    @foreach($kabupaten as $k)
-                   <option value="{{$k->id}}">{{$k->kabupaten}}</option>
-                    @endforeach
+                    <select id="Kabupaten" name='tetangga'>
+                      <option value="">-</option>
+                        @foreach($kabupaten as $k)
+                      <option value="{{$k->id}}">{{$k->kabupaten}}</option>
+                        @endforeach
                     </select> 
                   <input type='submit' name='submit'>
                   </form>
-                <div >
                   <br>
-                Grafik Bland Altman menunjukkan bahwa nilai perbedaan/tingkat perbedaan pola kasus COVID-19 pada kabupaten dan Tetangganya.
-                Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang mirip, 
-                Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
-                  </div>
+                      <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Data Tabel</button>
+                      <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog"> -->
+        
+                        <!-- Modal content-->
+                        <!-- <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Data Tabel</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Isi tabel range waktu</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div> -->   
               </div>
-              </div>
-            </div>
-          <!-- </div><div class="col-12"><div class="col-lg-6">
-            <div class="card card-chart">
-              <div class="card-header">
-              </div>
-              </div>
-            </div>
-          </div>
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  
-                  <div class="col-sm-6">
-                  
-                  </div>
-                </div>
-              </div> -->
 
               @foreach ($data_all as $semua)
-                   <div class="card-body">
-                <div style="width:1000px">
-                    <p ><h2 style='text-align:center'>{{$semua->kabupaten}} -- {{$semua->tetangga}}</h2>
-                    <canvas id="chart{{$semua->tetangga}}"></canvas>
+              <div class="container">
+                <div class ="row">
+                  <div class="col-sm-6">
+                    <div class="card-body" class="col-sm-6">
+                      <div style="width:600px">
+                        <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
+                        <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
+                        <div class="modal fade" id="myModal{{$semua->tetangga}}" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Data Tabel {{$semua->tetangga}}</h4>
+                              </div>
+                              <div class="modal-body">
+                                <p>kabupaten = {{$semua->kabupaten}}</p>
+                                <p>Tetangga = {{$semua->tetangga}}</p>
+                                <p>Rata rata = {{$semua->mean}}</p>
+                                <p>minimal = {{$semua->min}}</p>
+                                <p>max = {{$semua->max}}</p>
+                              </div>
+                              <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>  
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <br>
-                  <br>
-                  
+                </div>  
               </div>
               @endforeach
-             
-
-
             </div>
           </div>
         </div>
-   
       </div>
+ 
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -254,6 +291,7 @@ Edit sini
         </div>
       </footer>
     </div>
+  
   </div>
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
@@ -440,7 +478,7 @@ var ctx = document.getElementById(name).getContext('2d');
           yAxes: [{
           scaleLabel: {
             display: true,
-            labelString: 'rata-rata'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+            labelString: 'RATA-RATA'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
           }
         }],
         xAxes: [{
@@ -470,6 +508,9 @@ var ctx = document.getElementById(name).getContext('2d');
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   
 </body>
 
