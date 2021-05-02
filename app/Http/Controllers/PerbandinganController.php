@@ -52,6 +52,7 @@ class PerbandinganController extends Controller
     $tanggal = Temp_tanggal::where('id','=','1')->first();
     $tanggal->mulai= $request->mulai;
     $tanggal->akhir= $request->akhir;
+    // return $request;
     $tanggal = $tanggal->update();
 
     // return $tanggal;
