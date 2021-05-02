@@ -42,7 +42,7 @@ class PerbandinganController extends Controller
         $tanggal = Temp_tanggal::where('id','=','1')->first();
         $mulai = $tanggal->mulai;
         $akhir= $tanggal->akhir;
-        // return $data_all;
+//        return $data_all;
         return view('perbandingan',['akhir'=>$akhir,'mulai'=>$mulai,'tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten,'data_all'=>$data_all]);
     }
 

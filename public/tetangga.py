@@ -255,7 +255,8 @@ for x in kabupaten:
                 "Max":rata[1],
                 "x":rata[3],
                 "y":rata[4],
-
+		"m1":m1,
+		"m2":m2
             }
             array.append(dict_index)
         except:
@@ -277,13 +278,22 @@ for xx in range(len(df_output)):
   max  = df_output['Max'][xx] 
   x = str(pd.DataFrame(array)['x'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
   y = str(pd.DataFrame(array)['y'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',') 
+  #print(str(pd.DataFrame(array)['x'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
+  #print(str(pd.DataFrame(array)['y'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
+  #print(str(pd.DataFrame(array)['m1'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
+  #print(str(pd.DataFrame(array)['m2'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
+  m1 = str(pd.DataFrame(array)['m1'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
+  m2 = str(pd.DataFrame(array)['m2'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
+
+  #break
 #  x  = str(df_output['x'][xx].astype('str'))
 #  y  = str(df_output['y'][xx].astype('str'))
   print("Iterasi Ke "+str(id))
 #  engine.execute("INSERT INTO output_jan_maret (id, kabupaten, max,mean,min,no,tetangga,x,y) VALUES ("+id+",'"+kabupaten+"',"+max+","+mean+","+min+","+id+",'"+tetangga+"','"+x+"','"+y+"')")
-  engine.execute("INSERT INTO `output_jan_maret` (`id`, `no`, `kabupaten`, `tetangga`, `mean`, `min`, `max`, `x`, `y`) VALUES (NULL, '"+str(id)+"', '"+str(kabupaten)+"', '"+str(tetangga)+"', '"+str(mean)+"', '"+str(min)+"', '"+str(max)+"', '"+str(x)+"', '"+str(y)+"');")
+  engine.execute("INSERT INTO `output_jan_maret` (`id`, `no`, `kabupaten`, `tetangga`, `mean`, `min`, `max`, `x`, `y`,`m1`,`m2`) VALUES (NULL, '"+str(id)+"', '"+str(kabupaten)+"', '"+str(tetangga)+"', '"+str(mean)+"', '"+str(min)+"', '"+str(max)+"', '"+str(x)+"', '"+str(y)+"', '"+str(m1)+"', '"+str(m2)+"');")
 #  engine.execute("INSERT INTO output_jan_maret (id, kabupaten, max,mean,min,no,tetangga,x,y) VALUES ("+id+",'2',2,2,2,2,'2','2','2')")
 #  print(x)
 #  break
 
 print('sukses')
+
