@@ -12,8 +12,7 @@
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<!DOCTYPE html>
+--><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -164,47 +163,43 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
-                <h3 class="card-title"></i> {{ number_format($prediksi_svr[$count_pred_svr-1]->y,2,',','.')}} Jiwa </h3>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-lg-4">
+          
+          <!-- <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
                 {{-- <h5 class="card-category">Prediksi Covid 19 di Indonesia Menggunakan Algoritma Lain</h5>
                 <h3 class="card-title"></i> 863 Ribu Jiwa </h3> --}}
               </div>
               <div class="card-body">
-              <label>Tanggal Prediksi</label>
+              <label>Tanggal dan Model Prediksi</label>
                 <form method='get' action='/load'>
                 <input type='date' name='tanggal_prediksi' required>
-                 <select id="modelnya" name='model'>
+                
+                <select id="modelnya" name='model'>
                   <option value="Support Vector Regression">Support Vector Regression</option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
-
-                <select id="tipe" name='tipe'>
-                  <option value="akumulasi">akumulasi</option>
-		              <option value="harian">harian</option>
-                </select> 
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
-                
-                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                <br>
+                 <label>Training </label><br>
+                <select id="training" name='training'>
+                  <option value="4">4 bulan</option>
+		              <option value="7">7 bulan</option>
+		              <option value="10">10 bulan</option>
+		              <option value="15">15 bulan</option>
+                </select> 
+                <input class='btn btn-sm'  type='submit' value='Prediksi'>
+               
                 </form>
                 {{-- <div class="chart-area">
                   <canvas id="chartLineGreen"></canvas>
                 </div> --}}
               </div>
             </div>
-          </div>
-          <div class="col-12">
+          </div> -->
+          <div class="col-9">
             <div class="card card-chart">
               <div class="card-header ">
                 <div class="row">
@@ -224,39 +219,71 @@
                   </div>
                   <br>
                   <br>
-                  <form method='get' action=/prediksi>
-                  Mulai
-
-                  <input type='date' name='mulai'>
-                  Akhir
-                  <input type='date' name='akhir'>
-                  <input type='submit' class='btn btn-sm' value='filter'>
+                  Prediksi Semua Algoritma : 
+                  <form method='get' action=/load/semua style='display: inline-block;'>
+                  
+                  <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                  <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                  <input type='date' name='tanggal_prediksi'>
+                  <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
+                 
+                 
+                   	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; 
+                   
               </div>
+              
+            </div>
+          </div>
+           <div class="col-3">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Filter</h5>
+                    <h2 class="card-title">Covid-19 Indonesia</h2>
+                     <label>Tanggal Prediksi</label>
+                <form method='get' action='/load'>
+                <input type='date' name='tanggal_prediksi' required>
+                <label>Algoritma</label>
+                 <select id="modelnya" name='model' >
+                  <option value="Support Vector Regression">Support Vector Regression </option>
+                  <option value="ARIMA">ARIMA</option>
+		              <option value="Prophet">FBProphet</option>
+                </select>
+                <label>Jenis Prediksi</label><br>
+                <select id="tipe" name='tipe'>
+                  <option value="akumulasi">akumulasi</option>
+		              <option value="harian">harian</option>
+                </select> <br>
+                <label>Training </label><br>  
+                <select id="training" name='training'>
+                  <option value="4">4 bulan</option>
+		              <option value="7">7 bulan</option>
+		              <option value="10">10 bulan</option>
+		              <option value="15">15 bulan</option>
+                </select> 
+
+                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                <br>
+                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                </form>
+                  </div>
+                  
+                </div>
+              </div>
+            <div class="card card-chart">
+              
+              
+          </div>
             </div>
           </div>
         </div>
         <div class="row">
           
-         <!--  <div class="col-lg-4">
-            <div class="card card-chart">
-            <div style='margin-left:20%'><div class="card-header" >
-                <button class='btn btn-sm' >Pemilihan Model SVR</button>
-                {{-- <button class='btn btn-sm' >Pemilihan Model Regresi Lain</button> --}}
-              </div> 
-                 <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 3 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 6 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 9 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 12 Bulan</button>
-              </div>
-              </div>
-            </div>
-          </div>
--->
+        
+
           
           {{-- <div class="col-lg-6">
             <div class="card card-chart">
@@ -278,7 +305,8 @@
               </div>
 
               <div class="card-body">
-              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan {{$metode}}
+              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
+              
               </label>
               </div>
             </div>

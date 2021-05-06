@@ -69,7 +69,7 @@ class LoadController extends Controller
         }
 	if($request->model =='Prophet'){
 	    $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
-	    
+	//return $process;	    
 
 	}
 
@@ -217,17 +217,28 @@ class LoadController extends Controller
     for ($x=0;$x<count($real);$x++){
           array_push($arr_x,$real[$x]->y);
           array_push($arr_y,$ddd[$x]);
-        $string_x = $string_x.';'. (string) $real[$x]->y;
-        $string_y = $string_y.';'. (string) $ddd[$x];
+        $string_x = $string_x.'xx'. (string) $real[$x]->y;
+        $string_y = $string_y.'xx'. (string) $ddd[$x];
      } 
     //  return $string_y;
-     $r2 = Corr($arr_x,$arr_y);
+    // $r2 = Corr($arr_x,$arr_y);
+    //$r2 = 
     //  return $arr_x;
     //  return $arr_y;
-    //  $r2 = shell_exec("python r2.py ".$string_x." ".$string_y);
-    //  $r2 = (float) $r2;
+//	return $string_x[0];
+     $command = "python3 r2.py ".$string_x." ".$string_y;
+//return $command;
+	//$command = 'python3 r2.py a b';
+//	return $command;
+	//return $string_x;
+//	//return  substr($string_x, 1); 
+//	return $command;
+//     return $string_x;
+	 $r2 = shell_exec($command);
+   //  $r2 = shell_exec("python3 r2.py a b"); 
+	//  $r2 = (float) $r2;
 
-    //  return $r2;
+    // return $r2;
         return view('prediksi_load',['r2'=>(float) $r2,'training'=>$request->training,'tanggal_prediksi'=>$request->tanggal_prediksi,'count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>$count_pred,'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
         // return $process;
         // return redirect('https://laravelkomber.azurewebsites.net/map');
@@ -260,6 +271,7 @@ class LoadController extends Controller
 
         $process = shell_exec("python3 test.py ". $command);
         
+//	return $process;
 
         // if($request->model =='ARIMA'){
         //     $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
@@ -270,7 +282,7 @@ class LoadController extends Controller
 	    
 
 	    //           }
-
+//	return $process;
         $output_python =  explode("]",explode("[", $process)[1])[0] ;
         $output_python =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
