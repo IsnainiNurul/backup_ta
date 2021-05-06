@@ -36,6 +36,18 @@ Edit sini
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+  <style>
+  html { height: 100%; overflow:auto; }
+  body { height: 100%; }
+
+  th {
+  position: -webkit-sticky;
+  position: sticky;
+  background : white;
+  top: 0;
+  z-index: 2;
+}
+  </style>
 </head>
 
 <body class="white-content">
@@ -195,7 +207,7 @@ Edit sini
                   <label for="Kabupaten" style= "font-size: 14px">Kabupaten :</label>
                   <form method='get' action='/perbandingan'>
                     <select id="Kabupaten" name='tetangga'>
-                      <option value="">-</option>
+                      <option value="">{{$data->kabupaten}}</option>
                         @foreach($kabupaten as $k)
                       <option value="{{$k->id}}">{{$k->kabupaten}}</option>
                         @endforeach
@@ -231,8 +243,9 @@ Edit sini
                         <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
-                        <div class="modal fade" id="myModal{{$semua->tetangga}}" role="dialog">
-                          <div class="modal-dialog">
+                        <!-- <div class="modal fade bd-example-modal-lg" id="myModal{{$semua->tetangga}}" role="dialog"> -->
+                        <div class="modal" style='position: fix;left: 50%;top: 80%;transform: translate(-50%, -80%);' id="myModal{{$semua->tetangga}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" style='position: fix;left: 30%;transform: translate(-50%, 0%);' >
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
@@ -245,6 +258,52 @@ Edit sini
                                 <p>Rata rata = {{$semua->mean}}</p>
                                 <p>minimal = {{$semua->min}}</p>
                                 <p>max = {{$semua->max}}</p>
+                                <?php 
+                                $tes = substr($semua->m1, 2, -1);
+                                $m1 = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->m2, 2, -1);
+                                $m2 = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->x, 2, -1);
+                                $x = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->y, 2, -1);
+                                $y = explode(",",$tes);
+                                ?>
+                                <p></p>
+                                <div class="container">
+                                <div class="row">
+                                <table class="table table-fixed">
+                                <thead>
+                                <tr>
+                                  <th >{{$semua->kabupaten}}</th>
+                                  <th>{{$semua->tetangga}}</th>
+                                  <th>Mean (A+B)/2</th>
+                                  <th>Diff (A - B)</th>
+                                  <th>(Diff / Mean)</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                              @for ($i = 0; $i < count($x); $i++)
+                                <tr>
+                                  <td>{{$m1[$i]}}</td>
+                                  <td>{{$m2[$i]}}</td>
+                                  <td>{{$x[$i]}}</td>
+                                  <td>{{$y[$i]}}</td>
+                                  <td>{{$y[$i]/$x[$i]}}</td>
+                                </tr>
+                              @endfor
+                              
+                              </tbody>
+                            </table>
+                            </div>
+                            </div>
+
                               </div>
                               <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -333,6 +392,7 @@ Edit sini
       </ul>
     </div>
   </div>
+  
   <script>
   var plugins = [
     {
@@ -362,6 +422,7 @@ Edit sini
     }
   ];
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 	
 		
