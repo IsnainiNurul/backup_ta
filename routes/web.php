@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PerbandinganController;
 use App\Http\Controllers\PrediksiController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ListBeritaController;
 use App\Http\Controllers\LoadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +20,8 @@ use App\Http\Controllers\LoadController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+
+Route::get('/', [DashboardController::class, 'index']);
 
 // Route::get('/prediksi', function () {
 //     return view('prediksi');
@@ -28,7 +30,8 @@ Route::get('/', function () {
 //    return view('berita/berita');
 //});
 Route::get('/berita', [BeritaController::class, 'index']);
-
+Route::get('/listberita', [ListBeritaController::class, 'index']);
+Route::get('/listberita/{provinsi}/{kota}', [ListBeritaController::class, 'indexkota']);
 // Route::get('/prediksi', function () {
 //     return view('prediksi');
 // });

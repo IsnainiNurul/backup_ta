@@ -19,19 +19,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>
     TA History COVID
   </title>
-  <!--     Fonts and icons     -->
+   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
+  <script src="/assets/moment.js"></script>
+  <script src="/assets/Chart.min.js"></script>
+  <script src="/assets/utils.js"></script>
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
@@ -41,7 +46,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
+              <img src="/assets/img/2.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -55,7 +60,7 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
@@ -87,7 +92,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
+            <a class="navbar-brand" href="javascript:void(0)">   <img src="/assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -120,7 +125,7 @@
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
+                    <img src="/assets/img/anime3.png" alt="Profile Photo">
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
@@ -153,92 +158,107 @@
       </div>
       <!-- End Navbar -->
       
+
+
+
       <div class="content">
+        <div class="card-chart">
+              <div class="row">
+                <div class="col-sm-4">
+                    <div class="card border-left-info card-header">
+                      <h5 class="card-category text-left">Total Kasus Covid-19</h5>
+                      <div class="row">
+                      <div class="col-sm-8 text-left">
+                          
+                          <h2 class="card-title text-left">1.626.812</h2>
+                      </div>
+                      <div class="col-sm-4 text-center img-center">
+                                  <i class="fa fa-users fa-2x text-info"></i>
+                      </div>
+                      </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card border-left-danger card-header">
+                    <h5 class="card-category text-left">Total Pasien Meninggal Covid-19</h5>
+                    <div class="row">
+                      <div class="col-sm-8 text-left">
+                          <h2 class="card-title text-left">1.481.449</h2>
+                      </div>
+                      <div class="col-sm-4 text-center img-center">
+                          <i class="fa fa-bed fa-2x text-danger"></i>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-left-success card-header">
+                      <h5 class="card-category text-left">Total Pasien Sembuh Covid-19</h5>
+                      <div class="row">
+                      <div class="col-sm-8 text-left">
+                          
+                          <h2 class="card-title text-left">44.172</h2>
+                      </div>
+                      <div class="col-sm-4 text-center img-center">
+                                            <i class="fa fa-child fa-2x text-success"></i>
+                                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         <div class="row">
           <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Total Shipments</h5>
-                    <h2 class="card-title">Performance</h2>
+                    <h5 class="card-category">Chart Covid-19</h5>
+                    <h2 class="card-title">Kasus Covid-19 di Indonesia</h2>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-single-02"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
+                </div>
+              </div>
+              <div class="card-body">
+                
+                  <canvas id="chart1"></canvas>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-chart">
+              <div class="row">
+                <div class="col-sm-4">
+                  <a href="/berita">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Graph dan Berita Covid-19 pada setiap Provinsi</h5>
+                          <h2 class="card-title text-left">Berita</h2>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
+                <div class="col-sm-4">
+                  <a href="/perbandingan">
+                  <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Perbandingan Kota di Daerah Jawa Timur</h5>
+                          <h2 class="card-title text-left">Perbandingan Kota</h2>
+                      </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Total Shipments</h5>
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLinePurple"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Daily Sales</h5>
-                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="CountryChart"></canvas>
+                <div class="col-sm-4">
+                  <a href="/prediksi">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Prediksi Covid-19 di Indonesia</h5>
+                          <h2 class="card-title text-left">Prediksi</h2>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Completed Tasks</h5>
-                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLineGreen"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <!-- --------------------------------------------------------------------------- -->
       <footer class="footer">
@@ -311,21 +331,189 @@
       </ul>
     </div>
   </div>
+  <script>
+    function generateData() {
+      var unit = document.getElementById('unit').value;
+
+      function unitLessThanDay() {
+        return unit === 'second' || unit === 'minute' || unit === 'hour';
+      }
+
+      function beforeNineThirty(date) {
+        return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
+      }
+
+      // Returns true if outside 9:30am-4pm on a weekday
+      function outsideMarketHours(date) {
+        if (date.isoWeekday() > 5) {
+          return true;
+        }
+        if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
+          return true;
+        }
+        return false;
+      }
+
+      function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function randomBar(date, lastClose) {
+        var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+        var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
+        return {
+          t: date.valueOf(),
+          y: close
+        };
+      }
+
+      var date = moment('Feb 20 2020', 'MMM DD YYYY'); //hari kemarin
+      var now = moment();
+      var data = [];
+      var lessThanDay = unitLessThanDay();
+      for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
+        if (outsideMarketHours(date)) {
+          if (!lessThanDay || !beforeNineThirty(date)) {
+            date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
+          }
+          if (lessThanDay) {
+            date = date.hour(9).minute(30).second(0);
+          }
+        }
+        data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
+      }
+
+      document.getElementById('percobaan').textContent = JSON.stringify(data);
+      return data;
+    }
+
+    var ctx = document.getElementById('chart1').getContext('2d');
+    ctx.canvas.width = 1000;
+    ctx.canvas.height = 300;
+
+    var color = Chart.helpers.color;
+    var s1=[{
+          label: 'Konfirmasi Kasus',
+          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.red,
+          data: {!! json_encode($data) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        
+        
+        ];
+
+
+
+
+    var cfg = {
+      data: {
+        datasets: s1
+      },
+      options: {
+        animation: {
+          duration: 0
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
+            offset: true,
+            ticks: {
+              major: {
+                enabled: true,
+                fontStyle: 'bold'
+              },
+              source: 'data',
+              autoSkip: true,
+              autoSkipPadding: 75,
+              maxRotation: 0,
+              sampleSize: 100
+            },
+            afterBuildTicks: function(scale, ticks) {
+              var majorUnit = scale._majorUnit;
+              var firstTick = ticks[0];
+              var i, ilen, val, tick, currMajor, lastMajor;
+
+              val = moment(ticks[0].value);
+              if ((majorUnit === 'minute' && val.second() === 0)
+                  || (majorUnit === 'hour' && val.minute() === 0)
+                  || (majorUnit === 'day' && val.hour() === 9)
+                  || (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+                  || (majorUnit === 'year' && val.month() === 0)) {
+                firstTick.major = true;
+              } else {
+                firstTick.major = false;
+              }
+              lastMajor = val.get(majorUnit);
+
+              for (i = 1, ilen = ticks.length; i < ilen; i++) {
+                tick = ticks[i];
+                val = moment(tick.value);
+                currMajor = val.get(majorUnit);
+                tick.major = currMajor !== lastMajor;
+                lastMajor = currMajor;
+              }
+              return ticks;
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Jumlah Terinfeksi'
+            }
+          }]
+        },
+        tooltips: {
+          intersect: false,
+          mode: 'index',
+          callbacks: {
+            label: function(tooltipItem, myData) {
+              var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+              if (label) {
+                label += ': ';
+              }
+              label += parseFloat(tooltipItem.value).toFixed(2);
+              return label;
+            }
+          }
+        }
+      }
+    };
+
+    var chart = new Chart(ctx, cfg);
+
+    document.getElementById('update').addEventListener('click', function() {
+      var type = document.getElementById('type').value;
+      var dataset = chart.config.data.datasets[0];
+      dataset.type = type;
+      dataset.data = generateData();
+      chart.update();
+    });
+
+  </script>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/js/core/jquery.min.js"></script>
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -437,6 +625,8 @@
       });
     });
   </script>
+
+  
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

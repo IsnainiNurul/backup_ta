@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\DataCovid19;
 use App\Models\News;
 use App\Models\DataLabel;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class BeritaController extends Controller
 {
@@ -16,26 +18,34 @@ class BeritaController extends Controller
     {
                
         $data = DataCovid19::query();
+        $data_kasus1 = DataCovid19::query();
+        $data_kasus2 = DataCovid19::query();
         $berita = News::query();
         $label= DataLabel::query();
 
         if($request->datestart != null){
         	$data = $data->where('tanggal','>=',$request->datestart);
         	$berita = $berita->where('date','>=',$request->datestart);
+        	$temp1=$request->datestart;
         	
          }
          else{
          	$data = $data->where('tanggal','>=','2020-03-18');
          	$berita = $berita->where('date','>=','2020-03-18');
+         	$temp1='2020-03-18';
          }
          if($request->dateend != null){
         	$data = $data->where('tanggal','<=',$request->dateend);
         	$berita = $berita->where('date','<=',$request->dateend);
+        	$temp2=$request->dateend;
         	
          }
          else{
          	$data = $data->where('tanggal','<=',date('Y-m-d'));
          	$berita = $berita->where('date','<=',date('Y-m-d'));
+         	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
+         	$temp2=$cek[0];
+         	
          }
 
           if($request->datestart2 != null){
@@ -157,18 +167,23 @@ class BeritaController extends Controller
 	       else if($request->area=="Indonesia"){
 	       		$provinsi= 'indonesia';
 	       }
-
 	       $data = $data->select(DB::raw('tanggal as x, ' . $request->area . ' as y'))->get();
+	       $data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum($request->area);
+	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum($request->area);
 	       // $berita = $berita->where('area','=',$provinsi)->orderBy('date', 'ASC')->limit(100)->get();
 	       $berita = $berita->where('area','=',$provinsi);
 	       if($request->kota != "Semua" && $request->kota != null){
 	       	 $berita = $berita->where('kota','=',$request->kota);
+
 	       }
 	       else if($request->kota == "Other"){
 	       	 $berita = $berita->where('kota','=',"");
 	       }
 	     }
 	     else{
+
+	     	$data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum(\DB::raw('Jatim + Jateng')); 
+	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum(\DB::raw('Jatim + Jateng'));
 	     	$data = $data->select(DB::raw('tanggal as x, Jatim as y'))->get();
 	     	$berita = $berita->orderBy('date', 'ASC');
 	     }
@@ -206,8 +221,8 @@ class BeritaController extends Controller
 	     $criticisms=substr($criticisms[1],1, -1);
 	     $hoax=substr($hoax[1],1, -1);
 	     $other=substr($other[1],1, -1);
-	    
-	    
+	     
+		 $totalkasus=$data_kasus2-$data_kasus1;
 	  	 $label_array=[$nof,$donation,$criticisms,$hoax,$other];
         //print($data);
 	  //    $label=substr($label,2, -2);
@@ -220,4 +235,9 @@ class BeritaController extends Controller
              
         return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array]);
     }
+ //    public function testPythonScript()
+	// {
+ //    	$process = shell_exec("python3 justtest.py 'test'");
+ //    	return $process;
+	// }
 }
