@@ -313,7 +313,32 @@
             </div>
           </div>
         </div>
-        
+        <div class="content">
+          <div class="row">
+          <div class="col-sm-12">
+            <div class="card-chart">
+              <div class="row">
+                <div class="col-sm-6">
+                  <a href="/graph">
+                    <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Graph Kasus Covid-19 di Setiap Provinsi</h5>
+                          <h2 class="card-title text-left">Graph(ongoing)</h2>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-sm-6">
+                  <a href="/listberita">
+                  <div class="card card-header">
+                      <div class="text-left">
+                          <h5 class="card-category">Semua Berita Covid-19 di Setiap Provinsi </h5>
+                          <h2 class="card-title text-left">Berita</h2>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
         
 
         <!-- Card COVID-19 -->
