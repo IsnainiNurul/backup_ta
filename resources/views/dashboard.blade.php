@@ -36,7 +36,6 @@
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
@@ -54,7 +53,7 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="/">
+            <a href="./dashboard.html">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
@@ -101,7 +100,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
               <li class="search-bar input-group">
                 <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
                   <span class="d-lg-none d-md-block">Search</span>
@@ -140,9 +138,6 @@
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
                 </ul>
               </li>
-=======
-              
->>>>>>> 3156814747d1c1d721ffc69b815a31b3c49ccd90
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
