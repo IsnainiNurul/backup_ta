@@ -145,7 +145,7 @@ canvas{
               <div class="card-header">
 
                 <h5 class="card-category"> Akurasi </h5>
-                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{number_format($r2,3)}} %</h1>
+                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{number_format($r2,3) * 100}} %</h1>
               </div>
               
             </div>
