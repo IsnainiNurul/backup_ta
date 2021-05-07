@@ -50,25 +50,25 @@
         </div>
         <ul class="nav">
           <li >
-            <a href="./dashboard.html">
+            <a href="/">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="/perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
           <li class="active ">
-            <a href="./notifications.html">
+            <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
             </a>

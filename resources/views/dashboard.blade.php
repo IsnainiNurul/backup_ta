@@ -49,13 +49,13 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="/">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
