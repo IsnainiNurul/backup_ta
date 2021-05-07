@@ -35,6 +35,7 @@
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
