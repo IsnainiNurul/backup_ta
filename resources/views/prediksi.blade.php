@@ -99,44 +99,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
-              </li>
+              
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
@@ -164,17 +127,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Prediksi Menggunakan Algoritma Support Vector Regression</h5>
-                <h3 class="card-title"></i> 
-                  <a href='?tipe=harian'><button class='btn btn-sm' type='submit' >Harian</button> </a> <a href='?tipe=akumulasi'><button class='btn btn-sm' type='submit' >Akumulasi</button> </a></h3>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-lg-4">
+          
+          <!-- <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
                 {{-- <h5 class="card-category">Prediksi Covid 19 di Indonesia Menggunakan Algoritma Lain</h5>
@@ -188,7 +142,7 @@
                 <select id="modelnya" name='model'>
                   <option value="Support Vector Regression">Support Vector Regression</option>
                   <option value="ARIMA">ARIMA</option>
-		  <option value="Prophet">FBProphet</option>
+		              <option value="Prophet">FBProphet</option>
                 </select>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
@@ -208,8 +162,8 @@
                 </div> --}}
               </div>
             </div>
-          </div>
-          <div class="col-12">
+          </div> -->
+          <div class="col-9">
             <div class="card card-chart">
               <div class="card-header ">
                 <div class="row">
@@ -229,38 +183,71 @@
                   </div>
                   <br>
                   <br>
-                  <form method='get' action=/load/semua>
-                  Tanggal
-                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
-                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                  Prediksi Semua Algoritma : 
+                  <form method='get' action=/load/semua style='display: inline-block;'>
+                  
+                  <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                  <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                   <input type='date' name='tanggal_prediksi'>
                   <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
-                  
+                 
+                 
+                   	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; 
+                    Jenis Data  : <a href='?tipe=harian'><button class='btn btn-sm' type='submit' >Harian</button> </a> <a href='?tipe=akumulasi'><button class='btn btn-sm' type='submit' >Akumulasi</button> </a></h3>
+              
               </div>
+              
+            </div>
+          </div>
+           <div class="col-3">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Filter</h5>
+                    <h2 class="card-title">Covid-19 Indonesia</h2>
+                     <label>Tanggal Prediksi</label>
+                <form method='get' action='/load'>
+                <input type='date' name='tanggal_prediksi' required>
+                <label>Algoritma</label>
+                 <select id="modelnya" name='model' >
+                  <option value="Support Vector Regression">Support Vector Regression </option>
+                  <option value="ARIMA">ARIMA</option>
+		              <option value="Prophet">FBProphet</option>
+                </select>
+                <label>Jenis Prediksi</label><br>
+                <select id="tipe" name='tipe'>
+                  <option value="akumulasi">akumulasi</option>
+		              <option value="harian">harian</option>
+                </select> <br>
+                <label>Training </label><br>  
+                <select id="training" name='training'>
+                  <option value="4">4 bulan</option>
+		              <option value="7">7 bulan</option>
+		              <option value="10">10 bulan</option>
+		              <option value="15">15 bulan</option>
+                </select> 
+
+                <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
+                <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
+                <br>
+                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                </form>
+                  </div>
+                  
+                </div>
+              </div>
+            <div class="card card-chart">
+              
+              
+          </div>
             </div>
           </div>
         </div>
         <div class="row">
           
-          <div class="col-lg-4">
-            <div class="card card-chart">
-            <div style='margin-left:20%'><div class="card-header" >
-                <button class='btn btn-sm' >Pemilihan Model SVR</button>
-                {{-- <button class='btn btn-sm' >Pemilihan Model Regresi Lain</button> --}}
-              </div> 
-                 <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 3 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 6 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 9 Bulan</button>
-              </div>   <div class="card-header" >
-                <button class='btn btn-lg' >Train Dengan Data 12 Bulan</button>
-              </div>
-              </div>
-            </div>
-          </div>
+        
 
           
           {{-- <div class="col-lg-6">

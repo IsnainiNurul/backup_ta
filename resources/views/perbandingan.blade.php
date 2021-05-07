@@ -1,27 +1,13 @@
-<!--
-=========================================================
-* * Black Dashboard - v1.0.1
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/black-dashboard
-* Copyright 2019  TA History COVID (https://www.creative-tim.com)
-
-
-* Coded by  TA History COVID
-Edit sini
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     TA History COVID
   </title>
   <!--     Fonts and icons     -->
@@ -36,6 +22,18 @@ Edit sini
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+  <style>
+  html { height: 100%; overflow:auto; }
+  body { height: 100%; }
+
+  th {
+  position: -webkit-sticky;
+  position: sticky;
+  background : white;
+  top: 0;
+  z-index: 2;
+}
+  </style>
 </head>
 
 <body class="white-content">
@@ -52,25 +50,25 @@ Edit sini
         </div>
         <ul class="nav">
           <li >
-            <a href="./dashboard.html">
+            <a href="/">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="/berita">
               <i class="tim-icons icon-atom"></i>
               <p>Berita</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="/perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
           <li class="active ">
-            <a href="./notifications.html">
+            <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
             </a>
@@ -99,44 +97,7 @@ Edit sini
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
-              </li>
+              
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
@@ -160,71 +121,155 @@ Edit sini
           <div class="col-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
+                <h1 style='text-align:center; font-family: "Bookman Old Style", serif; font-size:35px;'>PERBANDINGAN POLA PENYEBARAN KASUS COVID-19 DI JAWA TIMUR </h1>
+                <div>
+                  <strong>
+                  Keterangan :
+                  </strong>
+                  <br>
+                  <em style="font-family:Georgia, serif; font-size: 16px">
+                    Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
+                    Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, 
+                    Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
+                  </em>
+                  <br>
+                  <b style="font-family:Georgia, serif; font-size: 16px"">
+                    Sumbu X merupakan selisih atau perbedaan jumlah kasus COVID-19 di Kabupaten dengan tetangganya
+                    <br>
+                    Sumbu Y merupakan mean atau rata-rata jumlah kasus COVID-19 di Kabupaten dengan tetangganya
+                  </b>
+                  <br>
+                </div>
+                  <br>
+                  <em style="font-family:Georgia, serif; font-size: 17px"">
+                  Untuk mengetahui perbandingan Kabupaten dengan tetangganya dari range tanggal tertentu, silahkan input tanggal mulai dan tanggal berakhir :
+                  </em>
                 <form action='/perbandingan/update' method='get'>
                   <div class="card-body">
-                  <label>Tanggal Mulai</label>
-                  <input type='date' name='mulai' required>             
-                  <label>Tanggal Berakhir</label>
-                  <input type='date' name='akhir' required>
+                  <label style= "font-size: 14px">Tanggal Mulai</label>
+                  <input type='date' name='mulai' value='{{$mulai}}' required> 
+                  <label style= "font-size: 14px">Tanggal Berakhir</label>
+                  <input type='date' name='akhir' value='{{$akhir}}' required>
 	            	  <input type='submit' value='update'>
 	              </form>
                 <div class="card-body">
-                  <label for="Kabupaten">Kabupaten :</label>
+                  <label for="Kabupaten" style= "font-size: 14px">Kabupaten :</label>
                   <form method='get' action='/perbandingan'>
-                   <select id="Kabupaten" name='tetangga'>
-                    <option value="">-</option>
-                    @foreach($kabupaten as $k)
-                   <option value="{{$k->id}}">{{$k->kabupaten}}</option>
-                    @endforeach
+                    <select id="Kabupaten" name='tetangga'>
+                      <option value="">{{$data->kabupaten}}</option>
+                        @foreach($kabupaten as $k)
+                      <option value="{{$k->id}}">{{$k->kabupaten}}</option>
+                        @endforeach
                     </select> 
                   <input type='submit' name='submit'>
                   </form>
-                <div >
                   <br>
-                Grafik Bland Altman menunjukkan bahwa nilai perbedaan/tingkat perbedaan pola kasus COVID-19 pada kabupaten dan Tetangganya.
-                Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang mirip, 
-                Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
-                  </div>
+                      <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Data Tabel</button>
+                      <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog"> -->
+        
+                        <!-- Modal content-->
+                        <!-- <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Data Tabel</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Isi tabel range waktu</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div> -->   
               </div>
-              </div>
-            </div>
-          <!-- </div><div class="col-12"><div class="col-lg-6">
-            <div class="card card-chart">
-              <div class="card-header">
-              </div>
-              </div>
-            </div>
-          </div>
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  
-                  <div class="col-sm-6">
-                  
-                  </div>
-                </div>
-              </div> -->
 
               @foreach ($data_all as $semua)
-                   <div class="card-body">
-                <div style="width:1000px">
-                    <p ><h2 style='text-align:center'>{{$semua->kabupaten}} -- {{$semua->tetangga}}</h2>
-                    <canvas id="chart{{$semua->tetangga}}"></canvas>
+              <div class="container">
+                <div class ="row">
+                  <div class="col-sm-6">
+                    <div class="card-body" class="col-sm-6">
+                      <div style="width:600px">
+                        <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
+                        <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
+                        <!-- <div class="modal fade bd-example-modal-lg" id="myModal{{$semua->tetangga}}" role="dialog"> -->
+                        <div class="modal" style='position: fix;left: 50%;top: 80%;transform: translate(-50%, -80%);' id="myModal{{$semua->tetangga}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" style='position: fix;left: 30%;transform: translate(-50%, 0%);' >
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Data Tabel {{$semua->tetangga}}</h4>
+                              </div>
+                              <div class="modal-body">
+                                <p>kabupaten = {{$semua->kabupaten}}</p>
+                                <p>Tetangga = {{$semua->tetangga}}</p>
+                                <p>Rata rata = {{$semua->mean}}</p>
+                                <p>minimal = {{$semua->min}}</p>
+                                <p>max = {{$semua->max}}</p>
+                                <?php 
+                                $tes = substr($semua->m1, 2, -1);
+                                $m1 = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->m2, 2, -1);
+                                $m2 = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->x, 2, -1);
+                                $x = explode(",",$tes);
+
+                                
+                                $tes = substr($semua->y, 2, -1);
+                                $y = explode(",",$tes);
+                                ?>
+                                <p></p>
+                                <div class="container">
+                                <div class="row">
+                                <table class="table table-fixed">
+                                <thead>
+                                <tr>
+                                  <th >{{$semua->kabupaten}}</th>
+                                  <th>{{$semua->tetangga}}</th>
+                                  <th>Mean (A+B)/2</th>
+                                  <th>Diff (A - B)</th>
+                                  <th>(Diff / Mean)</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                              @for ($i = 0; $i < count($x); $i++)
+                                <tr>
+                                  <td>{{$m1[$i]}}</td>
+                                  <td>{{$m2[$i]}}</td>
+                                  <td>{{$x[$i]}}</td>
+                                  <td>{{$y[$i]}}</td>
+                                  <td>{{$y[$i]/$x[$i]}}</td>
+                                </tr>
+                              @endfor
+                              
+                              </tbody>
+                            </table>
+                            </div>
+                            </div>
+
+                              </div>
+                              <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>  
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <br>
-                  <br>
-                  
+                </div>  
               </div>
               @endforeach
-             
-
-
             </div>
           </div>
         </div>
-   
       </div>
+ 
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -254,6 +299,7 @@ Edit sini
         </div>
       </footer>
     </div>
+  
   </div>
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
@@ -295,6 +341,7 @@ Edit sini
       </ul>
     </div>
   </div>
+  
   <script>
   var plugins = [
     {
@@ -324,6 +371,7 @@ Edit sini
     }
   ];
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 	
 		
@@ -440,7 +488,7 @@ var ctx = document.getElementById(name).getContext('2d');
           yAxes: [{
           scaleLabel: {
             display: true,
-            labelString: 'rata-rata'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+            labelString: 'RATA-RATA'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
           }
         }],
         xAxes: [{
@@ -470,21 +518,10 @@ var ctx = document.getElementById(name).getContext('2d');
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   
 </body>
 
-</html><!--
-=========================================================
-* * Black Dashboard - v1.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard
-* Copyright 2019  TA History COVID (https://www.creative-tim.com)
-
-
-* Coded by  TA History COVID
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+</html>

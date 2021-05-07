@@ -3,14 +3,20 @@
 import os
 from pathlib import Path
 import sys
-
+#print('halo')
 import pickle
 #import pandas as pd
 try:
     import pandas as pd
     import numpy as np
-    pilihan = int(sys.argv[3])
+#    print(sys.argv)
+    if len(sys.argv) > 3:
+       pilihan = int(sys.argv[3])
+    else:
+       pilihan = 10
+
     loaded_model = pickle.load(open("svr_sample_"+str(pilihan)+"bulan.sav",'rb'))
+#    print('he')
 #except Exception as e:
 #    print(e)
 #import numpy as np 
@@ -18,6 +24,7 @@ try:
 #print('halo')
 
 #loaded_model = pickle.load(open("SVR.sav", 'rb'))
+#     print(sys.argv)
     akhir = int(sys.argv[1])
     mulai = int(sys.argv[2])
     
