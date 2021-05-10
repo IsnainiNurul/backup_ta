@@ -17,8 +17,8 @@ import sys
 import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
-  user="pmauser",
-  password="password_here",
+  user="root",
+  password="",
   database="tacovid"
 )
 
@@ -88,18 +88,13 @@ for stop_word in stop_words:
     
 df['title_parsed_6'] = df['title_parsed_6'].str.replace('-', '')
 
-mycursor = mydb.cursor()
-query = "Select * from news;"
-df = pd.read_sql(query,mydb)
 
-
-mycursor = mydb.cursor()
-query = "Select * from news;"
-result_dataFrame = pd.read_sql(query,mydb)
 list_columns = ["title","title_parsed_6", "news_portal", "url", "img_url", "date","content","tag","area","kota","label"]
+
 df2 = df[list_columns]
 
 df2 = df2.rename(columns={'title_parsed_6': 'title_parsed'})
+
 label_codes = {
     'notification of information': 0,
     'donation': 1,
