@@ -87,56 +87,57 @@ for stop_word in stop_words:
     
 df['title_parsed_6'] = df['title_parsed_6'].str.replace('-', '')
 
-print(sys.argv[3])
-# list_columns = ["title","title_parsed_6", "news_portal", "url", "img_url", "date","content","tag","area","kota","label"]
-# df2 = df[list_columns]
 
-# df2 = df2.rename(columns={'title_parsed_6': 'title_parsed'})
-# label_codes = {
-#     'notification of information': 0,
-#     'donation': 1,
-#     'criticism': 2,
-#     'hoax': 3,
-# }
-# # Category mapping
-# df2['label_code'] = df2['label']
-# df2 = df2.replace({'label_code':label_codes})
+list_columns = ["title","title_parsed_6", "news_portal", "url", "img_url", "date","content","tag","area","kota","label"]
+df2 = df[list_columns]
 
-# X_train, X_test, y_train, y_test = train_test_split(df2['title_parsed'], 
-#                                                     df2['label_code'], 
-#                                                     test_size=0.15, 
-#                                                     random_state=8)
-# # Parameter election
-# ngram_range = (1,2)
-# min_df = 10
-# max_df = 1.
-# max_features = 300
+df2 = df2.rename(columns={'title_parsed_6': 'title_parsed'})
+label_codes = {
+    'notification of information': 0,
+    'donation': 1,
+    'criticism': 2,
+    'hoax': 3,
+}
+# Category mapping
+df2['label_code'] = df2['label']
+df2 = df2.replace({'label_code':label_codes})
 
-# tfidf = TfidfVectorizer(encoding='utf-8',
-#                         ngram_range=ngram_range,
-#                         stop_words=None,
-#                         lowercase=False,
-#                         max_df=max_df,
-#                         min_df=min_df,
-#                         max_features=max_features,
-#                         norm='l2',
-#                         sublinear_tf=True)
+X_train, X_test, y_train, y_test = train_test_split(df2['title_parsed'], 
+                                                    df2['label_code'], 
+                                                    test_size=0.15, 
+                                                    random_state=8)
+# Parameter election
+ngram_range = (1,2)
+min_df = 10
+max_df = 1.
+max_features = 300
+
+tfidf = TfidfVectorizer(encoding='utf-8',
+                        ngram_range=ngram_range,
+                        stop_words=None,
+                        lowercase=False,
+                        max_df=max_df,
+                        min_df=min_df,
+                        max_features=max_features,
+                        norm='l2',
+                        sublinear_tf=True)
                         
-# features_train = tfidf.fit_transform(X_train).toarray()
-# labels_train = y_train
-# print(features_train.shape)
+features_train = tfidf.fit_transform(X_train).toarray()
+labels_train = y_train
+print(features_train.shape)
 
-# features_test = tfidf.transform(X_test).toarray()
-# labels_test = y_test
-# print(features_test.shape)
+features_test = tfidf.transform(X_test).toarray()
+labels_test = y_test
+print(features_test.shape)
 
-# from sklearn.feature_selection import chi2
-# import numpy as np
+from sklearn.feature_selection import chi2
+import numpy as np
 
-# for Product, label_id in sorted(label_codes.items()):
-#     features_chi2 = chi2(features_train, labels_train == label_id)
-#     indices = np.argsort(features_chi2[0])
-#     feature_names = np.array(tfidf.get_feature_names())[indices]
-#     unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
-#     bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-#     print(unigrams[-5:])
+for Product, label_id in sorted(label_codes.items()):
+    features_chi2 = chi2(features_train, labels_train == label_id)
+    indices = np.argsort(features_chi2[0])
+    feature_names = np.array(tfidf.get_feature_names())[indices]
+    unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
+    bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
+    print(unigrams[-5:])
+print(sys.argv[3])
