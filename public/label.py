@@ -23,11 +23,10 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-query= "Select * from news";
-# if(sys.argv[3]=="semua"):
-#     query = "Select * from news where date between '"+str(sys.argv[1])+"' and '"+str(sys.argv[2])+"';"
-# else:
-#     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
+if(sys.argv[3]=="semua"):
+    query = "Select * from news where date between '"+str(sys.argv[1])+"' and '"+str(sys.argv[2])+"';"
+else:
+    query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
 df = pd.read_sql(query,mydb)
 
 # \r and \n
@@ -140,7 +139,4 @@ for Product, label_id in sorted(label_codes.items()):
     feature_names = np.array(tfidf.get_feature_names())[indices]
     unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
     bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-    print("# '{}' label:".format(Product))
-    print("  . Most correlated unigrams:\n. {}".format('\n. '.join(unigrams[-5:])))
-    print("  . Most correlated bigrams:\n. {}".format('\n. '.join(bigrams[-2:])))
-    print("")
+    print(unigrams[-5:])
