@@ -76,7 +76,7 @@ df['title_parsed_5'] = lemmatized_text_list
 
 # Downloading the stop words list
 nltk.download('stopwords')
-STOPWORDS= stopwords.words('Indonesian')
+STOPWORDS= stopwords.words('indonesian')
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona', 'corona,','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','-'])
 stop_words = list(STOPWORDS) #membuang kata yang tidak digunakan
 df['title_parsed_6'] = df['title_parsed_5']
