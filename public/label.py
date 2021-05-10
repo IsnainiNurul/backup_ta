@@ -17,8 +17,8 @@ import sys
 import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
-  password="",
+  user="pmauser",
+  password="password_here",
   database="tacovid"
 )
 
@@ -76,7 +76,7 @@ df['title_parsed_5'] = lemmatized_text_list
 
 # Downloading the stop words list
 nltk.download('stopwords')
-STOPWORDS= stopwords.words('indonesian')
+STOPWORDS= stopwords.words('Indonesian')
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona', 'corona,','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','-'])
 stop_words = list(STOPWORDS) #membuang kata yang tidak digunakan
 df['title_parsed_6'] = df['title_parsed_5']
@@ -90,11 +90,9 @@ df['title_parsed_6'] = df['title_parsed_6'].str.replace('-', '')
 
 
 list_columns = ["title","title_parsed_6", "news_portal", "url", "img_url", "date","content","tag","area","kota","label"]
-
 df2 = df[list_columns]
 
 df2 = df2.rename(columns={'title_parsed_6': 'title_parsed'})
-
 label_codes = {
     'notification of information': 0,
     'donation': 1,
@@ -142,5 +140,7 @@ for Product, label_id in sorted(label_codes.items()):
     feature_names = np.array(tfidf.get_feature_names())[indices]
     unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
     bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-    print(unigrams[-5:])
-
+    print("# '{}' label:".format(Product))
+    print("  . Most correlated unigrams:\n. {}".format('\n. '.join(unigrams[-5:])))
+    print("  . Most correlated bigrams:\n. {}".format('\n. '.join(bigrams[-2:])))
+    print("")
