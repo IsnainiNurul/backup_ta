@@ -46,32 +46,32 @@ for punct_sign in punctuation_signs:
 df['title_parsed_4'] = df['title_parsed_3'].str.replace("'s", "")
 # Downloading punkt and wordnet from NLTK
 
-# Saving the lemmatizer into an object
-wordnet_lemmatizer = WordNetLemmatizer()
-nrows = len(df)
-lemmatized_text_list = []
-for row in range(0, nrows):
+# # Saving the lemmatizer into an object
+# wordnet_lemmatizer = WordNetLemmatizer()
+# nrows = len(df)
+# lemmatized_text_list = []
+# for row in range(0, nrows):
     
-    # Create an empty list containing lemmatized words
-    lemmatized_list = []
+#     # Create an empty list containing lemmatized words
+#     lemmatized_list = []
     
-    # Save the text and its words into an object
-    text = df.loc[row]['title_parsed_4']
-    text_words = text.split(" ")
-    print("yes1")
+#     # Save the text and its words into an object
+#     text = df.loc[row]['title_parsed_4']
+#     text_words = text.split(" ")
+#     print("yes1")
 
-    # Iterate through every word to lemmatize
-    for word in text_words:
-        lemmatized_list.append(wordnet_lemmatizer.lemmatize(word, pos="v"))
-    print("yes2")
-    # Join the list
-    lemmatized_text = " ".join(lemmatized_list)
-    print("yes4")
-    # Append to the list containing the texts
-    lemmatized_text_list.append(lemmatized_text)
-    print("yes3")
-df['title_parsed_5'] = lemmatized_text_list
-
+#     # Iterate through every word to lemmatize
+#     for word in text_words:
+#         lemmatized_list.append(wordnet_lemmatizer.lemmatize(word, pos="v"))
+#     print("yes2")
+#     # Join the list
+#     lemmatized_text = " ".join(lemmatized_list)
+#     print("yes4")
+#     # Append to the list containing the texts
+#     lemmatized_text_list.append(lemmatized_text)
+#     print("yes3")
+# df['title_parsed_5'] = lemmatized_text_list
+df['title_parsed_5'] = df['title_parsed_4']
 print("yes1")
 STOPWORDS= stopwords.words('indonesian')
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona', 'corona,','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','-'])
