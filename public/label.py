@@ -50,7 +50,9 @@ df['title_parsed_4'] = df['title_parsed_3'].str.replace("'s", "")
 wordnet_lemmatizer = WordNetLemmatizer()
 nrows = len(df)
 lemmatized_text_list = []
+print("yes1")
 print(wordnet_lemmatizer)
+print("yes2")
 for row in range(0, nrows):
     
     # Create an empty list containing lemmatized words
