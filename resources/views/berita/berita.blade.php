@@ -216,7 +216,7 @@
                       <div class="row">
                       <div class="col-sm-8 text-left">
                           
-                          <h2 class="card-title text-left">1.626.812</h2>
+                          <h2 class="card-title text-left">1.626.813</h2>
                       </div>
                       <div class="col-sm-4 text-center img-center">
                                   <i class="fa fa-users fa-2x text-info"></i>
