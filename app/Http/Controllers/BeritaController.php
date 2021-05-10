@@ -33,6 +33,7 @@ class BeritaController extends Controller
          	$data = $data->where('tanggal','>=','2020-03-18');
          	$berita = $berita->where('date','>=','2020-03-18');
          	$temp1='2020-03-18';
+         	$cek1='2020-01-18';
          }
          if($request->dateend != null){
         	$data = $data->where('tanggal','<=',$request->dateend);
@@ -45,6 +46,7 @@ class BeritaController extends Controller
          	$berita = $berita->where('date','<=',date('Y-m-d'));
          	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
          	$temp2=$cek[0];
+         	$cek2=date('Y-m-d');
          	
          }
 
@@ -164,9 +166,6 @@ class BeritaController extends Controller
 	       else if($request->area=="Papbar"){
 	       		$provinsi= 'papua barat';
 	       }
-	       else if($request->area=="Indonesia"){
-	       		$provinsi= 'indonesia';
-	       }
 	       $data = $data->select(DB::raw('tanggal as x, ' . $request->area . ' as y'))->get();
 	       $data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum($request->area);
 	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum($request->area);
@@ -181,11 +180,11 @@ class BeritaController extends Controller
 	       }
 	     }
 	     else{
-
 	     	$data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum(\DB::raw('Jatim + Jateng')); 
 	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum(\DB::raw('Jatim + Jateng'));
 	     	$data = $data->select(DB::raw('tanggal as x, Jatim as y'))->get();
 	     	$berita = $berita->orderBy('date', 'ASC');
+	     	$provinsi="semua";
 	     }
 	     // if($request->label != null && $request->label != "Semua"){
 	     //    $berita = $berita->where('label','=',$request->label) ; 
@@ -232,12 +231,9 @@ class BeritaController extends Controller
 		 // $values = array('45', '54', '25','34','12');
 	  //    $array = ['45', '54', '25','34','12'];
 	     // $array = [{"x":"donation","y":"45"},{"x":"wiki","y":"24"},{"x":"do","y":"65"},{"x":"ok","y":"43"},{"x":"wkwk","y":"30"}];
-             
-        return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array]);
-    }
- //    public function testPythonScript()
-	// {
- //    	$process = shell_exec("python3 justtest.py 'test'");
- //    	return $process;
-	// }
+        $process = shell_exec("python label.py ".$temp1." ".$temp2." ".$provinsi); 
+        return ($process);
+    	
+    // }
+
 }
