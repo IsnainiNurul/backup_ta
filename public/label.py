@@ -28,7 +28,7 @@ if(sys.argv[3]=="semua"):
 else:
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
 df = pd.read_sql(query,mydb)
-# print(query)
+print(query)
 # # \r and \n
 # df['title_parsed_1'] = df['title'].str.replace("\r", " ")
 # df['title_parsed_1'] = df['title_parsed_1'].str.replace("\n", " ")
