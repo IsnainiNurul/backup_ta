@@ -8,8 +8,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import chi2
 import numpy as np
-from wordcloud import WordCloud, STOPWORDS 
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import matplotlib.pyplot as plt 
 import pandas as pd 
 import collections
@@ -19,9 +17,9 @@ import sys
 import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
-  password="",
-  database="tugasakhir"
+  user="pmauser",
+  password="password_here",
+  database="tacovid"
 )
 
 mycursor = mydb.cursor()
@@ -29,8 +27,8 @@ if(sys.argv[3]=="semua"):
     query = "Select * from news where date between '"+str(sys.argv[1])+"' and '"+str(sys.argv[2])+"';"
 else:
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
-# df = pd.read_sql(query,mydb)
-print(query)
+df = pd.read_sql(query,mydb)
+# print(query)
 # # \r and \n
 # df['title_parsed_1'] = df['title'].str.replace("\r", " ")
 # df['title_parsed_1'] = df['title_parsed_1'].str.replace("\n", " ")
