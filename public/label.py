@@ -28,31 +28,33 @@ if(sys.argv[3]=="semua"):
 else:
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
 df = pd.read_sql(query,mydb)
-print(df.head())
+
 # \r and \n
 df['title_parsed_1'] = df['title'].str.replace("\r", " ")
 df['title_parsed_1'] = df['title_parsed_1'].str.replace("\n", " ")
 df['title_parsed_1'] = df['title_parsed_1'].str.replace("    ", " ")
-print("yes1")
+
 # " when quoting text
 df['title_parsed_1'] = df['title_parsed_1'].str.replace('"', '')
 # Lowercasing the text
 df['title_parsed_2'] = df['title_parsed_1'].str.lower()
 punctuation_signs = list("?:!.,;")
 df['title_parsed_3'] = df['title_parsed_2']
-print("yes2")
+
 for punct_sign in punctuation_signs:
     df['title_parsed_3'] = df['title_parsed_3'].str.replace(punct_sign, '')
 df['title_parsed_4'] = df['title_parsed_3'].str.replace("'s", "")
 # Downloading punkt and wordnet from NLTK
+print("yes1")
 nltk.download('punkt')
 print("------------------------------------------------------------")
 nltk.download('wordnet')
+print("yes2")
 # Saving the lemmatizer into an object
 wordnet_lemmatizer = WordNetLemmatizer()
 nrows = len(df)
 lemmatized_text_list = []
-
+print("yes3")
 for row in range(0, nrows):
     
     # Create an empty list containing lemmatized words
