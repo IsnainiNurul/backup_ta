@@ -46,9 +46,6 @@ for punct_sign in punctuation_signs:
 df['title_parsed_4'] = df['title_parsed_3'].str.replace("'s", "")
 # Downloading punkt and wordnet from NLTK
 print("yes1")
-nltk.download('punkt')
-print("------------------------------------------------------------")
-nltk.download('wordnet')
 print("yes2")
 # Saving the lemmatizer into an object
 wordnet_lemmatizer = WordNetLemmatizer()
