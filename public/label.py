@@ -45,13 +45,12 @@ for punct_sign in punctuation_signs:
     df['title_parsed_3'] = df['title_parsed_3'].str.replace(punct_sign, '')
 df['title_parsed_4'] = df['title_parsed_3'].str.replace("'s", "")
 # Downloading punkt and wordnet from NLTK
-print("yes1")
-print("yes2")
+
 # Saving the lemmatizer into an object
 wordnet_lemmatizer = WordNetLemmatizer()
 nrows = len(df)
 lemmatized_text_list = []
-print("yes3")
+
 for row in range(0, nrows):
     
     # Create an empty list containing lemmatized words
@@ -72,12 +71,12 @@ for row in range(0, nrows):
     lemmatized_text_list.append(lemmatized_text)
 df['title_parsed_5'] = lemmatized_text_list
 
-# Downloading the stop words list
-nltk.download('stopwords')
+print("yes1")
 STOPWORDS= stopwords.words('indonesian')
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona', 'corona,','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','-'])
 stop_words = list(STOPWORDS) #membuang kata yang tidak digunakan
 df['title_parsed_6'] = df['title_parsed_5']
+print("yes3")
 
 for stop_word in stop_words:
 
