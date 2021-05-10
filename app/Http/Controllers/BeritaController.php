@@ -231,7 +231,7 @@ class BeritaController extends Controller
 		 // $values = array('45', '54', '25','34','12');
 	  //    $array = ['45', '54', '25','34','12'];
 	     // $array = [{"x":"donation","y":"45"},{"x":"wiki","y":"24"},{"x":"do","y":"65"},{"x":"ok","y":"43"},{"x":"wkwk","y":"30"}];
-        $process = shell_exec("python label.py ".$temp1." ".$temp2." ".$provinsi); 
+        $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
         return ($process);
     	return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array]);
    	}
