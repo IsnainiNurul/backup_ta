@@ -320,7 +320,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <a href="/graph">
-                    <div class="card card-header card-blue">
+                    <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
                           <h5 class="card-category text-white">Graph Kasus Covid-19 di Setiap Provinsi</h5>
                           <h2 class="card-title text-left text-white">Graph(ongoing)</h2>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="col-sm-4">
                   <a href="/berita/list">
-                  <div class="card card-header card-blue">
+                  <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
                           <h5 class="card-category text-white">Semua Berita Covid-19 di Setiap Provinsi </h5>
                           <h2 class="card-title text-left text-white">Berita</h2>
@@ -341,7 +341,7 @@
                 </div>
                 <div class="col-sm-4">
                   <a href="/berita/statistik">
-                  <div class="card card-header card-blue">
+                  <div class="card card-header card-blue" style="background-color: #1d8cf8;">
                       <div class="text-left">
                           <h5 class="card-category text-white">Statistik Berita COVID-19 Populer</h5>
                           <h2 class="card-title text-left text-white">Statistik</h2>
