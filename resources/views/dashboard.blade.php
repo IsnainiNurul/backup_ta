@@ -170,7 +170,7 @@
                       <div class="row">
                       <div class="col-sm-8 text-left">
                           
-                          <h2 class="card-title text-left">1.626.812</h2>
+                          <h2 class="card-title text-left">{{$totalkasus}}</h2>
                       </div>
                       <div class="col-sm-4 text-center img-center">
                                   <i class="fa fa-users fa-2x text-info"></i>
@@ -184,7 +184,7 @@
                     <h5 class="card-category text-left">Total Pasien Meninggal Covid-19</h5>
                     <div class="row">
                       <div class="col-sm-8 text-left">
-                          <h2 class="card-title text-left">1.481.449</h2>
+                          <h2 class="card-title text-left">{{$totalmeninggal}}</h2>
                       </div>
                       <div class="col-sm-4 text-center img-center">
                           <i class="fa fa-bed fa-2x text-danger"></i>
@@ -198,7 +198,7 @@
                       <div class="row">
                       <div class="col-sm-8 text-left">
                           
-                          <h2 class="card-title text-left">44.172</h2>
+                          <h2 class="card-title text-left">{{$totalsembuh}}</h2>
                       </div>
                       <div class="col-sm-4 text-center img-center">
                                             <i class="fa fa-child fa-2x text-success"></i>
@@ -393,10 +393,34 @@
 
     var color = Chart.helpers.color;
     var s1=[{
-          label: 'Konfirmasi Kasus',
+          label: 'Angka Kasus',
+          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.blue,
+          data: {!! json_encode($data) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Sembuh',
+          backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.green,
+          data: {!! json_encode($data_sembuh) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Meninngal',
           backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
           borderColor: window.chartColors.red,
-          data: {!! json_encode($data) !!},
+          data: {!! json_encode($data_meninggal) !!},
           //data: generateData()
           type: 'line',
           pointRadius: 0,

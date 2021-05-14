@@ -129,3 +129,11 @@ display: block;
   margin-right: auto;
   margin-bottom: auto;
 }
+
+.card-blue{
+  background-color: #1d8cf8 !important;
+}
+
+.text-white{
+  color: white !important;
+}

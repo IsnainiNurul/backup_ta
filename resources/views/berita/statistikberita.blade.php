@@ -29,9 +29,9 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-	<script src="/assets/moment.js"></script>
-	<script src="/assets/Chart.min.js"></script>
-	<script src="/assets/utils.js"></script>
+  <script src="/assets/moment.js"></script>
+  <script src="/assets/Chart.min.js"></script>
+  <script src="/assets/utils.js"></script>
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
@@ -131,7 +131,7 @@
               </div>
             </div>
              <div class="card card-header">
-              <form method='get' action=/berita>
+              <form method='get' action=/berita/statistik>
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
@@ -208,151 +208,7 @@
               </form>
                 
               </div>
-            <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-4">
-                    <div class="card border-left-info card-header">
-                      <h5 class="card-category text-left">Total Kasus Covid-19</h5>
-                      <div class="row">
-                      <div class="col-sm-8 text-left">
-                          
-                          <h2 class="card-title text-left">{{$totalkasus}}</h2>
-                      </div>
-                      <div class="col-sm-4 text-center img-center">
-                                  <i class="fa fa-users fa-2x text-info"></i>
-                      </div>
-                      </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="card border-left-danger card-header">
-                    <h5 class="card-category text-left">Total Pasien Meninggal Covid-19</h5>
-                    <div class="row">
-                      <div class="col-sm-8 text-left">
-                          <h2 class="card-title text-left">{{$totalmeninggal}}</h2>
-                      </div>
-                      <div class="col-sm-4 text-center img-center">
-                          <i class="fa fa-bed fa-2x text-danger"></i>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card border-left-success card-header">
-                      <h5 class="card-category text-left">Total Pasien Sembuh Covid-19</h5>
-                      <div class="row">
-                      <div class="col-sm-8 text-left">
-                          
-                          <h2 class="card-title text-left">{{$totalsembuh}}</h2>
-                      </div>
-                      <div class="col-sm-4 text-center img-center">
-                                            <i class="fa fa-child fa-2x text-success"></i>
-                                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-<br />
-
-
-
-
-
-          </div><div class="col-sm-12">
-            <div class="card card-chart">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-7 text-left">
-                    <h5 class="card-category">Graph COVID-19</h5>
-                    <h2 class="card-title">Kasus COVID-19 di Indonesia pada Setiap Provinsi</h2>
-                  </div>
-                  <div class="col-sm-5 search_bar">
-                    <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div style="width:1000px;height:300px;position: relative;">
-                  <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</p>
-                
-                  <div class="row">
-                    <div class="col-sm-7">
-                      <canvas id="chart1"></canvas>
-                    </div>
-                    <div class="col-sm-5 scroll" style="width:1500px;height:300px;overflow:auto;">
-                      @foreach($berita as $b)
-                      <div class="row">
-                        <div class="col-sm-4 div-gambar">
-                            <a href="{{$b->url}}">
-                              <img src="{{$b->img_url}}" class="img-fluid">
-                            </a>
-                          </div>
-                          
-                          <div class="col-sm-8">
-                            @if($b->news_portal=='kompas')
-                                <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
-                            @else
-                                <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
-                            @endif
-                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
-
-                          </div>
-
-                      </div>
-                         <br>
-                        @endforeach
-                    </div>
-                  </div>
-                  <!-- inputhere -->
-                </div>
-                <br>
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content">
-          <div class="row">
-          <div class="col-sm-12">
-            <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-4">
-                  <a href="/graph">
-                    <div class="card card-header card-blue">
-                      <div class="text-left">
-                          <h5 class="card-category text-white">Graph Kasus Covid-19 di Setiap Provinsi</h5>
-                          <h2 class="card-title text-left text-white">Graph(ongoing)</h2>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-sm-4">
-                  <a href="/berita/list">
-                  <div class="card card-header card-blue">
-                      <div class="text-left">
-                          <h5 class="card-category text-white">Semua Berita Covid-19 di Setiap Provinsi </h5>
-                          <h2 class="card-title text-left text-white">Berita</h2>
-                      </div>
-                  </div>
-                    </a>
-
-                </div>
-                <div class="col-sm-4">
-                  <a href="/berita/statistik">
-                  <div class="card card-header card-blue">
-                      <div class="text-left">
-                          <h5 class="card-category text-white">Statistik Berita COVID-19 Populer</h5>
-                          <h2 class="card-title text-left text-white">Statistik</h2>
-                      </div>
-                    </div>
-                </div>
-                
-              </div>
-            </div>
-        
-
+            
         <!-- Card COVID-19 -->
       <div class="content">
         <div class="row">
@@ -378,14 +234,6 @@
                 <br>
                 <br>
                 <br>
-                <form method='get' action=/berita>
-                  <label>Tanggal</label>
-                    <input name="datestart2" type='date'>
-                  <label>-</label>
-                    <input name="dateend2" type='date'>
-                  <input type='submit'>
-                </form>
-
               </div>
             </div>
           </div>
@@ -592,199 +440,7 @@
 
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
-	<script>
-		function generateData() {
-      var unit = document.getElementById('unit').value;
-
-      function unitLessThanDay() {
-        return unit === 'second' || unit === 'minute' || unit === 'hour';
-      }
-
-      function beforeNineThirty(date) {
-        return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
-      }
-
-      // Returns true if outside 9:30am-4pm on a weekday
-      function outsideMarketHours(date) {
-        if (date.isoWeekday() > 5) {
-          return true;
-        }
-        if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
-          return true;
-        }
-        return false;
-      }
-
-      function randomNumber(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      function randomBar(date, lastClose) {
-        var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-        var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
-        return {
-          t: date.valueOf(),
-          y: close
-        };
-      }
-
-      var date = moment('Feb 20 2020', 'MMM DD YYYY'); //hari kemarin
-      var now = moment();
-      var data = [];
-      var lessThanDay = unitLessThanDay();
-      for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
-        if (outsideMarketHours(date)) {
-          if (!lessThanDay || !beforeNineThirty(date)) {
-            date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
-          }
-          if (lessThanDay) {
-            date = date.hour(9).minute(30).second(0);
-          }
-        }
-        data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
-      }
-
-      document.getElementById('percobaan').textContent = JSON.stringify(data);
-      return data;
-    }
-
-    var ctx = document.getElementById('chart1').getContext('2d');
-    ctx.canvas.width = 1000;
-    ctx.canvas.height = 500;
-
-    var color = Chart.helpers.color;
-    var s1=[{
-          label: 'Angka Kasus',
-          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.blue,
-          data: {!! json_encode($data) !!},
-          //data: generateData()
-          type: 'line',
-          pointRadius: 0,
-          fill: false,
-          lineTension: 0,
-          borderWidth: 2
-        },
-        {
-          label: 'Sembuh',
-          backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.green,
-          data: {!! json_encode($data_sembuh) !!},
-          //data: generateData()
-          type: 'line',
-          pointRadius: 0,
-          fill: false,
-          lineTension: 0,
-          borderWidth: 2
-        },
-        {
-          label: 'Meninngal',
-          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.red,
-          data: {!! json_encode($data_meninggal) !!},
-          //data: generateData()
-          type: 'line',
-          pointRadius: 0,
-          fill: false,
-          lineTension: 0,
-          borderWidth: 2
-        },
-        
-        
-        ];
-
-
-
-
-		var cfg = {
-			data: {
-				datasets: s1
-			},
-			options: {
-				animation: {
-					duration: 0
-				},
-				scales: {
-					xAxes: [{
-						type: 'time',
-						distribution: 'series',
-						offset: true,
-						ticks: {
-							major: {
-								enabled: true,
-								fontStyle: 'bold'
-							},
-							source: 'data',
-							autoSkip: true,
-							autoSkipPadding: 75,
-							maxRotation: 0,
-							sampleSize: 100
-						},
-						afterBuildTicks: function(scale, ticks) {
-							var majorUnit = scale._majorUnit;
-							var firstTick = ticks[0];
-							var i, ilen, val, tick, currMajor, lastMajor;
-
-							val = moment(ticks[0].value);
-							if ((majorUnit === 'minute' && val.second() === 0)
-									|| (majorUnit === 'hour' && val.minute() === 0)
-									|| (majorUnit === 'day' && val.hour() === 9)
-									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
-									|| (majorUnit === 'year' && val.month() === 0)) {
-								firstTick.major = true;
-							} else {
-								firstTick.major = false;
-							}
-							lastMajor = val.get(majorUnit);
-
-							for (i = 1, ilen = ticks.length; i < ilen; i++) {
-								tick = ticks[i];
-								val = moment(tick.value);
-								currMajor = val.get(majorUnit);
-								tick.major = currMajor !== lastMajor;
-								lastMajor = currMajor;
-							}
-							return ticks;
-						}
-					}],
-					yAxes: [{
-						gridLines: {
-							drawBorder: false
-						},
-						scaleLabel: {
-							display: true,
-							labelString: 'Jumlah Kasus'
-						}
-					}]
-				},
-				tooltips: {
-					intersect: false,
-					mode: 'index',
-					callbacks: {
-						label: function(tooltipItem, myData) {
-							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-							if (label) {
-								label += ': ';
-							}
-							label += parseFloat(tooltipItem.value).toFixed(2);
-							return label;
-						}
-					}
-				}
-			}
-		};
-
-		var chart = new Chart(ctx, cfg);
-
-		document.getElementById('update').addEventListener('click', function() {
-			var type = document.getElementById('type').value;
-			var dataset = chart.config.data.datasets[0];
-			dataset.type = type;
-			dataset.data = generateData();
-			chart.update();
-		});
-
-	</script>
+  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

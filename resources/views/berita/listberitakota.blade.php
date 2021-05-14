@@ -184,7 +184,7 @@
               </div>
             </div>
              <div class="card card-header">
-              <form method='get' action=/listberita>
+              <form method='get' action=/berita/list>
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
