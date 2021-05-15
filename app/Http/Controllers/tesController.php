@@ -16,7 +16,6 @@ class TesController extends Controller
     }
     public function makemodel()
     {
-        print("ok")
         $process= shell_exec("python3 makemodel.py"); 
         return $process;
     }
