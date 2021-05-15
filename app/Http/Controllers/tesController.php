@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\NewsLabel;
 use Illuminate\Http\Request;
  
-class tesController extends Controller
+class TesController extends Controller
 {
     public function index()
     {
