@@ -248,7 +248,7 @@
                       <div class="card-body">
                         <ul class="list-group">
                           @foreach(array_reverse($nof_key) as $n)
-                             <li class="list-group-item">{{$n}}</li>
+                             <li class="list-group-item capitalize">{{$n}}</li>
                           @endforeach
                         </ul>
                       </div>
@@ -261,11 +261,9 @@
                       </div>
                       <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">Salurkan</li>
-                            <li class="list-group-item">Sumbang</li>
-                            <li class="list-group-item">Terdampak</li>
-                            <li class="list-group-item">Bantuan</li>
-                            <li class="list-group-item">Bantu</li>
+                            @foreach(array_reverse($donation_key) as $n)
+                             <li class="list-group-item capitalize">{{$n}}</li>
+                          @endforeach
                         </ul>
                       </div>
                     </div>
@@ -277,11 +275,9 @@
                       </div>
                       <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">Pemerintah</li>
-                            <li class="list-group-item">Buruk</li>
-                            <li class="list-group-item">Gagal</li>
-                            <li class="list-group-item">Kritik</li>
-                            <li class="list-group-item">Singgung</li>
+                            @foreach(array_reverse($criticisms_key) as $n)
+                             <li class="list-group-item capitalize">{{$n}}</li>
+                          @endforeach
                         </ul>
                       </div>
                     </div>
@@ -293,11 +289,9 @@
                       </div>
                       <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">Klarifikasi</li>
-                            <li class="list-group-item">Tegaskan</li>
-                            <li class="list-group-item">Klaim</li>
-                            <li class="list-group-item">Hoaks</li>
-                            <li class="list-group-item">Fakta</li>
+                            @foreach(array_reverse($hoax_key) as $n)
+                             <li class="list-group-item capitalize">{{$n}}</li>
+                          @endforeach
                         </ul>
                       </div>
                     </div>
