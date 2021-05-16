@@ -215,7 +215,7 @@ class StatistikBeritaController extends Controller
          $tes[1]=substr($tes[1],1);
          $tes[2]=substr($tes[2],1);
          $tes[3]=substr($tes[3],1,-1);
-         return $tes;
+         return $process;
          $tes[0]=str_replace("'","",$tes[0]);
          $tes[1]=str_replace("'","",$tes[1]);
          $tes[2]=str_replace("'","",$tes[2]);
