@@ -206,22 +206,22 @@ class StatistikBeritaController extends Controller
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
 
-        // $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
-        $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
-        $tes=explode("] ",$process);
-        $tes[0]=substr($tes[0],1);
-        $tes[1]=substr($tes[1],1);
-        $tes[2]=substr($tes[2],1);
-        $tes[3]=substr($tes[3],1,-1);
-        $tes[0]=str_replace("'","",$tes[0]);
-        $tes[1]=str_replace("'","",$tes[1]);
-        $tes[2]=str_replace("'","",$tes[2]);
-        $tes[3]=str_replace("'","",$tes[3]);
-        $criticism_key=explode(", ",$tes[0]);
-        $donation_key=explode(", ",$tes[1]);
-        $hoax_key=explode(", ",$tes[2]);
-        $nof_key=explode(", ",$tes[3]);
-        return $process;
-        return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi]);
+         $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
+        // $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
+         $tes=explode("] ",$process);
+         $tes[0]=substr($tes[0],1);
+         $tes[1]=substr($tes[1],1);
+         $tes[2]=substr($tes[2],1);
+         $tes[3]=substr($tes[3],1,-1);
+         $tes[0]=str_replace("'","",$tes[0]);
+         $tes[1]=str_replace("'","",$tes[1]);
+         $tes[2]=str_replace("'","",$tes[2]);
+         $tes[3]=str_replace("'","",$tes[3]);
+         $criticism_key=explode(", ",$tes[0]);
+         $donation_key=explode(", ",$tes[1]);
+         $hoax_key=explode(", ",$tes[2]);
+         $nof_key=explode(", ",$tes[3]);
+         return $process;
+         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi]);
     }
 }
