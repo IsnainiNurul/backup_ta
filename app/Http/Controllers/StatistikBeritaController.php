@@ -208,8 +208,9 @@ class StatistikBeritaController extends Controller
 
          $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
         // $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
-         return $process;
-         $tes=explode("] ",$process);
+
+         $tes=explode("]",$process);
+
          $tes[0]=substr($tes[0],1);
          $tes[1]=substr($tes[1],1);
          $tes[2]=substr($tes[2],1);
@@ -222,7 +223,8 @@ class StatistikBeritaController extends Controller
          $donation_key=explode(", ",$tes[1]);
          $hoax_key=explode(", ",$tes[2]);
          $nof_key=explode(", ",$tes[3]);
-         
+
+         return $criticism_key;
          return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi]);
     }
 }
