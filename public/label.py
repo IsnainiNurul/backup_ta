@@ -23,6 +23,12 @@ mycursor = mydb.cursor()
 if(sys.argv[3]=="semua"):
     query = "Select * from news where date between '"+str(sys.argv[1])+"' and '"+str(sys.argv[2])+"';"
 else:
+    text=""
+    for x in range(3,len(sys.argv)):
+        if(x>1):
+            text=text+" "
+        text = text+sys.argv[x]
+
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
 df = pd.read_sql(query,mydb)
 

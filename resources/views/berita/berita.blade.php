@@ -319,7 +319,7 @@
             <div class="card-chart">
               <div class="row">
                 <div class="col-sm-4">
-                  <a href="/loadmodel">
+                  <a href="/graph">
                     <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
                           <h5 class="card-category text-white">Graph Kasus Covid-19 di Setiap Provinsi</h5>

@@ -31,6 +31,7 @@ class StatistikBeritaController extends Controller
             $criticisms = $criticisms->where('date','>=',$request->datestart);
             $hoax = $hoax->where('date','>=',$request->datestart);
             $other = $other->where('date','>=',$request->datestart);
+            $temp1=$request->datestart;
          }
          else{
             $nof = $nof->where('date','>=','2020-01-18');
@@ -38,6 +39,7 @@ class StatistikBeritaController extends Controller
             $criticisms = $criticisms->where('date','>=','2020-01-18');
             $hoax = $hoax->where('date','>=','2020-01-18');
             $other = $other->where('date','>=','2020-01-18');
+            $temp1='2020-01-18';
          }
          if($request->dateend != null){
             $nof = $nof->where('date','<=',$request->dateend);
@@ -45,6 +47,7 @@ class StatistikBeritaController extends Controller
             $criticisms = $criticisms->where('date','<=',$request->dateend);
             $hoax = $hoax->where('date','<=',$request->dateend);
             $other = $other->where('date','<=',$request->dateend);
+            $temp2=$request->dateend;
          }
          else{
             $nof = $nof->where('date','<=',date('Y-m-d'));
@@ -52,6 +55,7 @@ class StatistikBeritaController extends Controller
             $criticisms = $criticisms->where('date','<=',date('Y-m-d'));
             $hoax = $hoax->where('date','<=',date('Y-m-d'));
             $other = $other->where('date','<=',date('Y-m-d'));
+            $temp2=date('Y-m-d');
          }
         if($request->area != null && $request->area !="Semua"){
 
@@ -169,7 +173,7 @@ class StatistikBeritaController extends Controller
             $criticisms = $criticisms->where('label','=','criticisms')->count();
             $hoax = $hoax->where('label','=','hoax')->count();
             $other = $other->where('label','=','other')->count();
-            $provinsi= 'indonesia';
+            $provinsi= 'semua';
          //    $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
          }
          
@@ -202,20 +206,22 @@ class StatistikBeritaController extends Controller
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
 
-  //       $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
-  //       $tes=explode("] ",$process);
-        // $tes[0]=substr($tes[0],1);
-        // $tes[1]=substr($tes[1],1);
-        // $tes[2]=substr($tes[2],1);
-        // $tes[3]=substr($tes[3],1,-1);
-        // $tes[0]=str_replace("'","",$tes[0]);
-        // $tes[1]=str_replace("'","",$tes[1]);
-        // $tes[2]=str_replace("'","",$tes[2]);
-        // $tes[3]=str_replace("'","",$tes[3]);
-        // $criticism_key=explode(", ",$tes[0]);
-        // $donation_key=explode(", ",$tes[1]);
-        // $hoax_key=explode(", ",$tes[2]);
-        // $nof_key=explode(", ",$tes[3]);
+        // $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
+        $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
+        $tes=explode("] ",$process);
+        $tes[0]=substr($tes[0],1);
+        $tes[1]=substr($tes[1],1);
+        $tes[2]=substr($tes[2],1);
+        $tes[3]=substr($tes[3],1,-1);
+        $tes[0]=str_replace("'","",$tes[0]);
+        $tes[1]=str_replace("'","",$tes[1]);
+        $tes[2]=str_replace("'","",$tes[2]);
+        $tes[3]=str_replace("'","",$tes[3]);
+        $criticism_key=explode(", ",$tes[0]);
+        $donation_key=explode(", ",$tes[1]);
+        $hoax_key=explode(", ",$tes[2]);
+        $nof_key=explode(", ",$tes[3]);
+        return $process;
         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi]);
     }
 }

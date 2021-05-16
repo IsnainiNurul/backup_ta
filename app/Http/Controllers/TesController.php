@@ -10,16 +10,34 @@ class TesController extends Controller
     {
         return view('berita.model');
     }
+    public function title(Request $request)
+    {
+        if($request->title!=null){
+        $process= shell_exec("python predict.py ".$request->title);
+        $hasil=explode(" ",$process);
+        return view('berita.prediksi',['title'=>$request->title,'category'=>$hasil[0],'accuracy'=>$hasil[1]]);
+        }
+        else{
+            return view('berita.prediksi',['title'=>"Tidak ada",'category'=>"Tidak ada",'accuracy'=>"Tidak ada"]);
+        }
+    }
+
+
     public function create()
     {
         return view('berita.tes');
     }
+    
     public function makemodel()
     {
-        $process= shell_exec("python3 makemodel.py"); 
-        return $process;
+        $process= shell_exec("python makemodel_windows.py"); 
+        return ($process);
     }
- 
+    public function logreg()
+    {
+        $process= shell_exec("python logreg_windows.py"); 
+        return ($process);
+    } 
     public function store()
     {
         // if($request->title=='null'){

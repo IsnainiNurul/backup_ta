@@ -124,8 +124,28 @@
       <!-- Card COVID-19 -->
       <div class="content">
         <div class="row">
-          
-              <div class="col-sm-4">
+              <div class="col-sm-3">
+                  <a href="/tugas/adddata">
+                  <div class="card card-header" style="background-color: #1d8cf8;">
+                      <div class="text-left">
+                          <h5 class="card-category text-white">Add Data</h5>
+                          <h3 class="card-title text-left text-white">Tambah Berita</h3>
+                      </div>
+                  </div>
+                    </a>
+
+                </div>
+                <div class="col-sm-3">
+                  <a href="/tugas/temukan">
+                  <div class="card card-header card-blue" style="background-color: #1d8cf8;">
+                      <div class="text-left">
+                          <h5 class="card-category text-white">Prediksi Judul</h5>
+                          <h2 class="card-title text-left text-white">Prediksi</h2>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              <div class="col-sm-3">
                   <a href="/tugas/makemodel">
                     <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
@@ -135,26 +155,19 @@
                     </div>
                   </a>
                 </div>
-                <div class="col-sm-4">
-                  <a href="/berita/list">
+                <div class="col-sm-3">
+                  <a href="/tugas/logreg">
                   <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
-                          <h5 class="card-category text-white">Semua Berita Covid-19 di Setiap Provinsi </h5>
-                          <h2 class="card-title text-left text-white">Berita</h2>
+                          <h5 class="card-category text-white">Train model</h5>
+                          <h4 class="card-title text-left text-white">Multinomial LogReg</h4>
                       </div>
                   </div>
                     </a>
 
                 </div>
-                <div class="col-sm-4">
-                  <a href="/berita/statistik">
-                  <div class="card card-header card-blue" style="background-color: #1d8cf8;">
-                      <div class="text-left">
-                          <h5 class="card-category text-white">Statistik Berita COVID-19 Populer</h5>
-                          <h2 class="card-title text-left text-white">Statistik</h2>
-                      </div>
-                    </div>
-                </div>
+                
+
     
       
       </div>

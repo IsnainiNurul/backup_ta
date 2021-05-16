@@ -104,7 +104,7 @@ for Product, label_id in sorted(label_codes.items()):
     feature_names = np.array(tfidf.get_feature_names())[indices]
     unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
     bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-    print(unigrams[-5:])
+
 # X_train
 with open('Pickles_title/X_train.pickle', 'wb') as output:
     pickle.dump(X_train, output)
