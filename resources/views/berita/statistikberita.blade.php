@@ -247,11 +247,9 @@
                       </div>
                       <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item">Meninggal</li>
-                            <li class="list-group-item">Positif</li>
-                            <li class="list-group-item">Total</li>
-                            <li class="list-group-item">Sembuh</li>
-                            <li class="list-group-item">Update</li>
+                          @foreach(array_reverse($nof_key) as $n)
+                             <li class="list-group-item">{{$n}}</li>
+                          @endforeach
                         </ul>
                       </div>
                     </div>

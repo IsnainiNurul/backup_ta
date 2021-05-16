@@ -225,6 +225,6 @@ class StatistikBeritaController extends Controller
          $nof_key=explode(", ",$tes[3]);
 
         
-         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'criticisms_key'=>$criticisms_key,'donation_key'=>$donation_key,'hoax_key'=>$hoax_key,'nof_key'=>$nof_key);
+         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'criticisms_key'=>$criticisms_key,'donation_key'=>$donation_key,'hoax_key'=>$hoax_key,'nof_key'=>$nof_key]);
     }
 }

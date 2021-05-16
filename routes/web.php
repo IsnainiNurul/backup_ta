@@ -43,6 +43,9 @@ Route::get('/tugas', [TesController::class, 'index']);
 Route::post('/tugas/adddata/create', [TesController::class, 'store']);
 Route::get('/tugas/adddata', [TesController::class, 'create']);
 Route::get('/tugas/makemodel', [TesController::class, 'makemodel']);
+Route::get('/tugas/logreg', [TesController::class, 'logreg']);
+Route::get('/tugas/temukan/', [TesController::class, 'title']);
+Route::get('/tugas/temukan/predict', [TesController::class, 'predict']);
 // Route::get('/prediksi', function () {
 //     return view('prediksi');
 // });
