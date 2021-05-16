@@ -209,7 +209,7 @@ class StatistikBeritaController extends Controller
          $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
         // $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
 
-         $tes=explode("]",$process);
+         $tes=explode("] ",$process);
 
          $tes[0]=substr($tes[0],1);
          $tes[1]=substr($tes[1],1);
