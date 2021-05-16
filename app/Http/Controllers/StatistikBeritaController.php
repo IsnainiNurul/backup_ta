@@ -219,12 +219,12 @@ class StatistikBeritaController extends Controller
          $tes[1]=str_replace("'","",$tes[1]);
          $tes[2]=str_replace("'","",$tes[2]);
          $tes[3]=str_replace("'","",$tes[3]);
-         $criticism_key=explode(", ",$tes[0]);
+         $criticisms_key=explode(", ",$tes[0]);
          $donation_key=explode(", ",$tes[1]);
          $hoax_key=explode(", ",$tes[2]);
          $nof_key=explode(", ",$tes[3]);
 
-         return $criticism_key;
-         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi]);
+        
+         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'criticisms_key'=>$criticisms_key,'donation_key'=>$donation_key,'hoax_key'=>$hoax_key,'nof_key'=>$nof_key);
     }
 }
