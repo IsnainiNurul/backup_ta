@@ -15,6 +15,9 @@ class TesController extends Controller
         if($request->title!=null){
         $process= shell_exec("python predict.py ".$request->title);
         $hasil=explode(" ",$process);
+        if($hasil[0]=="notification"){
+            return view('berita.prediksi',['title'=>$request->title,'category'=>$hasil[0]." ".$hasil[1]." ".$hasil[2],'accuracy'=>$hasil[3]]);
+        }
         return view('berita.prediksi',['title'=>$request->title,'category'=>$hasil[0],'accuracy'=>$hasil[1]]);
         }
         else{

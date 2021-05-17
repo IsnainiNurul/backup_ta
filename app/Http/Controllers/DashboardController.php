@@ -86,7 +86,7 @@ class DashboardController extends Controller
          if($totalsembuh<0){$totalsembuh=0;}
 
 
-         return view('dashboard',['data'=>$data,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>$totalkasus,'totalmeninggal'=>$totalmeninggal,'totalsembuh'=>$totalsembuh]);
+         return view('dashboard',['data'=>$data,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus),'totalmeninggal'=>number_format($totalmeninggal),'totalsembuh'=>number_format($totalsembuh)]);
     }
 
 }

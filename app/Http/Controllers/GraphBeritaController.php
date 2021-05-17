@@ -13,7 +13,7 @@ use App\Models\DataLabel;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-class BeritaController extends Controller
+class GraphBeritaController extends Controller
 {
 
     public function index(Request $request)
@@ -28,14 +28,12 @@ class BeritaController extends Controller
         $data_sembuh = DataCovid19Sembuh::query();
         $data_sembuh1 = DataCovid19Sembuh::query();
         $data_sembuh2 = DataCovid19Sembuh::query();
-        $berita = News::query();
         $label= DataLabel::query();
 
         if($request->datestart != null){
         	$data = $data->where('tanggal','>=',$request->datestart);
         	$data_meninggal = $data_meninggal->where('tanggal','>=',$request->datestart);
         	$data_sembuh = $data_sembuh->where('tanggal','>=',$request->datestart);
-        	$berita = $berita->where('date','>=',$request->datestart);
         	$temp1=$request->datestart;
         	
          }
@@ -43,7 +41,6 @@ class BeritaController extends Controller
          	$data = $data->where('tanggal','>=','2020-03-18');
          	$data_meninggal = $data_meninggal->where('tanggal','>=','2020-03-18');
          	$data_sembuh = $data_sembuh->where('tanggal','>=','2020-03-18');
-         	$berita = $berita->where('date','>=','2020-03-18');
          	$temp1='2020-03-18';
          	$cek1='2020-01-18';
          }
@@ -51,7 +48,6 @@ class BeritaController extends Controller
         	$data = $data->where('tanggal','<=',$request->dateend);
         	$data_meninggal = $data_meninggal->where('tanggal','<=',$request->dateend);
         	$data_sembuh = $data_sembuh->where('tanggal','<=',$request->dateend);
-        	$berita = $berita->where('date','<=',$request->dateend);
         	$temp2=$request->dateend;
         	
          }
@@ -59,7 +55,6 @@ class BeritaController extends Controller
          	$data = $data->where('tanggal','<=',date('Y-m-d'));
          	$data_meninggal = $data_meninggal->where('tanggal','<=',date('Y-m-d'));
          	$data_sembuh = $data_sembuh->where('tanggal','<=',date('Y-m-d'));
-         	$berita = $berita->where('date','<=',date('Y-m-d'));
          	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
          	$temp2=$cek[0];
          }
@@ -196,15 +191,6 @@ class BeritaController extends Controller
 	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum($request->area);
 	       $data_meninggal2= $data_meninggal2->where('tanggal','=',$temp2)->sum($request->area);
 	       $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp2)->sum($request->area);
-	       // $berita = $berita->where('area','=',$provinsi)->orderBy('date', 'ASC')->limit(100)->get();
-	       $berita = $berita->where('area','=',$provinsi);
-	       if($request->kota != "Semua" && $request->kota != null){
-	       	 $berita = $berita->where('kota','=',$request->kota);
-
-	       }
-	       else if($request->kota == "Other"){
-	       	 $berita = $berita->where('kota','=',"");
-	       }
 	     }
 	     else{
 	     	$data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum('total'); 
@@ -218,17 +204,9 @@ class BeritaController extends Controller
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
-	     	$berita = $berita->orderBy('date', 'DESC');
 	     	$provinsi="semua";
 	     }
-	     // if($request->label != null && $request->label != "Semua"){
-	     //    $berita = $berita->where('label','=',$request->label) ; 
-	     // }
-	     
-	     $berita = $berita->orderBy('date', 'DESC')->limit(100)->get();
-	     // $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
 
-	     // array_push($array_to, $label->)
 
 	   
 	     $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
@@ -249,7 +227,7 @@ class BeritaController extends Controller
 	     $criticisms=explode(":",$criticisms);
 	     $hoax=explode(":",$hoax);
 	     $other=explode(":",$other);
-	     //print($berita);
+
 	     $nof=substr($nof[1],1,-1);
 	   	 $donation=substr($donation[1],1, -1);
 	     $criticisms=substr($criticisms[1],1, -1);
@@ -278,6 +256,6 @@ class BeritaController extends Controller
 	  	if($totalkasus<0){$totalkasus=0;}
 	  	if($totalmeninggal<0){$totalmeninggal=0;}
 	  	if($totalsembuh<0){$totalsembuh=0;}
-    	return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>$totalkasus,'totalmeninggal'=>$totalmeninggal,'totalsembuh'=>$totalsembuh]);
+    	return view('berita.listgraph',['data'=>$data,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>$totalkasus,'totalmeninggal'=>$totalmeninggal,'totalsembuh'=>$totalsembuh]);
    	}
 }
