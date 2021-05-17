@@ -191,7 +191,7 @@
                   <input class="col-4 form-control" type="date" value="2020-03-18" id="example-date-input" name="datestart">
                   <label for="example-date-input" class="col-1 col-form-label">-</label>
                   
-                  <input class="col-4 form-control" type="date" value="<?php echo date("Y-m-d"); ?>" id="example-date-input" name="dateend">
+                  <input class="col-4 form-control" type="date" value="{{date('Y-m-d')}}" id="example-date-input" name="dateend">
                 </div>
                 <div class="col-3 row">
                 <select class="col-11" name="area" id="area">

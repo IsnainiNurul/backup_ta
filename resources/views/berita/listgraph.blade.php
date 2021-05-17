@@ -1,4 +1,4 @@
-
+ 
 <!--
 =========================================================
 * * Black Dashboard - v1.0.1
@@ -29,9 +29,9 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-	<script src="/assets/moment.js"></script>
-	<script src="/assets/Chart.min.js"></script>
-	<script src="/assets/utils.js"></script>
+  <script src="/assets/moment.js"></script>
+  <script src="/assets/Chart.min.js"></script>
+  <script src="/assets/utils.js"></script>
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
@@ -101,44 +101,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
-              </li>
+              
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
@@ -169,7 +132,60 @@
             </div>
              <div class="card card-header">
               <form method='get' action=/berita>
-              <div class="row">
+              <div class="row mycontent-bottom">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-11 row">
+                <div class="col-7 form-group row">
+                  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                  <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="datestart">
+                  <label for="example-date-input" class="col-1 col-form-label">-</label>
+                  
+                  <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="dateend">
+                </div>
+                <div class="col-3 row">
+                <select class="col-11" name="area" id="area">
+                    <option value="Semua"selected>Pilih Provinsi</option>
+                    <option value="Jatim">Jawa Timur</option>
+                    <option value="Jabar">Jawa Barat</option>
+                    <option value="Jateng">Jawa Tengah</option>
+                    <option value="DIY">D.I Yogyakarta</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Sumut">Sumatera Utara</option>
+                    <option value="Sumbar">Sumatera Barat</option>
+                    <option value="Sumsel">Sumatera Selatan</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Kep_riau">Kepulauan Riau</option>
+                    <option value="Babel">Bangka Belitung</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="Bali">Bali</option>
+                    <option value="NTT">NTT</option>
+                    <option value="NTB">NTB</option>
+                    <option value="Kalbar">Kalimantan Barat</option>
+                    <option value="Kalteng">Kalimantan Tengah</option>
+                    <option value="Kalsel">Kalimantan Selatan</option>
+                    <option value="Kaltim">Kalimantan Timur</option>
+                    <option value="Kaltara">Kalimantan Utara</option>
+                    <option value="Sulut">Sulawesi Utara</option>25
+                    <option value="Sulteng">Sulawesi Tengah</option>
+                    <option value="Sulbar">Sulawesi Barat</option>
+                    <option value="Sulsel">Sulawesi Selatan</option>
+                    <option value="Sultra">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Malut">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papbar">Papua Barat</option>
+                  </select>
+                </div>
+                 <input class="btn btn-primary" id="submitbutton" type='submit'>
+                  </div>
+                </div>
+                  <div class="row" style="margin-top: 20px;">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
                   <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="datestart">
@@ -177,33 +193,9 @@
                   
                   <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="dateend">
                 </div>
-                <!-- <div class="col-6 row">
-                  <label for="example-date-input" class="col-2 col-form-label">Provinsi</label>
-                  <div class="col-10 dropdown">
-                    <button class="btn btn-secondary dropdown-toggle dropdown-provinsi" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih Provinsi</button>
-                    <div class="dropdown-menu dropdown-multicol" aria-labelledby="dropdownMenuButton">
-                      <div class="dropdown-row">
-                        <a class="dropdown-item" href="#">c</a>
-                        <a class="dropdown-item" href="#">Bananas</a>
-                        <a class="dropdown-item" href="#">Apples</a>
-                      </div>
-                      <div class="dropdown-row">
-                        <a class="dropdown-item" href="#">Potatoes</a>
-                        <a class="dropdown-item" href="#">Leeks</a>
-                        <a class="dropdown-item" href="#">Cauliflowers</a>
-                      </div>
-                      <div class="dropdown-row">
-                        <a class="dropdown-item" href="#">Beef</a>
-                        <a class="dropdown-item" href="#">Pork</a>
-                        <a class="dropdown-item" href="#">Venison</a>
-                      </div>
-                    </div>
-
-                  </div>
-                </div> -->
                 <div class="col-3 row">
                 <select class="col-11" name="area" id="area">
-                    <option selected>Pilih Provinsi</option>
+                    <option value="Semua"selected>Pilih Provinsi</option>
                     <option value="Jatim">Jawa Timur</option>
                     <option value="Jabar">Jawa Barat</option>
                     <option value="Jateng">Jawa Tengah</option>
@@ -245,33 +237,65 @@
               </form>
                 
               </div>
-            <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-4">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-category">Total Kasus Covid-19</h5>
-                          <h2 class="card-title text-left">1.626.812</h2>
+            <div class="card-chart">    
+                    <div class="card border-left-info border-right-info card-header">
+                      <div class="col-sm-12">
+                      <h5 class="card-category text-center"><i class="fa fa-users fa-2x text-info" style="margin-right:10px"></i>Total Kasus Covid-19</h5>
+                      <div class="row">
+                      <div class="col-sm-5 text-right">
+                          
+                          <h2 class="card-title text-right">{{$totalkasus}}</h2>
                       </div>
+                      <div class="col-sm-2">
+                          
+                          <h2 class="card-title text-center"><span class="pic arrow-up"></span>12</h2>
+
+                      </div>
+                      <div class="col-sm-5 text-right">
+                          
+                          <h2 class="card-title text-left">{{$totalkasus}}</h2>
+                      </div>
+                      </div>
+
                     </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-category">Total Pasien Meninggal Covid-19</h5>
-                          <h2 class="card-title text-left">1.481.449</h2>
+                 <div class="card border-left-danger border-right-danger card-header">
+                <div class="col-sm-12">
+                    <h5 class="card-category text-center"><i class="fa fa-bed fa-2x text-danger" style="margin-right:10px"></i>Total Pasien Meninggal Covid-19</h5>
+                    <div class="row">
+                      <div class="col-sm-5 text-right">
+                          <h2 class="card-title text-right">{{$totalmeninggal}}</h2>
+                      </div>
+                      <div class="col-sm-2">
+                          
+                          <h2 class="card-title text-center"><span class="pic arrow-up"></span>12</h2>
+
+                      </div>
+                      <div class="col-sm-5 text-left">
+                          <h2 class="card-title text-left">{{$totalmeninggal}}</h2>
                       </div>
                     </div>
+                  </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-category">Total Pasien Sembuh Covid-19</h5>
-                          <h2 class="card-title text-left">44.172</h2>
+                <div class="card border-left-success border-right-success card-header">
+                <div class="col-sm-12">         
+                      <h5 class="card-category text-center"><i class="fa fa-child fa-2x text-success" style="margin-right:10px"></i>Total Pasien Sembuh Covid-19</h5>
+                      <div class="row">
+                      <div class="col-sm-5 text-right">
+                          <h2 class="card-title text-right">{{$totalsembuh}}</h2>
+                      </div>
+                      <div class="col-sm-2">
+                          
+                          <h2 class="card-title text-center"><span class="pic arrow-up"></span>12</h2>
+
+                      </div>
+                      <div class="col-sm-5 text-left">
+                          <h2 class="card-title text-left">{{$totalsembuh}}</h2>
                       </div>
                     </div>
+                  </div>
                 </div>
-              </div>
+              
             </div>
 <br />
 
@@ -279,50 +303,53 @@
 
 
 
-          </div><div class="col-sm-12">
+          </div>
+          <div class="row">
+          <div class="col-sm-6">
             <div class="card card-chart">
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-7 text-left">
                     <h5 class="card-category">Graph COVID-19</h5>
-                    <h2 class="card-title">Kasus COVID-19 di Indonesia pada Setiap Provinsi</h2>
-                  </div>
-                  <div class="col-sm-5 search_bar">
-                    <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
+                    <h2 class="card-title">Indonesia</h2>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div style="width:1000px;height:300px;position: relative;">
-                  <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</p>
+                  
                 
                   <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                       <canvas id="chart1"></canvas>
                     </div>
-                    <div class="col-sm-5 scroll" style="width:1500px;height:300px;overflow:auto;">
-                      @foreach($berita as $b)
-                      <div class="row">
-                        <div class="col-sm-4 div-gambar">
-                            <a href="{{$b->url}}">
-                              <img src="{{$b->img_url}}" class="img-fluid">
-                            </a>
-                          </div>
-                          
-                          <div class="col-sm-8">
-                            @if($b->news_portal=='kompas')
-                                <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
-                            @else
-                                <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
-                            @endif
-                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
-
-                          </div>
-
-                      </div>
-                         <br>
-                        @endforeach
+                    
+                    
+                  </div>
+                  <!-- inputhere -->
+                </div>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-7 text-left">
+                    <h5 class="card-category">Graph COVID-19</h5>
+                    <h2 class="card-title">Indonesia</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div style="width:1000px;height:300px;position: relative;">
+                
+                    <div class="col-sm-6">
+                      <canvas id="chart2"></canvas>
                     </div>
+                    
                   </div>
                   <!-- inputhere -->
                 </div>
@@ -332,114 +359,9 @@
             </div>
           </div>
         </div>
-        
-        
-
-        <!-- Card COVID-19 -->
-      <div class="content">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-12 text-left">
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div style="width:700px;height:300px;position: relative;">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <canvas id="chart2"></canvas>
-                    </div>
-                  </div>
-                  
-                </div>
-                <br>
-                <br>
-                <br>
-                <form method='get' action=/berita>
-                  <label>Tanggal</label>
-                    <input name="datestart2" type='date'>
-                  <label>-</label>
-                    <input name="dateend2" type='date'>
-                  <input type='submit'>
-                </form>
-
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Notification of Information</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Meninggal</li>
-                            <li class="list-group-item">Positif</li>
-                            <li class="list-group-item">Total</li>
-                            <li class="list-group-item">Sembuh</li>
-                            <li class="list-group-item">Update</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Donation</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Salurkan</li>
-                            <li class="list-group-item">Sumbang</li>
-                            <li class="list-group-item">Terdampak</li>
-                            <li class="list-group-item">Bantuan</li>
-                            <li class="list-group-item">Bantu</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Criticisms</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Pemerintah</li>
-                            <li class="list-group-item">Buruk</li>
-                            <li class="list-group-item">Gagal</li>
-                            <li class="list-group-item">Kritik</li>
-                            <li class="list-group-item">Singgung</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                 <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Hoax</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Klarifikasi</li>
-                            <li class="list-group-item">Tegaskan</li>
-                            <li class="list-group-item">Klaim</li>
-                            <li class="list-group-item">Hoaks</li>
-                            <li class="list-group-item">Fakta</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
+        
+        
     
       
       </div>
@@ -515,67 +437,12 @@
     </div>
   </div>
 
-  <script>
-    console.log("tes");
-  console.log( {!! json_encode($label) !!});
-  var ctx = document.getElementById('chart2');
-
-  // <block:setup:1>
-  const data = {
-    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
-    datasets: [{
-      data: {!! json_encode($label) !!},
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ],
-      borderWidth: 1
-    }]
-  };
-  
-  // </block:setup>
-
-  // <block:config:0>
-  var barChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-      legend: {
-        display: false
-    },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-    },
-  });
-  // </block:config>
-
-
-
-  </script>
   
 
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
-	<script>
-		function generateData() {
+  <script>
+    function generateData() {
       var unit = document.getElementById('unit').value;
 
       function unitLessThanDay() {
@@ -636,10 +503,34 @@
 
     var color = Chart.helpers.color;
     var s1=[{
-          label: 'Angka Kasus COVID-19',
+          label: 'Angka Kasus',
+          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.blue,
+          data: {!! json_encode($data) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Sembuh',
+          backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.green,
+          data: {!! json_encode($data_sembuh) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Meninngal',
           backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
           borderColor: window.chartColors.red,
-          data: {!! json_encode($data) !!},
+          data: {!! json_encode($data_meninggal) !!},
           //data: generateData()
           type: 'line',
           pointRadius: 0,
@@ -654,95 +545,288 @@
 
 
 
-		var cfg = {
-			data: {
-				datasets: s1
-			},
-			options: {
-				animation: {
-					duration: 0
-				},
-				scales: {
-					xAxes: [{
-						type: 'time',
-						distribution: 'series',
-						offset: true,
-						ticks: {
-							major: {
-								enabled: true,
-								fontStyle: 'bold'
-							},
-							source: 'data',
-							autoSkip: true,
-							autoSkipPadding: 75,
-							maxRotation: 0,
-							sampleSize: 100
-						},
-						afterBuildTicks: function(scale, ticks) {
-							var majorUnit = scale._majorUnit;
-							var firstTick = ticks[0];
-							var i, ilen, val, tick, currMajor, lastMajor;
+    var cfg = {
+      data: {
+        datasets: s1
+      },
+      options: {
+        animation: {
+          duration: 0
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
+            offset: true,
+            ticks: {
+              major: {
+                enabled: true,
+                fontStyle: 'bold'
+              },
+              source: 'data',
+              autoSkip: true,
+              autoSkipPadding: 75,
+              maxRotation: 0,
+              sampleSize: 100
+            },
+            afterBuildTicks: function(scale, ticks) {
+              var majorUnit = scale._majorUnit;
+              var firstTick = ticks[0];
+              var i, ilen, val, tick, currMajor, lastMajor;
 
-							val = moment(ticks[0].value);
-							if ((majorUnit === 'minute' && val.second() === 0)
-									|| (majorUnit === 'hour' && val.minute() === 0)
-									|| (majorUnit === 'day' && val.hour() === 9)
-									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
-									|| (majorUnit === 'year' && val.month() === 0)) {
-								firstTick.major = true;
-							} else {
-								firstTick.major = false;
-							}
-							lastMajor = val.get(majorUnit);
+              val = moment(ticks[0].value);
+              if ((majorUnit === 'minute' && val.second() === 0)
+                  || (majorUnit === 'hour' && val.minute() === 0)
+                  || (majorUnit === 'day' && val.hour() === 9)
+                  || (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+                  || (majorUnit === 'year' && val.month() === 0)) {
+                firstTick.major = true;
+              } else {
+                firstTick.major = false;
+              }
+              lastMajor = val.get(majorUnit);
 
-							for (i = 1, ilen = ticks.length; i < ilen; i++) {
-								tick = ticks[i];
-								val = moment(tick.value);
-								currMajor = val.get(majorUnit);
-								tick.major = currMajor !== lastMajor;
-								lastMajor = currMajor;
-							}
-							return ticks;
-						}
-					}],
-					yAxes: [{
-						gridLines: {
-							drawBorder: false
-						},
-						scaleLabel: {
-							display: true,
-							labelString: 'Jumlah Kasus'
-						}
-					}]
-				},
-				tooltips: {
-					intersect: false,
-					mode: 'index',
-					callbacks: {
-						label: function(tooltipItem, myData) {
-							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-							if (label) {
-								label += ': ';
-							}
-							label += parseFloat(tooltipItem.value).toFixed(2);
-							return label;
-						}
-					}
-				}
-			}
-		};
+              for (i = 1, ilen = ticks.length; i < ilen; i++) {
+                tick = ticks[i];
+                val = moment(tick.value);
+                currMajor = val.get(majorUnit);
+                tick.major = currMajor !== lastMajor;
+                lastMajor = currMajor;
+              }
+              return ticks;
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Jumlah Kasus'
+            }
+          }]
+        },
+        tooltips: {
+          intersect: false,
+          mode: 'index',
+          callbacks: {
+            label: function(tooltipItem, myData) {
+              var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+              if (label) {
+                label += ': ';
+              }
+              label += parseFloat(tooltipItem.value).toFixed(2);
+              return label;
+            }
+          }
+        }
+      }
+    };
 
-		var chart = new Chart(ctx, cfg);
+    var chart = new Chart(ctx, cfg);
 
-		document.getElementById('update').addEventListener('click', function() {
-			var type = document.getElementById('type').value;
-			var dataset = chart.config.data.datasets[0];
-			dataset.type = type;
-			dataset.data = generateData();
-			chart.update();
-		});
+    document.getElementById('update').addEventListener('click', function() {
+      var type = document.getElementById('type').value;
+      var dataset = chart.config.data.datasets[0];
+      dataset.type = type;
+      dataset.data = generateData();
+      chart.update();
+    });
 
-	</script>
+  </script>
+  <script>
+    function generateData() {
+      var unit = document.getElementById('unit').value;
+
+      function unitLessThanDay() {
+        return unit === 'second' || unit === 'minute' || unit === 'hour';
+      }
+
+      function beforeNineThirty(date) {
+        return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
+      }
+
+      // Returns true if outside 9:30am-4pm on a weekday
+      function outsideMarketHours(date) {
+        if (date.isoWeekday() > 5) {
+          return true;
+        }
+        if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
+          return true;
+        }
+        return false;
+      }
+
+      function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function randomBar(date, lastClose) {
+        var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+        var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
+        return {
+          t: date.valueOf(),
+          y: close
+        };
+      }
+
+      var date = moment('Feb 20 2020', 'MMM DD YYYY'); //hari kemarin
+      var now = moment();
+      var data = [];
+      var lessThanDay = unitLessThanDay();
+      for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
+        if (outsideMarketHours(date)) {
+          if (!lessThanDay || !beforeNineThirty(date)) {
+            date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
+          }
+          if (lessThanDay) {
+            date = date.hour(9).minute(30).second(0);
+          }
+        }
+        data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
+      }
+
+      document.getElementById('percobaan').textContent = JSON.stringify(data);
+      return data;
+    }
+
+    var ctx = document.getElementById('chart2').getContext('2d');
+    ctx.canvas.width = 1000;
+    ctx.canvas.height = 500;
+
+    var color = Chart.helpers.color;
+    var s1=[{
+          label: 'Angka Kasus',
+          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.blue,
+          data: {!! json_encode($data) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Sembuh',
+          backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.green,
+          data: {!! json_encode($data_sembuh) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Meninngal',
+          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.red,
+          data: {!! json_encode($data_meninggal) !!},
+          //data: generateData()
+          type: 'line',
+          pointRadius: 0,
+          fill: false,
+          lineTension: 0,
+          borderWidth: 2
+        },
+        
+        
+        ];
+
+
+
+
+    var cfg = {
+      data: {
+        datasets: s1
+      },
+      options: {
+        animation: {
+          duration: 0
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
+            offset: true,
+            ticks: {
+              major: {
+                enabled: true,
+                fontStyle: 'bold'
+              },
+              source: 'data',
+              autoSkip: true,
+              autoSkipPadding: 75,
+              maxRotation: 0,
+              sampleSize: 100
+            },
+            afterBuildTicks: function(scale, ticks) {
+              var majorUnit = scale._majorUnit;
+              var firstTick = ticks[0];
+              var i, ilen, val, tick, currMajor, lastMajor;
+
+              val = moment(ticks[0].value);
+              if ((majorUnit === 'minute' && val.second() === 0)
+                  || (majorUnit === 'hour' && val.minute() === 0)
+                  || (majorUnit === 'day' && val.hour() === 9)
+                  || (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+                  || (majorUnit === 'year' && val.month() === 0)) {
+                firstTick.major = true;
+              } else {
+                firstTick.major = false;
+              }
+              lastMajor = val.get(majorUnit);
+
+              for (i = 1, ilen = ticks.length; i < ilen; i++) {
+                tick = ticks[i];
+                val = moment(tick.value);
+                currMajor = val.get(majorUnit);
+                tick.major = currMajor !== lastMajor;
+                lastMajor = currMajor;
+              }
+              return ticks;
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Jumlah Kasus'
+            }
+          }]
+        },
+        tooltips: {
+          intersect: false,
+          mode: 'index',
+          callbacks: {
+            label: function(tooltipItem, myData) {
+              var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+              if (label) {
+                label += ': ';
+              }
+              label += parseFloat(tooltipItem.value).toFixed(2);
+              return label;
+            }
+          }
+        }
+      }
+    };
+
+    var chart = new Chart(ctx, cfg);
+
+    document.getElementById('update').addEventListener('click', function() {
+      var type = document.getElementById('type').value;
+      var dataset = chart.config.data.datasets[0];
+      dataset.type = type;
+      dataset.data = generateData();
+      chart.update();
+    });
+
+  </script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

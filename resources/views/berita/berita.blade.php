@@ -135,10 +135,10 @@
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                  <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="datestart">
+                  <input class="col-4 form-control" type="date" value="2020-03-18" id="example-date-input" name="datestart">
                   <label for="example-date-input" class="col-1 col-form-label">-</label>
                   
-                  <input class="col-4 form-control" type="date" value="2011-08-19" id="example-date-input" name="dateend">
+                  <input class="col-4 form-control" type="date" value="{{date('Y-m-d')}}" id="example-date-input" name="dateend">
                 </div>
                 <!-- <div class="col-6 row">
                   <label for="example-date-input" class="col-2 col-form-label">Provinsi</label>
@@ -353,112 +353,6 @@
             </div>
         
 
-        <!-- Card COVID-19 -->
-      <div class="content">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-12 text-left">
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div style="width:700px;height:300px;position: relative;">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <canvas id="chart2"></canvas>
-                    </div>
-                  </div>
-                  
-                </div>
-                <br>
-                <br>
-                <br>
-                <form method='get' action=/berita>
-                  <label>Tanggal</label>
-                    <input name="datestart2" type='date'>
-                  <label>-</label>
-                    <input name="dateend2" type='date'>
-                  <input type='submit'>
-                </form>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Notification of Information</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Meninggal</li>
-                            <li class="list-group-item">Positif</li>
-                            <li class="list-group-item">Total</li>
-                            <li class="list-group-item">Sembuh</li>
-                            <li class="list-group-item">Update</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Donation</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Salurkan</li>
-                            <li class="list-group-item">Sumbang</li>
-                            <li class="list-group-item">Terdampak</li>
-                            <li class="list-group-item">Bantuan</li>
-                            <li class="list-group-item">Bantu</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Criticisms</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Pemerintah</li>
-                            <li class="list-group-item">Buruk</li>
-                            <li class="list-group-item">Gagal</li>
-                            <li class="list-group-item">Kritik</li>
-                            <li class="list-group-item">Singgung</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                 <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Hoax</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Klarifikasi</li>
-                            <li class="list-group-item">Tegaskan</li>
-                            <li class="list-group-item">Klaim</li>
-                            <li class="list-group-item">Hoaks</li>
-                            <li class="list-group-item">Fakta</li>
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-    
       
       </div>
       <footer class="footer">
