@@ -128,7 +128,10 @@
                   </strong>
                   <br>
                   <em style="font-family:Georgia, serif; font-size: 16px">
-                    Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
+                    Sistem informasi ini menampilkan visualisasi berupa perbandingan pola penambahan kasus penyebaran virus COVID-19 
+                  di suatu kabupaten dengan kabupaten tetangganya di Jawa Timur menggunakan metode Bland Altman Plot.
+                  <br>
+			Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
                     Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, 
                     Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
                   </em>
