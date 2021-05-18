@@ -73,9 +73,9 @@ class DashboardController extends Controller
          $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp2)->sum('total');
             
 
-         $data = $data->select(DB::raw('tanggal as x, Jatim as y'))->get();
-         $data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, Jatim as y'))->get();
-         $data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, Jatim as y'))->get();
+         $data = $data->select(DB::raw('tanggal as x, total as y'))->get();
+         $data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
+         $data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
 
          $totalkasus=$data_kasus2-$data_kasus1;
          $totalmeninggal=$data_meninggal2-$data_meninggal1;
@@ -85,8 +85,7 @@ class DashboardController extends Controller
          if($totalmeninggal<0){$totalmeninggal=0;}
          if($totalsembuh<0){$totalsembuh=0;}
 
-
-         return view('dashboard',['data'=>$data,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus),'totalmeninggal'=>number_format($totalmeninggal),'totalsembuh'=>number_format($totalsembuh)]);
+         return view('dashboard',['data'=>$data,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
     }
 
 }

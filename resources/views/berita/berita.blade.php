@@ -318,7 +318,7 @@
           <div class="col-sm-12">
             <div class="card-chart">
               <div class="row">
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                   <a href="/graph">
                     <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
@@ -327,8 +327,8 @@
                       </div>
                     </div>
                   </a>
-                </div>
-                <div class="col-sm-4">
+                </div> -->
+                <div class="col-sm-6">
                   <a href="/berita/list">
                   <div class="card card-header" style="background-color: #1d8cf8;">
                       <div class="text-left">
@@ -339,7 +339,7 @@
                     </a>
 
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <a href="/berita/statistik">
                   <div class="card card-header card-blue" style="background-color: #1d8cf8;">
                       <div class="text-left">
