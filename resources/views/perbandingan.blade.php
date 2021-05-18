@@ -240,12 +240,12 @@
                               <tbody>
                               @for ($i = 0; $i < count($x); $i++)
                                 <tr>
-                                  <td>{{$m1[$i]}}</td>
-                                  <td>{{$m2[$i]}}</td>
-                                  <td>{{$x[$i]}}</td>
-                                  <td>{{$y[$i]}}</td>
-                                  <td>{{$y[$i]/$x[$i]}}</td>
-                                </tr>
+                                  <td>{{(int)$m1[$i]}}</td>
+                                  <td>{{(int)$m2[$i]}}</td>
+                                  <td>{{(float)(((int)$m1[$i]+(int)$m2[$i])/2)    }}</td>
+                                  <td>{{(int)$m1[$i] - (int)$m2[$i]}}</td>
+				<td> @if(( (float)(((int)$m1[$i]+(int)$m2[$i])/2) ) != 0) {{ (   (int)$m1[$i] - (int)$m2[$i]   )        / ( (float)(((int)$m1[$i]+(int)$m2[$i])/2)   )   }}@else 0 @endif </td>
+				</tr>
                               @endfor
                               
                               </tbody>
