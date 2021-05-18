@@ -127,7 +127,7 @@
           <div class="col-sm-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di Indonesia</h1>
+                <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di {{$provinsi}}</h1>
               </div>
             </div>
              <div class="card card-header">

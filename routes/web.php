@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PerbandinganController;
 use App\Http\Controllers\PrediksiController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GraphBeritaController;
 use App\Http\Controllers\TesController;
 use App\Http\Controllers\ListBeritaController;
 // use App\Http\Controllers\GraphBeritaController;
@@ -34,9 +35,9 @@ Route::get('/', [DashboardController::class, 'index']);
 //});
 Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/berita/list', [ListBeritaController::class, 'index']);
-// Route::get('/berita/graph', [GraphBeritaController::class, 'index']);
+Route::get('/berita/graph', [GraphBeritaController::class, 'index']);
 Route::get('/berita/statistik', [StatistikBeritaController::class, 'index']);
-Route::get('/list/{provinsi}/{kota}', [ListBeritaController::class, 'indexkota']);
+Route::get('/berita/list/{provinsi}/{kota}', [ListBeritaController::class, 'indexkota']);
 
 
 Route::get('/tugas', [TesController::class, 'index']);

@@ -175,7 +175,7 @@
               <div class="card-header ">
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
                 @if($provinsi!="")
-                    <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
+                    <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}} Kota {{$kota}}
                     </h1>
                 @else
                     <h1 style='text-align:center;'>indonesia</h1>
@@ -212,7 +212,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>
+                    <h2 class="card-title">Berita Terbaru COVID-19 di Kota {{$kota}}</h2>
                   </div>
                   <div class="col-sm-6">
                   
@@ -307,7 +307,7 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
+                    <h2 class="card-title">Berita COVID-19 di Kota {{$kota}}</h2>
                   </div>
                   <div class="col-sm-6">
                   

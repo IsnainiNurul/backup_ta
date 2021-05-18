@@ -184,7 +184,7 @@
               </div>
             </div>
              <div class="card card-header">
-              <form method='get' action=/listberita>
+              <form method='get' action=/berita/list>
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
@@ -266,7 +266,7 @@
                             <div class="row">
                           @endif
                               <div class="col-sm-3">
-                                <a href="/listberita/{{$provinsi}}/{{$k}}" class="custom-card">
+                                <a href="/berita/list/{{$provinsi}}/{{$k}}" class="custom-card">
                                 <div class="card card-header" style="height:80px;position: relative;">
                                   <div class="text-left">
                                     <h2 class="card-title text-left font-fit capitalize">{{$k}}</h2>

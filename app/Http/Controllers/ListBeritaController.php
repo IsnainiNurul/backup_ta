@@ -219,7 +219,7 @@ class ListBeritaController extends Controller
 	     }
 	     else{
 	     	$berita = $berita->orderBy('date', 'ASC');
-	     	$provinsi='';
+	     	$provinsi='Indonesia';
 	     }
 	     // if($request->label != null && $request->label != "Semua"){
 	     //    $berita = $berita->where('label','=',$request->label) ; 
