@@ -128,7 +128,10 @@
                   </strong>
                   <br>
                   <em style="font-family:Georgia, serif; font-size: 16px">
-                    Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
+                    Sistem informasi ini menampilkan visualisasi berupa perbandingan pola penambahan kasus penyebaran virus COVID-19 
+                  di suatu kabupaten dengan kabupaten tetangganya di Jawa Timur menggunakan metode Bland Altman Plot.
+                  <br>
+			Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
                     Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, 
                     Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
                   </em>
@@ -240,12 +243,12 @@
                               <tbody>
                               @for ($i = 0; $i < count($x); $i++)
                                 <tr>
-                                  <td>{{$m1[$i]}}</td>
-                                  <td>{{$m2[$i]}}</td>
-                                  <td>{{$x[$i]}}</td>
-                                  <td>{{$y[$i]}}</td>
-                                  <td>{{$y[$i]/$x[$i]}}</td>
-                                </tr>
+                                  <td>{{(int)$m1[$i]}}</td>
+                                  <td>{{(int)$m2[$i]}}</td>
+                                  <td>{{(float)(((int)$m1[$i]+(int)$m2[$i])/2)    }}</td>
+                                  <td>{{(int)$m1[$i] - (int)$m2[$i]}}</td>
+				<td> @if(( (float)(((int)$m1[$i]+(int)$m2[$i])/2) ) != 0) {{ (   (int)$m1[$i] - (int)$m2[$i]   )        / ( (float)(((int)$m1[$i]+(int)$m2[$i])/2)   )   }}@else 0 @endif </td>
+				</tr>
                               @endfor
                               
                               </tbody>
