@@ -187,7 +187,7 @@
                   
                   <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                   <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
-                  <input type='date' name='tanggal_prediksi'>
+                  <input type='date' name='tanggal_prediksi' value='{{$tanggal_prediksi}}'>
                   <input class='btn btn-sm' type='submit' value='prediksi'>
                   </form>
                  
@@ -207,7 +207,7 @@
                     <h2 class="card-title">Covid-19 Indonesia</h2>
                      <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' class='form-control' name='tanggal_prediksi' required>
+                <input type='date' class='form-control' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
                 <label>Algoritma</label>
                  <select id="modelnya" class='form-control' name='model' >
                   <option value="Support Vector Regression">Support Vector Regression </option>

@@ -367,7 +367,7 @@ class LoadController extends Controller
         $count_conf_real = count($real);
         // return count($tanggal[]);        
         
-        return view('prediksi_load_semua',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred_svr'=>count($semua_hasil[0]),'count_pred_arima'=>count($semua_hasil[1]),'count_pred_prophet'=>count($semua_hasil[2]),'prediksi_svr'=>$semua_hasil[0],'prediksi_arima'=>$semua_hasil[1],'prediksi_prophet'=>$semua_hasil[2],'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
+        return view('prediksi_load_semua',['tanggal_prediksi'=>$request->tanggal_prediksi,'count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred_svr'=>count($semua_hasil[0]),'count_pred_arima'=>count($semua_hasil[1]),'count_pred_prophet'=>count($semua_hasil[2]),'prediksi_svr'=>$semua_hasil[0],'prediksi_arima'=>$semua_hasil[1],'prediksi_prophet'=>$semua_hasil[2],'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
        
     }
 
