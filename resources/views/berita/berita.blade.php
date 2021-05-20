@@ -20,8 +20,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>
     TA History COVID
   </title>
@@ -32,12 +32,12 @@
 	<script src="/assets/moment.js"></script>
 	<script src="/assets/Chart.min.js"></script>
 	<script src="/assets/utils.js"></script>
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <link href="/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
-  {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+  {{-- <link href="/assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
 <body class="white-content">
@@ -46,7 +46,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
+              <img src="/assets/img/2.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -92,7 +92,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
+            <a class="navbar-brand" href="javascript:void(0)">   <img src="/assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -202,6 +202,8 @@
                     <option value="Papua">Papua</option>
                     <option value="Papbar">Papua Barat</option>
                   </select>
+                  
+                </div>
                 </div>
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
                   </div>
@@ -330,9 +332,9 @@
                 </div> -->
                 <div class="col-sm-6">
                   <a href="/berita/list">
-                  <div class="card card-header" style="background-color: #1d8cf8;">
-                      <div class="text-left">
-                          <h5 class="card-category text-white">Semua Berita Covid-19 di Setiap Provinsi </h5>
+                  <div class="card card-header card-blue" style="background-image: url('https://image.freepik.com/free-vector/blue-background-with-halftone-diagonal-lines_1017-30146.jpg');border-radius: 25px;">
+                      <div class="text-left" >
+                          <h5 class="card-category text-white" style="border-bottom: 2px solid white;">Semua Berita Covid-19 di Setiap Provinsi </h5>
                           <h2 class="card-title text-left text-white">Berita</h2>
                       </div>
                   </div>
@@ -341,9 +343,9 @@
                 </div>
                 <div class="col-sm-6">
                   <a href="/berita/statistik">
-                  <div class="card card-header card-blue" style="background-color: #1d8cf8;">
+                  <div class="card card-header card-blue" style="background-image: url('https://image.freepik.com/free-vector/blue-background-with-halftone-diagonal-lines_1017-30146.jpg');background-color: #1d8cf8;border-radius: 25px;">
                       <div class="text-left">
-                          <h5 class="card-category text-white">Statistik Berita COVID-19 Populer</h5>
+                          <h5 class="card-category text-white" style="border-bottom: 2px solid white;">Statistik Berita COVID-19 Populer</h5>
                           <h2 class="card-title text-left text-white">Statistik</h2>
                       </div>
                     </div>
@@ -680,19 +682,19 @@
 
 	</script>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/js/core/jquery.min.js"></script>
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

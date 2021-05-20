@@ -184,7 +184,7 @@
               </div>
             </div>
              <div class="card card-header">
-              <form method='get' action=/berita/list>
+              <form method='get' action="/berita/list/{{$provinsi}}/{{$kota}}">
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
@@ -193,10 +193,15 @@
                   
                   <input class="col-4 form-control" type="date" value="{{date('Y-m-d')}}" id="example-date-input" name="dateend">
                 </div>
-                <div class="col-3 row">
+
+                <select class="col-2" name="sorting" id="sorting">
+                    <option value="Terbaru"selected>Terbaru</option>
+                    <option value="Terlama">Terlama</option>
+                  </select>
+                  <div class="col-2">
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
-                  </div>
-              </form>
+               </div>
+              </form> 
                 
               </div>
             </div>

@@ -21,6 +21,7 @@ class ListBeritaController extends Controller
         $label= DataLabel::query();
         $city="";
         $provinsi="";
+        $sort="";
         $kota= array();
         if($request->datestart != null){
         	$berita = $berita->where('date','>=',$request->datestart);
@@ -225,7 +226,6 @@ class ListBeritaController extends Controller
 	     //    $berita = $berita->where('label','=',$request->label) ; 
 	     // }
 	     
-	     $berita = $berita->orderBy('date', 'DESC')->paginate(10);
 	     // $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
 
 	     // array_push($array_to, $label->)
@@ -266,8 +266,16 @@ class ListBeritaController extends Controller
 		 // $values = array('45', '54', '25','34','12');
 	  //    $array = ['45', '54', '25','34','12'];
 	     // $array = [{"x":"donation","y":"45"},{"x":"wiki","y":"24"},{"x":"do","y":"65"},{"x":"ok","y":"43"},{"x":"wkwk","y":"30"}];
-        
-        return view('berita.listberita',['berita'=>$berita,'label'=>$label_array,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city]);
+        if($request->sorting == "Terlama"){
+        	$berita = $berita->orderBy('date', 'ASC')->paginate(10);
+        	$sort="Terlama";
+         }
+
+         else if($request->sorting == "Terbaru"||$request->sorting == null){
+         	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
+         	$sort="Terbaru";
+         }
+        return view('berita.listberita',['berita'=>$berita,'label'=>$label_array,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
     }
  //    public function testPythonScript()
 	// {
@@ -279,7 +287,7 @@ class ListBeritaController extends Controller
     {
     	$berita = News::query();
         $label= DataLabel::query();
-        
+        $sort="";
     	if($request->datestart != null){
         	$berita = $berita->where('date','>=',$request->datestart);
         	
@@ -302,8 +310,17 @@ class ListBeritaController extends Controller
 	       	$berita = $berita->where('kota','=',"");
 	     }
 
-	    $berita = $berita->orderBy('date', 'DESC')->paginate(10);
-    	return view('berita.listberitakota',['berita'=>$berita,'kota'=>ucwords($kota),'provinsi'=>ucwords($provinsi)]);
+	    if($request->sorting == "Terlama"){
+        	$berita = $berita->orderBy('date', 'ASC')->paginate(10);
+        	$sort="Terlama";
+         }
+
+         else if($request->sorting == "Terbaru"||$request->sorting == null){
+         	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
+         	$sort="Terbaru";
+         }
+        
+    	return view('berita.listberitakota',['berita'=>$berita,'kota'=>ucwords($kota),'provinsi'=>ucwords($provinsi),'sort'=>$sort]);
 
     }
 }
