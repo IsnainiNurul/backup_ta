@@ -201,7 +201,7 @@
             </div>
           </div>
            <div class="col-3">
-            <div class="card card-chart">
+            <div class="card card-chart border-bottom-info">
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
@@ -209,20 +209,20 @@
                     <h2 class="card-title">Covid-19 Indonesia</h2>
                      <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi' required>
+                <input type='date' class='form-control' name='tanggal_prediksi' required>
                 <label>Algoritma</label>
-                 <select id="modelnya" name='model' >
-                  <option value="Support Vector Regression">Support Vector Regression </option>
+                 <select id="modelnya"  class='form-control' name='model' >
+                  <option value="Support Vector Regression">SVR </option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
                 <label>Jenis Prediksi</label><br>
-                <select id="tipe" name='tipe'>
+                <select id="tipe" name='tipe' class='form-control'>
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> <br>
                 <label>Training </label><br>  
-                <select id="training" name='training'>
+                <select id="training" name='training' class='form-control'>
                   <option value="4">4 bulan</option>
 		              <option value="7">7 bulan</option>
 		              <option value="10">10 bulan</option>
@@ -232,7 +232,7 @@
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 <br>
-                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                <input class='btn btn-sm btn-primary' type='submit' value='Prediksi'>
                 </form>
                   </div>
                   
@@ -264,7 +264,7 @@
           </div> --}}
 
            <div class="col-lg-6">
-            <div class="card card-chart">
+            <div class="card card-chart border-bottom-info">
               <div class="card-header">
                 <h5 class="card-category">Prediksi hari</h5>
               </div>
@@ -568,6 +568,9 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   <script>
     $(document).ready(function() {
       $().ready(function() {

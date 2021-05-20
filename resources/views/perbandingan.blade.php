@@ -194,6 +194,7 @@
                       <div style="width:600px">
                         <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        <canvas id="charts{{$semua->tetangga}}"></canvas>
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
                         <!-- <div class="modal fade bd-example-modal-lg" id="myModal{{$semua->tetangga}}" role="dialog"> -->
                         <div class="modal" style='position: fix;left: 50%;top: 80%;transform: translate(-50%, -80%);' id="myModal{{$semua->tetangga}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -389,8 +390,11 @@
   }
   console.log(array_loop);
 
-array_loop.forEach(myFunction);
-function myFunction(item) {
+  array_loop.forEach(myFunction);
+
+  array_loop.forEach(myFunctions);
+
+  function myFunction(item) {
   var x = data_all[item]['x'];
   x = x.replace('[','').replace(']','').split(',');
   var y = data_all[item]['y'];
@@ -498,6 +502,83 @@ var ctx = document.getElementById(name).getContext('2d');
           scaleLabel: {
             display: true,
             labelString: data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+          }
+        }],
+          }
+        }
+
+      
+    });
+}
+
+function myFunctions(item) {
+  var x = data_all[item]['m1'];
+  x = x.replace('[','').replace(']','').split(',');
+  var y = data_all[item]['m2'];
+  y = y.replace('[','').replace(']','').split(',');
+  console.log(y[0]);
+  var array_obj = [];
+  var xx = [];
+  var yy = [];
+  for (var i = 0; i < x.length; i++) {
+    
+  var obj={};
+   obj['x'] = x[i];
+   obj['y'] = y[i];
+  if(x[i] > 0 || x[i] <0){
+    
+  array_obj.push(obj);
+  
+  xx.push(parseFloat(x[i]));
+  yy.push(parseFloat(y[i]));
+  }
+}
+  console.log(array_obj);
+  console.log(Math.min.apply(Math, xx));
+  console.log(Math.max.apply(Math, xx));
+
+const data = {
+  
+  datasets: [{
+    type: 'scatter',
+    label: 'Data',
+    data: array_obj,
+    backgroundColor: 'rgb(0, 99, 132)'
+  },{label:''}]
+};
+console.log(xx);
+console.log('Min xx =='+Math.min.apply(Math, xx));
+console.log('Max xx =='+Math.max.apply(Math, xx));
+console.log('min==='+data_all[item]['min']);
+console.log('max==='+data_all[item]['max']);
+console.log('mean==='+data_all[item]['mean']);
+
+
+var name = 'charts'+data_all[item]['tetangga'];
+
+var ctx = document.getElementById(name).getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 500;
+    
+		var chart = new Chart(ctx, {
+      type: 'scatter',
+        data: data,
+        plugins:plugins,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }, 
+          yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: data_all[item]['kabupaten']
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: data_all[item]['tetangga']
           }
         }],
           }
