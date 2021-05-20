@@ -134,17 +134,17 @@ canvas{
               </div>
             </div>
           </div>
-          <div class="col-lg-4 border-left-info" >
-            <div class="card card-chart">
+          <div class="col-lg-4 " >
+            <div class="card card-chart border-left-info">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
-                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,0,'','.')}} Jiwa </h3>
+                <h3 class="card-title"></i> {{ number_format($prediksi[$count_pred-1]->y,0,'','.')}} Jiwa  <i class="fa fa-users fa-2x text-info"></i> </h3>
               </div>
               
             </div>
           </div>
-          <div class="col-lg-4 border-left-success">
-            <div class="card card-chart">
+          <div class="col-lg-4 ">
+            <div class="card card-chart border-left-success">
               <div class="card-header">
 
                 <h5 class="card-category"> Akurasi </h5>
@@ -196,7 +196,7 @@ canvas{
                 <input type='date' class='form-control' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
                 <label>Algoritma</label>
                  <select id="modelnya" name='model' class='form-control' >
-                  <option value="Support Vector Regression">Support Vector Regression </option>
+                  <option value="Support Vector Regression">SVR </option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
