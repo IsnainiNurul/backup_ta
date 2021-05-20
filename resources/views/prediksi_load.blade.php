@@ -149,7 +149,7 @@ canvas{
               <div class="card-header">
 
                 <h5 class="card-category"> Akurasi </h5>
-                <h2 class="card-title"></i> <strong> R2</strong></h2> <h3>{{$r2}} <i class="fa fa-crosshairs" style="font-size:20px;color:#42B539"></i></h3>
+                <h2 class="card-title"></i> <strong> R2</strong></h2> <h3>{{sprintf("%.3f",$r2)}} <i class="fa fa-crosshairs" style="font-size:20px;color:#42B539"></i></h3>
               </div>
               
             </div>
