@@ -34,6 +34,9 @@
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
@@ -131,7 +134,7 @@ canvas{
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 border-left-info" >
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category">Prediksi Menggunakan Algoritma <strong> <h2>{{$metode}} </h3></strong></h5>
@@ -140,12 +143,12 @@ canvas{
               
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 border-left-success">
             <div class="card card-chart">
               <div class="card-header">
 
                 <h5 class="card-category"> Akurasi </h5>
-                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{number_format($r2,3) * 100}} %</h1>
+                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{$r2}} </h1>
               </div>
               
             </div>
@@ -182,7 +185,7 @@ canvas{
           </div>
 
           <div class="col-3">
-            <div class="card card-chart">
+            <div class="card card-chart  border-bottom-info">
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
@@ -190,20 +193,20 @@ canvas{
                     <h2 class="card-title">Covid-19 Indonesia</h2>
                      <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
+                <input type='date' class='form-control' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
                 <label>Algoritma</label>
-                 <select id="modelnya" name='model' >
+                 <select id="modelnya" name='model' class='form-control' >
                   <option value="Support Vector Regression">Support Vector Regression </option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
                 <label>Jenis Prediksi</label><br>
-                <select id="tipe" name='tipe'>
+                <select id="tipe" class='form-control' name='tipe'>
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> <br>
                 <label>Training </label><br>  
-                <select id="training" name='training'>
+                <select id="training" class='form-control' name='training'>
                   <option value="{{$training}}">{{$training}} bulan</option>
                   <option value="4">4 bulan</option>
 		              <option value="7">7 bulan</option>
@@ -214,7 +217,7 @@ canvas{
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 <br>
-                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                <input class='btn btn-sm btn-primary' type='submit' value='Prediksi'>
                 </form>
                   </div>
                   <div class="col-sm-6">
@@ -262,12 +265,12 @@ canvas{
           </div> --}}
 
            <div class="col-lg-6">
-            <div class="card card-chart">
+            <div class="card card-chart  border-bottom-info">
               <div class="card-header">
                 <h5 class="card-category">Prediksi hari</h5>
               </div>
 
-              <div class="card-body">
+              <div class="card-body ">
               <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan {{$metode}}
               </label>
               </div>
