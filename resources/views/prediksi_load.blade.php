@@ -27,6 +27,7 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Nucleo Icons -->
 	<script src="/assets/moment.js"></script>
 	<script src="/assets/Chart.min.js"></script>
@@ -148,7 +149,7 @@ canvas{
               <div class="card-header">
 
                 <h5 class="card-category"> Akurasi </h5>
-                <h2 class="card-title"></i> <strong> R2</strong></h2> <h1>{{$r2}} </h1>
+                <h2 class="card-title"></i> <strong> R2</strong></h2> <h3>{{$r2}} <i class="fa fa-crosshairs" style="font-size:48px;color:green"></i></h3>
               </div>
               
             </div>
