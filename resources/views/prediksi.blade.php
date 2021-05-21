@@ -180,9 +180,15 @@
                 <div style="width:1000px">
                     <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
                     <canvas id="chart1"></canvas>
-                  </div><div style="width:1000px">
+                  </div>
+                  <div style="width:1000px">
                     <p>Berikut Merupakan Data Keterangan Corona Virus Di Indonesia Ketika Pra Vaksinasi Dan Saat Vaksinasi <div id='percobaan'></div></a></p>
                     <canvas id="chart2"></canvas>
+                  </div>
+
+                  <div style="width:1000px">
+                    <p>Berikut Merupakan Data Keterangan Corona Virus Di Indonesia Ketika PSBB Jawa dan Bali <div id='percobaan'></div></a></p>
+                    <canvas id="chart3"></canvas>
                   </div>
                   <br>
                   <br>
@@ -473,6 +479,19 @@
 					lineTension: 0,
 					borderWidth: 2
 				}
+
+        var s5={
+					label: 'Vaksin ' + {!! json_encode($psbb[count($psbb)-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.blue,
+					data: {!! json_encode($psbb) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
         
         //{
 				//	label: 'Total Kasus',
@@ -577,6 +596,90 @@
 		ctx.canvas.height = 300;
     
   var array_value = [s3,s4];
+  	var cfg = {
+			data: {
+				datasets: array_value
+			},
+			options: {
+				animation: {
+					duration: 0
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						offset: true,
+						ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 100
+						},
+						afterBuildTicks: function(scale, ticks) {
+							var majorUnit = scale._majorUnit;
+							var firstTick = ticks[0];
+							var i, ilen, val, tick, currMajor, lastMajor;
+
+							val = moment(ticks[0].value);
+							if ((majorUnit === 'minute' && val.second() === 0)
+									|| (majorUnit === 'hour' && val.minute() === 0)
+									|| (majorUnit === 'day' && val.hour() === 9)
+									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+									|| (majorUnit === 'year' && val.month() === 0)) {
+								firstTick.major = true;
+							} else {
+								firstTick.major = false;
+							}
+							lastMajor = val.get(majorUnit);
+
+							for (i = 1, ilen = ticks.length; i < ilen; i++) {
+								tick = ticks[i];
+								val = moment(tick.value);
+								currMajor = val.get(majorUnit);
+								tick.major = currMajor !== lastMajor;
+								lastMajor = currMajor;
+							}
+							return ticks;
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							drawBorder: false
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Jumlah Terinfeksi'
+						}
+					}]
+				},
+				tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += parseFloat(tooltipItem.value).toFixed(2);
+							return label;
+						}
+					}
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+
+    var ctx = document.getElementById('chart3').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+    
+  var array_value = [s5,s2];
   	var cfg = {
 			data: {
 				datasets: array_value

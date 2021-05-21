@@ -62,10 +62,13 @@ class PrediksiController extends Controller
         $pra_vaksin = All_case::select('id','x','y')->where('keterangan','=','Pra Vaksinasi')->get();
         $vaksin = All_case::select('id','x','y')->where('keterangan','=','Vaksinasi')->get();
 
+        $psbb = All_case::select('id','x','y')->where('keterangan2','=','PSBB')->get();
+
         if ($request->tipe == 'harian'){
           $all = to_daily($all);
           $pra_vaksin = to_daily($pra_vaksin);
           $vaksin = to_daily($vaksin);
+          $psbb = to_daily($psbb);
 
        }
 
@@ -75,6 +78,6 @@ class PrediksiController extends Controller
       //  return $real;
       //  return $all_case;
       //  return $konfirmasi;
-       return view('prediksi',['all'=>$all,'pra_vaksin'=>$pra_vaksin,'vaksin'=>$vaksin,'konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf,'real'=>$real,'count_real'=>$count_conf_real,'tipe'=>$request->tipe]);
+       return view('prediksi',['psbb'=>$psbb,'all'=>$all,'pra_vaksin'=>$pra_vaksin,'vaksin'=>$vaksin,'konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf,'real'=>$real,'count_real'=>$count_conf_real,'tipe'=>$request->tipe]);
     }
 }
