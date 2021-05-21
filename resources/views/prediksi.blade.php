@@ -483,7 +483,7 @@
         var s5={
 					label: 'Vaksin ' + {!! json_encode($psbb[count($psbb)-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.blue,
+					borderColor: window.chartColors.green,
 					data: {!! json_encode($psbb) !!},
 					//data: generateData()
 					type: 'line',
