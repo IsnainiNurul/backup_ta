@@ -483,7 +483,7 @@
         var s5={
 					label: 'Masa PSBB JAWA-BALI ',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
+					borderColor: window.chartColors.yellow,
 					data: {!! json_encode($psbb) !!},
 					//data: generateData()
 					type: 'line',
