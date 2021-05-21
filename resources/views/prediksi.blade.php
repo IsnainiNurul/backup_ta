@@ -444,7 +444,7 @@
 					borderWidth: 2
 				}
        var s2={
-					label: 'Konfirmasi Kasus ' + {!! json_encode($all[count($all)-1]->y) !!} +' Jiwa',
+					label: 'Konfirmasi Kasus Terakhir ' + {!! json_encode($all[count($all)-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.blue,
 					data: {!! json_encode($all) !!},
