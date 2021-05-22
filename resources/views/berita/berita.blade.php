@@ -299,7 +299,9 @@
                             @else
                                 <div class="col-sm-auto text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
-                                <div class="col-sm-auto news-tribun news-portal">{{$b->label}}</div>
+
+                            
+                                <div class="col-sm-auto text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
                           </div>
                             <div class="row">
                             <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
