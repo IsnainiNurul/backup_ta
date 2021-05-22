@@ -204,9 +204,9 @@
                   </select>
                   
                 </div>
-                </div>
+                
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
-                  </div>
+                
               </form>
                 
               </div>
@@ -293,11 +293,13 @@
                           </div>
                           
                           <div class="col-sm-8">
+                            <div class="row">
                             @if($b->news_portal=='kompas')
                                 <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
                             @else
                                 <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
+                          </div>
                             <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
 
                           </div>
