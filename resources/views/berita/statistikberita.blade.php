@@ -426,7 +426,7 @@
   });
 
   ctx.onclick = function(e) {
-   var ctx  = barChart.getElementAtEvent(e);
+   var slice  = barChart.getElementAtEvent(e);
    if (!slice.length) return; // return if not clicked on slice
    var label = slice[0]._model.label;
    switch (label) {
