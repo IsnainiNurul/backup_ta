@@ -404,7 +404,7 @@
     }]
   };
 
-  canvasP.onclick = function(e) {
+  ctx.onclick = function(e) {
    var ctx  = myPieChart.getElementAtEvent(e);
    if (!slice.length) return; // return if not clicked on slice
    var label = slice[0]._model.label;
