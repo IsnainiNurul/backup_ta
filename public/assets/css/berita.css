@@ -10,6 +10,15 @@
 	color: #2d6da4;
  }
 
+.text-fit{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.text-fit p{ 
+ 
+  font-size: 10px;
+ }
+
 .div-gambar-utama{
 	left: 15px;
 	position: relative;
@@ -26,7 +35,7 @@
 	position: relative;
 }
 
-.news-title a{
+.news-title a {
 	text-decoration: none;
 	font-weight: bold;
 	color: black;
