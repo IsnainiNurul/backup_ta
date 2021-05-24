@@ -404,23 +404,6 @@
     }]
   };
 
-  ctx.onclick = function(e) {
-   var ctx  = myPieChart.getElementAtEvent(e);
-   if (!slice.length) return; // return if not clicked on slice
-   var label = slice[0]._model.label;
-   switch (label) {
-      // add case for each label/slice
-      case 'Notification':
-         alert('Notification');
-         window.open("{{URL::to('berita/list/?label=notification of information')}}");
-         break;
-      case 'Värde 6':
-         alert('clicked on slice 6');
-         window.open('www.example.com/bar');
-         break;
-      // add rests ...
-   }
-  }
   
   // </block:setup>
 
@@ -441,6 +424,24 @@
       }
     },
   });
+
+  ctx.onclick = function(e) {
+   var ctx  = barChart.getElementAtEvent(e);
+   if (!slice.length) return; // return if not clicked on slice
+   var label = slice[0]._model.label;
+   switch (label) {
+      // add case for each label/slice
+      case 'Notification':
+         alert('Notification');
+         window.open("{{URL::to('berita/list/?label=notification of information')}}");
+         break;
+      case 'Värde 6':
+         alert('clicked on slice 6');
+         window.open('www.example.com/bar');
+         break;
+      // add rests ...
+   }
+  }
   // </block:config>
 
 
