@@ -432,12 +432,19 @@
    switch (label) {
       // add case for each label/slice
       case 'Notification':
-         alert('Notification');
          window.open("{{URL::to('berita/list/?label=notification of information')}}");
          break;
-      case 'Värde 6':
-         alert('clicked on slice 6');
-         window.open('www.example.com/bar');
+      case 'Donation':
+         window.open("{{URL::to('berita/list/?label=donation')}}");
+         break;
+      case 'Criticisms':
+         window.open("{{URL::to('berita/list/?label=criticisms')}}");
+         break;
+      case 'Hoax':
+         window.open("{{URL::to('berita/list/?label=hoax')}}");
+         break;
+      case 'Other':
+         window.open("{{URL::to('berita/list/?label=other')}}");
          break;
       // add rests ...
    }
