@@ -325,7 +325,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                   
-                                    <div class="col-sm-11 div-gambar-utama">
+                                    <div class="col-sm-12 div-gambar-utama">
                                         <a href="{{$b->url}}">
                                           <img src="{{$b->img_url}}" class="news-gambar">
                                         </a>
@@ -339,6 +339,37 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
+
                                       <div class="col-sm-12 text-justify news-title"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
                                       <div class="col-sm-12 text-justify news-title"><span style="font-size: 10px" href="{{$b->url}}">{{substr($b->content, 1, 200)}}</span></div>
                            
@@ -361,6 +392,36 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>
@@ -434,6 +495,36 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>
@@ -454,6 +545,36 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>

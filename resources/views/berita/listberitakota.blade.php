@@ -250,10 +250,20 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="row col-sm-12">
+                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                        @if($b->label=='notification of information')
+                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                        @else
+                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                        @endif
+                                        </a>
+                                      </div>
                                       <div class="col-sm-12 text-justify news-title"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
                                       <div class="col-sm-12 text-justify news-title"><span style="font-size: 10px" href="{{$b->url}}">{{substr($b->content, 1, 200)}}</span></div>
                            
                                   </div>
+
                                   </div>
                                   <div class="col-sm-6">
                             @elseif($counter>0 && $counter<=3)
@@ -272,6 +282,17 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
+
+                                      <div class="row col-sm-12">
+                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                        @if($b->label=='notification of information')
+                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                        @else
+                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                        @endif
+                                        </a>
+                                      </div>
+
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>
@@ -345,6 +366,16 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
+
+                                      <div class="row col-sm-12">
+                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                        @if($b->label=='notification of information')
+                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                        @else
+                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                        @endif
+                                        </a>
+                                      </div>
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>
@@ -365,6 +396,17 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
+
+                                      <div class="row col-sm-12">
+                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                        @if($b->label=='notification of information')
+                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                        @else
+                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                        @endif
+                                        </a>
+                                      </div>
+                                      
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
                                   </div>
                                   </div>

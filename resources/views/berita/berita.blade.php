@@ -295,17 +295,36 @@
                           <div class="col-sm-8">
                             <div class="row">
                             @if($b->news_portal=='kompas')
-                                <div class="col-sm-auto text-justify news-kompas news-portal">{{$b->news_portal}}</div>
+                                <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
                             @else
-                                <div class="col-sm-auto text-justify news-tribun news-portal">{{$b->news_portal}}</div>
+                                <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
 
                             
-                                <div class="col-sm-auto text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
                           </div>
+                            <div class="row col-sm-12">
+                              <a href="/berita/list/?label={{$b->label}}">
+                                @if($b->label=='notification of information')
+                                <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                @else
+                                <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                @endif
+                              </a>
+                              @php
+                                $list_provinsi=explode(", ",$b->area);
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              <a href="berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                               @endforeach
+                            </div>
+                          
+
                             <div class="row">
                             <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
-                            </div>s
+                            </div>
                           </div>
 
                       </div>
