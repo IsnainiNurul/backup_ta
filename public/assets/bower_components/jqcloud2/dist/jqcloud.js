@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*!
  * jQCloud 2.0.3
  * Copyright 2011 Luca Ongaro (http://www.lucaongaro.eu)
@@ -5,6 +6,15 @@
  * Copyright 2014-2017 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
+=======
+/*!
+ * jQCloud 2.0.3
+ * Copyright 2011 Luca Ongaro (http://www.lucaongaro.eu)
+ * Copyright 2013 Daniel White (http://www.developerdan.com)
+ * Copyright 2014-2017 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+>>>>>>> d442456624099136835a61b2ed7e137bb2bac123
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
