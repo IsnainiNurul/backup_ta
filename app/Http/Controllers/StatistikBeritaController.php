@@ -217,6 +217,13 @@ class StatistikBeritaController extends Controller
          $word_array_criticisms= explode(" ",$process4);
          $word_array_hoax= explode(" ",$process5);
 
+
+         $word_array_all[count($word_array_all)-1]=str_replace("\n","",end($word_array_all));
+         $word_array_information[count($word_array_information)-1]=str_replace("\n","",end($word_array_information));
+         $word_array_donation[count($word_array_donation)-1]=str_replace("\n","",end($word_array_donation));
+         $word_array_criticisms[count($word_array_criticisms)-1]=str_replace("\n","",end($word_array_criticisms));
+         $word_array_hoax[count($word_array_hoax)-1]=str_replace("\n","",end($word_array_hoax));
+
          $wordcloud_all=array();
          $wordcloud_information=array();
          $wordcloud_donation=array();
