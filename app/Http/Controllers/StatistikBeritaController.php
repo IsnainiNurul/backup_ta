@@ -205,11 +205,11 @@ class StatistikBeritaController extends Controller
                   
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
-         $process1 = shell_exec("python word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
-         $process2 = shell_exec("python word_frequency_information.py ".$temp1." ".$temp2." ".$provinsi);  
-         $process3 = shell_exec("python word_frequency_donation.py ".$temp1." ".$temp2." ".$provinsi);
-         $process4 = shell_exec("python word_frequency_criticisms.py ".$temp1." ".$temp2." ".$provinsi);  
-         $process5 = shell_exec("python word_frequency_hoax.py ".$temp1." ".$temp2." ".$provinsi); 
+         $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
+         $process2 = shell_exec("python3 word_frequency_information.py ".$temp1." ".$temp2." ".$provinsi);  
+         $process3 = shell_exec("python3 word_frequency_donation.py ".$temp1." ".$temp2." ".$provinsi);
+         $process4 = shell_exec("python3 word_frequency_criticisms.py ".$temp1." ".$temp2." ".$provinsi);  
+         $process5 = shell_exec("python3 word_frequency_hoax.py ".$temp1." ".$temp2." ".$provinsi); 
          
          $word_array_all= explode(" ",$process1);
          $word_array_information= explode(" ",$process2);
@@ -250,7 +250,7 @@ class StatistikBeritaController extends Controller
          if($provinsi=="semua"){
           $provinsi="Indonesia";
          }
-         
+         return $wordcloud_all;
          return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'wordcloud_all'=>$wordcloud_all,'wordcloud_information'=>$wordcloud_information,'wordcloud_donation'=>$wordcloud_donation,'wordcloud_criticisms'=>$wordcloud_criticisms,'wordcloud_hoax'=>$wordcloud_hoax]);
     }
 }
