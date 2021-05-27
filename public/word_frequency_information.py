@@ -1,7 +1,6 @@
 # Python program to generate WordCloud
   
 # importing all necessery modules
-from wordcloud import WordCloud,ImageColorGenerator
 import nltk
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt

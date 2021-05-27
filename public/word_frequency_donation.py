@@ -1,7 +1,6 @@
 # Python program to generate WordCloud
   
 # importing all necessery modules
-from wordcloud import WordCloud,ImageColorGenerator
 import nltk
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt
@@ -14,9 +13,9 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
-  password="",
-  database="tugasakhir"
+  user="pmauser",
+  password="password_here",
+  database="tacovid"
 )
 
 mycursor = mydb.cursor()
