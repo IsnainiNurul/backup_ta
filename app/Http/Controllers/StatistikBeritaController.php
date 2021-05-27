@@ -205,30 +205,52 @@ class StatistikBeritaController extends Controller
                   
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
+         $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
+         $process2 = shell_exec("python3 word_frequency_information.py ".$temp1." ".$temp2." ".$provinsi);  
+         $process3 = shell_exec("python3 word_frequency_donation.py ".$temp1." ".$temp2." ".$provinsi);
+         $process4 = shell_exec("python3 word_frequency_criticisms.py ".$temp1." ".$temp2." ".$provinsi);  
+         $process5 = shell_exec("python3 word_frequency_hoax.py ".$temp1." ".$temp2." ".$provinsi); 
+         
+         $word_array_all= explode(" ",$process1);
+         $word_array_information= explode(" ",$process2);
+         $word_array_donation= explode(" ",$process3);
+         $word_array_criticisms= explode(" ",$process4);
+         $word_array_hoax= explode(" ",$process5);
 
-         $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
-        // $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
+         $wordcloud_all=array();
+         $wordcloud_information=array();
+         $wordcloud_donation=array();
+         $wordcloud_criticisms=array();
+         $wordcloud_hoax=array();
 
-         $tes=explode("]",$process);
+         for ($x = 0; $x < 200; $x+=2) {
+            $wordcloud_all[] = array('text' => $word_array_all[$x], 'weight' => $word_array_all[$x+1]);
+            $wordcloud_information[] = array('text' => $word_array_information[$x], 'weight' => $word_array_information[$x+1]);
+            $wordcloud_donation[] = array('text' => $word_array_donation[$x], 'weight' => $word_array_donation[$x+1]);
+            $wordcloud_criticisms[] = array('text' => $word_array_criticisms[$x], 'weight' => $word_array_criticisms[$x+1]);
+            $wordcloud_hoax[] = array('text' => $word_array_hoax[$x], 'weight' => $word_array_hoax[$x+1]);
+         } 
+        //  $process = "['wkwkk, wkwk']";
+        // // $process = shell_exec("python label_windows.py ".$temp1." ".$temp2." ".$provinsi); 
 
-         $tes[0]=substr($tes[0],1);
-         $tes[1]=substr($tes[1],2);
-         $tes[2]=substr($tes[2],2);
-         $tes[3]=substr($tes[3],2,-1);
+        //  $tes=explode("]",$process);
+
+        //  $tes[0]=substr($tes[0],1);
+        //  $tes[1]=substr($tes[1],2);
+        //  $tes[2]=substr($tes[2],2);
+        //  $tes[3]=substr($tes[3],2,-1);
         
-         $tes[0]=str_replace("'","",$tes[0]);
-         $tes[1]=str_replace("'","",$tes[1]);
-         $tes[2]=str_replace("'","",$tes[2]);
-         $tes[3]=str_replace("'","",$tes[3]);
-         $criticisms_key=explode(", ",$tes[0]);
-         $donation_key=explode(", ",$tes[1]);
-         $hoax_key=explode(", ",$tes[2]);
-         $nof_key=explode(", ",$tes[3]);
+        //  $tes[0]=str_replace("'","",$tes[0]);
+        //  $tes[1]=str_replace("'","",$tes[1]);
+        //  $tes[2]=str_replace("'","",$tes[2]);
+        //  $tes[3]=str_replace("'","",$tes[3]);
+         
 
          if($provinsi=="semua"){
           $provinsi="Indonesia";
          }
-        
-         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'criticisms_key'=>$criticisms_key,'donation_key'=>$donation_key,'hoax_key'=>$hoax_key,'nof_key'=>$nof_key]);
+         print(-)
+         
+         return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'wordcloud_all'=>$wordcloud_all,'wordcloud_information'=>$wordcloud_information,'wordcloud_donation'=>$wordcloud_donation,'wordcloud_criticisms'=>$wordcloud_criticisms,'wordcloud_hoax'=>$wordcloud_hoax]);
     }
 }

@@ -253,13 +253,19 @@
                                       <div class="row col-sm-12">
                                         <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                         @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                        @elseif($b->label=='donation')
+                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                        @elseif($b->label=='criticisms')
+                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                        @elseif($b->label=='Hoax')
+                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                         @endif
                                         </a>
                                       </div>
-                                      <div class="col-sm-12 text-justify news-title"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title" target="_blank"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
                                       <div class="col-sm-12 text-justify news-title"><span style="font-size: 10px" href="{{$b->url}}">{{substr($b->content, 1, 200)}}</span></div>
                            
                                   </div>
@@ -293,7 +299,7 @@
                                         </a>
                                       </div>
 
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                       </div>
@@ -376,7 +382,7 @@
                                         @endif
                                         </a>
                                       </div>
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>
@@ -406,8 +412,8 @@
                                         @endif
                                         </a>
                                       </div>
-                                      
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>

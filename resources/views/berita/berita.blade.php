@@ -206,10 +206,11 @@
                 </div>
                 
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
-                
+                </div>
               </form>
                 
-              </div>
+              
+            </div>
             <div class="card-chart">
               <div class="row">
                 <div class="col-sm-4">
@@ -305,16 +306,22 @@
                             <div class="row col-sm-12">
                               <a href="/berita/list/?label={{$b->label}}">
                                 @if($b->label=='notification of information')
-                                <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                  <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                @elseif($b->label=='donation')
+                                  <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                @elseif($b->label=='criticisms')
+                                  <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                @elseif($b->label=='Hoax')
+                                  <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                 @else
-                                <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                  <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                 @endif
                               </a>
                               @php
                                 $list_provinsi=explode(", ",$b->area);
                               @endphp
                               @foreach($list_provinsi as $l)
-                              <a href="berita/list/?provinsi={{$l}}">
+                              <a href="/berita/list/?provinsi={{$l}}">
                                 <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
                                 </div>
                               </a>
@@ -323,7 +330,7 @@
                           
 
                             <div class="row">
-                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                            <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                             </div>
                           </div>
 

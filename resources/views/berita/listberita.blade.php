@@ -263,6 +263,7 @@
                           @php 
                             $counter=0;
                             $numItems = count($kota);
+                            $counter_jumlah=0
                         @endphp
                           @foreach ($kota as $k)
                           @if($counter==0)
@@ -275,9 +276,21 @@
                           @endif
                               <div class="col-sm-3">
                                 <a href="/berita/list/{{$provinsi}}/{{$k}}" class="custom-card">
-                                <div class="card card-header" style="height:80px;position: relative;background-image: url('https://image.freepik.com/free-vector/blue-background-with-halftone-diagonal-lines_1017-30146.jpg');border-radius: 25px;">
+
+                                @if($jumlah_berita_kota[$counter_jumlah]>150)
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://media.istockphoto.com/vectors/abstract-blue-striped-retro-comic-background-with-halftone-corners-vector-id1061877976?b=1&k=6&m=1061877976&s=612x612&w=0&h=V-M8b5WndhjMvg8VPHemoM2ftaHI_O4SMPPz7uT1EaM=');border-radius: 25px;">
+                                @elseif($jumlah_berita_kota[$counter_jumlah]>50)
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://image.freepik.com/free-vector/blue-comic-background-with-lines-halftone_1017-11432.jpg');border-radius: 25px;">
+                                @else
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://static.vecteezy.com/system/resources/previews/002/196/582/original/blue-comic-halftone-background-free-vector.jpg');border-radius: 25px;">
+                                @endif
                                   <div class="text-left">
                                     <h3 class="card-title text-left font-fit text-white capitalize">{{$k}}</h3>
+                                  </div>
+                                  <div class="bottom-right">
+                                    <div class="text-right">
+                                      <h5 class="card-title text-left font-fit text-white capitalize">{{$jumlah_berita_kota[$counter_jumlah]}}</h5>
+                                    </div>
                                   </div>
                                 </div>
                               </a>
@@ -288,6 +301,7 @@
                         @endif
                         @php
                             $counter++;
+                            $counter_jumlah++;
                         @endphp
                         @endforeach
                           </div>
@@ -344,9 +358,15 @@
                                          
                                           <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                           @if($b->label=='notification of information')
-                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                           @else
-                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                           @endif
                                           </a>
                                     
@@ -422,7 +442,7 @@
                                         @endif
                                         </div>
                                       </div>
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                       </div>
@@ -525,7 +545,7 @@
                                         @endif
                                         </div>
                                       </div>
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>
@@ -575,7 +595,7 @@
                                         @endif
                                         </div>
                                       </div>
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>
@@ -693,64 +713,7 @@
       </ul>
     </div>
   </div>
-
-  <script>
-    console.log("tes");
-  console.log( {!! json_encode($label) !!});
-  var ctx = document.getElementById('chart2');
-
-  // <block:setup:1>
-  const data = {
-    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
-    datasets: [{
-      data: {!! json_encode($label) !!},
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ],
-      borderWidth: 1
-    }]
-  };
   
-  // </block:setup>
-
-  // <block:config:0>
-  var barChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-      legend: {
-        display: false
-    },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-    },
-  });
-  // </block:config>
-
-
-
-  </script>
-  
-
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
   <!--   Core JS Files   -->

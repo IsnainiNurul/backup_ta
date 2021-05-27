@@ -25,31 +25,21 @@ class ListBeritaController extends Controller
         $kota= array();
         if($request->datestart != null){
         	$berita = $berita->where('date','>=',$request->datestart);
-        	
+        	$temp1 = $request->datestart;
          }
          else{
          	$berita = $berita->where('date','>=','2020-03-18');
+         	$temp1 = '2020-03-18';
          }
          if($request->dateend != null){
         	$berita = $berita->where('date','<=',$request->dateend);
-        	
+        	$temp2 = $request->dateend;
          }
          else{
          	$berita = $berita->where('date','<=',date('Y-m-d'));
+         	$temp2 = date('Y-m-d');
          }
 
-          if($request->datestart2 != null){
-        	$label = $label->where('date','>=',$request->datestart);
-         }
-         else{
-         	$label = $label->where('date','>=','2020-03-18');
-         }
-         if($request->dateend2 != null){
-        	$label = $label->where('date','<=',$request->dateend);
-         }
-         else{
-         	$label = $label->where('date','<=',date('Y-m-d'));
-         }
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
@@ -72,7 +62,7 @@ class ListBeritaController extends Controller
 	       		$provinsi= 'di_yogyakarta';
 	       		$kota=array("bantul","gunung kidul","kulon progo","sleman","yogyakarta");
 	       }
-	       else if($request->area=="Jakarta" || $request->provinsi=="jakarta"){
+	       else if($request->area=="Jakarta" || $request->provinsi=="dki jakarta"){
 	       		$provinsi= 'dki jakarta';
 	       		$kota=array("jakarta utara","jakarta barat","jakarta pusat","jakarta selatan","jakarta timur");
 
@@ -217,58 +207,19 @@ class ListBeritaController extends Controller
 	     if($request->label != null && $request->label != "Semua"){
 	     	$berita = $berita->where('label','=',$request->label) ; 
 	     }
+
 	     
-
-	     // $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
-
-	     // array_push($array_to, $label->)
-
-	   
-	     $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
-	     $donation = $label->select(DB::raw('SUM(donation) as Donation'))->get();
-	     $criticisms = $label->select(DB::raw('SUM(criticisms) as Criticisms'))->get();
-	     $hoax = $label->select(DB::raw('SUM(hoax) as Hoax'))->get();
-	     $other = $label->select(DB::raw('SUM(other) as Other'))->get();
-
-	     $nof=substr($nof,2, -2);
-	     $donation=substr($donation,2, -2);
-	     $criticisms=substr($criticisms,2, -2);
-	     $hoax=substr($hoax,2, -2);
-	     $other=substr($other,2, -2);
-
-
-	     $nof=explode(":",$nof);
-	     $donation=explode(":",$donation);
-	     $criticisms=explode(":",$criticisms);
-	     $hoax=explode(":",$hoax);
-	     $other=explode(":",$other);
-	     //print($berita);
-	     $nof=substr($nof[1],1,-1);
-	   	 $donation=substr($donation[1],1, -1);
-	     $criticisms=substr($criticisms[1],1, -1);
-	     $hoax=substr($hoax[1],1, -1);
-	     $other=substr($other[1],1, -1);
-	   
-	  	 $label_array=[$nof,$donation,$criticisms,$hoax,$other];
-
+	     
 	  	 sort($kota);
-	  // 	 $kota_count_array=array();
-	  	 
-	  // 	 foreach ($kota as $k){
-	  // 	 	$temp =  $berita2->where("kota","=",$k)->count();
-	  // 	 	print_r($temp);
-			// $kota_count_array[] = [$temp];
+	  	 $jumlah_berita_kota=array();
+	  	 if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
+	     	foreach($kota as $k){
+	     		$jumlah_berita_kota[]= News::query()->where('date','>=',$temp1)->where('date','<=',$temp2)->where('kota','=',$k)->count();	
+	     	}
+	     }
 
-	  // 	 }
-	  // 	 return $kota_count_array;
-        //print($data);
-	  //    $label=substr($label,2, -2);
-	  //    $label_array=array();
-	  //    $label_array[]=$label;
-	  //    $keys = array('y', 'y', 'y','y','y');
-		 // $values = array('45', '54', '25','34','12');
-	  //    $array = ['45', '54', '25','34','12'];
-	     // $array = [{"x":"donation","y":"45"},{"x":"wiki","y":"24"},{"x":"do","y":"65"},{"x":"ok","y":"43"},{"x":"wkwk","y":"30"}];
+
+
         if($request->sorting == "Terlama"){
         	$berita = $berita->orderBy('date', 'ASC')->paginate(10);
         	$sort="Terlama";
@@ -278,13 +229,9 @@ class ListBeritaController extends Controller
          	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
          	$sort="Terbaru";
          }
-        return view('berita.listberita',['berita'=>$berita,'label'=>$label_array,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
+        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
     }
- //    public function testPythonScript()
-	// {
- //    	$process = shell_exec("python3 justtest.py 'test'");
- //    	return $process;
-	// }
+
 
 	public function indexkota($provinsi,$kota,Request $request)
     {

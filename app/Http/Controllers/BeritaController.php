@@ -271,7 +271,8 @@ class BeritaController extends Controller
 	  	if($totalkasus<0){$totalkasus=0;}
 	  	if($totalmeninggal<0){$totalmeninggal=0;}
 	  	if($totalsembuh<0){$totalsembuh=0;}
-	  
+
+
     	return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
    	}
 }
