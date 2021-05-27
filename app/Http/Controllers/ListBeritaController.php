@@ -217,6 +217,7 @@ class ListBeritaController extends Controller
 	     		$jumlah_berita_kota[]= News::query()->where('date','>=',$temp1)->where('date','<=',$temp2)->where('kota','=',$k)->count();	
 	     	}
 	     }
+	     
 
 
 
