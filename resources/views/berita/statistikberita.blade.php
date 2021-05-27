@@ -642,7 +642,8 @@
     var words_criticisms = {!! json_encode($wordcloud_criticisms) !!};
     var words_hoax = {!! json_encode($wordcloud_hoax) !!};
 $('#wordcloud-all').jQCloud(words_all, {
-  autoResize: true
+  width: 1000,
+  height: 300
 });
 $('#wordcloud-information').jQCloud(words_information, {
   autoResize: true
