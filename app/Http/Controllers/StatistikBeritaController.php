@@ -206,6 +206,7 @@ class StatistikBeritaController extends Controller
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
          $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
+         return $temp1;
          $process2 = shell_exec("python3 word_frequency_information.py ".$temp1." ".$temp2." ".$provinsi);  
          $process3 = shell_exec("python3 word_frequency_donation.py ".$temp1." ".$temp2." ".$provinsi);
          $process4 = shell_exec("python3 word_frequency_criticisms.py ".$temp1." ".$temp2." ".$provinsi);  
@@ -223,7 +224,7 @@ class StatistikBeritaController extends Controller
          $wordcloud_criticisms=array();
          $wordcloud_hoax=array();
 
-         return $process1;
+         
          for ($x = 0; $x < 200; $x+=2) {
             $wordcloud_all[] = array('text' => $word_array_all[$x], 'weight' => $word_array_all[$x+1]);
             $wordcloud_information[] = array('text' => $word_array_information[$x], 'weight' => $word_array_information[$x+1]);

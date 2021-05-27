@@ -1,12 +1,14 @@
 # Python program to generate WordCloud
-  
+print(1)
 # importing all necessery modules
 from wordcloud import WordCloud,ImageColorGenerator
 import nltk
 from nltk.corpus import stopwords
+print(5)
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+print(7)
 import matplotlib.pyplot as plt 
 import collections
 import sys
@@ -30,11 +32,10 @@ else:
         text = text+sys.argv[x]
 
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
-
+print(2)
 # Reads 'Youtube04-Eminem.csv' file 
-sql= "Select * from news" 
 df = pd.read_sql(query,mydb)
-
+print(3)
 STOPWORDS= stopwords.words('indonesian')
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','indonesia'])
 stop_words = set(STOPWORDS) #membuang kata yang tidak digunakan
