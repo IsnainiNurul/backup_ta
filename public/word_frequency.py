@@ -32,6 +32,7 @@ else:
     query = "Select * from news where date between '"+str(sys.argv[1])+"' AND '"+str(sys.argv[2])+"' and area= '"+str(sys.argv[3])+"';"
 
 # Reads 'Youtube04-Eminem.csv' file 
+sql= "Select * from news" 
 df = pd.read_sql(query,mydb)
 
 STOPWORDS= stopwords.words('indonesian')
