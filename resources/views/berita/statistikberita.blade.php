@@ -648,22 +648,22 @@ $('#wordcloud-all').jQCloud(words_all, {
 });
 $('#wordcloud-information').jQCloud(words_information, {
   autoResize: true,
-  width: 1000,
+  width: 500,
   height: 400
 });
 $('#wordcloud-donation').jQCloud(words_donation, {
   autoResize: true,
-  width: 1000,
+  width: 500,
   height: 400
 });
 $('#wordcloud-criticisms').jQCloud(words_criticisms, {
   autoResize: true,
-  width: 1000,
+  width: 500,
   height: 400
 });
 $('#wordcloud-hoax').jQCloud(words_hoax, {
   autoResize: true,
-  width: 1000,
+  width: 500,
   height: 400
 });
   </script>
