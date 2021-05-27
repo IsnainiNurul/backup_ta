@@ -223,6 +223,7 @@ class StatistikBeritaController extends Controller
          $wordcloud_criticisms=array();
          $wordcloud_hoax=array();
 
+         return $process1;
          for ($x = 0; $x < 200; $x+=2) {
             $wordcloud_all[] = array('text' => $word_array_all[$x], 'weight' => $word_array_all[$x+1]);
             $wordcloud_information[] = array('text' => $word_array_information[$x], 'weight' => $word_array_information[$x+1]);
