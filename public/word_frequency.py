@@ -2,6 +2,7 @@
 print(1)
 # importing all necessery modules
 from wordcloud import WordCloud,ImageColorGenerator
+print(3)
 import nltk
 from nltk.corpus import stopwords
 print(5)
