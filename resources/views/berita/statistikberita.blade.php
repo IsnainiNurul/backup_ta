@@ -475,19 +475,19 @@
    var label = slice[0]._model.label;
    switch (label) {
       // add case for each label/slice
-      case 'Notification':
-         window.open("{{URL::to('berita/list/?label=notification of information')}}");
+      case 'Informasi':
+         window.open("{{URL::to('/berita/list/?label=notification of information')}}");
          break;
-      case 'Donation':
+      case 'Donasi':
          window.open("{{URL::to('berita/list/?label=donation')}}");
          break;
-      case 'Criticisms':
+      case 'Kritik':
          window.open("{{URL::to('berita/list/?label=criticisms')}}");
          break;
-      case 'Hoax':
+      case 'Hoaks':
          window.open("{{URL::to('berita/list/?label=hoax')}}");
          break;
-      case 'Other':
+      case 'Lain-lain':
          window.open("{{URL::to('berita/list/?label=other')}}");
          break;
       // add rests ...
@@ -631,13 +631,7 @@
   </script>
 
   
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
-
-    });
-  </script>
+ 
   <script src="/assets/bower_components/jqcloud2/dist/jqcloud.min.js"></script>
   
 
