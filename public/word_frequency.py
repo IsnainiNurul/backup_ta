@@ -37,9 +37,10 @@ print(2)
 df = pd.read_sql(query,mydb)
 print(3)
 STOPWORDS= stopwords.words('Indonesian')
+print(5)
 STOPWORDS.extend(['covid','covid-19','covid-19,','korona','2020','corona','2021','0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','ribu','juta','indonesia'])
 stop_words = set(STOPWORDS) #membuang kata yang tidak digunakan
-
+print(6)
 comment_words = ''
 for val in df.title:
       
