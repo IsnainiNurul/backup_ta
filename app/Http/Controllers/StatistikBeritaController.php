@@ -249,7 +249,6 @@ class StatistikBeritaController extends Controller
          if($provinsi=="semua"){
           $provinsi="Indonesia";
          }
-         print(-)
          
          return view('berita.statistikberita',['label'=>$label_array,'provinsi'=>$provinsi,'wordcloud_all'=>$wordcloud_all,'wordcloud_information'=>$wordcloud_information,'wordcloud_donation'=>$wordcloud_donation,'wordcloud_criticisms'=>$wordcloud_criticisms,'wordcloud_hoax'=>$wordcloud_hoax]);
     }
