@@ -52,19 +52,28 @@ class PerbandinganController extends Controller
 	public function update(Request $request){ //Jangan Diotak atik
     
     
-    $tanggal = Temp_tanggal::where('id','=','1')->first();
-    $tanggal->mulai= $request->mulai;
-    $tanggal->akhir= $request->akhir;
-    // return $request;
-    $tanggal = $tanggal->update();
-
-    // return $tanggal;
-	$process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
-
-	return redirect()->back();
-
-		
-	}
+        $tanggal = Temp_tanggal::where('id','=','1')->first();
+        $tanggal->mulai= $request->mulai;
+        $tanggal->akhir= $request->akhir;
+        // return $request;
+        $tanggal = $tanggal->update();
+    
+        // return $tanggal;
+        $process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
+    
+        return redirect()->back();
+    
+            
+        }
+        public function data(Request $request){ //Jangan Diotak atik
+    
+    
+            
+            return '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+             <table  class="table table-bordered">'.$request->text_html.'</table>';
+        
+                
+            }
 
 }
 // =======

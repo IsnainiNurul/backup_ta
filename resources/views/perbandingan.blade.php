@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    TA History COVID
+    
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -33,6 +33,7 @@
   top: 0;
   z-index: 2;
 }
+ul.b {list-style-type: square;}
   </style>
 </head>
 
@@ -128,22 +129,28 @@
                   </strong>
                   <br>
                   <em style="font-family:Georgia, serif; font-size: 16px">
-                    Sistem informasi ini menampilkan visualisasi berupa perbandingan pola penambahan kasus penyebaran virus COVID-19 
-                  di suatu kabupaten dengan kabupaten tetangganya di Jawa Timur menggunakan metode Bland Altman Plot.
-                  <br>
-			Grafik Bland Altman menunjukkan tingkat perbedaan rata-rata pola kasus COVID-19 pada kabupaten dan Tetangganya.
-                    Jika semakin mendekati garis biru, maka perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, 
-                    Sebaliknya, jika semakin menjauhi garis biru, maka polanya semakin tidak mirip.
+                  <ul class="b">
+                  <li>
+                  Sistem informasi ini menampilkan visualisasi perbandingan pola penambahan kasus
+                  di suatu kabupaten dengan kabupaten tetangganya di Jawa Timur dengan Bland Altman Plot.
+                  </li>
+                  <li>
+			              Grafik Bland Altman menunjukkan tingkat selisih dan rata-rata pola kasus pada kabupaten dan Tetangganya.
+                  </li>
+                  <li>
+                    Jika semakin mendekati garis biru, perbandingan antara kedua kota tersebut memiliki pola yang semakin mirip, dan jika semakin menjauhi garis biru, polanya semakin tidak mirip.
+                  </li>
                   </em>
-                  <br>
                   <b style="font-family:Georgia, serif; font-size: 16px"">
-                    Sumbu X merupakan selisih atau perbedaan jumlah kasus COVID-19 di Kabupaten dengan tetangganya
-                    <br>
-                    Sumbu Y merupakan mean atau rata-rata jumlah kasus COVID-19 di Kabupaten dengan tetangganya
+                  <li>
+                    Sumbu X : selisih jumlah kasus di Kabupaten dengan tetangganya
+                  </li>
+                  <li>
+                    Sumbu Y : rata-rata jumlah kasus di Kabupaten dengan tetangganya
+                  </li>
                   </b>
-                  <br>
+                  </ul>
                 </div>
-                  <br>
                   <em style="font-family:Georgia, serif; font-size: 17px"">
                   Untuk mengetahui perbandingan Kabupaten dengan tetangganya dari range tanggal tertentu, silahkan input tanggal mulai dan tanggal berakhir :
                   </em>
@@ -195,14 +202,20 @@
                         <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
                         <canvas id="charts{{$semua->tetangga}}"></canvas>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modalbiareror" onclick="gettabel('{{$semua->tetangga}}')" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
+                        <form  target="_blank" action="/perbandingan/data" method="post">
+                           @csrf
+                        <input type="hidden" name="text_html" id='html{{$semua->tetangga}}'>
+                        <input type="submit" style='display: none' value="" id="submit{{$semua->tetangga}}">
+                        
+                        </form>
                         <!-- <div class="modal fade bd-example-modal-lg" id="myModal{{$semua->tetangga}}" role="dialog"> -->
                         <div class="modal" style='position: fix;left: 50%;top: 80%;transform: translate(-50%, -80%);' id="myModal{{$semua->tetangga}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg" style='position: fix;left: 30%;transform: translate(-50%, 0%);' >
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal" >&times;</button>
                                 <h4 class="modal-title">Data Tabel {{$semua->tetangga}}</h4>
                               </div>
                               <div class="modal-body">
@@ -233,6 +246,7 @@
                                 <table class="table table-fixed">
                                 <thead>
                                 <tr>
+                                  <th >Nomor</th>
                                   <th >{{$semua->kabupaten}}</th>
                                   <th>{{$semua->tetangga}}</th>
                                   <th>Mean (A+B)/2</th>
@@ -242,13 +256,20 @@
                               </thead>
 
                               <tbody>
+                              <?php $date = date_create((string)$mulai); ?>
                               @for ($i = 0; $i < count($x); $i++)
-                                <tr>
+                                <tr><?php 
+                                $tambah = 0;
+                                if($i>0){$tambah = 1;}
+                                $hari = (string)($tambah);
+                                $hari = $hari." days";
+                                date_add($date,date_interval_create_from_date_string($hari)); ?>
+                                  <td>{{date_format($date,"Y-m-d")}}</td>
                                   <td>{{(int)$m1[$i]}}</td>
                                   <td>{{(int)$m2[$i]}}</td>
-                                  <td>{{(float)(((int)$m1[$i]+(int)$m2[$i])/2)    }}</td>
+                                  <td>{{     (float)(((int)$m1[$i]+(int)$m2[$i])/2)    }}</td>
                                   <td>{{(int)$m1[$i] - (int)$m2[$i]}}</td>
-				<td> @if(( (float)(((int)$m1[$i]+(int)$m2[$i])/2) ) != 0) {{ (   (int)$m1[$i] - (int)$m2[$i]   )        / ( (float)(((int)$m1[$i]+(int)$m2[$i])/2)   )   }}@else 0 @endif </td>
+				<td> @if(( (float)(((int)$m1[$i]+(int)$m2[$i])/2) ) != 0) {{sprintf('%0.2f',    (   (int)$m1[$i] - (int)$m2[$i]   )        / ( (float)(((int)$m1[$i]+(int)$m2[$i])/2)   ))   }}@else Tak Hingga @endif </td>
 				</tr>
                               @endfor
                               
@@ -520,23 +541,33 @@ function myFunctions(item) {
   var array_obj = [];
   var xx = [];
   var yy = [];
-  for (var i = 0; i < x.length; i++) {
+    for (var i = 0; i < x.length; i++) {
+      
+    var obj={};
+    obj['x'] = x[i];
+    obj['y'] = y[i];
+    if(x[i] > 0 || x[i] <0){
+      
+    array_obj.push(obj);
     
-  var obj={};
-   obj['x'] = x[i];
-   obj['y'] = y[i];
-  if(x[i] > 0 || x[i] <0){
+    xx.push(parseFloat(x[i]));
+    yy.push(parseFloat(y[i]));
+    }
     
-  array_obj.push(obj);
-  
-  xx.push(parseFloat(x[i]));
-  yy.push(parseFloat(y[i]));
   }
-}
+
   console.log(array_obj);
   console.log(Math.min.apply(Math, xx));
   console.log(Math.max.apply(Math, xx));
-
+  var x_terbesar = Math.max.apply(Math, xx);
+  var y_terbesar = Math.max.apply(Math, yy);
+  var terbesar = y_terbesar;
+  if(x_terbesar > y_terbesar){
+    terbesar = x_terbesar;
+  }
+ console.log('--------------------------------------');
+ console.log(terbesar);
+ console.log('--------------------------------------');
 const data = {
   
   datasets: [{
@@ -573,13 +604,29 @@ var ctx = document.getElementById(name).getContext('2d');
           scaleLabel: {
             display: true,
             labelString: data_all[item]['kabupaten']
-          }
+          },
+          ticks: {
+                beginAtZero: true,
+                max : terbesar-(terbesar%100)+Math.round(terbesar/1000)*100,callback: function(value, index, values) {
+                  if (value >=1000){
+             return value/1000+'K'}
+             return value;
+           }
+            }
         }],
         xAxes: [{
           scaleLabel: {
             display: true,
             labelString: data_all[item]['tetangga']
-          }
+          },
+          ticks: {
+                beginAtZero: true,
+                max : terbesar-(terbesar%100)+Math.round(terbesar/1000)*100,callback: function(value, index, values) {
+                  if (value >=1000){
+             return value/1000+'K'}
+             return value;
+           }
+            }
         }],
           }
         }
@@ -588,6 +635,15 @@ var ctx = document.getElementById(name).getContext('2d');
     });
 }
 	</script>
+
+  <script>
+  function gettabel(id){
+    var table = document.getElementById('myModal'+id).getElementsByTagName('table')['0'].innerHTML;
+    document.getElementById("html"+id).value = table;
+    document.getElementById("submit"+id).click();
+    console.log(table);
+  }
+  </script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

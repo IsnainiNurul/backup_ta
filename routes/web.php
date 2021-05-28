@@ -56,6 +56,7 @@ Route::get('/tugas/temukan/predict', [TesController::class, 'predict']);
 
 Route::get('/perbandingan', [PerbandinganController::class, 'index']);
 Route::get('/perbandingan/update',[PerbandinganController::class,'update']);
+Route::post('/perbandingan/data',[PerbandinganController::class,'data']);
 
 Route::get('/prediksi', [PrediksiController::class, 'index']);
 Route::get('/load', [LoadController::class, 'index']);
