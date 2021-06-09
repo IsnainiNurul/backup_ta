@@ -196,8 +196,10 @@ canvas{
                 <form method='get' action='/load'>
                 <input type='date' class='form-control' name='tanggal_prediksi' value='{{$tanggal_prediksi}}' required>
                 <label>Algoritma</label>
-                 <select id="modelnya" name='model' class='form-control' >
+                 <select id="modelnya"  class='form-control' name='model' onchange="muncul()">
+                  <option id='targetnya' value="-">- </option>
                   <option value="Support Vector Regression">SVR </option>
+                  <option value="svrpso">SVR + PSO </option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
@@ -206,15 +208,12 @@ canvas{
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> <br>
-                <label>Training </label><br>  
-                <select id="training" class='form-control' name='training'>
-                  <option value="{{$training}}">{{$training}} bulan</option>
-                  <option value="4">4 bulan</option>
-		              <option value="7">7 bulan</option>
-		              <option value="10">10 bulan</option>
-		              <option value="15">15 bulan</option>
-                </select> 
 
+                 <div id='munculkan'>
+                
+                
+                  
+                </div>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 <br>
@@ -708,6 +707,42 @@ canvas{
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+
+   <script>
+
+    var metodenya = {!! json_encode($metode) !!};
+    if(metodenya == "svrpso"){
+      document.getElementById("targetnya").innerHTML = "SVR + PSO";
+    }if(metodenya == "Support Vector Regression"){
+      document.getElementById("targetnya").innerHTML = "SVR";
+    }if(metodenya == "ARIMA"){
+      document.getElementById("targetnya").innerHTML = "ARIMA";
+    }if(metodenya == "Prophet"){
+      document.getElementById("targetnya").innerHTML = "FB Prophet";
+    }
+
+
+    console.log(document.getElementById("targetnya").value = metodenya);
+
+  function muncul(){
+
+    var x = document.getElementById("modelnya").value;
+    if(x=="Support Vector Regression"){
+      document.getElementById('munculkan').innerHTML=`
+      <label>Training </label><br>  
+                  <select id="training" name='training' class='form-control'>
+      
+                    <option value="4">4 bulan</option>
+                    <option value="7">7 bulan</option>
+                    <option value="10">10 bulan</option>
+                    <option value="15">15 bulan</option>
+                  </select> `
+    }
+    else{
+       document.getElementById('munculkan').innerHTML=``
+    }
+  }
   </script>
 </body>
 

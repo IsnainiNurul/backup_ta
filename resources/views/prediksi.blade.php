@@ -218,10 +218,13 @@
                     <h2 class="card-title">Covid-19 Indonesia</h2>
                      <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' class='form-control' name='tanggal_prediksi' required>
+                <input type='date' class='form-control' name='tanggal_prediksi' max="{{$last_day}}" required>
                 <label>Algoritma</label>
-                 <select id="modelnya"  class='form-control' name='model' >
-                  <option value="Support Vector Regression">SVR </option>
+                 <select id="modelnya"  class='form-control' name='model' onchange="muncul()">
+                 
+                  <option value=""> - </option>
+                  <option value="Support Vector Regression" >SVR </option>
+                  <option value="svrpso">SVR + PSO</option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
@@ -230,14 +233,11 @@
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> <br>
-                <label>Training </label><br>  
-                <select id="training" name='training' class='form-control'>
-                  <option value="4">4 bulan</option>
-		              <option value="7">7 bulan</option>
-		              <option value="10">10 bulan</option>
-		              <option value="15">15 bulan</option>
-                </select> 
-
+                <div id='munculkan'>
+                
+                
+                  
+                </div>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 <br>
@@ -279,7 +279,7 @@
               </div>
 
               <div class="card-body">
-              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
+              <label> Data Diatas Merupakan data COVID 19 Di Indonesia dalam PSBB dan Pra Pasca Vaksinasi
               
               </label>
               </div>
@@ -912,6 +912,27 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+
+  <script>
+  function muncul(){
+
+    var x = document.getElementById("modelnya").value;
+    if(x=="Support Vector Regression"){
+      document.getElementById('munculkan').innerHTML=`
+      <label>Training </label><br>  
+                  <select id="training" name='training' class='form-control'>
+      
+                    <option value="4">4 bulan</option>
+                    <option value="7">7 bulan</option>
+                    <option value="10">10 bulan</option>
+                    <option value="15">15 bulan</option>
+                  </select> `
+    }
+    else{
+       document.getElementById('munculkan').innerHTML=``
+    }
+  }
   </script>
 </body>
 

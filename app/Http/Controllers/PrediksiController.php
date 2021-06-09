@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Confirmed_case;
 use App\Models\Real_case;
 use App\Models\All_case;
-
+use Carbon\Carbon;
 class PrediksiController extends Controller
 {
 
@@ -64,6 +64,8 @@ class PrediksiController extends Controller
 
         $psbb = All_case::select('id','x','y')->where('keterangan2','=','PSBB')->get();
 
+        $update_terakhir = All_case::select('id','x','y')->orderBy('id', 'desc')->first()->x;
+        // return $update_terakhir;
         if ($request->tipe == 'harian'){
           $all = to_daily($all);
           $pra_vaksin = to_daily($pra_vaksin);
@@ -78,6 +80,6 @@ class PrediksiController extends Controller
       //  return $real;
       //  return $all_case;
       //  return $konfirmasi;
-       return view('prediksi',['psbb'=>$psbb,'all'=>$all,'pra_vaksin'=>$pra_vaksin,'vaksin'=>$vaksin,'konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf,'real'=>$real,'count_real'=>$count_conf_real,'tipe'=>$request->tipe]);
+       return view('prediksi',['last_day'=>Carbon::createFromDate($update_terakhir)->format('Y-m-d'),'psbb'=>$psbb,'all'=>$all,'pra_vaksin'=>$pra_vaksin,'vaksin'=>$vaksin,'konfirmasi'=>$konfirmasi,'count_conf'=>$count_conf,'real'=>$real,'count_real'=>$count_conf_real,'tipe'=>$request->tipe]);
     }
 }
