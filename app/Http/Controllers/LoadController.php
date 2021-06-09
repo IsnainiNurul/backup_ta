@@ -42,7 +42,7 @@ class LoadController extends Controller
             
             return $corr;
             }
-            
+            // return $request;
         // return $request;
         $konfirmasi = Confirmed_case::query();
         if($request->mulai != null){
@@ -62,7 +62,25 @@ class LoadController extends Controller
         $command = strval($akhir)." ".strval($request->last_id);
         // return $command;
         if($request->model =='Support Vector Regression'){
-            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));}
+            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));
+	//	return $process;
+		}
+            
+            if($request->model =='svrpso'){
+                // return
+                
+                $command = strval($akhir)." ".strval($request->last_id-12);
+                $process = shell_exec("python3 svrpso.py ". $command." ".strval($request->tipe));
+                return $process;
+                $r2 = (explode("%%",$process))[1];
+                $process = (explode("%%",$process))[0];
+
+            }
+                // return $process;
+
+
+
+
         if($request->model =='ARIMA'){
             $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 //	    return $process;
@@ -81,13 +99,13 @@ class LoadController extends Controller
         // $lat = (float) $input[1];
         // $long = (float) $input[2];
         
-        // $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
+        // $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
         // $status = DB::statement("update status set status.status = '".$input[0]."',status.longitut = '".$long."',status.latitut ='".$lat."' where id = 1");
         $output_python =  explode("]",explode("[", $process)[1])[0] ;
         $output_python =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
         $output_python = array_values($result);;
-        // return $output_python ;
+        // return $output_python3 ;
         $selisih = $tanggal_prediksi->diffInDays($last_date);
         // return $output_python;
         $tanggal = [];
@@ -96,6 +114,7 @@ class LoadController extends Controller
         $sekarang =Carbon::createFromDate($request->last_date);
         $id = $request->last_id+1;
         array_push($tanggal,['id'=>$id,'x'=>$sekarang->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[0]]);
+        // return $output_python;
         for ($x = 0; $x <$selisih ; $x++) {
             
         
@@ -146,7 +165,7 @@ class LoadController extends Controller
 
        $tanggal = collect($tanggal);
        $count = 0;
-       if ($request->tipe == 'harian'){
+       if ($request->tipe == 'harian' && $request->model != 'svrpso'){
        $y=[];
        foreach($tanggal as $x){
        // print($count);
@@ -234,10 +253,12 @@ class LoadController extends Controller
 //	//return  substr($string_x, 1); 
 //	return $command;
 //     return $string_x;
-	 $r2 = shell_exec($command);
+	//  $r2 = shell_exec($command);
+    if($request->model != 'svrpso'){
+     $r2 = 0;}
    //  $r2 = shell_exec("python3 r2.py a b"); 
 	//  $r2 = (float) $r2;
-
+    //  return $real;
     // return $r2;
         return view('prediksi_load',['r2'=>(float) $r2,'training'=>$request->training,'tanggal_prediksi'=>$request->tanggal_prediksi,'count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred'=>$count_pred,'prediksi'=>$tanggal,'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
         // return $process;
@@ -274,11 +295,11 @@ class LoadController extends Controller
 //	return $process;
 
         // if($request->model =='ARIMA'){
-        //     $process = shell_exec("python arima.py ". $tanggal_prediksi->diffInDays($last_date));
+        //     $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
         //           }
 
 	    // if($request->model =='Prophet'){
-	    // $process = shell_exec("python prophet.py ". $tanggal_prediksi->diffInDays($last_date));
+	    // $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
 	    
 
 	    //           }
@@ -286,7 +307,7 @@ class LoadController extends Controller
         $output_python =  explode("]",explode("[", $process)[1])[0] ;
         $output_python =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
-        $output_python = array_values($result);;
+        $output_python3 = array_values($result);;
         $selisih = $tanggal_prediksi->diffInDays($last_date);
         $tanggal = [];
         $sekarang =Carbon::createFromDate($request->last_date);
@@ -310,10 +331,10 @@ class LoadController extends Controller
 
         $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
 
-        $output_python =  explode("]",explode("[", $process)[1])[0] ;
-        $output_python =  explode(" ",$output_python) ;
+        $output_python3 =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python3 =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
-        $output_python = array_values($result);;
+        $output_python3 = array_values($result);;
         $selisih = $tanggal_prediksi->diffInDays($last_date);
         $tanggal = [];
         $sekarang =Carbon::createFromDate($request->last_date);
@@ -337,10 +358,10 @@ class LoadController extends Controller
 
         $process = shell_exec("python3 prophet.py ". $tanggal_prediksi->diffInDays($last_date));
 
-        $output_python =  explode("]",explode("[", $process)[1])[0] ;
-        $output_python =  explode(" ",$output_python) ;
+        $output_python3 =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python3 =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
-        $output_python = array_values($result);;
+        $output_python3 = array_values($result);;
         $selisih = $tanggal_prediksi->diffInDays($last_date);
         $tanggal = [];
         $sekarang =Carbon::createFromDate($request->last_date);
@@ -367,7 +388,7 @@ class LoadController extends Controller
         $count_conf_real = count($real);
         // return count($tanggal[]);        
         
-        return view('prediksi_load_semua',['count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred_svr'=>count($semua_hasil[0]),'count_pred_arima'=>count($semua_hasil[1]),'count_pred_prophet'=>count($semua_hasil[2]),'prediksi_svr'=>$semua_hasil[0],'prediksi_arima'=>$semua_hasil[1],'prediksi_prophet'=>$semua_hasil[2],'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
+        return view('prediksi_load_semua',['tanggal_prediksi'=>$request->tanggal_prediksi,'count_conf'=>count($konfirmasi),'konfirmasi'=>$konfirmasi,'count_pred_svr'=>count($semua_hasil[0]),'count_pred_arima'=>count($semua_hasil[1]),'count_pred_prophet'=>count($semua_hasil[2]),'prediksi_svr'=>$semua_hasil[0],'prediksi_arima'=>$semua_hasil[1],'prediksi_prophet'=>$semua_hasil[2],'metode'=>$request->model,'real'=>$real,'count_real'=>$count_conf_real]);
        
     }
 

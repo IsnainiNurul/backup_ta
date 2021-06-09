@@ -20,8 +20,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/assets/bower_components/jqcloud2/dist/jqcloud.min.css">
   <title>
     TA History COVID
   </title>
@@ -32,12 +33,12 @@
   <script src="/assets/moment.js"></script>
   <script src="/assets/Chart.min.js"></script>
   <script src="/assets/utils.js"></script>
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <link href="/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
-  {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+  {{-- <link href="/assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
 <body class="white-content">
@@ -46,7 +47,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
+              <img src="/assets/img/2.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -92,7 +93,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
+            <a class="navbar-brand" href="javascript:void(0)">   <img src="/assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -127,7 +128,7 @@
           <div class="col-sm-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di Indonesia</h1>
+                <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di {{$provinsi}}</h1>
               </div>
             </div>
              <div class="card card-header">
@@ -238,68 +239,111 @@
             </div>
           </div>
         </div>
-        <div class="card-chart">
-              <div class="row">
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Notification of Information</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                          @foreach(array_reverse($nof_key) as $n)
-                             <li class="list-group-item capitalize">{{$n}}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Donation</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            @foreach(array_reverse($donation_key) as $n)
-                             <li class="list-group-item capitalize">{{$n}}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Criticisms</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            @foreach(array_reverse($criticisms_key) as $n)
-                             <li class="list-group-item capitalize">{{$n}}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
-                </div>
-                 <div class="col-sm-3">
-                    <div class="card card-header">
-                      <div class="text-left">
-                          <h5 class="card-title">Hoax</h5>
-                      </div>
-                      <div class="card-body">
-                        <ul class="list-group">
-                            @foreach(array_reverse($hoax_key) as $n)
-                             <li class="list-group-item capitalize">{{$n}}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
+        
+        <div class="card card-chart" style="height: 500px;">        
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-12 text-left" >
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                  </div>
                 </div>
               </div>
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="wordcloud-all" id="wordcloud-all" ></div>
+                    </div>
+                </div>
+                  
+              </div>   
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card card-chart" style="height: 600px;">        
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-12 text-left" >
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="wordcloud-information" id="wordcloud-information" ></div>
+                    </div>
+                </div>
+                  
+              </div>   
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card card-chart" style="height: 600px;">        
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-12 text-left" >
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="wordcloud-donation" id="wordcloud-donation" ></div>
+                    </div>
+                </div>   
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-sm-6">
+            <div class="card card-chart" style="height: 600px;">        
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-12 text-left" >
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="wordcloud-criticisms" id="wordcloud-criticisms" ></div>
+                    </div>
+                </div>
+                  
+              </div>   
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card card-chart" style="height: 600px;">        
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-12 text-left" >
+                    <h5 class="card-category">Graph data berita populer</h5>
+                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="wordcloud-hoax" id="wordcloud-hoax" ></div>
+                    </div>
+                </div>   
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
             </div>
     
-      
+      </div>
       </div>
       <footer class="footer">
         <div class="container-fluid">
@@ -380,7 +424,7 @@
 
   // <block:setup:1>
   const data = {
-    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
+    labels: ['Informasi','Donasi','Kritik','Hoaks','Lain-lain'],
     datasets: [{
       data: {!! json_encode($label) !!},
       backgroundColor: [
@@ -403,6 +447,7 @@
       borderWidth: 1
     }]
   };
+
   
   // </block:setup>
 
@@ -423,6 +468,31 @@
       }
     },
   });
+
+  ctx.onclick = function(e) {
+   var slice  = barChart.getElementAtEvent(e);
+   if (!slice.length) return; // return if not clicked on slice
+   var label = slice[0]._model.label;
+   switch (label) {
+      // add case for each label/slice
+      case 'Informasi':
+         window.open("{{URL::to('/berita/list/?label=notification of information')}}");
+         break;
+      case 'Donasi':
+         window.open("{{URL::to('berita/list/?label=donation')}}");
+         break;
+      case 'Kritik':
+         window.open("{{URL::to('berita/list/?label=criticisms')}}");
+         break;
+      case 'Hoaks':
+         window.open("{{URL::to('berita/list/?label=hoax')}}");
+         break;
+      case 'Lain-lain':
+         window.open("{{URL::to('berita/list/?label=other')}}");
+         break;
+      // add rests ...
+   }
+  }
   // </block:config>
 
 
@@ -430,23 +500,24 @@
   </script>
   
 
-  <script src="/assets/js/berita/kota.js"></script>
-  <script src="/assets/js/berita/cari_berita.js"></script>
+
+  
   
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/js/core/jquery.min.js"></script>
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -560,13 +631,44 @@
   </script>
 
   
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+ 
+  <script src="/assets/bower_components/jqcloud2/dist/jqcloud.min.js"></script>
+  
 
-    });
+<script >
+    var words_all = {!! json_encode($wordcloud_all) !!};
+    var words_information = {!! json_encode($wordcloud_information) !!};
+    var words_donation = {!! json_encode($wordcloud_donation) !!};
+    var words_criticisms = {!! json_encode($wordcloud_criticisms) !!};
+    var words_hoax = {!! json_encode($wordcloud_hoax) !!};
+$('#wordcloud-all').jQCloud(words_all, {
+  autoResize: true,
+  width: 1000,
+  height: 400
+});
+$('#wordcloud-information').jQCloud(words_information, {
+  autoResize: true,
+  width: 500,
+  height: 400
+});
+$('#wordcloud-donation').jQCloud(words_donation, {
+  autoResize: true,
+  width: 500,
+  height: 400
+});
+$('#wordcloud-criticisms').jQCloud(words_criticisms, {
+  autoResize: true,
+  width: 500,
+  height: 400
+});
+$('#wordcloud-hoax').jQCloud(words_hoax, {
+  autoResize: true,
+  width: 500,
+  height: 400
+});
   </script>
+  
+  
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&

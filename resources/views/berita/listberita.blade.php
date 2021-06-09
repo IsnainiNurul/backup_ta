@@ -20,8 +20,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>
     TA History COVID
   </title>
@@ -41,12 +41,12 @@
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <link href="/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
-  {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
+  {{-- <link href="/assets/demo/demo.css" rel="stylesheet" /> --}}
 </head>
 
 <body class="white-content">
@@ -55,7 +55,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-              <img src="../assets/img/2.png" width="120%" height="120%"> ITS
+              <img src="/assets/img/2.png" width="120%" height="120%"> ITS
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
             TA History COVID
@@ -101,7 +101,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">   <img src="../assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
+            <a class="navbar-brand" href="javascript:void(0)">   <img src="/assets/img/lambangits.png" width="4%" height="4%"> ITS</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -134,7 +134,7 @@
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
+                    <img src="/assets/img/anime3.png" alt="Profile Photo">
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
@@ -174,7 +174,7 @@
             <div class="card card-chart">
               <div class="card-header ">
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
-                @if($provinsi!="")
+                @if($provinsi!="" && $provinsi!="Indonesia")
                     <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
                     </h1>
                 @else
@@ -184,7 +184,7 @@
               </div>
             </div>
              <div class="card card-header">
-              <form method='get' action=/listberita>
+              <form method='get' action=/berita/list>
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
@@ -233,21 +233,29 @@
                     <option value="Papbar">Papua Barat</option>
                   </select>
                 </div>
+                <select class="col-2" name="sorting" id="sorting">
+                    <option value="Terbaru"selected>Terbaru</option>
+                    <option value="Terlama">Terlama</option>
+                  </select>
+                  <div class="col-1">
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
+               </div>
                   </div>
               </form>
                 
               </div>
               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                @if($provinsi!="" && $provinsi!="Indonesia")
                 <ol class="carousel-indicators">
                   @php 
-                  $cek=count($kota)/4;
+                  $cek=count($kota)/4+1;
                   @endphp
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   @for ($x = 1; $x <= $cek-1; $x+=1)
                   <li data-target="#carouselExampleIndicators" data-slide-to="{{$x}}"></li>
                   @endfor
                 </ol>
+                @endif
                 
                     <div class="card-chart">
                       <div class="carousel-inner">
@@ -255,6 +263,7 @@
                           @php 
                             $counter=0;
                             $numItems = count($kota);
+                            $counter_jumlah=0
                         @endphp
                           @foreach ($kota as $k)
                           @if($counter==0)
@@ -266,10 +275,22 @@
                             <div class="row">
                           @endif
                               <div class="col-sm-3">
-                                <a href="/listberita/{{$provinsi}}/{{$k}}" class="custom-card">
-                                <div class="card card-header" style="height:80px;position: relative;">
+                                <a href="/berita/list/{{$provinsi}}/{{$k}}" class="custom-card">
+
+                                @if($jumlah_berita_kota[$counter_jumlah]>150)
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://media.istockphoto.com/vectors/abstract-blue-striped-retro-comic-background-with-halftone-corners-vector-id1061877976?b=1&k=6&m=1061877976&s=612x612&w=0&h=V-M8b5WndhjMvg8VPHemoM2ftaHI_O4SMPPz7uT1EaM=');border-radius: 25px;">
+                                @elseif($jumlah_berita_kota[$counter_jumlah]>50)
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://image.freepik.com/free-vector/blue-comic-background-with-lines-halftone_1017-11432.jpg');border-radius: 25px;">
+                                @else
+                                  <div class="card card-header" style="height:80px;position: relative;background-image: url('https://static.vecteezy.com/system/resources/previews/002/196/582/original/blue-comic-halftone-background-free-vector.jpg');border-radius: 25px;">
+                                @endif
                                   <div class="text-left">
-                                    <h2 class="card-title text-left font-fit capitalize">{{$k}}</h2>
+                                    <h3 class="card-title text-left font-fit text-white capitalize">{{$k}}</h3>
+                                  </div>
+                                  <div class="bottom-right">
+                                    <div class="text-right">
+                                      <h5 class="card-title text-left font-fit text-white capitalize">{{$jumlah_berita_kota[$counter_jumlah]}}</h5>
+                                    </div>
                                   </div>
                                 </div>
                               </a>
@@ -280,6 +301,7 @@
                         @endif
                         @php
                             $counter++;
+                            $counter_jumlah++;
                         @endphp
                         @endforeach
                           </div>
@@ -317,7 +339,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                   
-                                    <div class="col-sm-11 div-gambar-utama">
+                                    <div class="col-sm-12 div-gambar-utama">
                                         <a href="{{$b->url}}">
                                           <img src="{{$b->img_url}}" class="news-gambar">
                                         </a>
@@ -331,6 +353,43 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
+
                                       <div class="col-sm-12 text-justify news-title"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
                                       <div class="col-sm-12 text-justify news-title"><span style="font-size: 10px" href="{{$b->url}}">{{substr($b->content, 1, 200)}}</span></div>
                            
@@ -353,7 +412,37 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                       </div>
@@ -426,7 +515,37 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>
@@ -446,7 +565,37 @@
                                       @else
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}">{{$b->title}}</a></div>
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @else
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
+                                        @endif
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
                                   </div>
@@ -564,80 +713,23 @@
       </ul>
     </div>
   </div>
-
-  <script>
-    console.log("tes");
-  console.log( {!! json_encode($label) !!});
-  var ctx = document.getElementById('chart2');
-
-  // <block:setup:1>
-  const data = {
-    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
-    datasets: [{
-      data: {!! json_encode($label) !!},
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ],
-      borderWidth: 1
-    }]
-  };
   
-  // </block:setup>
-
-  // <block:config:0>
-  var barChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-      legend: {
-        display: false
-    },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-    },
-  });
-  // </block:config>
-
-
-
-  </script>
-  
-
   <script src="/assets/js/berita/kota.js"></script>
   <script src="/assets/js/berita/cari_berita.js"></script>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/js/core/jquery.min.js"></script>
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

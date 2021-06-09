@@ -71,7 +71,7 @@ class BeritaController extends Controller
          	$temp2=$cek[0];
          }
 
-          if($request->datestart2 != null){
+         if($request->datestart2 != null){
         	$label = $label->where('date','>=',$request->datestart);
          }
          else{
@@ -198,13 +198,6 @@ class BeritaController extends Controller
 	       $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp2)->sum($request->area);
 	       // $berita = $berita->where('area','=',$provinsi)->orderBy('date', 'ASC')->limit(100)->get();
 	       $berita = $berita->where('area','=',$provinsi);
-	       if($request->kota != "Semua" && $request->kota != null){
-	       	 $berita = $berita->where('kota','=',$request->kota);
-
-	       }
-	       else if($request->kota == "Other"){
-	       	 $berita = $berita->where('kota','=',"");
-	       }
 	     }
 	     else{
 	     	$data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum('total'); 
@@ -278,7 +271,8 @@ class BeritaController extends Controller
 	  	if($totalkasus<0){$totalkasus=0;}
 	  	if($totalmeninggal<0){$totalmeninggal=0;}
 	  	if($totalsembuh<0){$totalsembuh=0;}
-	  
+
+
     	return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
    	}
 }

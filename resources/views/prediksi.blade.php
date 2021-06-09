@@ -181,6 +181,15 @@
                     <p>Berikut Merupakan Data Kasus Corona Virus Di Indonesia <div id='percobaan'></div></a></p>
                     <canvas id="chart1"></canvas>
                   </div>
+                  <div style="width:1000px">
+                    <p>Berikut Merupakan Data Keterangan Corona Virus Di Indonesia Ketika Pra Vaksinasi Dan Saat Vaksinasi <div id='percobaan'></div></a></p>
+                    <canvas id="chart2"></canvas>
+                  </div>
+
+                  <div style="width:1000px">
+                    <p>Berikut Merupakan Data Keterangan Corona Virus Di Indonesia Ketika PSBB Jawa dan Bali <div id='percobaan'></div></a></p>
+                    <canvas id="chart3"></canvas>
+                  </div>
                   <br>
                   <br>
                   Prediksi Semua Algoritma : 
@@ -201,7 +210,7 @@
             </div>
           </div>
            <div class="col-3">
-            <div class="card card-chart">
+            <div class="card card-chart border-bottom-info">
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
@@ -209,30 +218,30 @@
                     <h2 class="card-title">Covid-19 Indonesia</h2>
                      <label>Tanggal Prediksi</label>
                 <form method='get' action='/load'>
-                <input type='date' name='tanggal_prediksi' required>
+                <input type='date' class='form-control' name='tanggal_prediksi' max="{{$last_day}}" required>
                 <label>Algoritma</label>
-                 <select id="modelnya" name='model' >
-                  <option value="Support Vector Regression">Support Vector Regression </option>
+                 <select id="modelnya"  class='form-control' name='model' onchange="muncul()">
+                 
+                  <option value=""> - </option>
+                  <option value="Support Vector Regression" >SVR </option>
+                  <option value="svrpso">SVR + PSO</option>
                   <option value="ARIMA">ARIMA</option>
 		              <option value="Prophet">FBProphet</option>
                 </select>
                 <label>Jenis Prediksi</label><br>
-                <select id="tipe" name='tipe'>
+                <select id="tipe" name='tipe' class='form-control'>
                   <option value="akumulasi">akumulasi</option>
 		              <option value="harian">harian</option>
                 </select> <br>
-                <label>Training </label><br>  
-                <select id="training" name='training'>
-                  <option value="4">4 bulan</option>
-		              <option value="7">7 bulan</option>
-		              <option value="10">10 bulan</option>
-		              <option value="15">15 bulan</option>
-                </select> 
-
+                <div id='munculkan'>
+                
+                
+                  
+                </div>
                 <input type='hidden' name='last_id' value={{$konfirmasi[$count_conf-1]->id}}>
                 <input type='hidden' name='last_date' value={{$konfirmasi[$count_conf-1]->x}}>
                 <br>
-                <input class='btn btn-sm' type='submit' value='Prediksi'>
+                <input class='btn btn-sm btn-primary' type='submit' value='Prediksi'>
                 </form>
                   </div>
                   
@@ -264,13 +273,13 @@
           </div> --}}
 
            <div class="col-lg-6">
-            <div class="card card-chart">
+            <div class="card card-chart border-bottom-info">
               <div class="card-header">
                 <h5 class="card-category">Prediksi hari</h5>
               </div>
 
               <div class="card-body">
-              <label> Data Diatas Merupakan Real Case dan Prediksi COVID 19 Di Indonesia ,dalam proses diatas prediksi menggunakan Algortima Support Vector Regression
+              <label> Data Diatas Merupakan data COVID 19 Di Indonesia dalam PSBB dan Pra Pasca Vaksinasi
               
               </label>
               </div>
@@ -435,10 +444,47 @@
 					borderWidth: 2
 				}
        var s2={
-					label: 'Konfirmasi Kasus ' + {!! json_encode($real[$count_real-1]->y) !!} +' Jiwa',
+					label: 'Konfirmasi Kasus Terakhir ' + {!! json_encode($all[count($all)-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.blue,
+					data: {!! json_encode($all) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+        var s3={
+					label: 'Pra Vaksin ' + {!! json_encode($pra_vaksin[count($pra_vaksin)-1]->y) !!} +' Jiwa',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					data: {!! json_encode($pra_vaksin) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				} 
+        var s4={
+					label: 'Vaksin ' + {!! json_encode($vaksin[count($vaksin)-1]->y) !!} +' Jiwa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.green,
-					data: {!! json_encode($real) !!},
+					data: {!! json_encode($vaksin) !!},
+					//data: generateData()
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}
+
+        var s5={
+					label: 'Masa PSBB JAWA-BALI ',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.yellow,
+					data: {!! json_encode($psbb) !!},
 					//data: generateData()
 					type: 'line',
 					pointRadius: 0,
@@ -462,7 +508,7 @@
         
         
         ;
-  var array_value = [s1];
+  var array_value = [s2];
 
 
 		var cfg = {
@@ -545,6 +591,174 @@
 
 		var chart = new Chart(ctx, cfg);
 
+    var ctx = document.getElementById('chart2').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+    
+  var array_value = [s3,s4];
+  	var cfg = {
+			data: {
+				datasets: array_value
+			},
+			options: {
+				animation: {
+					duration: 0
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						offset: true,
+						ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 100
+						},
+						afterBuildTicks: function(scale, ticks) {
+							var majorUnit = scale._majorUnit;
+							var firstTick = ticks[0];
+							var i, ilen, val, tick, currMajor, lastMajor;
+
+							val = moment(ticks[0].value);
+							if ((majorUnit === 'minute' && val.second() === 0)
+									|| (majorUnit === 'hour' && val.minute() === 0)
+									|| (majorUnit === 'day' && val.hour() === 9)
+									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+									|| (majorUnit === 'year' && val.month() === 0)) {
+								firstTick.major = true;
+							} else {
+								firstTick.major = false;
+							}
+							lastMajor = val.get(majorUnit);
+
+							for (i = 1, ilen = ticks.length; i < ilen; i++) {
+								tick = ticks[i];
+								val = moment(tick.value);
+								currMajor = val.get(majorUnit);
+								tick.major = currMajor !== lastMajor;
+								lastMajor = currMajor;
+							}
+							return ticks;
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							drawBorder: false
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Jumlah Terinfeksi'
+						}
+					}]
+				},
+				tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += parseFloat(tooltipItem.value).toFixed(2);
+							return label;
+						}
+					}
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+
+    var ctx = document.getElementById('chart3').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+    
+  var array_value = [s5,s2];
+  	var cfg = {
+			data: {
+				datasets: array_value
+			},
+			options: {
+				animation: {
+					duration: 0
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						offset: true,
+						ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 100
+						},
+						afterBuildTicks: function(scale, ticks) {
+							var majorUnit = scale._majorUnit;
+							var firstTick = ticks[0];
+							var i, ilen, val, tick, currMajor, lastMajor;
+
+							val = moment(ticks[0].value);
+							if ((majorUnit === 'minute' && val.second() === 0)
+									|| (majorUnit === 'hour' && val.minute() === 0)
+									|| (majorUnit === 'day' && val.hour() === 9)
+									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+									|| (majorUnit === 'year' && val.month() === 0)) {
+								firstTick.major = true;
+							} else {
+								firstTick.major = false;
+							}
+							lastMajor = val.get(majorUnit);
+
+							for (i = 1, ilen = ticks.length; i < ilen; i++) {
+								tick = ticks[i];
+								val = moment(tick.value);
+								currMajor = val.get(majorUnit);
+								tick.major = currMajor !== lastMajor;
+								lastMajor = currMajor;
+							}
+							return ticks;
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							drawBorder: false
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Jumlah Terinfeksi'
+						}
+					}]
+				},
+				tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += parseFloat(tooltipItem.value).toFixed(2);
+							return label;
+						}
+					}
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+
 		document.getElementById('update').addEventListener('click', function() {
 			var type = document.getElementById('type').value;
 			var dataset = chart.config.data.datasets[0];
@@ -568,6 +782,9 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/berita.css">
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -695,6 +912,27 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+
+  <script>
+  function muncul(){
+
+    var x = document.getElementById("modelnya").value;
+    if(x=="Support Vector Regression"){
+      document.getElementById('munculkan').innerHTML=`
+      <label>Training </label><br>  
+                  <select id="training" name='training' class='form-control'>
+      
+                    <option value="4">4 bulan</option>
+                    <option value="7">7 bulan</option>
+                    <option value="10">10 bulan</option>
+                    <option value="15">15 bulan</option>
+                  </select> `
+    }
+    else{
+       document.getElementById('munculkan').innerHTML=``
+    }
+  }
   </script>
 </body>
 

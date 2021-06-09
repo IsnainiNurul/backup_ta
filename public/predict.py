@@ -3,10 +3,12 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import punkt
+from flask import Flask
 from nltk.corpus.reader import wordnet
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import sys
+
 
 path_models = "C:/Users/asus-pc/Documents/PBA/Tugas Akhir/04. Model Training/Models/"
 
