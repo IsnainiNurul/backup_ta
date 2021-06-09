@@ -19,6 +19,26 @@ class PerbandinganController extends Controller
     public function index(Request $request) // edit sini
     {
 
+
+        function pearson_correlation($x,$y){
+            if(count($x)!==count($y)){return -1;}   
+            $x=array_values($x);
+            $y=array_values($y);    
+            $xs=array_sum($x)/count($x);
+            $ys=array_sum($y)/count($y);    
+            $a=0;$bx=0;$by=0;
+            for($i=0;$i<count($x);$i++){     
+                $xr=$x[$i]-$xs;
+                $yr=$y[$i]-$ys;     
+                $a+=$xr*$yr;        
+                $bx+=pow($xr,2);
+                $by+=pow($yr,2);
+            }   
+            $b = sqrt($bx*$by);
+            return $a/$b;
+        }
+
+
         // return 'sini';
         $kabupaten =Tetangga::select('kabupaten','id')->get();
         
@@ -33,7 +53,29 @@ class PerbandinganController extends Controller
         // $data = $data->first();
         };
         // return ; 
+
+
+
+
         $data_all = DataTetangga::where('kabupaten','=',$data->kabupaten)->get();
+        
+        
+        
+        for($hitung =0;$hitung < count($data_all);$hitung++){
+            // return 'cek';
+            $m1= str_replace('[','',str_replace(']','',$data_all[$hitung]->m1));
+            $m2= str_replace('[','',str_replace(']','',$data_all[$hitung]->m2));
+            
+            $arr_m1 = array_map('intval',explode(",", $m1));
+            $arr_m2 = array_map('intval',explode(",", $m2));
+            $pearson = pearson_correlation($arr_m1,$arr_m2);
+            // return $pearson;
+            $data_all[$hitung]->pearson = $pearson;
+            // return $pearson;
+        };
+        // return $data_all;
+        // return pearson_correlation($data_all->m1,$data_all->m2);
+        // return $data_all;
         $tetangga = explode(",", $data->tetangga);
         // return $data_all;
         // return 'siini';
