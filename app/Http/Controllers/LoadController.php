@@ -62,16 +62,19 @@ class LoadController extends Controller
         $command = strval($akhir)." ".strval($request->last_id);
         // return $command;
         if($request->model =='Support Vector Regression'){
-            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));}
+            $process = shell_exec("python3 test.py ". $command." ".strval($request->training));
+	//	return $process;
+		}
             
             if($request->model =='svrpso'){
                 // return
                 
                 $command = strval($akhir)." ".strval($request->last_id-12);
                 $process = shell_exec("python3 svrpso.py ". $command." ".strval($request->tipe));
-                // return $process;
+                return $process;
                 $r2 = (explode("%%",$process))[1];
                 $process = (explode("%%",$process))[0];
+
             }
                 // return $process;
 
@@ -98,10 +101,10 @@ class LoadController extends Controller
         
         // $process = shell_exec("python3 arima.py ". $tanggal_prediksi->diffInDays($last_date));
         // $status = DB::statement("update status set status.status = '".$input[0]."',status.longitut = '".$long."',status.latitut ='".$lat."' where id = 1");
-        $output_python3 =  explode("]",explode("[", $process)[1])[0] ;
-        $output_python3 =  explode(" ",$output_python) ;
+        $output_python =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
-        $output_python3 = array_values($result);;
+        $output_python = array_values($result);;
         // return $output_python3 ;
         $selisih = $tanggal_prediksi->diffInDays($last_date);
         // return $output_python;
@@ -301,8 +304,8 @@ class LoadController extends Controller
 
 	    //           }
 //	return $process;
-        $output_python3 =  explode("]",explode("[", $process)[1])[0] ;
-        $output_python3 =  explode(" ",$output_python) ;
+        $output_python =  explode("]",explode("[", $process)[1])[0] ;
+        $output_python =  explode(" ",$output_python) ;
         $result= array_filter($output_python, fn($value) => !is_null($value) && $value !== ''); 
         $output_python3 = array_values($result);;
         $selisih = $tanggal_prediksi->diffInDays($last_date);

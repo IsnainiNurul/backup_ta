@@ -56,9 +56,9 @@ tipe = sys.argv[3]
 # print(start)
 # print(end)
 # print(tipe)
-model_name='psosvrakumulasi_windows.sav'
+model_name='psosvrakumulasi.sav'
 if tipe=='harian':
-    model_name ='psosvrharian_windows.sav'
+    model_name ='psosvrharian.sav'
     data['x'] = daily_increase(data['x'])
 
 data = data['x'][int(start):int(end)].reset_index()['x']
@@ -69,8 +69,11 @@ data_cn = pd.concat([data_n.shift(i) for i in range(0 + dimensions + 1)], axis =
 y=data_cn.iloc[12:,0]
 x = data_cn.iloc[12:,1:]
 loaded_model = pickle.load(open(model_name, 'rb'))
-predict = loaded_model.predict(data_cn.iloc[12:,1:])
-
-y = data_cn.iloc[12:,0]
-print(predict*data.to_numpy().max())
-print('%%'+str(r2_score(y*data.to_numpy().max(),predict*data.to_numpy().max())))
+try:
+   predict = loaded_model.predict(data_cn.iloc[12:,1:])
+except Exception as e:
+   print(e)
+#y = data_cn.iloc[12:,0]
+#print(predict*data.to_numpy().max())
+#print('%%'+str(r2_score(y*data.to_numpy().max(),predict*data.to_numpy().max())))
+print('lancar')
