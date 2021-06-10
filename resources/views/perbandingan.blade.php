@@ -367,7 +367,7 @@ ul.b {list-style-type: square;}
                       <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Korelasi Pearson : {{$semua->pearson}}</h2>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
                         <canvas id="charts{{$semua->tetangga}}"></canvas>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modalbiareror" onclick="pearson('{{$semua->tetangga}}')" data-target="#myModal{{$semua->tetangga}}">Pearson</button>
+                        <a href='/perbandingan/regresi?kota={{$semua->kabupaten}}&tetangga={{$semua->tetangga}}&mulai={{$mulai}}&akhir={{$akhir}}'><button type="button" class="btn btn-info btn-lg" >Regresi Linear</button></a>
                         
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modalbiareror" onclick="gettabel('{{$semua->tetangga}}')" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
                         <form  target="_blank" action="/perbandingan/data" method="post">
