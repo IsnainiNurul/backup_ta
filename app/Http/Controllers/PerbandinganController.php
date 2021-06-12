@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -121,32 +121,77 @@ class PerbandinganController extends Controller
 //	return $process;	
 	$rmse = (explode("%%",$process))[1];
         $tanggal = (explode("%%",$process))[2];
-
+	$process3 = (explode("%%",$process))[4]; 
         $process2 = (explode("%%",$process))[3];
 	$process = (explode("%%",$process))[0];
-		
 	$output_python =  explode("]",explode("[", $process)[1])[0] ;
         $output_python =  explode(" ",$output_python) ;
 	
 	$output_python2 =  explode("]",explode("[", $process2)[1])[0] ;
         $output_python2 =  explode(" ",$output_python2) ;
 
-
+	$output_python3 =  explode("]",explode("[", $process3)[1])[0] ;
+        $output_python3 =  explode(" ",$output_python3) ;
+	//return $output_python3;	
 	$result= array_filter($output_python, fn($value) => !is_null($value) && $value !== '');
         
         $output_python = array_values($result);
 	$result2= array_filter($output_python2, fn($value) => !is_null($value) && $value !== '');
 	$output_python2 = array_values($result2);
+        $result3= array_filter($output_python3, fn($value) => !is_null($value) && $value !== '');
+	$output_python3 = array_values($result3);
+
+	$array_ = [];
+	$tgl=Carbon::createFromDate($tanggal);
+	for($x =0;$x<count($output_python);$x++){
+//	echo $output_python[$x];
+//	$w = (object)['x'=>$output_python[$x]
+//			
+//			];
+//
+	$tgl = $tgl->addDays(1);
+	$arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]);
+	array_push($array_,(object) $arrays);
+	}
+
+	$array_akhir = [];
+ 	$tgl=Carbon::createFromDate($tanggal);
+        //$tgl = $tgl->addDays(1);
+	for($x =0;$x<count($output_python2);$x++){
+
+//        echo $output_python2[$x];
+	$tgl = $tgl->addDays(1);
+        $arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python2[$x]);
+        array_push($array_akhir,(object) $arrays);
+        }
+
+        $array_kota = [];
+        $tgl=Carbon::createFromDate($tanggal);
+        //$tgl = $tgl->addDays(1);
+        for($x =0;$x<count($output_python3);$x++){
+                                                                                                                        //        echo $output_python2[$x];
+        $tgl = $tgl->addDays(1); 
+        $arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python3[$x]);
+        array_push($array_kota,(object) $arrays);
+        }
+     
+
+
+	return view('linear',['array_kota'=>$array_kota,'mulai'=>$request->mulai,'tanggal'=>$tanggal,'real'=>$array_akhir,'rmse'=>$rmse,'tetangga'=>$request->tetangga,'kota'=>$request->kota,'last_day'=>Carbon::createFromDate($request->akhir)->format('Y-m-d'),'all'=>$array_,'count_conf'=>count($array_)]);
+
+	return $array_;
+	return 'halo';
+	echo $request->kota.' Memprediksi'.$request->tetangga.'<br>';
 	echo "Training Tanggal ".$request->mulai."-->Hingga Tanggal ".$tanggal.'  ';
 	echo "<br>Testing Tanggal ".$tanggal."-->Hingga Tanggal  ".$request->akhir.'  ';
 	echo "<br>RMSE = ".$rmse."<br>";
 	for($x=0;$x<count($output_python);$x++){
-	echo "<br>";
+	echo "<br>Hari ";
 	echo $x+1;
 	echo "<br>";
-	echo "<br>Real = ".$output_python[$x];
-	echo "<br>Prediksi = ".$output_python2[$x];
-
+	echo "<br>Prediksi = ".$output_python[$x];
+	echo "<br>Real = ".$output_python2[$x];
+	echo "<br>";
 	}
 //	return $output_python;
 

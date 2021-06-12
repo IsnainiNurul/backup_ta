@@ -32,6 +32,7 @@ x = np.array(X)
 
 y= np.array(y)
 #print(df)
+#xxx=X[-batas:]
 batas = (len(x)*20)/100
 batas = int(batas)
 x_train =x[:-batas]
@@ -51,4 +52,9 @@ print('%%'+str(sqrt(mse)))
 print('%%'+str(df.tail(batas).reset_index()['tanggal'][0]))
 print('%%')
 print(y_test)
+print('%%')
+arey = []
+for x in range(len(x_test)):
+    arey.append(int(x_test[x][0]))
+print(arey)
 #print(df)

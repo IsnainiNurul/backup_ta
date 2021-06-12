@@ -223,13 +223,13 @@ ul.b {list-style-type: square;}
               <p>Berita</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="/perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
-          <li class="active ">
+          <li class="">
             <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
