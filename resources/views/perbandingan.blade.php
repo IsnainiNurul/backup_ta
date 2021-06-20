@@ -223,13 +223,13 @@ ul.b {list-style-type: square;}
               <p>Berita</p>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="/perbandingan">
               <i class="tim-icons icon-pin"></i>
               <p>Perbandingan Kota</p>
             </a>
           </li>
-          <li class="">
+          <li class="active ">
             <a href="/prediksi">
               <i class="tim-icons icon-bell-55"></i>
               <p>Prediksi</p>
@@ -364,8 +364,9 @@ ul.b {list-style-type: square;}
                     <div class="card-body" class="col-sm-6">
                       <div style="width:600px">
                       <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
-                      <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Korelasi Pearson : {{$semua->pearson}}</h2>
+                      <p>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Korelasi Pearson : {{$semua->pearson}}</h2>
                         <canvas id="charts{{$semua->tetangga}}"></canvas>
                         <a href='/perbandingan/regresi?kota={{$semua->kabupaten}}&tetangga={{$semua->tetangga}}&mulai={{$mulai}}&akhir={{$akhir}}'><button type="button" class="btn btn-info btn-lg" >Regresi Linear</button></a>
                         
@@ -684,13 +685,13 @@ var ctx = document.getElementById(name).getContext('2d');
           yAxes: [{
           scaleLabel: {
             display: true,
-            labelString: 'RATA-RATA'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+            labelString: 'SELISIH'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
           }
         }],
         xAxes: [{
           scaleLabel: {
             display: true,
-            labelString: data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+            labelString: 'RATA-RATA '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
           }
         }],
           }
@@ -706,17 +707,25 @@ function myFunctions(item) {
   var y = data_all[item]['m2'];
   y = y.replace('[','').replace(']','').split(',');
   console.log(y[0]);
+  console.log('-=-=-=-=-=')
+  console.log(data_all[item]['intercept']);
   var array_obj = [];
+  var array_obj2 = [];
   var xx = [];
   var yy = [];
     for (var i = 0; i < x.length; i++) {
       
     var obj={};
+    var obj2={};
     obj['x'] = x[i];
+    obj2['x'] = x[i];
     obj['y'] = y[i];
+    obj2['y'] = x[i]*data_all[item]['slope']+data_all[item]['intercept'];
+
     if(x[i] > 0 || x[i] <0){
       
     array_obj.push(obj);
+    array_obj2.push(obj2);
     
     xx.push(parseFloat(x[i]));
     yy.push(parseFloat(y[i]));
@@ -724,7 +733,7 @@ function myFunctions(item) {
     
   }
 
-  console.log(array_obj);
+  console.log(array_obj2);
   console.log(Math.min.apply(Math, xx));
   console.log(Math.max.apply(Math, xx));
   var x_terbesar = Math.max.apply(Math, xx);
@@ -743,7 +752,18 @@ const data = {
     label: 'Data',
     data: array_obj,
     backgroundColor: 'rgb(0, 99, 132)'
-  },{label:''}]
+  },
+  {
+    type: 'line',
+    label: 'Garis Regresi',
+    data: array_obj2,
+    fill: false,
+    
+    borderColor: 'rgb(255, 0, 0)',
+    pointRadius: 0,
+  }
+  
+  ,{label:''}]
 };
 console.log(xx);
 console.log('Min xx =='+Math.min.apply(Math, xx));
@@ -772,29 +792,13 @@ var ctx = document.getElementById(name).getContext('2d');
           scaleLabel: {
             display: true,
             labelString: data_all[item]['kabupaten']
-          },
-          ticks: {
-                beginAtZero: true,
-                max : terbesar-(terbesar%100)+Math.round(terbesar/1000)*100,callback: function(value, index, values) {
-                  if (value >=1000){
-             return value/1000+'K'}
-             return value;
-           }
-            }
+          }
         }],
         xAxes: [{
           scaleLabel: {
             display: true,
             labelString: data_all[item]['tetangga']
-          },
-          ticks: {
-                beginAtZero: true,
-                max : terbesar-(terbesar%100)+Math.round(terbesar/1000)*100,callback: function(value, index, values) {
-                  if (value >=1000){
-             return value/1000+'K'}
-             return value;
-           }
-            }
+          }
         }],
           }
         }
@@ -1320,3 +1324,4 @@ document.getElementsByClassName(loopp[xxx].replace(" ","_"))['0'].setAttribute('
 </body>
 
 </html>
+

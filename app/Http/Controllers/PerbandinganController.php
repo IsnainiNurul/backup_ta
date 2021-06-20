@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,10 +46,12 @@ class PerbandinganController extends Controller
         $data = Tetangga::query();
         if($request->tetangga != null){
             $data = $data->where('id','=',$request->tetangga)->first();
+            $id = $request->tetangga;
         }
         else{
             
             $data = $data->where('id','=',2)->first();
+            $id = 2;
         // $data = $data->first();
         };
         // return ; 
@@ -59,20 +61,35 @@ class PerbandinganController extends Controller
 
         $data_all = DataTetangga::where('kabupaten','=',$data->kabupaten)->get();
         
-        
+        // return $data_all;
         
         for($hitung =0;$hitung < count($data_all);$hitung++){
             // return 'cek';
-            $m1= str_replace('[','',str_replace(']','',$data_all[$hitung]->m1));
-            $m2= str_replace('[','',str_replace(']','',$data_all[$hitung]->m2));
+            
+            $m1= str_replace(' ','',str_replace('[','',str_replace(']','',$data_all[$hitung]->m1)));
+            $m2= str_replace(' ','',str_replace('[','',str_replace(']','',$data_all[$hitung]->m2)));
             
             $arr_m1 = array_map('intval',explode(",", $m1));
             $arr_m2 = array_map('intval',explode(",", $m2));
+            $process = shell_exec("python3 regplot.py ".$data_all[$hitung]->id);
+            // $process = str_replace('\n','',$process);
+            $process = array_map('floatval',explode("%%", $process));
+            // echo $data_all[$hitung]->id;
+            // return $process;
+            $slope=$process[0];
+            $intercept=$process[1];
+            // return $intercept;
+            // return $process;
+            
+            // python 
             $pearson = pearson_correlation($arr_m1,$arr_m2);
             // return $pearson;
             $data_all[$hitung]->pearson = $pearson;
+            $data_all[$hitung]->slope = $slope;
+            $data_all[$hitung]->intercept = $intercept;
             // return $pearson;
         };
+        // return $data_all;
         // return $data_all;
         // return pearson_correlation($data_all->m1,$data_all->m2);
         // return $data_all;
@@ -84,7 +101,7 @@ class PerbandinganController extends Controller
         $tanggal = Temp_tanggal::where('id','=','1')->first();
         $mulai = $tanggal->mulai;
         $akhir= $tanggal->akhir;
-//        return $data_all;
+    //    return $data_all;
         // return $data;
         return view('perbandingan',['akhir'=>$akhir,'mulai'=>$mulai,'tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten,'data_all'=>$data_all]);
     }
@@ -117,81 +134,38 @@ class PerbandinganController extends Controller
                 
             }
 	public function regresi(Request $request){ //Jangan Diotak atik
-	$process = shell_exec("python3 linearreg.py ".$request->kota." ".$request->tetangga." ".$request->mulai." ".$request->akhir);
+        // return 'tes';
+	$process = shell_exec("python linearreg.py ".$request->kota." ".$request->tetangga." ".$request->mulai." ".$request->akhir);
 //	return $process;	
+    return $process;
 	$rmse = (explode("%%",$process))[1];
         $tanggal = (explode("%%",$process))[2];
-	$process3 = (explode("%%",$process))[4]; 
+
         $process2 = (explode("%%",$process))[3];
 	$process = (explode("%%",$process))[0];
+		
 	$output_python =  explode("]",explode("[", $process)[1])[0] ;
         $output_python =  explode(" ",$output_python) ;
 	
 	$output_python2 =  explode("]",explode("[", $process2)[1])[0] ;
         $output_python2 =  explode(" ",$output_python2) ;
 
-	$output_python3 =  explode("]",explode("[", $process3)[1])[0] ;
-        $output_python3 =  explode(" ",$output_python3) ;
-	//return $output_python3;	
+
 	$result= array_filter($output_python, fn($value) => !is_null($value) && $value !== '');
         
         $output_python = array_values($result);
 	$result2= array_filter($output_python2, fn($value) => !is_null($value) && $value !== '');
 	$output_python2 = array_values($result2);
-        $result3= array_filter($output_python3, fn($value) => !is_null($value) && $value !== '');
-	$output_python3 = array_values($result3);
-
-	$array_ = [];
-	$tgl=Carbon::createFromDate($tanggal);
-	for($x =0;$x<count($output_python);$x++){
-//	echo $output_python[$x];
-//	$w = (object)['x'=>$output_python[$x]
-//			
-//			];
-//
-	$tgl = $tgl->addDays(1);
-	$arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python[$x]);
-	array_push($array_,(object) $arrays);
-	}
-
-	$array_akhir = [];
- 	$tgl=Carbon::createFromDate($tanggal);
-        //$tgl = $tgl->addDays(1);
-	for($x =0;$x<count($output_python2);$x++){
-
-//        echo $output_python2[$x];
-	$tgl = $tgl->addDays(1);
-        $arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python2[$x]);
-        array_push($array_akhir,(object) $arrays);
-        }
-
-        $array_kota = [];
-        $tgl=Carbon::createFromDate($tanggal);
-        //$tgl = $tgl->addDays(1);
-        for($x =0;$x<count($output_python3);$x++){
-                                                                                                                        //        echo $output_python2[$x];
-        $tgl = $tgl->addDays(1); 
-        $arrays = array('x'=>$tgl->format('Y-m-d')." 00:00:00",'y'=>(int)$output_python3[$x]);
-        array_push($array_kota,(object) $arrays);
-        }
-     
-
-
-	return view('linear',['array_kota'=>$array_kota,'mulai'=>$request->mulai,'tanggal'=>$tanggal,'real'=>$array_akhir,'rmse'=>$rmse,'tetangga'=>$request->tetangga,'kota'=>$request->kota,'last_day'=>Carbon::createFromDate($request->akhir)->format('Y-m-d'),'all'=>$array_,'count_conf'=>count($array_)]);
-
-	return $array_;
-	return 'halo';
-	echo $request->kota.' Memprediksi'.$request->tetangga.'<br>';
 	echo "Training Tanggal ".$request->mulai."-->Hingga Tanggal ".$tanggal.'  ';
 	echo "<br>Testing Tanggal ".$tanggal."-->Hingga Tanggal  ".$request->akhir.'  ';
 	echo "<br>RMSE = ".$rmse."<br>";
 	for($x=0;$x<count($output_python);$x++){
-	echo "<br>Hari ";
+	echo "<br>";
 	echo $x+1;
 	echo "<br>";
-	echo "<br>Prediksi = ".$output_python[$x];
-	echo "<br>Real = ".$output_python2[$x];
-	echo "<br>";
+	echo "<br>Real = ".$output_python[$x];
+	echo "<br>Prediksi = ".$output_python2[$x];
+
 	}
 //	return $output_python;
 
@@ -200,3 +174,4 @@ class PerbandinganController extends Controller
 
 
 }
+
