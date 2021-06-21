@@ -365,7 +365,12 @@ ul.b {list-style-type: square;}
                       <div style="width:600px">
                       <p><h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>{{$semua->kabupaten}} >< {{$semua->tetangga}}</h2>
                       <p>
+                      
+                        <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot</h2>
                         <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        
+                        <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot %(Persen)</h2>
+                        <canvas id="chartchart{{$semua->tetangga}}"></canvas>
                         <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Korelasi Pearson : {{$semua->pearson}}</h2>
                         <canvas id="charts{{$semua->tetangga}}"></canvas>
                         <a href='/perbandingan/regresi?kota={{$semua->kabupaten}}&tetangga={{$semua->tetangga}}&mulai={{$mulai}}&akhir={{$akhir}}'><button type="button" class="btn btn-info btn-lg" >Regresi Linear</button></a>
@@ -583,6 +588,7 @@ ul.b {list-style-type: square;}
   array_loop.forEach(myFunction);
 
   array_loop.forEach(myFunctions);
+  array_loop.forEach(myFunctionss);
 
   function myFunction(item) {
   var x = data_all[item]['x'];
@@ -691,7 +697,104 @@ var ctx = document.getElementById(name).getContext('2d');
         xAxes: [{
           scaleLabel: {
             display: true,
-            labelString: 'RATA-RATA '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+            labelString: 'RATA-RATA'+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
+          }
+        }],
+          }
+        }
+
+      
+    });
+}
+
+
+  function myFunctionss(item) {
+  var x = data_all[item]['x'];
+  x = x.replace('[','').replace(']','').split(',');
+  var y = data_all[item]['y'];
+  y = y.replace('[','').replace(']','').split(',');
+  console.log(y[0]);
+  var array_obj = [];
+  var xx = [];
+  var yy = [];
+  var sum =0;
+  var count = 0;
+  for (var i = 0; i < x.length; i++) {
+    
+  var obj={};
+   obj['x'] = x[i];
+   obj['y'] = y[i]*100/x[i];
+   
+  if(x[i] > 0 || x[i] <0){
+  sum = sum+obj['y'];
+  count = count+1;
+  array_obj.push(obj);
+  
+  xx.push(parseFloat(x[i]));
+  yy.push(parseFloat(y[i]));
+  }
+}
+  var mean = sum/count;
+  mean = mean.toFixed(2);
+  console.log(array_obj);
+  console.log(Math.min.apply(Math, xx));
+  console.log(Math.max.apply(Math, xx));
+
+const data = {
+  
+  datasets: [{
+    type: 'scatter',
+    label: 'Data',
+    data: array_obj,
+    backgroundColor: 'rgb(0, 99, 132)'
+  },{
+    type: 'line',
+    label: 'Mean : '+mean+'%',
+    data: [{
+      x: Math.min.apply(Math, xx),
+      y: mean,
+    },{
+      x: Math.max.apply(Math, xx),
+      y: mean,
+    },],
+    fill: false,
+    
+    borderColor: 'rgb(54, 162, 235)'
+  },{label:''}]
+};
+console.log(xx);
+console.log('Min xx =='+Math.min.apply(Math, xx));
+console.log('Max xx =='+Math.max.apply(Math, xx));
+console.log('min==='+data_all[item]['min']);
+console.log('max==='+data_all[item]['max']);
+console.log('mean==='+data_all[item]['mean']);
+
+
+var name = 'chartchart'+data_all[item]['tetangga'];
+
+var ctx = document.getElementById(name).getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 500;
+    
+		var chart = new Chart(ctx, {
+      type: 'scatter',
+        data: data,
+        plugins:plugins,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }, 
+          yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'SELISIH'+' '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']+'/RATA-RATA(%)'
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Rata-Rata '+data_all[item]['kabupaten']+'-'+data_all[item]['tetangga']
           }
         }],
           }
