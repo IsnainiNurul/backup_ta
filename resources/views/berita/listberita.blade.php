@@ -479,7 +479,7 @@
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
                     <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
                   </div>
-                  <div class="col-sm-6 search_bar" style="top: 40px;right: 0px;position: absolute;">
+                  <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
                     <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
                   </div>
                 </div>
