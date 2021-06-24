@@ -521,7 +521,7 @@
                                             <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
                                           @elseif($b->label=='donation')
                                             <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
-                                          @elseif($bf->label=='criticisms')
+                                          @elseif($b->label=='criticisms')
                                             <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
                                           @elseif($b->label=='Hoax')
                                             <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
