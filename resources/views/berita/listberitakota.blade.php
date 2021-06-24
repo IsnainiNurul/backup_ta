@@ -286,11 +286,11 @@
                           
                                   <div class="col-sm-8">
                                       <div class="row col-sm-11">
-                                      @if($b->news_portal=='kompass')
-                                        <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+                                      @if($b->news_portal=='kompas')
+                                        <div class="col-sm-6 text-justify news-kompas">{{$b->news_portal}}</div>
 
                                       @else
-                                        <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
@@ -379,10 +379,10 @@
                                   <div class="col-sm-8">
                                       <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
-                                        <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
                                       @else
-                                        <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
@@ -417,10 +417,10 @@
                                   <div class="col-sm-8">
                                       <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
-                                        <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-kompas">{{$b->news_portal}}</div>
 
                                       @else
-                                        <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
