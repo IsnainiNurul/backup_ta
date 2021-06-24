@@ -347,7 +347,7 @@
                                     
                                   
                                   <div class="col-sm-12">
-                                      <div class="row" style="padding-left: 10px;">
+                                      <div class="row" style="padding-left: 25px;">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
