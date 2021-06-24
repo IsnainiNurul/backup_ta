@@ -13,11 +13,10 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
-  password="",
-  database="tugasakhir"
+  user="pmauser",
+  password="password_here",
+  database="tacovid"
 )
-
 
 mycursor = mydb.cursor()
 if(sys.argv[3]=="semua"):
