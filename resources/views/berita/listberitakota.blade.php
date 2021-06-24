@@ -244,13 +244,15 @@
                                     
                                   
                                   <div class="col-sm-12">
+                                   <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
-                                        <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-4 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
                                       @else
-                                        <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-4 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                      </div>
                                       <div class="row col-sm-12">
                                         <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                         @if($b->label=='notification of information')
@@ -283,6 +285,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
+                                      <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
 
@@ -290,12 +293,19 @@
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                      </div>
                                       <div class="row col-sm-12">
-                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                       <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                         @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                        @elseif($b->label=='donation')
+                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                        @elseif($b->label=='criticisms')
+                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                        @elseif($b->label=='Hoax')
+                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                         @endif
                                         </a>
                                       </div>
@@ -367,6 +377,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
+                                      <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
@@ -374,12 +385,19 @@
                                         <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                      </div>
                                       <div class="row col-sm-12">
                                         <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                         @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                        @elseif($b->label=='donation')
+                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                        @elseif($b->label=='criticisms')
+                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                        @elseif($b->label=='Hoax')
+                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                         @endif
                                         </a>
                                       </div>
@@ -397,6 +415,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
+                                      <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
 
@@ -404,13 +423,19 @@
                                         <div class="col-sm-12 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
-
+                                      </div>
                                       <div class="row col-sm-12">
                                         <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                         @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                        @elseif($b->label=='donation')
+                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                        @elseif($b->label=='criticisms')
+                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                        @elseif($b->label=='Hoax')
+                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                         @endif
                                         </a>
                                       </div>
