@@ -1,7 +1,7 @@
 <?php
 
 namespace Illuminate\Http\Concerns;
-
+set_time_limit(0);
 trait InteractsWithFlashData
 {
     /**

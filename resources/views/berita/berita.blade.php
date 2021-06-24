@@ -296,11 +296,12 @@
                           <div class="col-sm-8">
                             <div class="row">
                             @if($b->news_portal=='kompas')
-                                <div class="col-sm-12 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
+                                <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
                             @else
-                                <div class="col-sm-12 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
+                                <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
-
+                                <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                         
                             
                           </div>
                             <div class="row col-sm-12">
@@ -461,61 +462,6 @@
     </div>
   </div>
 
-  <script>
-    console.log("tes");
-  console.log( {!! json_encode($label) !!});
-  var ctx = document.getElementById('chart2');
-
-  // <block:setup:1>
-  const data = {
-    labels: ['Notification','Donation','Criticisms','Hoax','Other'],
-    datasets: [{
-      data: {!! json_encode($label) !!},
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ],
-      borderWidth: 1
-    }]
-  };
-  
-  // </block:setup>
-
-  // <block:config:0>
-  var barChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-      legend: {
-        display: false
-    },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-    },
-  });
-  // </block:config>
-
-
-
-  </script>
   
 
   <script src="/assets/js/berita/kota.js"></script>

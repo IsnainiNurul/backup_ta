@@ -29,7 +29,6 @@ class BeritaController extends Controller
         $data_sembuh1 = DataCovid19Sembuh::query();
         $data_sembuh2 = DataCovid19Sembuh::query();
         $berita = News::query();
-        $label= DataLabel::query();
 
         if($request->datestart != null){
         	$data = $data->where('tanggal','>=',$request->datestart);
@@ -71,18 +70,7 @@ class BeritaController extends Controller
          	$temp2=$cek[0];
          }
 
-         if($request->datestart2 != null){
-        	$label = $label->where('date','>=',$request->datestart);
-         }
-         else{
-         	$label = $label->where('date','>=','2020-03-18');
-         }
-         if($request->dateend2 != null){
-        	$label = $label->where('date','<=',$request->dateend);
-         }
-         else{
-         	$label = $label->where('date','<=',date('Y-m-d'));
-         }
+         
 	    if($request->area != null && $request->area !="Semua"){
 
 	       if($request->area=="Jatim"){
@@ -224,35 +212,9 @@ class BeritaController extends Controller
 	     // array_push($array_to, $label->)
 
 	   
-	     $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
-	     $donation = $label->select(DB::raw('SUM(donation) as Donation'))->get();
-	     $criticisms = $label->select(DB::raw('SUM(criticisms) as Criticisms'))->get();
-	     $hoax = $label->select(DB::raw('SUM(hoax) as Hoax'))->get();
-	     $other = $label->select(DB::raw('SUM(other) as Other'))->get();
-
-	     $nof=substr($nof,2, -2);
-	     $donation=substr($donation,2, -2);
-	     $criticisms=substr($criticisms,2, -2);
-	     $hoax=substr($hoax,2, -2);
-	     $other=substr($other,2, -2);
-
-
-	     $nof=explode(":",$nof);
-	     $donation=explode(":",$donation);
-	     $criticisms=explode(":",$criticisms);
-	     $hoax=explode(":",$hoax);
-	     $other=explode(":",$other);
-	     //print($berita);
-	     $nof=substr($nof[1],1,-1);
-	   	 $donation=substr($donation[1],1, -1);
-	     $criticisms=substr($criticisms[1],1, -1);
-	     $hoax=substr($hoax[1],1, -1);
-	     $other=substr($other[1],1, -1);
-	     
 		 $totalkasus=$data_kasus2-$data_kasus1;
 		 $totalmeninggal=$data_meninggal2-$data_meninggal1;
 		 $totalsembuh=$data_sembuh2-$data_sembuh1;
-	  	 $label_array=[$nof,$donation,$criticisms,$hoax,$other];
   //       $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
   //       $tes=explode("] ",$process);
 		// $tes[0]=substr($tes[0],1);
@@ -273,6 +235,6 @@ class BeritaController extends Controller
 	  	if($totalsembuh<0){$totalsembuh=0;}
 
 
-    	return view('berita.berita',['data'=>$data,'berita'=>$berita,'label'=>$label_array,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
+    	return view('berita.berita',['data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
    	}
 }
