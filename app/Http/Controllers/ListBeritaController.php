@@ -298,11 +298,7 @@ class ListBeritaController extends Controller
          	$berita = $berita->where('date','<=',date('Y-m-d'));
          	$temp2 = date('Y-m-d');
          }
-         if($provinsi!=null|| $provinsi!=""){
-         	$request->provinsi=strtolower($provinsi);
-         	return $provinsi;
-         }
-         return $provinsi;
+        return $provinsi;
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
