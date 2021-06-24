@@ -347,7 +347,7 @@
                                     
                                   
                                   <div class="col-sm-12">
-                                      <div class="row col-sm-10">
+                                      <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-3 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
@@ -409,7 +409,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
-                                    <div class="row col-sm-10">
+                                    <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-6 text-justify news-kompas">{{$b->news_portal}}</div>
 
@@ -515,7 +515,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
-                                    <div class="row col-sm-10">
+                                    <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
@@ -568,7 +568,7 @@
                                     </div>
                           
                                   <div class="col-sm-8">
-                                      <div class="row col-sm-10">
+                                      <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-6 text-justify news-kompas">{{$b->news_portal}}</div>
 
