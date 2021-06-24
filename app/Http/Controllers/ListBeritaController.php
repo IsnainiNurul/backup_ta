@@ -301,12 +301,12 @@ class ListBeritaController extends Controller
 
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 
-	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
+	       if($request->area=="Jatim" || $request->provinsi=="jawa timur" || $provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
 	       		$kota=array("surabaya","sidoarjo","gresik", "malang","bangkalan","banyuwangi","blitar","bojonegoro","bondowoso","jember","jombang","kediri","lamongan","lumajang","madiun","magetan","mojokerto","nganjuk","ngawi","pacitan","pamekasan","pasuruan","ponorogo","probolinggo","sampang","sidoarjo","situbondo","sumenep","trenggalek","tuban","tulungagung","batu","kediri");
 
 	       }
-	       else if($request->area=="Jabar" || $request->provinsi=="jawa barat"){
+	       else if($request->area=="Jabar" || $request->provinsi=="jawa barat" || $provinsi=="jawa barat"){
 
 	       		$provinsi= 'jawa barat';
 	       		$kota=array("bandung barat","bandung","bekasi","bogor","ciamis","cianjur","cirebon","garut","indramayu","karawang","kuningan","majalengka","pangandaran","purwakarta","minahasa","subang","sukabumi","sumedang","tasikmalaya","banjar","cimahi","depok");
