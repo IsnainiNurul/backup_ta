@@ -131,23 +131,6 @@
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
                 </ul>
               </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="photo">
-                    <img src="/assets/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
-              </li>
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
@@ -347,12 +330,12 @@
                                     
                                   
                                   <div class="col-sm-12">
-                                      <div class="row col-sm-11">
+                                      <div class="row col-sm-12">
                                       @if($b->news_portal=='kompas')
-                                        <div class="col-sm-3 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
 
                                       @else
-                                        <div class="col-sm-3 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
+                                        <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
