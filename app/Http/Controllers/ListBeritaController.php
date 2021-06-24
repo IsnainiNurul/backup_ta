@@ -298,15 +298,18 @@ class ListBeritaController extends Controller
          	$berita = $berita->where('date','<=',date('Y-m-d'));
          	$temp2 = date('Y-m-d');
          }
+         if($provinsi!=null|| $provinsi!=""){
+         	$request->provinsi=strtolower($provinsi);
+         }
 
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 
-	       if($request->area=="Jatim" || $request->provinsi=="jawa timur" || $provinsi=="jawa timur"){
+	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
 	       		$kota=array("surabaya","sidoarjo","gresik", "malang","bangkalan","banyuwangi","blitar","bojonegoro","bondowoso","jember","jombang","kediri","lamongan","lumajang","madiun","magetan","mojokerto","nganjuk","ngawi","pacitan","pamekasan","pasuruan","ponorogo","probolinggo","sampang","sidoarjo","situbondo","sumenep","trenggalek","tuban","tulungagung","batu","kediri");
 
 	       }
-	       else if($request->area=="Jabar" || $request->provinsi=="jawa barat" || $provinsi=="Jawa Barat"){
+	       else if($request->area=="Jabar" || $request->provinsi=="jawa barat"){
 
 	       		$provinsi= 'jawa barat';
 	       		$kota=array("bandung barat","bandung","bekasi","bogor","ciamis","cianjur","cirebon","garut","indramayu","karawang","kuningan","majalengka","pangandaran","purwakarta","minahasa","subang","sukabumi","sumedang","tasikmalaya","banjar","cimahi","depok");
