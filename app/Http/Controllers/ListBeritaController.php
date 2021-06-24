@@ -302,7 +302,7 @@ class ListBeritaController extends Controller
          	$request->provinsi=strtolower($provinsi);
          	return $request->provinsi;
          }
-
+         return $provinsi;
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
