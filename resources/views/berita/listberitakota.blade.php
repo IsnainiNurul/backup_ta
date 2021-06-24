@@ -286,7 +286,7 @@
                           
                                   <div class="col-sm-8">
                                       <div class="row col-sm-11">
-                                      @if($b->news_portal=='kompas')
+                                      @if($b->news_portal=='kompass')
                                         <div class="col-sm-12 text-justify news-kompas">{{$b->news_portal}}</div>
 
                                       @else
