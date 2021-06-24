@@ -300,6 +300,7 @@ class ListBeritaController extends Controller
          }
          if($provinsi!=null|| $provinsi!=""){
          	$request->provinsi=strtolower($provinsi);
+         	return $request->provinsi;
          }
 
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
