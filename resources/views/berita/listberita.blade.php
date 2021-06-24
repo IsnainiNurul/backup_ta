@@ -406,9 +406,15 @@
                                          
                                           <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                           @if($b->label=='notification of information')
-                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                           @else
-                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                           @endif
                                           </a>
                                     
@@ -512,9 +518,15 @@
                                          
                                           <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                           @if($b->label=='notification of information')
-                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($bf->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                           @else
-                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                           @endif
                                           </a>
                                     
@@ -565,9 +577,15 @@
                                          
                                           <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
                                           @if($b->label=='notification of information')
-                                            <div class="text-fit news-tribun news-portal"><p>Information</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
                                           @else
-                                            <div class="text-fit news-tribun news-portal"><p>{{$b->label}}</p></div>
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                           @endif
                                           </a>
                                     
