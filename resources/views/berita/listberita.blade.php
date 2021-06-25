@@ -179,7 +179,7 @@
                 <div class="col-3 row">
                 <select class="col-11" name="area" id="area">
                     <option value="Semua" selected>Pilih Provinsi</option>
-                    <option value="Semua" selected>Semua</option>
+                    <option value="Semua">Semua</option>
                     <option value="Jatim">Jawa Timur</option>
                     <option value="Jabar">Jawa Barat</option>
                     <option value="Jateng">Jawa Tengah</option>
@@ -357,7 +357,7 @@
                                           </a>
                                     
                                         @if($provinsi!="" && $provinsi!="Indonesia")
-                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
                                             </div>
                                           </a>
@@ -419,7 +419,7 @@
                                           </a>
                                     
                                         @if($provinsi!="" && $provinsi!="Indonesia")
-                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
                                             </div>
                                           </a>
@@ -429,7 +429,7 @@
                                           @endphp
                                           
                                           @foreach($list_provinsi as $l)
-                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
                                             </div>
                                             </a>
@@ -539,7 +539,7 @@
                                           </a>
                                     
                                         @if($provinsi!="" && $provinsi!="Indonesia")
-                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
                                             </div>
                                           </a>
@@ -549,7 +549,7 @@
                                           @endphp
                                           
                                           @foreach($list_provinsi as $l)
-                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
                                             </div>
                                             </a>
@@ -598,7 +598,7 @@
                                           </a>
                                     
                                         @if($provinsi!="" && $provinsi!="Indonesia")
-                                          <a href="berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
                                             </div>
                                           </a>
@@ -608,7 +608,7 @@
                                           @endphp
                                           
                                           @foreach($list_provinsi as $l)
-                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
                                             </div>
                                             </a>

@@ -458,10 +458,11 @@ class ListBeritaController extends Controller
 	       else if($request->area=="Indonesia" || $request->provinsi=="indonesia"){
 	       		$provinsi= '';
 	       }
+	       $berita = $berita->where('area','=',$provinsi); 
 
 	     }
 	     else{
-	     	$berita = $berita->orderBy('date', 'ASC');
+	     	$berita = $berita;
 	     	$provinsi='Indonesia';
 	     }
 	     if($request->label != null && $request->label != "Semua"){
@@ -497,7 +498,7 @@ class ListBeritaController extends Controller
 		$cari = $request->cari;
  		
  		// mengambil data dari table pegawai sesuai pencarian data
-		$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
+		$berita = $berita->where('area','=',$request->$provinsi)->where('title','like',"%".$cari."%")->paginate(10);
  
     	// mengirim data pegawai ke view index
 		return view('index',['pegawai' => $pegawai]);
