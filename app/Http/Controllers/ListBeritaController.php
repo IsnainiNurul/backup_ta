@@ -496,7 +496,7 @@ class ListBeritaController extends Controller
     	$berita = News::query();
 		$cari = $request->cari;
  		
-		$berita = $berita->where('area','=',$request->provinsi)->where('title','like',"%".$cari."%")->paginate(10);
+		$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
 		
 		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi]);
     }
