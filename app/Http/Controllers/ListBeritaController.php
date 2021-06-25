@@ -502,6 +502,6 @@ class ListBeritaController extends Controller
  		else{
  			$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
  		}
-		return view('berita.cariberita',['berita' => $berita,'provinsi'=$request->provinsi]);
+		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi]);
     }
 }
