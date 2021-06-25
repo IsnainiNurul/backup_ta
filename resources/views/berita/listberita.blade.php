@@ -481,7 +481,7 @@
                   </div>
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
                     <form method='get' action=/berita/cari>
-                      <input id="searchbar" onkeypress="search_berita()" type="text" name="search" placeholder="Cari Berita..">
+                      <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
                     </form>
                   </div>
                 </div>

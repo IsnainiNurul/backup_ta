@@ -488,4 +488,16 @@ class ListBeritaController extends Controller
          }
         return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
     }
+
+    public function cariberita(Request $request)
+    {
+    	// menangkap data pencarian
+		$cari = $request->cari;
+ 
+ 		// mengambil data dari table pegawai sesuai pencarian data
+		$pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$cari."%")->paginate(10);
+ 
+    	// mengirim data pegawai ke view index
+	return view('index',['pegawai' => $pegawai]);
+    }
 }
