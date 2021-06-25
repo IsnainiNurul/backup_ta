@@ -300,7 +300,7 @@ class ListBeritaController extends Controller
          	$temp2 = date('Y-m-d');
          }
         $request->provinsi=strtolower($request->provinsi);
-	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
+	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null && $request->provinsi!="indonesia")){
 
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
