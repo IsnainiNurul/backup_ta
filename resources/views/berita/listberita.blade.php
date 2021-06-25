@@ -494,10 +494,7 @@
                       <form method='get' action="/berita/cari?provinsi={{$provinsi}}&">
                         <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="{{$provinsi}}">
                       </form>
-                    @else
-                      <form method='get' action="/berita/cari/">
-                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
-                      </form>
+                   
                     @endif
                   </div>
                 </div>
