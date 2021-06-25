@@ -319,7 +319,7 @@
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
                     <h2 class="card-title">Berita COVID-19 di Kota {{$kota}}</h2>
                   </div>
-                  
+
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
                     @if($provinsi!="" && $provinsi!="Indonesia")
                       <form method='get' action="/berita/cari">
