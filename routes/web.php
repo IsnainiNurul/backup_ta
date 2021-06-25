@@ -38,6 +38,8 @@ Route::get('/berita/list', [ListBeritaController::class, 'index']);
 Route::get('/berita/graph', [GraphBeritaController::class, 'index']);
 Route::get('/berita/statistik', [StatistikBeritaController::class, 'index']);
 Route::get('/berita/cari/', [ListBeritaController::class, 'cariberita']);
+Route::get('/berita/cari/{provinsi}', [ListBeritaController::class, 'cariberitaprovinsi']);
+Route::get('/berita/cari/{kota}', [ListBeritaController::class, 'cariberitakota']);
 Route::get('/berita/list/{provinsi}/{kota}', [ListBeritaController::class, 'indexkota']);
 Route::get('/berita/list/{provinsi}', [ListBeritaController::class, 'indexprovinsi']);
 

@@ -301,7 +301,6 @@ class ListBeritaController extends Controller
          }
         $request->provinsi=strtolower($request->provinsi);
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
-	    	return "tes";
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
 	       		$kota=array("surabaya","sidoarjo","gresik", "malang","bangkalan","banyuwangi","blitar","bojonegoro","bondowoso","jember","jombang","kediri","lamongan","lumajang","madiun","magetan","mojokerto","nganjuk","ngawi","pacitan","pamekasan","pasuruan","ponorogo","probolinggo","sampang","sidoarjo","situbondo","sumenep","trenggalek","tuban","tulungagung","batu","kediri");
@@ -496,12 +495,29 @@ class ListBeritaController extends Controller
     	// menangkap data pencarian
     	$berita = News::query();
 		$cari = $request->cari;
- 		if($request->provinsi!=null){
-			$berita = $berita->where('area','=',$request->provinsi)->where('title','like',"%".$cari."%")->paginate(10);
-		}
- 		else{
- 			$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
- 		}
+ 		
+		$berita = $berita->where('area','=',$request->provinsi)->where('title','like',"%".$cari."%")->paginate(10);
+		
 		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi]);
+    }
+    public function cariberitaprovinsi(Request $request)
+    {
+    	// menangkap data pencarian
+    	$berita = News::query();
+		$cari = $request->cari;
+ 		
+		$berita = $berita->where('area','=',$request->provinsi)->where('title','like',"%".$cari."%")->paginate(10);
+
+		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi]);
+    }
+    public function cariberitakota(Request $request)
+    {
+    	// menangkap data pencarian
+    	$berita = News::query();
+		$cari = $request->cari;
+ 		
+		$berita = $berita->where('kota','=',$request->kota)->where('title','like',"%".$cari."%")->paginate(10);
+
+		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi,'kota'=>$request->kota]);
     }
 }

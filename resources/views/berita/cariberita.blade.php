@@ -143,18 +143,12 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
+                    <h2 class="card-title">Berita COVID-19</h2>
                   </div>
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
-                    @if($provinsi!="" && $provinsi!="Indonesia")
-                      <form method='get' action="/berita/cari">
-                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita..">
+                      <form method='get' action="/berita/cari/">
+                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
                       </form>
-                    @else
-                      <form method='get' action="/berita/cari/?provinsi={{$provinsi}}">
-                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita..">
-                      </form>
-                    @endif
                   </div>
                 </div>
               </div>

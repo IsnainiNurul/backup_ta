@@ -134,182 +134,8 @@
       </div>
       <!-- End Navbar -->
 
-      <!-- Card COVID-19 -->
-      <div class="content">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
-                @if($provinsi!="")
-                    <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}} Kota {{$kota}}
-                    </h1>
-                @else
-                    <h1 style='text-align:center;'>indonesia</h1>
-                @endif
-
-              </div>
-            </div>
-             <div class="card card-header">
-              <form method='get' action="/berita/list/{{$provinsi}}/{{$kota}}">
-              <div class="row">
-                <div class="col-6 form-group row">
-                  <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                  <input class="col-4 form-control" type="date" value="2020-03-18" id="example-date-input" name="datestart">
-                  <label for="example-date-input" class="col-1 col-form-label">-</label>
-                  
-                  <input class="col-4 form-control" type="date" value="{{date('Y-m-d')}}" id="example-date-input" name="dateend">
-                </div>
-
-                <select class="col-2" name="sorting" id="sorting">
-                    <option value="Terbaru"selected>Terbaru</option>
-                    <option value="Terlama">Terlama</option>
-                  </select>
-                  <div class="col-2">
-                 <input class="btn btn-primary" id="submitbutton" type='submit'>
-               </div>
-              </form> 
-                
-              </div>
-            </div>
-              
-<br />
-@if ($berita->onFirstPage())
-<!-- Riwayat Berita COVID-19 -->
-        <div class="content">
-        <div class="row">
-          <div class="col-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-12 text-left">
-                    <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    <h2 class="card-title">Berita Terbaru COVID-19 di Kota {{$kota}}</h2>
-                  </div>
-                  <div class="col-sm-6">
-                  
-                  </div>
-                </div>
-              </div>
-              
-              <div class="card-body">
-                <div style="width:1000px;height:400px;position: relative;">
-                        @php 
-                            $counter=0;
-                        @endphp
-
-                        @foreach($berita as $b)
-                            @if($counter==0)
-                              <div class="row">
-                                  <div class="col-sm-6">
-                                  
-                                    <div class="col-sm-11 div-gambar-utama">
-                                        <a href="{{$b->url}}">
-                                          <img src="{{$b->img_url}}" class="news-gambar">
-                                        </a>
-                                    </div>
-                                    
-                                  
-                                  <div class="col-sm-12">
-                                   <div class="row col-sm-11">
-                                      @if($b->news_portal=='kompas')
-                                        <div class="col-sm-4 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
-
-                                      @else
-                                        <div class="col-sm-4 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
-                                      @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
-                                      </div>
-                                      <div class="row col-sm-12">
-                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
-                                        @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
-                                        @elseif($b->label=='donation')
-                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
-                                        @elseif($b->label=='criticisms')
-                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
-                                        @elseif($b->label=='Hoax')
-                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
-                                        @else
-                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
-                                        @endif
-                                        </a>
-                                      </div>
-                                      <div class="col-sm-12 text-justify news-title" target="_blank"><a style="font-size: 15px" href="{{$b->url}}">{{$b->title}}</a></div>
-                                      <div class="col-sm-12 text-justify news-title"><span style="font-size: 10px" href="{{$b->url}}">{{substr($b->content, 1, 200)}}</span></div>
-                           
-                                  </div>
-
-                                  </div>
-                                  <div class="col-sm-6">
-                            @elseif($counter>0 && $counter<=3)
-                                  <div class="berita-left">
-                                  <div class="row">
-                                    <div class="col-sm-4 div-gambar">
-                                        <a href="{{$b->url}}">
-                                          <img src="{{$b->img_url}}" class="img-fluid">
-                                        </a>
-                                    </div>
-                          
-                                  <div class="col-sm-8">
-                                      <div class="row col-sm-11">
-                                      @if($b->news_portal=='kompas')
-                                        <div class="col-sm-6 text-justify news-kompas">{{$b->news_portal}}</div>
-
-                                      @else
-                                        <div class="col-sm-6 text-justify news-tribun">{{$b->news_portal}}</div>
-                                      @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
-                                      </div>
-                                      <div class="row col-sm-12">
-                                       <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
-                                        @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
-                                        @elseif($b->label=='donation')
-                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
-                                        @elseif($b->label=='criticisms')
-                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
-                                        @elseif($b->label=='Hoax')
-                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
-                                        @else
-                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
-                                        @endif
-                                        </a>
-                                      </div>
-
-                                      <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
-                                  </div>
-                                  </div>
-                                      </div>
-                                                                    <br>
-                              <br>
-                            
-                                  @endif
-                        @php
-                            $counter++;
-                        @endphp
-                        @endforeach
-    
-                              </div>
-                      
-                      
-                    </div>
-                  
-                  <div>
-
-                  </div>
-                </div>
-                <br>
-                <br>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-        @endif
-    <!-- Riwayat Berita COVID-19 -->
-        <div class="content">
+      
+    <div class="content">
         <div class="row">
           <div class="col-12">
             <div class="card card-chart">
@@ -317,19 +143,12 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    <h2 class="card-title">Berita COVID-19 di Kota {{$kota}}</h2>
+                    <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
                   </div>
-
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
-                    @if($provinsi!="" && $provinsi!="Indonesia")
-                      <form method='get' action="/berita/cari/{{strtolower($provinsi)}}/strtolower($kota)">
-                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
-                      </form>
-                    @else
                       <form method='get' action="/berita/cari/">
                         <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
                       </form>
-                    @endif
                   </div>
                 </div>
               </div>
@@ -353,29 +172,54 @@
                                     </div>
                           
                                   <div class="col-sm-8">
-                                      <div class="row col-sm-11">
+                                    <div class="row col-sm-11">
                                       @if($b->news_portal=='kompas')
                                         <div class="col-sm-6 text-justify news-kompas news-portal">{{$b->news_portal}}</div>
-
                                       @else
                                         <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
-                                      </div>
-                                      <div class="row col-sm-12">
-                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
-                                        @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
-                                        @elseif($b->label=='donation')
-                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
-                                        @elseif($b->label=='criticisms')
-                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
-                                        @elseif($b->label=='Hoax')
-                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
+                                    </div>
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        @elseif($provinsi=="Indonesia")
+                                          <a href="/berita/list/" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>INDONESIA</p>
+                                            </div>
+                                          </a>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
                                         @endif
-                                        </a>
+                                        </div>
                                       </div>
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
@@ -400,22 +244,48 @@
                                       @endif
                                         <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
-                                      <div class="row col-sm-12">
-                                        <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
-                                        @if($b->label=='notification of information')
-                                          <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
-                                        @elseif($b->label=='donation')
-                                          <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
-                                        @elseif($b->label=='criticisms')
-                                          <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
-                                        @elseif($b->label=='Hoax')
-                                          <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
+                                      <div class="col-sm-12">
+                                        <div class="row">
+                                         
+                                          <a href="/berita/list/?label={{$b->label}}" style="margin-left: 15px;">
+                                          @if($b->label=='notification of information')
+                                            <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
+                                          @elseif($b->label=='donation')
+                                            <div class="text-fit news-tribun news-portal"><p>Donasi</p></div>
+                                          @elseif($b->label=='criticisms')
+                                            <div class="text-fit news-tribun news-portal"><p>Kritik</p></div>
+                                          @elseif($b->label=='Hoax')
+                                            <div class="text-fit news-tribun news-portal"><p>Hoaks</p></div>
+                                          @else
+                                            <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
+                                          @endif
+                                          </a>
+                                    
+                                        @if($provinsi!="" && $provinsi!="Indonesia")
+                                          <a href="/berita/list/{{$provinsi}}/{{$b->kota}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
+                                            </div>
+                                          </a>
+                                        
+                                        @elseif($provinsi=="Indonesia")
+                                          <a href="/berita/list/" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>INDONESIA</p>
+                                            </div>
+                                          </a>
                                         @else
-                                          <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
+                                        @php
+                                            $list_provinsi=explode(", ",$b->area);
+                                          @endphp
+                                          
+                                          @foreach($list_provinsi as $l)
+                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
+                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                            </div>
+                                            </a>
+                                          @endforeach
                                         @endif
-                                        </a>
+                                        </div>
                                       </div>
-
                                       <div class="col-sm-12 text-justify news-title"><a href="{{$b->url}}" target="_blank">{{$b->title}}</a></div>
                                   </div>
                                   </div>
@@ -430,8 +300,9 @@
                         @endforeach
                 
           
-                
               </div>
+              <br>
+              <br>
                @if ($berita->hasPages())
                             <div class="pagination align-items-center d-flex justify-content-center">
        
