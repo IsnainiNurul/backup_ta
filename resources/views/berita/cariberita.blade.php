@@ -272,12 +272,13 @@
                                             <div class="text-fit news-tribun news-portal"><p>{{$b->kota}}</p>
                                             </div>
                                           </a>
-                                        @else
+                                        
                                         @elseif($provinsi=="Indonesia")
                                           <a href="/berita/list/" style="margin-left: 10px;">
                                             <div class="text-fit news-tribun news-portal"><p>INDONESIA</p>
                                             </div>
                                           </a>
+                                        @else
                                         @php
                                             $list_provinsi=explode(", ",$b->area);
                                           @endphp
