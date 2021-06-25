@@ -367,7 +367,8 @@ ul.b {list-style-type: square;}
                       <p>
                       
                         <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot</h2>
-                        <canvas id="chart{{$semua->tetangga}}"></canvas>
+                        Jumlah Titik Diluar Garis Kesepakatan :{{$semua->titik}}
+			<canvas id="chart{{$semua->tetangga}}"></canvas>
                         
                         <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot %(Persen)</h2>
                         <canvas id="chartchart{{$semua->tetangga}}"></canvas>
@@ -617,13 +618,8 @@ ul.b {list-style-type: square;}
   console.log(Math.max.apply(Math, xx));
 
 const data = {
-  
-  datasets: [{
-    type: 'scatter',
-    label: 'Data',
-    data: array_obj,
-    backgroundColor: 'rgb(0, 99, 132)'
-  }, {
+   datasets:[
+   {
     type: 'line',
     label: 'Minimum : '+data_all[item]['min'],
     data: [{
@@ -650,7 +646,82 @@ const data = {
     
     borderDash: [10, 30],//untuk bintik bintik
     borderColor: 'rgb(255, 0, 0)'
-  },{
+  }, {
+    type: 'line',label:'CIhigh',
+    data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cihigh1'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['cihigh1'],
+    },],                                                                                                                    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(255, 0, 255)'
+  },
+
+
+{
+    type: 'line',label:'CIhigh',
+    data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cihigh2'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['cihigh2'],
+    },],                                                                                                                    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(255, 0, 255)'
+  },
+
+{
+    type: 'line',
+    label: 'CIlow',                                                                              data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cilow1'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['cilow1'],
+    },],                                                                                                                    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(0, 255, 255)'
+  }
+
+  ,
+{
+    type: 'line',
+    label: 'CIlow',                                                                              data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cilow2'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['cilow2'],
+    },],                                                                                                                    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(0, 255, 255)'
+  }
+
+
+  ,
+{
+    type: 'line',
+    label:'CImean',
+    data: [{
+      x: Math.min.apply(Math, xx),
+      y: data_all[item]['cimean1'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['cimean1'],
+    },],
+    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(0, 0, 0)'
+	,legend: {
+    display: false,
+	}
+  	}
+,
+{                                                                                                                           type: 'line',label:'CImean',                                                                                                           data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cimean2'],                                                                                         }, {                                                                                                                      x: Math.max.apply(Math, xx),                                                                                            y: data_all[item]['cimean2'],
+    },],
+    fill: false,
+    borderDash: [2, 8],//untuk bintik bintik
+    borderColor: 'rgb(0, 0, 0)'
+        ,legend: {
+    display: false,
+        }
+        }                                                                                                               
+,{
     type: 'line',
     label: 'Mean : '+data_all[item]['mean'],
     data: [{
@@ -661,9 +732,10 @@ const data = {
       y: data_all[item]['mean'],
     },],
     fill: false,
-    
     borderColor: 'rgb(54, 162, 235)'
-  },{label:''}]
+  }, 
+{ type: 'scatter',                                                                                                        label: 'Data',                                                                                                          data: array_obj,
+    backgroundColor: 'rgb(0, 99, 132)'                                                                                    },{label:''}]
 };
 console.log(xx);
 console.log('Min xx =='+Math.min.apply(Math, xx));
@@ -747,6 +819,33 @@ const data = {
     label: 'Data',
     data: array_obj,
     backgroundColor: 'rgb(0, 99, 132)'
+  },{
+    type: 'line',
+    label: 'Minimum : '+data_all[item]['minpersen']+'%',
+    data: [{
+      x: Math.min.apply(Math, xx),
+      y: data_all[item]['minpersen'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['minpersen'],
+    },],
+    fill: false,
+    borderDash: [10, 30],//untuk bintik bintik
+    borderColor: 'rgb(255, 0, 0)'
+  },{
+    type: 'line',
+    label: 'Max : '+data_all[item]['maxpersen']+'%',
+    data: [{
+      x: Math.min.apply(Math, xx),
+      y: data_all[item]['maxpersen'],
+    }, {
+      x: Math.max.apply(Math, xx),
+      y: data_all[item]['maxpersen'],
+    },],
+    fill: false,
+
+    borderDash: [10, 30],//untuk bintik bintik
+    borderColor: 'rgb(255, 0, 0)'
   },{
     type: 'line',
     label: 'Mean : '+mean+'%',
@@ -858,7 +957,7 @@ const data = {
   },
   {
     type: 'line',
-    label: 'Garis Regresi',
+    label: 'Garis Korelasi',
     data: array_obj2,
     fill: false,
     

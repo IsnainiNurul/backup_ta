@@ -79,7 +79,7 @@ class PerbandinganController extends Controller
             $slope=$process[0];
             $intercept=$process[1];
             // return $intercept;
-            // return $process;
+             //return $process;
             
             // python 
             $pearson = pearson_correlation($arr_m1,$arr_m2);
@@ -87,7 +87,21 @@ class PerbandinganController extends Controller
             $data_all[$hitung]->pearson = $pearson;
             $data_all[$hitung]->slope = $slope;
             $data_all[$hitung]->intercept = $intercept;
-            // return $pearson;
+        	
+            $data_all[$hitung]->maxpersen = $process[2];
+            $data_all[$hitung]->minpersen = $process[3];    
+	    $data_all[$hitung]->titik = $process[4];
+	    $data_all[$hitung]->max = $process[5];
+            $data_all[$hitung]->min = $process[6];
+	    $data_all[$hitung]->cimean1 = $process[7];
+            $data_all[$hitung]->cimean2 = $process[8];
+            $data_all[$hitung]->cihigh1 = $process[9];
+            $data_all[$hitung]->cihigh2 = $process[10];
+            $data_all[$hitung]->cilow1 = $process[11];
+	    $data_all[$hitung]->cilow2 = $process[12];
+
+
+	// return $pearson;
         };
         // return $data_all;
         // return $data_all;
@@ -101,7 +115,7 @@ class PerbandinganController extends Controller
         $tanggal = Temp_tanggal::where('id','=','1')->first();
         $mulai = $tanggal->mulai;
         $akhir= $tanggal->akhir;
-    //    return $data_all;
+        //return $data_all;
         // return $data;
         return view('perbandingan',['akhir'=>$akhir,'mulai'=>$mulai,'tetangga'=>$tetangga,'data'=>$data,'kabupaten'=>$kabupaten,'pilihan'=>$data->kabupaten,'data_all'=>$data_all]);
     }
