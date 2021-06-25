@@ -300,7 +300,7 @@ class ListBeritaController extends Controller
          	$temp2 = date('Y-m-d');
          }
         $request->provinsi=strtolower($request->provinsi);
-	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null && $request->provinsi!="indonesia")){
+	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null)){
 	    	return "tes";
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
@@ -497,14 +497,12 @@ class ListBeritaController extends Controller
     	$berita = News::query();
 		$cari = $request->cari;
  		
- 		// mengambil data dari table pegawai sesuai pencarian data
  		if($request->provinsi!=null){
-		$berita = $berita->where('area','=',$request->$provinsi)->where('title','like',"%".$cari."%")->paginate(10);
+			$berita = $berita->where('area','=',$request->$provinsi)->where('title','like',"%".$cari."%")->paginate(10);
 		}
  		else{
  			$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
  		}
-    	// mengirim data pegawai ke view index
-		return view('index',['pegawai' => $pegawai]);
+		return view('berita.listberita',['berita' => $berita,'provinsi');
     }
 }
