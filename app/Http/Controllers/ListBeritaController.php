@@ -301,7 +301,7 @@ class ListBeritaController extends Controller
          }
         $request->provinsi=strtolower($request->provinsi);
 	    if(($request->area != null && $request->area !="Semua") || ($request->provinsi!=null && $request->provinsi!="indonesia")){
-
+	    	return "tes";
 	       if($request->area=="Jatim" || $request->provinsi=="jawa timur"){
 	       		$provinsi= 'jawa timur';
 	       		$kota=array("surabaya","sidoarjo","gresik", "malang","bangkalan","banyuwangi","blitar","bojonegoro","bondowoso","jember","jombang","kediri","lamongan","lumajang","madiun","magetan","mojokerto","nganjuk","ngawi","pacitan","pamekasan","pasuruan","ponorogo","probolinggo","sampang","sidoarjo","situbondo","sumenep","trenggalek","tuban","tulungagung","batu","kediri");
@@ -498,8 +498,12 @@ class ListBeritaController extends Controller
 		$cari = $request->cari;
  		
  		// mengambil data dari table pegawai sesuai pencarian data
+ 		if($request->provinsi!=null){
 		$berita = $berita->where('area','=',$request->$provinsi)->where('title','like',"%".$cari."%")->paginate(10);
- 
+		}
+ 		else{
+ 			$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
+ 		}
     	// mengirim data pegawai ke view index
 		return view('index',['pegawai' => $pegawai]);
     }
