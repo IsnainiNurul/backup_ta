@@ -497,7 +497,7 @@ class ListBeritaController extends Controller
 		$cari = $request->cari;
  		
  		// mengambil data dari table pegawai sesuai pencarian data
-		$berita = $berita->where("area",where('title','like',"%".$cari."%")->paginate(10);
+		$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
  
     	// mengirim data pegawai ke view index
 		return view('index',['pegawai' => $pegawai]);
