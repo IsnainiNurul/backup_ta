@@ -306,8 +306,9 @@
                         @endforeach
                 
           
-                
               </div>
+              <br>
+              <br>
                @if ($berita->hasPages())
                             <div class="pagination align-items-center d-flex justify-content-center">
        
