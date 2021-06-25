@@ -496,13 +496,12 @@ class ListBeritaController extends Controller
     	// menangkap data pencarian
     	$berita = News::query();
 		$cari = $request->cari;
- 		
  		if($request->provinsi!=null){
 			$berita = $berita->where('area','=',$request->$provinsi)->where('title','like',"%".$cari."%")->paginate(10);
 		}
  		else{
  			$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
  		}
-		return view('berita.listberita',['berita' => $berita,'provinsi']);
+		return view('berita.cariberita',['berita' => $berita,'provinsi'=$request->provinsi]);
     }
 }
