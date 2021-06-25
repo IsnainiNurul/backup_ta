@@ -322,7 +322,7 @@
 
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
                     @if($provinsi!="" && $provinsi!="Indonesia")
-                      <form method='get' action="/berita/cari/{{strtolower($provinsi)}}/strtolower($kota)">
+                      <form method='get' action="/berita/cari/{{strtolower($provinsi)}}/{{strtolower($kota)}}">
                         <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
                       </form>
                     @else
