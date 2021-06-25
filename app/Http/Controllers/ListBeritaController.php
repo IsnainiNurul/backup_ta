@@ -198,10 +198,11 @@ class ListBeritaController extends Controller
 	       else if($request->area=="Indonesia" || $request->provinsi=="indonesia"){
 	       		$provinsi= '';
 	       }
+	       $berita = $berita->where('area','=',$provinsi); 
 
 	     }
 	     else{
-	     	$berita = $berita->orderBy('date', 'ASC');
+	     	$berita = $berita;
 	     	$provinsi='Indonesia';
 	     }
 	     if($request->label != null && $request->label != "Semua"){
@@ -492,12 +493,13 @@ class ListBeritaController extends Controller
     public function cariberita(Request $request)
     {
     	// menangkap data pencarian
+    	$berita = News::query();
 		$cari = $request->cari;
- 
+ 		
  		// mengambil data dari table pegawai sesuai pencarian data
-		$pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$cari."%")->paginate(10);
+		$berita = $berita->where("area",where('title','like',"%".$cari."%")->paginate(10);
  
     	// mengirim data pegawai ke view index
-	return view('index',['pegawai' => $pegawai]);
+		return view('index',['pegawai' => $pegawai]);
     }
 }
