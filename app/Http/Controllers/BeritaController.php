@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Auth;;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\DataCovid19;
-use App\Models\DataCovid19_Harian;
+use App\Models\DataCovid19Harian;
 use App\Models\DataCovid19Meninggal;
-use App\Models\DataCovid19Meninggal_Harian;
+use App\Models\DataCovid19MeninggalHarian;
 use App\Models\DataCovid19Sembuh;
-use App\Models\DataCovid19Sembuh_Harian;
+use App\Models\DataCovid19SembuhHarian;
 use App\Models\News;
 use App\Models\DataLabel;
 use Symfony\Component\Process\Process;
@@ -36,9 +36,9 @@ class BeritaController extends Controller
         $temp2= date('Y-m-d');
 
         if($request->timeline =="Harian"){
-        	$data = DataCovid19_Harian::query();
-        	$data_meninggal = DataCovid19Meninggal_Harian::query();
-        	$data_sembuh = DataCovid19Sembuh_Harian::query();
+        	$data = DataCovid19Harian::query();
+        	$data_meninggal = DataCovid19MeninggalHarian::query();
+        	$data_sembuh = DataCovid19SembuhHarian::query();
         }
 
 
