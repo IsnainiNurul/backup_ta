@@ -29,8 +29,8 @@ class BeritaController extends Controller
         $data_sembuh1 = DataCovid19Sembuh::query();
         $data_sembuh2 = DataCovid19Sembuh::query();
         $berita = News::query();
-        $temp1='2020-03-17'
-        $temp2= date('Y-m-d')
+        $temp1='2020-03-17';
+        $temp2= date('Y-m-d');
 
 
         if($request->datestart != null){
