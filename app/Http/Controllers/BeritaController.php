@@ -222,6 +222,6 @@ class BeritaController extends Controller
 	  	if($totalsembuh<0){$totalsembuh=0;}
 
 
-    	return view('berita.berita',['tanggal_mulai'=>$temp1,'tanggal_selesai'=>$temp2,'data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
+    	return view('berita.berita',['tanggal_mulai'=>$temp2,'tanggal_selesai'=>$temp1,'data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
    	}
 }

@@ -202,7 +202,11 @@
                     <option value="Papua">Papua</option>
                     <option value="Papbar">Papua Barat</option>
                   </select>
-                  
+                  <div class="col-3 row">
+                    <select class="col-11" name="timeline" id="timeline">
+                      <option value="Jatim" Selected>Totalr</option>
+                      <option value="Jabar">Harian</option>
+                    </select>
                 </div>
                 
                  <input class="btn btn-primary" id="submitbutton" type='submit'>
