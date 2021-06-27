@@ -164,7 +164,7 @@
 
                   </div>
                 </div> -->
-                <div class="col-2 row">
+                <div class="col-3 row">
                 <select class="col-11" name="area" id="area">
                     <option value="Semua"selected>Pilih Provinsi</option>
                     <option value="Jatim">Jawa Timur</option>
@@ -203,8 +203,8 @@
                     <option value="Papbar">Papua Barat</option>
                   </select>
                 </div>
-                  <div class="col-3 row">
-                    <select class="col-11" name="timeline" id="timeline">
+                  <div class="col-2 row">
+                    <select class="col-11" name="timeline" id="timeline" style="border-radius: 5px 5px 5px 5px;height:38px;">
                       <option value="Jatim" Selected>Total</option>
                       <option value="Jabar">Harian</option>
                     </select>
