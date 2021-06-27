@@ -135,13 +135,13 @@
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                  <input class="col-4 form-control" type="date" value={{tanggal_selesai}} id="example-date-input" name="datestart">
+                  <input class="col-4 form-control" type="date" value={{$tanggal_selesai}} id="example-date-input" name="datestart">
                   <label for="example-date-input" class="col-1 col-form-label">-</label>
                   
-                  <input class="col-4 form-control" type="date" value="{{tanggal_selesai}}" id="example-date-input" name="dateend">
+                  <input class="col-4 form-control" type="date" value="{{$tanggal_mulai}}" id="example-date-input" name="dateend">
                 </div>
                 <!-- <div class="col-6 row">
-                  <label for="example-date-input" class="col-2 col-form-label">Provinsi</label>
+                  <label for="example-date-input" class="col-2 col-form-label">Provinsi<label>
                   <div class="col-10 dropdown">
                     <button class="btn btn-secondary dropdown-toggle dropdown-provinsi" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih Provinsi</button>
                     <div class="dropdown-menu dropdown-multicol" aria-labelledby="dropdownMenuButton">
