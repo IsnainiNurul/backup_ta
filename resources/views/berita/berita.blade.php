@@ -135,10 +135,10 @@
               <div class="row">
                 <div class="col-6 form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                  <input class="col-4 form-control" type="date" value="2020-03-18" id="example-date-input" name="datestart">
+                  <input class="col-4 form-control" type="date" value={{tanggal_selesai}} id="example-date-input" name="datestart">
                   <label for="example-date-input" class="col-1 col-form-label">-</label>
                   
-                  <input class="col-4 form-control" type="date" value="{{date('Y-m-d')}}" id="example-date-input" name="dateend">
+                  <input class="col-4 form-control" type="date" value="{{tanggal_selesai}}" id="example-date-input" name="dateend">
                 </div>
                 <!-- <div class="col-6 row">
                   <label for="example-date-input" class="col-2 col-form-label">Provinsi</label>

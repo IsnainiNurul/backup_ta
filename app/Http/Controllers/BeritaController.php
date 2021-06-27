@@ -43,16 +43,16 @@ class BeritaController extends Controller
          	$data_meninggal = $data_meninggal->where('tanggal','>=','2020-03-18');
          	$data_sembuh = $data_sembuh->where('tanggal','>=','2020-03-18');
          	$berita = $berita->where('date','>=','2020-03-18');
-         	$temp1='2020-03-18';
+         	$temp1='2020-03-17';
          	$cek1='2020-01-18';
+         	$counter_date1=1;
          }
          if($request->dateend != null){
         	$data = $data->where('tanggal','<=',$request->dateend);
         	$data_meninggal = $data_meninggal->where('tanggal','<=',$request->dateend);
         	$data_sembuh = $data_sembuh->where('tanggal','<=',$request->dateend);
         	$berita = $berita->where('date','<=',$request->dateend);
-        	$temp2=$request->dateend;
-        	
+        	$temp3=$request->dateend;
          }
          else{
          	$data = $data->where('tanggal','<=',date('Y-m-d'));
@@ -60,14 +60,15 @@ class BeritaController extends Controller
          	$data_sembuh = $data_sembuh->where('tanggal','<=',date('Y-m-d'));
          	$berita = $berita->where('date','<=',date('Y-m-d'));
          	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
-         	$temp2=$cek[0];
+         	$temp2= date('Y-m-d');
+         	$temp3=$cek[0];
          }
          if($temp1<'2020-03-18'){
-         	$temp1='2020-03-18';
+         	$counter_date1=1;
          }
-         if($temp2>=date('Y-m-d')){
+         if($temp3>=date('Y-m-d')){
          	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
-         	$temp2=$cek[0];
+         	$temp3=$cek[0];
          }
 
          
@@ -181,9 +182,9 @@ class BeritaController extends Controller
 	       $data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum($request->area);
 	       $data_meninggal1= $data_meninggal1->where('tanggal','=',$temp1)->sum($request->area);
 	       $data_sembuh1= $data_sembuh1->where('tanggal','=',$temp1)->sum($request->area);
-	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum($request->area);
-	       $data_meninggal2= $data_meninggal2->where('tanggal','=',$temp2)->sum($request->area);
-	       $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp2)->sum($request->area);
+	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp3)->sum($request->area);
+	       $data_meninggal2= $data_meninggal2->where('tanggal','=',$temp3)->sum($request->area);
+	       $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp3)->sum($request->area);
 	       // $berita = $berita->where('area','=',$provinsi)->orderBy('date', 'ASC')->limit(100)->get();
 	       $berita = $berita->where('area','=',$provinsi);
 	     }
@@ -191,9 +192,9 @@ class BeritaController extends Controller
 	     	$data_kasus1= $data_kasus1->where('tanggal','=',$temp1)->sum('total'); 
 	     	$data_meninggal1= $data_meninggal1->where('tanggal','=',$temp1)->sum('total');
 	     	$data_sembuh1= $data_sembuh1->where('tanggal','=',$temp1)->sum('total');
-	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp2)->sum('total');
-	     	$data_meninggal2= $data_meninggal2->where('tanggal','=',$temp2)->sum('total');
-	     	$data_sembuh2= $data_sembuh2->where('tanggal','=',$temp2)->sum('total');
+	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp3)->sum('total');
+	     	$data_meninggal2= $data_meninggal2->where('tanggal','=',$temp3)->sum('total');
+	     	$data_sembuh2= $data_sembuh2->where('tanggal','=',$temp3)->sum('total');
 	     	
 
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
@@ -202,39 +203,25 @@ class BeritaController extends Controller
 	     	$berita = $berita->orderBy('date', 'DESC');
 	     	$provinsi="semua";
 	     }
-	     // if($request->label != null && $request->label != "Semua"){
-	     //    $berita = $berita->where('label','=',$request->label) ; 
-	     // }
 	     
 	     $berita = $berita->orderBy('date', 'DESC')->limit(100)->get();
-	     // $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
 
-	     // array_push($array_to, $label->)
-
+	     if($counter_date1==1){
+	     	$data_kasus1=0;
+	     	$data_meninggal1=0;
+	     	$data_sembuh1=0;
+	     }
 	   
 		 $totalkasus=$data_kasus2-$data_kasus1;
 		 $totalmeninggal=$data_meninggal2-$data_meninggal1;
 		 $totalsembuh=$data_sembuh2-$data_sembuh1;
-  //       $process = shell_exec("python3 label.py ".$temp1." ".$temp2." ".$provinsi); 
-  //       $tes=explode("] ",$process);
-		// $tes[0]=substr($tes[0],1);
-		// $tes[1]=substr($tes[1],1);
-		// $tes[2]=substr($tes[2],1);
-		// $tes[3]=substr($tes[3],1,-1);
-		// $tes[0]=str_replace("'","",$tes[0]);
-		// $tes[1]=str_replace("'","",$tes[1]);
-		// $tes[2]=str_replace("'","",$tes[2]);
-		// $tes[3]=str_replace("'","",$tes[3]);
-		// $criticism_key=explode(", ",$tes[0]);
-		// $donation_key=explode(", ",$tes[1]);
-		// $hoax_key=explode(", ",$tes[2]);
-		// $nof_key=explode(", ",$tes[3]);
+
 	  	if($request->datestart>date('Y-m-d')){$totalkasus=0;$totalmeninggal=0;$totalsembuh=0;}
 	  	if($totalkasus<0){$totalkasus=0;}
 	  	if($totalmeninggal<0){$totalmeninggal=0;}
 	  	if($totalsembuh<0){$totalsembuh=0;}
 
 
-    	return view('berita.berita',['data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
+    	return view('berita.berita',['tanggal_mulai'=>$temp1,'tanggal_selesai'=>$temp2,'data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
    	}
 }
