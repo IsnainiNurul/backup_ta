@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class DataCovid19 extends Model
 {
     use HasFactory;
-    protected $table = 'data_covid19';
+    protected $table = 'data_covid19_kasus';
 }

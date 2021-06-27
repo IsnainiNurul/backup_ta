@@ -337,7 +337,7 @@
                                       @else
                                         <div class="col-sm-4 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                        <div class="text-left" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
                                       <div class="col-sm-12">
                                         <div class="row">
@@ -404,7 +404,7 @@
                                       @else
                                         <div class="col-sm-6 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                        <div class="text-left" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
                                       <div class="col-sm-12">
                                         <div class="row">
@@ -529,7 +529,7 @@
                                       @else
                                         <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                                       @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                        <div class="text-left" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                     </div>
                                       <div class="col-sm-12">
                                         <div class="row">
@@ -593,7 +593,7 @@
                                       @else
                                         <div class="col-sm-6 text-justify news-tribun">{{$b->news_portal}}</div>
                                       @endif
-                                        <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                        <div class="text-left" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
                                       </div>
                                       <div class="col-sm-12">
                                         <div class="row">

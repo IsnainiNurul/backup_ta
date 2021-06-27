@@ -300,8 +300,9 @@
                             @else
                                 <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
-                                <div class="text-left"><p style="font-size: 10px;">{{$b->date}}</p></div>
-                          
+                                <div class="text-left" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                         
+                            
                           </div>
                             <div class="row col-sm-12">
                               <a href="/berita/list/?label={{$b->label}}">
