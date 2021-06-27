@@ -205,8 +205,8 @@
                 </div>
                   <div class="col-2 row">
                     <select class="col-11" name="timeline" id="timeline" style="border-radius: 5px 5px 5px 5px;height:38px;">
-                      <option value="Jatim" Selected>Total</option>
-                      <option value="Jabar">Harian</option>
+                      <option value="Total" Selected>Total</option>
+                      <option value="Harian">Harian</option>
                     </select>
                   </div>
                 
