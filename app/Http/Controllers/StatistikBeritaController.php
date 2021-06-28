@@ -178,7 +178,7 @@ class StatistikBeritaController extends Controller
          }
     
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
-
+        return $label_array;
          // $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
          $process2 = shell_exec("python3 word_frequency_information.py ".$temp1." ".$temp2." ".$provinsi);  
          return $process2;
