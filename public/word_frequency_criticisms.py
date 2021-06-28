@@ -2,14 +2,23 @@
   
 # importing all necessery modules
 import nltk
+print("1")
 from nltk.corpus import stopwords
+print("1")
 import matplotlib.pyplot as plt
+print("1")
 import pandas as pd
+print("1")
 import numpy as np
+print("1")
 import matplotlib.pyplot as plt 
+print("1")
 import collections
+print("1")
 import sys
+print("1")
 import mysql.connector
+print("1")
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -41,7 +50,7 @@ for val in df.title:
       
     # typecaste each val to string
     val = str(val)
-    punctuation_signs = list("?:!.,;&")
+    punctuation_signs = list("?:!.,;&-")
     for punct_sign in punctuation_signs:
         val = val.replace(punct_sign, '')
     
