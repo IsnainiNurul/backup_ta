@@ -166,7 +166,7 @@
                     <option value="Terlama">Terlama</option>
                   </select>
                   <div class="col-2">
-                 <input class="btn btn-primary" id="submitbutton" type='submit'>
+                 <input class="btn btn-primary" id="submitbutton" type='submit' value='Filter'>
                </div>
               </form> 
                 

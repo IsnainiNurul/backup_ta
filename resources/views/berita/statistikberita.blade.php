@@ -210,7 +210,7 @@
                     <option value="Papbar">Papua Barat</option>
                   </select>
                 </div>
-                 <input class="btn btn-primary" id="submitbutton" type='submit'>
+                 <input class="btn btn-primary" id="submitbutton" type='submit' value="Filter">
                   </div>
               </form>
                 
@@ -224,8 +224,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left">
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Grafik data berita populer</h5>
+                    <h2 class="card-title">Grafik Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
                   </div>
                 </div>
               </div>
@@ -250,8 +250,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left" >
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Kata Kunci Berita</h5>
+                    <h2 class="card-title">Kata Kunci Berita Populer Topik Covid-19</h2>
                   </div>
                 </div>
               </div>
@@ -270,8 +270,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left" >
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Kata Kunci Berita</h5>
+                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Informasi</h2>
                   </div>
                 </div>
               </div>
@@ -290,8 +290,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left" >
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Kata Kunci Berita</h5>
+                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Donasi</h2>
                   </div>
                 </div>
               </div>
@@ -311,8 +311,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left" >
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Kata Kunci Berita</h5>
+                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Kritik</h2>
                   </div>
                 </div>
               </div>
@@ -331,8 +331,8 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-12 text-left" >
-                    <h5 class="card-category">Graph data berita populer</h5>
-                    <h2 class="card-title">Graph Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h5 class="card-category">Kata Kunci Berita</h5>
+                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Hoaks</h2>
                   </div>
                 </div>
               </div>

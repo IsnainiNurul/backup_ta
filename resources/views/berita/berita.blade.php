@@ -210,7 +210,7 @@
                     </select>
                   </div>
                 
-                 <input class="btn btn-primary" id="submitbutton" type='submit'>
+                 <input class="btn btn-primary" id="submitbutton" type='submit' value='Filter'>
                 </div>
               </form>
                 
@@ -274,7 +274,7 @@
                 <div class="row">
                   <div class="col-sm-7 text-left">
                     <h5 class="card-category">Grafik dan Berita</h5>
-                    <h2 class="card-title">Grafik dan Berita COVID-19 di Indonesia</h2>
+                    <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di Indonesia</h2>
                   </div>
                   <div class="col-sm-5 search_bar">
                     <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
