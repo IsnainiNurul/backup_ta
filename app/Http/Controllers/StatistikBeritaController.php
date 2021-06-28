@@ -162,7 +162,6 @@ class StatistikBeritaController extends Controller
                 $provinsi= 'papua barat';
            }
            $nof=$nof->where('label','=','notification of information')->where('area','=',$request->area)->count();
-           return $nof;
            $donation = $donation->where('label','=','donation')->where('area','=',$request->area)->count();
             $criticisms = $criticisms->where('label','=','criticisms')->where('area','=',$request->area)->count();
             $hoax = $hoax->where('label','=','hoax')->where('area','=',$request->area)->count();
@@ -170,7 +169,6 @@ class StatistikBeritaController extends Controller
          }
          else{
             $nof=$nof->where('label','=','notification of information')->count();
-                       return $nof;
             $donation = $donation->where('label','=','donation')->count();
             return $donation;
             $criticisms = $criticisms->where('label','=','criticisms')->count();
