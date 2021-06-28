@@ -1,9 +1,7 @@
 # Python program to generate WordCloud
   
 # importing all necessery modules
-import nltk
-print("1")
-from nltk.corpus import stopwords
+
 print("1")
 import matplotlib.pyplot as plt
 print("1")
