@@ -24,7 +24,7 @@ mydb = mysql.connector.connect(
   password="password_here",
   database="tacovid"
 )
-
+print("2")
 mycursor = mydb.cursor()
 if(sys.argv[3]=="semua"):
     query = "Select * from news where date between '"+str(sys.argv[1])+"' and '"+str(sys.argv[2])+"' and label='criticisms';"
