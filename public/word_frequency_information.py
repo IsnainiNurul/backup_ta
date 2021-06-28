@@ -55,14 +55,12 @@ for val in df.title:
             tokens2.append(tokens[i])
     
     comment_words += " ".join(tokens2)+" "
-print("5")
+
 from collections import Counter
-print("6")
 split_it = comment_words.split()
   
 # Pass the split_it list to instance of Counter class.
 Counter = Counter(split_it)
-  print("7")
 # most_common() produces k frequently encountered
 # input values and their respective counts.
 most_occur = Counter.most_common(100)
