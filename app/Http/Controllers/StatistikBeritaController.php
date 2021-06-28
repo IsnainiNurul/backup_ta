@@ -171,7 +171,8 @@ class StatistikBeritaController extends Controller
          else{
             $nof=$nof->where('label','=','notification of information')->count();
                        return $nof;
-           $donation = $donation->where('label','=','donation')->count();
+            $donation = $donation->where('label','=','donation')->count();
+            return $donation;
             $criticisms = $criticisms->where('label','=','criticisms')->count();
             $hoax = $hoax->where('label','=','hoax')->count();
             $other = $other->where('label','=','other')->count();
