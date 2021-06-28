@@ -8,7 +8,9 @@ from sqlalchemy import create_engine
 import sys
 from math import sqrt
 kota = sys.argv[1]
+kota = kota.replace("_"," ")
 tetangga = sys.argv[2]
+tetangga = tetangga.replace("_"," ")
 tanggal_mulai = sys.argv[3]
 tanggal_selesai = sys.argv[4]
 

@@ -71,7 +71,7 @@ class LoadController extends Controller
                 
                 $command = strval($akhir)." ".strval($request->last_id-12);
                 $process = shell_exec("python3 svrpso.py ". $command." ".strval($request->tipe));
-                return $process;
+                //return $process;
                 $r2 = (explode("%%",$process))[1];
                 $process = (explode("%%",$process))[0];
 

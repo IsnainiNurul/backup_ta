@@ -35,7 +35,7 @@ class PerbandinganController extends Controller
                 $by+=pow($yr,2);
             }   
             $b = sqrt($bx*$by);
-            return $a/$b;
+            return  round($a/$b,3);
         }
 
 
@@ -132,6 +132,7 @@ class PerbandinganController extends Controller
         $tanggal = $tanggal->update();
     
         // return $tanggal;
+//	return $request->mulai." ".$request->akhir;
         $process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
     
         return redirect()->back();
@@ -149,7 +150,7 @@ class PerbandinganController extends Controller
             }
 	public function regresi(Request $request){ //Jangan Diotak atik
         // return 'tes';
-	$process = shell_exec("python linearreg.py ".$request->kota." ".$request->tetangga." ".$request->mulai." ".$request->akhir);
+	$process = shell_exec("python3 linearreg.py ".$request->kota." ".$request->tetangga." ".$request->mulai." ".$request->akhir);
 //	return $process;	
     return $process;
 	$rmse = (explode("%%",$process))[1];

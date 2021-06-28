@@ -11,6 +11,20 @@ from scipy import stats
 import matplotlib.pyplot as plt
 import matplotlib.transforms as transforms
 
+
+
+def daily_increase(data):
+    d = []
+    for i in range(len(data)):
+        if i == 0:
+            d.append(data[0])
+        else:
+            if data[i]-data[i-1] >= 0:
+                d.append(data[i]-data[i-1])
+            else:
+                d.append(0)
+    return d
+
 def plot_blandaltman(x, y, agreement=1.96, confidence=.95, figsize=(5, 4),
                      dpi=100, ax=None):
     # Safety check
@@ -182,46 +196,6 @@ def plot_blandaltman_all(x, y, agreement=1.96, confidence=.95, figsize=(5, 4),
     ax.axhline(md - agreement * sd, color='coral', linestyle='--')
     ax.scatter(mean, diff, alpha=0.5)
 
-#     loa_range = (md + (agreement * sd)) - (md - agreement * sd)
-#     offset = (loa_range / 100.0) * 1.5
-
-#     trans = transforms.blended_transform_factory(ax.transAxes, ax.transData)
-
-#     ax.text(0.98, md + offset, 'Mean', ha="right", va="bottom",
-#             transform=trans)
-#     ax.text(0.98, md - offset, '%.2f' % md, ha="right", va="top",
-#             transform=trans)
-
-#     ax.text(0.98, md + (agreement * sd) + offset, '+%.2f SD' % agreement,
-#             ha="right", va="bottom", transform=trans)
-#     ax.text(0.98, md + (agreement * sd) - offset,
-#             '%.2f' % (md + agreement * sd), ha="right", va="top",
-#             transform=trans)
-
-#     ax.text(0.98, md - (agreement * sd) - offset, '-%.2f SD' % agreement,
-#             ha="right", va="top", transform=trans)
-#     ax.text(0.98, md - (agreement * sd) + offset,
-#             '%.2f' % (md - agreement * sd), ha="right", va="bottom",
-#             transform=trans)
-
-#     if confidence is not None:
-#         ax.axhspan(ci['mean'][0], ci['mean'][1],
-#                    facecolor='#6495ED', alpha=0.2)
-
-#         ax.axhspan(ci['upperLoA'][0], ci['upperLoA'][1],
-#                    facecolor='coral', alpha=0.2)
-
-#         ax.axhspan(ci['lowerLoA'][0], ci['lowerLoA'][1],
-#                    facecolor='coral', alpha=0.2)
-
-#     # Labels and title
-#     ax.set_ylabel('Difference between methods')
-#     ax.set_xlabel('Mean of methods')
-#     ax.set_title('Bland-Altman plot')
-
-#     # Despine and trim
-#     sns.despine(trim=True, ax=ax)
-
     return [md,md + agreement * sd,md - agreement * sd,mean,diff]
             #md =mean, aggrement=batas kesepakatan, sd = standar deviasi
 array = []
@@ -243,6 +217,9 @@ for x in kabupaten:
             m1[np.argwhere(np.isnan(m1))]=m1[np.argwhere(np.isnan(m1))-1]
             m2 = temp2['Confirm_tetangga'].values
             m2[np.argwhere(np.isnan(m2))]=m2[np.argwhere(np.isnan(m2))-1]
+            m1 = daily_increase(m1)[1:]
+ 
+            m2 = daily_increase(m2)[1:]
             rata = plot_blandaltman_all(m1,m2)
 #             print(rata)
 #             if list_tetangga_sekarang=='LAMONGAN':
@@ -269,21 +246,35 @@ df_output = pd.DataFrame(array)
 #print(df_output)
 #print(df_output['x'][0].values)
 engine.execute("TRUNCATE output_jan_maret")
+def listToString(s): 
+    
+    # initialize an empty string
+    str1 = "" 
+    
+    # traverse in the string  
+    for ele in s: 
+        str1 += ele  
+    
+    # return string  
+    return str1 
+        
+
 for xx in range(len(df_output)):
   id= xx
   kabupaten = df_output['Kabupaten'][xx]
   tetangga  = df_output['Tetangga'][xx]
   mean= df_output['Mean'][xx]
   min  = df_output['Min'][xx]
-  max  = df_output['Max'][xx] 
+  max  = df_output['Max'][xx]
+  print(str(pd.DataFrame(array)['m1'][xx])) 
   x = str(pd.DataFrame(array)['x'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
   y = str(pd.DataFrame(array)['y'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',') 
   #print(str(pd.DataFrame(array)['x'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
   #print(str(pd.DataFrame(array)['y'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
   #print(str(pd.DataFrame(array)['m1'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
   #print(str(pd.DataFrame(array)['m2'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',','))
-  m1 = str(pd.DataFrame(array)['m1'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
-  m2 = str(pd.DataFrame(array)['m2'][xx].astype('str')).replace("\'",'').replace('\n','').replace(' ',',')
+  m1 = str(pd.DataFrame(array)['m1'][xx]).replace("\'",'').replace('\n','').replace(' ','')
+  m2 = str(pd.DataFrame(array)['m2'][xx]).replace("\'",'').replace('\n','').replace(' ','')
 
   #break
 #  x  = str(df_output['x'][xx].astype('str'))
