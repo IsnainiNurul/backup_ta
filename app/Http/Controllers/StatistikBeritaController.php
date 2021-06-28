@@ -162,6 +162,7 @@ class StatistikBeritaController extends Controller
                 $provinsi= 'papua barat';
            }
            $nof=$nof->where('label','=','notification of information')->where('area','=',$request->area)->count();
+           return $nof;
            $donation = $donation->where('label','=','donation')->where('area','=',$request->area)->count();
             $criticisms = $criticisms->where('label','=','criticisms')->where('area','=',$request->area)->count();
             $hoax = $hoax->where('label','=','hoax')->where('area','=',$request->area)->count();
@@ -169,6 +170,7 @@ class StatistikBeritaController extends Controller
          }
          else{
             $nof=$nof->where('label','=','notification of information')->count();
+                       return $nof;
            $donation = $donation->where('label','=','donation')->count();
             $criticisms = $criticisms->where('label','=','criticisms')->count();
             $hoax = $hoax->where('label','=','hoax')->count();
@@ -178,31 +180,6 @@ class StatistikBeritaController extends Controller
          }
          
 
-         // $nof = $label->select(DB::raw('SUM(`notification of information`) as Notification'))->get();
-         // $donation = $label->select(DB::raw('SUM(donation) as Donation'))->get();
-         // $criticisms = $label->select(DB::raw('SUM(criticisms) as Criticisms'))->get();
-         // $hoax = $label->select(DB::raw('SUM(hoax) as Hoax'))->get();
-         // $other = $label->select(DB::raw('SUM(other) as Other'))->get();
-
-         // $nof=substr($nof,2, -2);
-         // $donation=substr($donation,2, -2);
-         // $criticisms=substr($criticisms,2, -2);
-         // $hoax=substr($hoax,2, -2);
-         // $other=substr($other,2, -2);
-
-
-         // $nof=explode(":",$nof);
-         // $donation=explode(":",$donation);
-         // $criticisms=explode(":",$criticisms);
-         // $hoax=explode(":",$hoax);
-         // $other=explode(":",$other);
-         // //print($berita);
-         // $nof=substr($nof[1],1,-1);
-         // $donation=substr($donation[1],1, -1);
-         // $criticisms=substr($criticisms[1],1, -1);
-         // $hoax=substr($hoax[1],1, -1);
-         // $other=substr($other[1],1, -1);
-                  
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
          $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);

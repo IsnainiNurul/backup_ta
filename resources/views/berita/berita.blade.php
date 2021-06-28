@@ -273,8 +273,8 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-7 text-left">
-                    <h5 class="card-category">Graph COVID-19</h5>
-                    <h2 class="card-title">Kasus COVID-19 di Indonesia pada Setiap Provinsi</h2>
+                    <h5 class="card-category">Grafik dan Berita</h5>
+                    <h2 class="card-title">Grafik dan Berita COVID-19 di Indonesia</h2>
                   </div>
                   <div class="col-sm-5 search_bar">
                     <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
@@ -283,8 +283,6 @@
               </div>
               <div class="card-body">
                 <div style="width:1000px;height:300px;position: relative;">
-                  <p>Berikut Merupakan Data Kasus COVID-19 di Indonesia pada setiap provinsi</p>
-                
                   <div class="row">
                     <div class="col-sm-7">
                       <canvas id="chart1"></canvas>
