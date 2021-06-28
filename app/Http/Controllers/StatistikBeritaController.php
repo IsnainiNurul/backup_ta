@@ -176,8 +176,7 @@ class StatistikBeritaController extends Controller
             $provinsi= 'semua';
          //    $label = $label->select(DB::raw('SUM(`notification of information`) as Notification, SUM(donation) as Donation,SUM(criticisms) as Criticisms, SUM(hoax) as Hoax, SUM(other) as Other'))->get();
          }
-         return $hoax;
-
+    
          $label_array=[$nof,$donation,$criticisms,$hoax,$other];
 
          // $process1 = shell_exec("python3 word_frequency.py ".$temp1." ".$temp2." ".$provinsi);
