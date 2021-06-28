@@ -1,21 +1,13 @@
 # Python program to generate WordCloud
   
 # importing all necessery modules
-print("1")
 import matplotlib.pyplot as plt
-print("1")
 import pandas as pd
-print("1")
 import numpy as np
-print("1")
 import matplotlib.pyplot as plt 
-print("1")
 import collections
-print("1")
 import sys
-print("1")
 import mysql.connector
-print("1")
 
 mydb = mysql.connector.connect(
   host="localhost",
