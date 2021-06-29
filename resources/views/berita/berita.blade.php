@@ -323,7 +323,7 @@
                               </a>
                               @php
                                 $list_provinsi=explode(", ",$b->area);
-                                $counter=1
+                                $counter=1;
                               @endphp
                               @foreach($list_provinsi as $l)
                                 @if(counter%2==1)
@@ -340,7 +340,7 @@
                                   </a>
                                 @endif
                                 @php
-                                  $counter=1
+                                  $counter=1;
                                 @endphp
                                @endforeach
                             </div>
