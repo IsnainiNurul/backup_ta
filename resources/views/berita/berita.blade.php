@@ -326,13 +326,13 @@
                                 $counter=1;
                               @endphp
                               @foreach($list_provinsi as $l)
-                                @if(counter%2==1)
+                                @if($counter%2==1)
                                   <a href="/berita/list/?provinsi={{$l}}">
                                     <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
                                     </div>
                                   </a>
                                 @endif
-                                @if(counter%2==1)
+                                @if($counter%2==0)
                                   <br>
                                   <a href="/berita/list/?provinsi={{$l}}">
                                     <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
