@@ -303,7 +303,7 @@
                             @else
                                 <div class="col-sm-6 text-justify news-tribun news-portal">{{$b->news_portal}}</div>
                             @endif
-                                <div class="text-left news-date" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
+                                <div class="text-left news-portal" style="top:3px; position: relative;"><p style="font-size: 10px;">{{$b->date}}</p></div>
                          
                             
                           </div>
