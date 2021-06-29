@@ -128,7 +128,7 @@
           <div class="col-sm-12">
             <div class="card card-chart">
               <div class="card-header ">
-                @if($provinsi!='di_yogyakarta' && $provinsi!='dki jakarta')
+                @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
                   <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di {{$provinsi}}</h1>
                 @elseif ($provinsi!='di_yogyakarta')
                   <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di DI Yogyakarta</h1>
