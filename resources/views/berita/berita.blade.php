@@ -333,17 +333,19 @@
                                   </a>
                                 @endif
                                 @if($counter%2==0)
-                                  <br>
+                                  </div>
+                                  <div class="row col-sm-12">
                                   <a href="/berita/list/?provinsi={{$l}}">
                                     <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
                                     </div>
                                   </a>
+                                  
                                 @endif
                                 @php
                                   $counter++;
                                 @endphp
                                @endforeach
-                            </div>
+                           
                           
 
                             <div class="row">
