@@ -321,31 +321,33 @@
                                   <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                 @endif
                               </a>
+                            </div>
+                            <div class="row col-sm-12">
                               @php
                                 $list_provinsi=explode(", ",$b->area);
-                                $counter=1;
+                                counter++;
                               @endphp
                               @foreach($list_provinsi as $l)
-                                @if($counter%2==1)
-                                  <a href="/berita/list/?provinsi={{$l}}">
-                                    <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
-                                    </div>
-                                  </a>
-                                @endif
-                                @if($counter%2==0)
-                                  </div>
-                                  <div class="row col-sm-12">
-                                  <a href="/berita/list/?provinsi={{$l}}">
-                                    <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
-                                    </div>
-                                  </a>
-                                  
-                                @endif
-                                @php
-                                  $counter++;
-                                @endphp
+                              @if($counter==1)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @endif
+                              @if($counter==2)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @php
+                                counter++;
+                              @endphp
                                @endforeach
-                           
+                            </div>
                           
 
                             <div class="row">
