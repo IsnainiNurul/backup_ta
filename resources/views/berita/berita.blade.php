@@ -321,20 +321,27 @@
                                   <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                 @endif
                               </a>
-                            </div>
-                            <div class="row col-sm-12">
                               @php
                                 $list_provinsi=explode(", ",$b->area);
                                 $counter=1;
                               @endphp
                               @foreach($list_provinsi as $l)
-                              @if($counter==1)
+                                  @if($counter==1)
+                                  <a href="/berita/list/?provinsi={{$l}}">
+                                    <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                    </div>
+                                    </a>
+                                  </div>
+                                  @endif
+                            
+                              @if($counter==2)
+                              <div class="row col-sm-12">
                               <a href="/berita/list/?provinsi={{$l}}">
                                 <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
                                 </div>
                               </a>
                               @endif
-                              @if($counter==2)
+                              @if($counter==3)
                               <a href="/berita/list/?provinsi={{$l}}">
                                 <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
                                 </div>
