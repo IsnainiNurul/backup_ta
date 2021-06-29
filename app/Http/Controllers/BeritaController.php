@@ -75,6 +75,7 @@ class BeritaController extends Controller
          	$temp2= date('Y-m-d');
          	$temp3=$cek[0];
          }
+
          if($temp1<'2020-03-18'){
          	$counter_date1=1;
          }
@@ -96,7 +97,7 @@ class BeritaController extends Controller
 	       		$provinsi= 'jawa tengah';
 	       }
 	       else if($request->area=="DIY"){
-	       		$provinsi= 'di_yogyakarta';
+	       		$provinsi= 'di yogyakarta';
 	       }
 	       else if($request->area=="Jakarta"){
 	       		$provinsi= 'dki jakarta';
@@ -212,6 +213,7 @@ class BeritaController extends Controller
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
+	     	 return $data_meninggal
 	     	$berita = $berita->orderBy('date', 'DESC');
 	     	$provinsi="semua";
 	     }

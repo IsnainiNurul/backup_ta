@@ -58,8 +58,8 @@ class ListBeritaController extends Controller
 	       		$kota=array("banjarnegara","banyumas","batang","blora","boyolali","brebes","cilacap","demak","grobogan","jepara","karanganyar","kebumen","kendai","klaten","kudus","magelang","pati","pekalongan","pemalang","purbalingga","purworejo","rembang","semarang","sragen","sukoharjo","tegal","temanggung","wonogiri","wonosobo","magelang","pekalongan","salatiga","surakarta");
 
 	       }
-	       else if($request->area=="DIY" || $request->provinsi=="di_yogyakarta"){
-	       		$provinsi= 'di_yogyakarta';
+	       else if($request->area=="DIY" || $request->provinsi=="di yogyakarta"){
+	       		$provinsi= 'di yogyakarta';
 	       		$kota=array("bantul","gunung kidul","kulon progo","sleman","yogyakarta");
 	       }
 	       else if($request->area=="Jakarta" || $request->provinsi=="dki jakarta"){
@@ -317,8 +317,8 @@ class ListBeritaController extends Controller
 	       		$kota=array("banjarnegara","banyumas","batang","blora","boyolali","brebes","cilacap","demak","grobogan","jepara","karanganyar","kebumen","kendai","klaten","kudus","magelang","pati","pekalongan","pemalang","purbalingga","purworejo","rembang","semarang","sragen","sukoharjo","tegal","temanggung","wonogiri","wonosobo","magelang","pekalongan","salatiga","surakarta");
 
 	       }
-	       else if($request->area=="DIY" || $request->provinsi=="di_yogyakarta"){
-	       		$provinsi= 'di_yogyakarta';
+	       else if($request->area=="DIY" || $request->provinsi=="di yogyakarta"){
+	       		$provinsi= 'di yogyakarta';
 	       		$kota=array("bantul","gunung kidul","kulon progo","sleman","yogyakarta");
 	       }
 	       else if($request->area=="Jakarta" || $request->provinsi=="dki jakarta"){
@@ -496,7 +496,7 @@ class ListBeritaController extends Controller
     	$berita = News::query();
 		$cari = $request->cari;
  		
-		$berita = $berita->where('title','like',"%".$cari."%")->paginate(10);
+		$berita = $beritas->where('title','like',"%".$cari."%")->paginate(10);
 		
 		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi]);
     }

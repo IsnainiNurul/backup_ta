@@ -69,7 +69,7 @@ class StatistikBeritaController extends Controller
                 $provinsi= 'jawa tengah';
            }
            else if($request->area=="DIY"){
-                $provinsi= 'di_yogyakarta';
+                $provinsi= 'di yogyakarta';
            }
            else if($request->area=="Jakarta"){
                 $provinsi= 'dki jakarta';
