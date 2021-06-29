@@ -346,6 +346,7 @@
                                 <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
                                 </div>
                               </a>
+                            </div>
                               @php
                                 break;
                               @endphp
