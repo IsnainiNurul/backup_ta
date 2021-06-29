@@ -213,7 +213,7 @@ class BeritaController extends Controller
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
-	     	 return $data_meninggal
+	     	 return $data_meninggal;
 	     	$berita = $berita->orderBy('date', 'DESC');
 	     	$provinsi="semua";
 	     }
