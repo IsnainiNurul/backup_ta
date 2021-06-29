@@ -205,7 +205,7 @@ class ListBeritaController extends Controller
 	     }
 	     else{
 	     	$berita = $berita;
-	     	$provinsi='Indonesia';
+	     	$provinsi='';
 	     }
 	     if($request->label != null && $request->label != "Semua"){
 	     	$berita = $berita->where('label','=',$request->label) ; 
