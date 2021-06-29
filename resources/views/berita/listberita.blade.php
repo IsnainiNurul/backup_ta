@@ -158,7 +158,7 @@
               <div class="card-header ">
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
                 @if($provinsi!="" && $provinsi!="Indonesia")
-                  @if (ucwords($provinsi)=="Dki jakarta")
+                  @if ($provinsi!="Dki jakarta")
                   <h1 style='text-align:center;'>Provinsi DKI JAKARTAS
                     </h1>
                     @elseif ($provinsi=="Di yogyakarta")
