@@ -340,7 +340,7 @@
                                   </a>
                                 @endif
                                 @php
-                                  $counter=1;
+                                  $counter++;
                                 @endphp
                                @endforeach
                             </div>
