@@ -332,9 +332,10 @@
                                 </div>
                               </a>
                               @php
-                                $counter++;
+                                break;
                               @endphp
-
+                              @endif
+                              @endforeach
                             </div>
                             <div class="row col-sm-12">
                               @php
