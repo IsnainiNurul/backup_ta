@@ -226,9 +226,10 @@ class BeritaController extends Controller
 	     	$data_kasus1=0;
 	     	$data_meninggal1=0;
 	     	$data_sembuh1=0;
+
 	     }
-	   
 		 $totalkasus=$data_kasus2-$data_kasus1;
+		 return $totalkasus;
 		 $totalmeninggal=$data_meninggal2-$data_meninggal1;
 		 $totalsembuh=$data_sembuh2-$data_sembuh1;
 
