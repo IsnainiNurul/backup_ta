@@ -158,14 +158,14 @@
               <div class="card-header ">
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
                 @if($provinsi!="" && $provinsi!="Indonesia")
-                 @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
+                 @if($provinsi!="di yogyakarta" && $provinsi!="dki jakarta")
                   <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
                     </h1>
-                    @elseif ($provinsi=='di yogyakarta')
-                      <h1 class="capitalize" style='text-align:center;'>Provinsi DI Yogyakarta
+                    @elseif ($provinsi=="di yogyakarta")
+                      <h1 style='text-align:center;'>Provinsi DI Yogyakarta
                       </h1>
                     @else
-                      <h2 class="card-title" style='text-align:center;'>Provinsi DKI Jakarta</h2>
+                      <h2 style='text-align:center;'>Provinsi DKI Jakarta</h2>
                     @endif
                 @else
                     <h1 style='text-align:center;'>Indonesia</h1>
@@ -501,9 +501,9 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                     @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
+                     @if($provinsi!='di yogyakarta' && $provinsi!='Dki jakarta')
                   <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
-                @elseif ($provinsi!='di yogyakarta')
+                @elseif ($provinsi=='di yogyakarta')
                   <h2 class="card-title">Berita COVID-19 di DI Yogyakarta</h2>
                 @else
                   <h2 class="card-title">Berita COVID-19 di DKI Jakartas</h2>
