@@ -325,7 +325,7 @@
                             <div class="row col-sm-12">
                               @php
                                 $list_provinsi=explode(", ",$b->area);
-                                counter++;
+                                $counter=1;
                               @endphp
                               @foreach($list_provinsi as $l)
                               @if($counter==1)
@@ -344,7 +344,7 @@
                               @endphp
                               @endif
                               @php
-                                counter++;
+                                $counter++;
                               @endphp
                                @endforeach
                             </div>
