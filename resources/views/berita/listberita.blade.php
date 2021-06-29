@@ -310,12 +310,12 @@
                 <div class="row">
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    @if($provinsi!=ucwords("di yogyakarta") && $provinsi!=ucwords("dki yogyakarta"))
+                    @if($provinsi!=ucwords("di yogyakarta") && $provinsi!=ucwords("dki jakarta"))
                   <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>
                 @elseif ($provinsi==ucwords("di yogyakarta"))
                   <h2 class="card-title">Berita Terbaru COVID-19 di DI Yogyakarta</h2>
                 @else
-                  <h2 class="card-title">Berita Terbaru COVID-19 di DKI Jakartas</h2>
+                  <h2 class="card-title">Berita Terbaru COVID-19 di DKI Jakarta</h2>
                 @endif
                     
                   </div>
@@ -501,12 +501,12 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                     @if($provinsi!=ucwords("di yogyakarta") && $provinsi==ucwords("dki jakarta"))
+                     @if($provinsi!=ucwords("di yogyakarta") && $provinsi!=ucwords("dki jakarta"))
                   <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
                 @elseif ($provinsi==ucwords("di yogyakarta"))
                   <h2 class="card-title">Berita COVID-19 di DI Yogyakarta</h2>
                 @else
-                  <h2 class="card-title">Berita COVID-19 di DKI Jakartas</h2>
+                  <h2 class="card-title">Berita COVID-19 di DKI Jakarta</h2>
                 @endif
                   </div>
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
