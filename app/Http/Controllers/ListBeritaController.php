@@ -231,6 +231,7 @@ class ListBeritaController extends Controller
          	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
          	$sort="Terbaru";
          }
+         return $request->provinsi;
         return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
     }
 
@@ -517,7 +518,6 @@ class ListBeritaController extends Controller
 		$cari = $request->cari;
  		
 		$berita = $berita->where('kota','=',$request->kota)->where('title','like',"%".$cari."%")->paginate(10);
-		return $request->provinsi
 		return view('berita.cariberita',['berita' => $berita,'provinsi'=>$request->provinsi,'kota'=>$request->kota]);
     }
 }
