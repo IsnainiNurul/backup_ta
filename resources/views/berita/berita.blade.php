@@ -275,7 +275,7 @@
                 <div class="row">
                   <div class="col-sm-7 text-left">
                     <h5 class="card-category">Grafik dan Berita</h5>
-                    <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di Jawa Timur</h2>
+                    <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di Indonesia</h2>
                   </div>
                   <div class="col-sm-5 search_bar">
                     <form method='get' action="/berita/cari/">
