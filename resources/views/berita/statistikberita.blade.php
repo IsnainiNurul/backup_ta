@@ -225,7 +225,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">Grafik data berita populer</h5>
-                    <h2 class="card-title">Grafik Data Berita Populer Topik Covid-19 Berdasarkan Label</h2>
+                    <h2 class="card-title">Grafik Data Berita Populer Topik COVID-19 Berdasarkan Label</h2>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left" >
                     <h5 class="card-category">Kata Kunci Berita</h5>
-                    <h2 class="card-title">Kata Kunci Berita Populer Topik Covid-19</h2>
+                    <h2 class="card-title">Kata Kunci Berita Populer Topik COVID-19</h2>
                   </div>
                 </div>
               </div>
@@ -271,7 +271,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left" >
                     <h5 class="card-category">Kata Kunci Berita</h5>
-                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Informasi</h2>
+                    <h2 class="card-title">Kata Kunci Berita COVID-19  yang Populer Berdasarkan Label Informasi</h2>
                   </div>
                 </div>
               </div>
@@ -291,7 +291,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left" >
                     <h5 class="card-category">Kata Kunci Berita</h5>
-                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Donasi</h2>
+                    <h2 class="card-title">Kata Kunci Berita COVID-19  yang Populer Berdasarkan Label Donasi</h2>
                   </div>
                 </div>
               </div>
@@ -312,7 +312,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left" >
                     <h5 class="card-category">Kata Kunci Berita</h5>
-                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Kritik</h2>
+                    <h2 class="card-title">Kata Kunci Berita COVID-19  yang Populer Berdasarkan Label Kritik</h2>
                   </div>
                 </div>
               </div>
@@ -332,7 +332,7 @@
                 <div class="row">
                   <div class="col-sm-12 text-left" >
                     <h5 class="card-category">Kata Kunci Berita</h5>
-                    <h2 class="card-title">Kata Kunci Berita Covid-19  yang Populer Berdasarkan Label Hoaks</h2>
+                    <h2 class="card-title">Kata Kunci Berita COVID-19  yang Populer Berdasarkan Label Hoaks</h2>
                   </div>
                 </div>
               </div>
