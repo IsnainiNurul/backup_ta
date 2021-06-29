@@ -315,7 +315,7 @@
                 @elseif ($provinsi=='di yogyakarta')
                   <h2 class="card-title">Berita Terbaru COVID-19 di DI Yogyakarta</h2>
                 @else
-                  <h2 class="card-title">Berita Terbaru COVID-19 di DKI Jakarta</h2>
+                  <h2 class="card-title">Berita Terbaru COVID-19 di DKI Jakartas</h2>
                 @endif
                     
                   </div>
@@ -506,7 +506,7 @@
                 @elseif ($provinsi!='di yogyakarta')
                   <h2 class="card-title">Berita COVID-19 di DI Yogyakarta</h2>
                 @else
-                  <h2 class="card-title">Berita COVID-19 di DKI Jakarta</h2>
+                  <h2 class="card-title">Berita COVID-19 di DKI Jakartas</h2>
                 @endif
                   </div>
                   <div class="col-sm-6 search_bar" style="top: 60px;right: 0px;position: absolute;">
