@@ -307,8 +307,8 @@
                          
                             
                           </div>
-                            <div class="row col-sm-12">
-                              <div class="col-sm-3">
+                            <div class="row">
+                              <div class= "col-sm-12">
                               <a href="/berita/list/?label={{$b->label}}">
                                 @if($b->label=='notification of information')
                                   <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
@@ -322,8 +322,6 @@
                                   <div class="text-fit news-tribun news-portal"><p>Lain-lain</p></div>
                                 @endif
                               </a>
-                              </div>
-                              <div class="col-sm-9">
                               @php
                                 $list_provinsi=explode(", ",$b->area);
                               @endphp
@@ -333,8 +331,8 @@
                                 </div>
                               </a>
                                @endforeach
-                               </div>
                             </div>
+                          </div>
                           
 
                             <div class="row">
