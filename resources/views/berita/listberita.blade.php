@@ -311,7 +311,7 @@
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
                     @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
-                  <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>>
+                  <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>
                 @elseif ($provinsi!='di yogyakarta')
                   <h2 class="card-title">Berita Terbaru COVID-19 di DI Yogyakarta</h2>
                 @else
@@ -502,7 +502,7 @@
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
                      @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
-                  <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>>
+                  <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
                 @elseif ($provinsi!='di yogyakarta')
                   <h2 class="card-title">Berita COVID-19 di DI Yogyakarta</h2>
                 @else
