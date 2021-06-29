@@ -307,8 +307,7 @@
                          
                             
                           </div>
-                            <div class="row">
-                              <div class= "col-sm-12">
+                            <div class="row col-sm-12">
                               <a href="/berita/list/?label={{$b->label}}">
                                 @if($b->label=='notification of information')
                                   <div class="text-fit news-tribun news-portal"><p>Informasi</p></div>
@@ -324,15 +323,27 @@
                               </a>
                               @php
                                 $list_provinsi=explode(", ",$b->area);
+                                $counter=1
                               @endphp
                               @foreach($list_provinsi as $l)
-                              <a href="/berita/list/?provinsi={{$l}}">
-                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
-                                </div>
-                              </a>
+                                @if(counter%2==1)
+                                  <a href="/berita/list/?provinsi={{$l}}">
+                                    <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                    </div>
+                                  </a>
+                                @endif
+                                @if(counter%2==1)
+                                  <br>
+                                  <a href="/berita/list/?provinsi={{$l}}">
+                                    <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                    </div>
+                                  </a>
+                                @endif
+                                @php
+                                  $counter=1
+                                @endphp
                                @endforeach
                             </div>
-                          </div>
                           
 
                             <div class="row">
