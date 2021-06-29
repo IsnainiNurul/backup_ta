@@ -231,7 +231,7 @@ class ListBeritaController extends Controller
          	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
          	$sort="Terbaru";
          }
-         return $provinsi;
+         
         return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
     }
 
