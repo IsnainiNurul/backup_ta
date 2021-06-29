@@ -21,7 +21,6 @@ class ListBeritaController extends Controller
         $label= DataLabel::query();
         $city="";
         $provinsi="";
-        $sort="";
         $temp1 = '2020-03-18';
         $temp2 = date('Y-m-d');
         $kota= array();
@@ -235,7 +234,7 @@ class ListBeritaController extends Controller
          	$sort="Terbaru";
          }
 
-        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort,'datestart'=>$temp1,'dateend'=>$temp2,'sort'=>$sort]);
+        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort,'datestart'=>$temp1,'dateend'=>$temp2]);
     }
 
 
@@ -491,7 +490,7 @@ class ListBeritaController extends Controller
          	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
          	$sort="Terbaru";
          }
-        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
+         return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort,'datestart'=>$temp1,'dateend'=>$temp2,'sort'=>$sort]);
     }
 
     public function cariberita(Request $request)
