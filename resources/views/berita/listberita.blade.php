@@ -159,7 +159,7 @@
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
                 @if($provinsi!="" && $provinsi!="Indonesia")
                  @if($provinsi!="Di yogyakarta" && $provinsi!="Dki jakarta")
-                  <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
+                  <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}} sdadsd
                     </h1>
                     @elseif ($provinsi=="Di yogyakarta")
                       <h1 style='text-align:center;'>Provinsi DI Yogyakarta
