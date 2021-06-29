@@ -309,6 +309,7 @@
                   <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di DI Yogyakarta</h1>
                 @else
                   <h1 style='text-align:center;'>Statistik Berita Populer COVID-19 di DKI Jakarta</h1>
+                @endif
                     <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>
                   </div>
                   <div class="col-sm-6">
