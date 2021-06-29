@@ -677,7 +677,7 @@
                             <div class="pagination align-items-center d-flex justify-content-center">
        
                             @if (!$berita->onFirstPage())
-                              <a href="/berita/list/{{$provinsi}}?page={{$berita->currentPage()-1}&area=wkwkw}" rel="prev">← Previous</a>
+                              <a href="/berita/list/{{$provinsi}}?page={{$berita->currentPage()-1}&ard={{$provinsi}}}}" rel="prev">← Previous</a>
                             @endif
                             @if ($berita->currentPage()-2>0)
                               <a href="/berita/list/{{$provinsi}}?page={{$berita->currentPage()-2}}">{{$berita->currentPage()-2}}</a>
