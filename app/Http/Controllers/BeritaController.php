@@ -212,8 +212,7 @@ class BeritaController extends Controller
 	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp3)->sum('total');
 	     	$data_meninggal2= $data_meninggal2->where('tanggal','=',$temp3)->sum('total');
 	     	$data_sembuh2= $data_sembuh2->where('tanggal','=',$temp3)->sum('total');
-	     	return "wlwk";
-
+	     	return $data_kasus2;
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
