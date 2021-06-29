@@ -81,7 +81,8 @@ class BeritaController extends Controller
          if($temp1<'2020-03-18'){
          	$counter_date1=1;
          }
-         if($temp3>=date('Y-m-d')){
+         $cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
+         if($temp3>=$cek[0]){
          	$cek=$data_kasus2->orderBy('tanggal', 'DESC')->pluck('tanggal');
          	$temp3=$cek[0];
          }
