@@ -538,7 +538,13 @@
   
 
   <script src="/assets/js/berita/kota.js"></script>
-  <script src="/assets/js/berita/cari_berita.js"></script>
+  <script>
+    function cari_berita() {
+      if(window.event.keyCode=='13'){
+        document.form.submit();
+      }
+    }
+  </script>
   <!--   Core JS Files   -->
   <script src="/assets/js/core/jquery.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>

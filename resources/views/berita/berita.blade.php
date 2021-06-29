@@ -277,7 +277,9 @@
                     <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di Indonesia</h2>
                   </div>
                   <div class="col-sm-5 search_bar">
-                    <input id="searchbar" onkeyup="search_news()" type="text" name="search" placeholder="Cari Berita..">
+                    <form method='get' action="/berita/cari/">
+                        <input id="searchbar" onkeypress="search_berita()" type="text" name="cari" placeholder="Cari Berita">
+                      </form>
                   </div>
                 </div>
               </div>
@@ -500,7 +502,13 @@
   
 
   <script src="/assets/js/berita/kota.js"></script>
-  <script src="/assets/js/berita/cari_berita.js"></script>
+  <script>
+    function cari_berita() {
+      if(window.event.keyCode=='13'){
+        document.form.submit();
+      }
+    }
+  </script>
 	<script>
 		function generateData() {
       var unit = document.getElementById('unit').value;
