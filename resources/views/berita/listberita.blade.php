@@ -154,19 +154,19 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-12">
-            <div class=card card-chart">
+            <div class="card card-chart">
               <div class="card-header ">
                 <h1 style='text-align:center;'>Riwayat Berita COVID-19 di</h1>
                 @if($provinsi!="" && $provinsi!="Indonesia")
-                  @if ($provinsi==ucwords("Dki jakarta"))
-                  <h1 style='text-align:center;'>Provinsi DKI JAKARTAS
+                  @if
+                 @if($provinsi!=ucwords("di yogyakarta") && $provinsi!=ucwords("dki jakarta"))
+                  <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
                     </h1>
-                    @elseif ($provinsi=="Di yogyakarta")
+                    @elseif ($provinsi==ucwords("di yogyakarta"))
                       <h1 style='text-align:center;'>Provinsi DI Yogyakarta
                       </h1>
                     @else
-                       <h1 class="capitalize" style='text-align:center;'>Provinsi {{$provinsi}}
-                    </h1>
+                      <h2 style='text-align:center;'>Provinsi DKI Jakarta</h2>
                     @endif
                 @else
                     <h1 style='text-align:center;'>Indonesia</h1>
