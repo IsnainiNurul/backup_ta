@@ -191,6 +191,7 @@ class BeritaController extends Controller
 	       else if($request->area=="Papbar"){
 	       		$provinsi= 'papua barat';
 	       }
+
 	       $data = $data->select(DB::raw('tanggal as x, ' . $request->area . ' as y'))->get();
 	       $data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, ' . $request->area . ' as y'))->get();
 	       $data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, ' . $request->area . ' as y'))->get();
@@ -198,6 +199,7 @@ class BeritaController extends Controller
 	       $data_meninggal1= $data_meninggal1->where('tanggal','=',$temp1)->sum($request->area);
 	       $data_sembuh1= $data_sembuh1->where('tanggal','=',$temp1)->sum($request->area);
 	       $data_kasus2= $data_kasus2->where('tanggal','=',$temp3)->sum($request->area);
+	       return $data_kasus2;
 	       $data_meninggal2= $data_meninggal2->where('tanggal','=',$temp3)->sum($request->area);
 	       $data_sembuh2= $data_sembuh2->where('tanggal','=',$temp3)->sum($request->area);
 	       // $berita = $berita->where('area','=',$provinsi)->orderBy('date', 'ASC')->limit(100)->get();
@@ -210,7 +212,7 @@ class BeritaController extends Controller
 	     	$data_kasus2= $data_kasus2->where('tanggal','=',$temp3)->sum('total');
 	     	$data_meninggal2= $data_meninggal2->where('tanggal','=',$temp3)->sum('total');
 	     	$data_sembuh2= $data_sembuh2->where('tanggal','=',$temp3)->sum('total');
-	     	
+	     	return "wlwk";
 
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
@@ -229,7 +231,7 @@ class BeritaController extends Controller
 
 	     }
 		 $totalkasus=$data_kasus2-$data_kasus1;
-		 return $temp3;
+		 
 		 $totalmeninggal=$data_meninggal2-$data_meninggal1;
 		 $totalsembuh=$data_sembuh2-$data_sembuh1;
 
