@@ -22,7 +22,10 @@ class ListBeritaController extends Controller
         $city="";
         $provinsi="";
         $sort="";
+        $temp1 = '2020-03-18';
+        $temp2 = date('Y-m-d');
         $kota= array();
+        $sort="Terbaru";
         if($request->datestart != null){
         	$berita = $berita->where('date','>=',$request->datestart);
         	$temp1 = $request->datestart;
@@ -231,8 +234,8 @@ class ListBeritaController extends Controller
          	$berita = $berita->orderBy('date', 'DESC')->paginate(10);
          	$sort="Terbaru";
          }
-         
-        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort]);
+
+        return view('berita.listberita',['berita'=>$berita,'jumlah_berita_kota'=>$jumlah_berita_kota,'kota'=>$kota,'provinsi'=>ucwords($provinsi),$city,'sort'=>$sort,'datestart'=>$temp1,'dateend'=>$temp2,'sort'=>$sort]);
     }
 
 
