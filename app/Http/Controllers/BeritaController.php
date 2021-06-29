@@ -34,11 +34,13 @@ class BeritaController extends Controller
         $berita = News::query();
         $temp1='2020-03-17';
         $temp2= date('Y-m-d');
+        $counter_date1=0;
 
         if($request->timeline =="Harian"){
         	$data = DataCovid19Harian::query();
         	$data_meninggal = DataCovid19MeninggalHarian::query();
         	$data_sembuh = DataCovid19SembuhHarian::query();
+
         }
 
 
@@ -213,7 +215,7 @@ class BeritaController extends Controller
 	     	$data = $data->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_sembuh = $data_sembuh->select(DB::raw('tanggal as x, total as y'))->get();
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
-	     	
+
 	     	$berita = $berita->orderBy('date', 'DESC');
 	     	$provinsi="semua";
 	     }
