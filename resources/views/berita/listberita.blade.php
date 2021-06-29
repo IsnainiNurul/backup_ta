@@ -165,7 +165,7 @@
                       <h1 style='text-align:center;'>Provinsi DI Yogyakarta
                       </h1>
                     @else
-                      <h2 style='text-align:center;'>Provinsi DKI Jakarta</h2>
+                      <h1 style='text-align:center;'>Provinsi DKI Jakarta</h1>
                     @endif
                 @else
                     <h1 style='text-align:center;'>Indonesia</h1>
@@ -310,9 +310,9 @@
                 <div class="row">
                   <div class="col-sm-12 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                    @if($provinsi!='di yogyakarta' && $provinsi!='dki jakarta')
+                    @if($provinsi!=ucwords("di yogyakarta") && $provinsi!=ucwords("dki yogyakarta"))
                   <h2 class="card-title">Berita Terbaru COVID-19 di {{$provinsi}}</h2>
-                @elseif ($provinsi=='di yogyakarta')
+                @elseif ($provinsi==ucwords("di yogyakarta"))
                   <h2 class="card-title">Berita Terbaru COVID-19 di DI Yogyakarta</h2>
                 @else
                   <h2 class="card-title">Berita Terbaru COVID-19 di DKI Jakartas</h2>
@@ -501,9 +501,9 @@
                 <div class="row">
                   <div class="col-sm-6 text-left">
                     <h5 class="card-category">Riwayat Berita COVID-19</h5>
-                     @if($provinsi!='di yogyakarta' && $provinsi!='Dki jakarta')
+                     @if($provinsi!=ucwords("di yogyakarta") && $provinsi==ucwords("dki jakarta"))
                   <h2 class="card-title">Berita COVID-19 di {{$provinsi}}</h2>
-                @elseif ($provinsi=='di yogyakarta')
+                @elseif ($provinsi==ucwords("di yogyakarta"))
                   <h2 class="card-title">Berita COVID-19 di DI Yogyakarta</h2>
                 @else
                   <h2 class="card-title">Berita COVID-19 di DKI Jakartas</h2>
