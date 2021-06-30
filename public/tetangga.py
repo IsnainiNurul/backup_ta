@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import sys
 
+import datetime
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -115,6 +116,9 @@ engine = create_engine("mysql+pymysql://pmauser:password_here@localhost:3306/tac
 df = pd.read_sql_query("SELECT * FROM mytable", engine)
 df.tanggal = df.astype('string').tanggal
 minimum = sys.argv[1]
+minimum = datetime.datetime.strptime(minimum, "%Y-%m-%d").date() - datetime.timedelta(days=1)
+minimum = minimum.strftime('%Y-%m-%d')
+
 maksimal = sys.argv[2]
 
 print('min------------------->'+str(minimum))
