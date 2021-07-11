@@ -382,15 +382,47 @@
                                           </a>
                                         @else
                                         @php
-                                            $list_provinsi=explode(", ",$b->area);
-                                          @endphp
-                                          
-                                          @foreach($list_provinsi as $l)
-                                            <a href="berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
-                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
-                                            </div>
-                                            </a>
-                                          @endforeach
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==1)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @endforeach
+                            </div>
+                            <div class="row col-sm-12">
+                              @php
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==2)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @endif
+                              @if($counter==3)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @php
+                                $counter++;
+                              @endphp
+                               @endforeach
+                            </div>
                                         @endif
                                         </div>
                                       </div>
@@ -449,15 +481,47 @@
                                           </a>
                                         @else
                                         @php
-                                            $list_provinsi=explode(", ",$b->area);
-                                          @endphp
-                                          
-                                          @foreach($list_provinsi as $l)
-                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
-                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
-                                            </div>
-                                            </a>
-                                          @endforeach
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==1)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @endforeach
+                            </div>
+                            <div class="row col-sm-12">
+                              @php
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==2)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @endif
+                              @if($counter==3)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @php
+                                $counter++;
+                              @endphp
+                               @endforeach
+                            </div>
                                         @endif
                                         </div>
                                       </div>
@@ -580,15 +644,47 @@
                                           </a>
                                         @else
                                         @php
-                                            $list_provinsi=explode(", ",$b->area);
-                                          @endphp
-                                          
-                                          @foreach($list_provinsi as $l)
-                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
-                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
-                                            </div>
-                                            </a>
-                                          @endforeach
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==1)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @endforeach
+                            </div>
+                            <div class="row col-sm-12">
+                              @php
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==2)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @endif
+                              @if($counter==3)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @php
+                                $counter++;
+                              @endphp
+                               @endforeach
+                            </div>
                                         @endif
                                         </div>
                                       </div>
@@ -640,20 +736,52 @@
                                         
                                         @elseif($provinsi=="Indonesia")
                                           <a href="/berita/list/" style="margin-left: 10px;">
-                                            <div class="text-fit news-tribun news-portal"><p>INDONESIA</p>
+                                            <div class="text-fit news-tribun news-portal"><p>Indonesia</p>
                                             </div>
                                           </a>
                                         @else
                                         @php
-                                            $list_provinsi=explode(", ",$b->area);
-                                          @endphp
-                                          
-                                          @foreach($list_provinsi as $l)
-                                            <a href="/berita/list/?provinsi={{$l}}" style="margin-left: 10px;">
-                                            <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
-                                            </div>
-                                            </a>
-                                          @endforeach
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==1)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @endforeach
+                            </div>
+                            <div class="row col-sm-12">
+                              @php
+                                $list_provinsi=explode(", ",$b->area);
+                                $counter=1;
+                              @endphp
+                              @foreach($list_provinsi as $l)
+                              @if($counter==2)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @endif
+                              @if($counter==3)
+                              <a href="/berita/list/?provinsi={{$l}}">
+                                <div class="text-fit news-tribun news-portal" style="margin-left:10px"><p>{{$l}}</p>
+                                </div>
+                              </a>
+                              @php
+                                break;
+                              @endphp
+                              @endif
+                              @php
+                                $counter++;
+                              @endphp
+                               @endforeach
+                            </div>
                                         @endif
                                         </div>
                                       </div>
