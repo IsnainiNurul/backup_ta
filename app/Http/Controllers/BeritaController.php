@@ -217,7 +217,7 @@ class BeritaController extends Controller
 	     	$data_meninggal = $data_meninggal->select(DB::raw('tanggal as x, total as y'))->get();
 
 	     	$berita = $berita->orderBy('date', 'DESC');
-	     	$provinsi="semua";
+	     	$provinsi="indonesia";
 	     }
 	     
 	     $berita = $berita->orderBy('date', 'DESC')->limit(100)->get();
@@ -237,8 +237,6 @@ class BeritaController extends Controller
 	  	if($totalkasus<0){$totalkasus=0;}
 	  	if($totalmeninggal<0){$totalmeninggal=0;}
 	  	if($totalsembuh<0){$totalsembuh=0;}
-
-
-    	return view('berita.berita',['tanggal_mulai'=>$temp2,'tanggal_selesai'=>$temp1,'data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.')]);
+    	return view('berita.berita',['tanggal_mulai'=>$temp2,'tanggal_selesai'=>$temp1,'data'=>$data,'berita'=>$berita,'data_meninggal'=>$data_meninggal,'data_sembuh'=>$data_sembuh,'totalkasus'=>number_format($totalkasus,0,',','.'),'totalmeninggal'=>number_format($totalmeninggal,0,',','.'),'totalsembuh'=>number_format($totalsembuh,0,',','.'),'provinsi'=>ucwords($provinsi)]);
    	}
 }

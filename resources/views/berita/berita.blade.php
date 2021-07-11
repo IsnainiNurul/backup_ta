@@ -128,7 +128,7 @@
           <div class="col-sm-12">
             <div class="card card-chart">
               <div class="card-header ">
-                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di Indonesia</h1>
+                <h1 style='text-align:center;'>Riwayat Berita COVID-19 di {{$provinsi}}</h1>
               </div>
             </div>
              <div class="card card-header">
@@ -276,7 +276,7 @@
                 <div class="row">
                   <div class="col-sm-7 text-left">
                     <h5 class="card-category">Grafik dan Berita</h5>
-                    <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di Indonesia</h2>
+                    <h2 class="card-title">Grafik dan Berita COVID-19 Terbaru di {{$provinsi}}</h2>
                   </div>
                   <div class="col-sm-5 search_bar">
                     <form method='get' action="/berita/cari/">
