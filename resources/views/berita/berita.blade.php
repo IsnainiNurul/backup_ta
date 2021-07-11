@@ -168,7 +168,7 @@
                 <div class="col-3 row">
                 <select class="col-11" name="area" id="area">
                     <option value="Semua"selected>Pilih Provinsi</option>
-                    <option value="Semua"selected>Indonesia</option>
+                    <option value="Semua">Indonesia</option>
                     <option value="Jatim">Jawa Timur</option>
                     <option value="Jabar">Jawa Barat</option>
                     <option value="Jateng">Jawa Tengah</option>
