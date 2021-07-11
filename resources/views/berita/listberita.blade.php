@@ -676,23 +676,23 @@
                             <div class="pagination align-items-center d-flex justify-content-center">
        
                             @if (!$berita->onFirstPage())
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()-1}}" rel="prev">← Previous</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()-1}}" rel="prev">← Previous</a>
                             @endif
                             @if ($berita->currentPage()-2>0)
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()-2}}">{{$berita->currentPage()-2}}</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()-2}}">{{$berita->currentPage()-2}}</a>
                             @endif
                             @if ($berita->currentPage()-1>0)
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()-1}}">{{$berita->currentPage()-1}}</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()-1}}">{{$berita->currentPage()-1}}</a>
                             @endif
                             <a class="active" href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()}}">{{$berita->currentPage()}}</a>
                             @if ($berita->currentPage()+1<=$berita->lastPage())
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()+1}}">{{$berita->currentPage()+1}}</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()+1}}">{{$berita->currentPage()+1}}</a>
                             @endif
                             @if ($berita->currentPage()+2<=$berita->lastPage())
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()+2}}">{{$berita->currentPage()+2}}</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()+2}}">{{$berita->currentPage()+2}}</a>
                             @endif
                             @if ($berita->hasMorePages())
-                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sort={{$sort}}&page={{$berita->currentPage()+1}}" rel="next">Next →</a>
+                              <a href="/berita/list/{{$provinsi}}?datestart={{$datestart}}&dateend={{$dateend}}&sorting={{$sort}}&page={{$berita->currentPage()+1}}" rel="next">Next →</a>
                              
                             @endif
                             </div>
