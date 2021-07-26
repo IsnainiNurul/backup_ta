@@ -367,12 +367,13 @@ ul.b {list-style-type: square;}
                       <p>
                       
                         <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot</h2>
-                        Jumlah Titik Diluar Garis Kesepakatan :{{$semua->titik}}
-			<canvas id="chart{{$semua->tetangga}}"></canvas>
+                        <canvas id="chart{{$semua->tetangga}}"></canvas>
                         
+                        <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Bland-Altman Plot %(Persen)</h2>
+                        <canvas id="chartchart{{$semua->tetangga}}"></canvas>
                         <h2 style='text-align:center; font-family: "Bookman Old Style", serif;'>Korelasi Pearson : {{$semua->pearson}}</h2>
                         <canvas id="charts{{$semua->tetangga}}"></canvas>
- 
+                        <a href='/perbandingan/regresi?kota={{$semua->kabupaten}}&tetangga={{$semua->tetangga}}&mulai={{$mulai}}&akhir={{$akhir}}'><button type="button" class="btn btn-info btn-lg" >Regresi Linear</button></a>
                         
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modalbiareror" onclick="gettabel('{{$semua->tetangga}}')" data-target="#myModal{{$semua->tetangga}}">Data Tabel</button>
                         <form  target="_blank" action="/perbandingan/data" method="post">
@@ -398,11 +399,11 @@ ul.b {list-style-type: square;}
                                 <p>minimal = {{$semua->min}}</p>
                                 <p>max = {{$semua->max}}</p>
                                 <?php 
-                                $tes = substr($semua->m1, 1, -1);
+                                $tes = substr($semua->m1, 2, -1);
                                 $m1 = explode(",",$tes);
 
                                 
-                                $tes = substr($semua->m2, 1, -1);
+                                $tes = substr($semua->m2, 2, -1);
                                 $m2 = explode(",",$tes);
 
                                 
@@ -429,10 +430,7 @@ ul.b {list-style-type: square;}
                               </thead>
 
                               <tbody>
-                              <?php $date = date_create((string)$mulai); 
-
-                              
-				?>
+                              <?php $date = date_create((string)$mulai); ?>
                               @for ($i = 0; $i < count($x); $i++)
                                 <tr><?php 
                                 $tambah = 0;
@@ -440,16 +438,7 @@ ul.b {list-style-type: square;}
                                 $hari = (string)($tambah);
                                 $hari = $hari." days";
                                 date_add($date,date_interval_create_from_date_string($hari)); ?>
-                                
-				     @if( date_format($date,"Y-m-d") == '2021-05-04')
-                                <?php 
-                                date_add($date,date_interval_create_from_date_string($hari)); 
-                                date_add($date,date_interval_create_from_date_string($hari)); 
-                                ?>
-                                @endif
-
-
-				  <td>{{date_format($date,"Y-m-d")}}</td>
+                                  <td>{{date_format($date,"Y-m-d")}}</td>
                                   <td>{{(int)$m1[$i]}}</td>
                                   <td>{{(int)$m2[$i]}}</td>
                                   <td>{{     (float)(((int)$m1[$i]+(int)$m2[$i])/2)    }}</td>
@@ -599,7 +588,7 @@ ul.b {list-style-type: square;}
   array_loop.forEach(myFunction);
 
   array_loop.forEach(myFunctions);
- // array_loop.forEach(myFunctionss);
+  array_loop.forEach(myFunctionss);
 
   function myFunction(item) {
   var x = data_all[item]['x'];
@@ -628,8 +617,13 @@ ul.b {list-style-type: square;}
   console.log(Math.max.apply(Math, xx));
 
 const data = {
-   datasets:[
-   {
+  
+  datasets: [{
+    type: 'scatter',
+    label: 'Data',
+    data: array_obj,
+    backgroundColor: 'rgb(0, 99, 132)'
+  }, {
     type: 'line',
     label: 'Minimum : '+data_all[item]['min'],
     data: [{
@@ -656,84 +650,7 @@ const data = {
     
     borderDash: [10, 30],//untuk bintik bintik
     borderColor: 'rgb(255, 0, 0)'
-  }
-//,
-// {
-  //  type: 'line',label:'CIhigh',
-  //  data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cihigh1'],
-   // }, {
-  //    x: Math.max.apply(Math, xx),
-  //    y: data_all[item]['cihigh1'],
-  //  },],                                                                                                                    fill: false,
-  //  borderDash: [2, 8],//untuk bintik bintik
-  //  borderColor: 'rgb(255, 0, 255)'
- // },
-
-
-//{
- //   type: 'line',label:'CIhigh',
- //   data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cihigh2'],
- //   }, {
- //     x: Math.max.apply(Math, xx),
- //     y: data_all[item]['cihigh2'],
-//    },],                                                                                                                    fill: false,
-//    borderDash: [2, 8],//untuk bintik bintik
-//    borderColor: 'rgb(255, 0, 255)'
-//  },
-
-//{
-   // type: 'line',
-   // label: 'CIlow',                                                                              data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cilow1'],
-   // }, {
-   //   x: Math.max.apply(Math, xx),
-   //   y: data_all[item]['cilow1'],
-   // },],                                                                                                                    fill: false,
-   // borderDash: [2, 8],//untuk bintik bintik
-  //  borderColor: 'rgb(0, 255, 255)'
-  //}
-
- // ,
-//{
- //   type: 'line',
- //   label: 'CIlow',                                                                              data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cilow2'],
- //   }, {
- //     x: Math.max.apply(Math, xx),
- //     y: data_all[item]['cilow2'],
- //   },],                                                                                                                    fill: false,
- //   borderDash: [2, 8],//untuk bintik bintik
- //   borderColor: 'rgb(0, 255, 255)'
- // }
-
-
- // ,
-//{
-//    type: 'line',
- //   label:'CImean',
-//    data: [{
-//      x: Math.min.apply(Math, xx),
-//      y: data_all[item]['cimean1'],
-//    }, {
-//      x: Math.max.apply(Math, xx),
-//      y: data_all[item]['cimean1'],
-//    },],
-//    fill: false,
-//    borderDash: [2, 8],//untuk bintik bintik
-//    borderColor: 'rgb(0, 0, 0)'
-//	,legend: {
- //   display: false,
-//	}
- // 	}
-//,
-//{                                                                                                                           type: 'line',label:'CImean',                                                                                                           data: [{                                                                                                                  x: Math.min.apply(Math, xx),                                                                                            y: data_all[item]['cimean2'],                                                                                         }, {                                                                                                                      x: Math.max.apply(Math, xx),                                                                                            y: data_all[item]['cimean2'],
- //   },],
-//    fill: false,
-//    borderDash: [2, 8],//untuk bintik bintik
-//    borderColor: 'rgb(0, 0, 0)'
-//        ,legend: {
-//    display: false,
-//        }
-//        }                                                                                                               
-,{
+  },{
     type: 'line',
     label: 'Mean : '+data_all[item]['mean'],
     data: [{
@@ -744,10 +661,9 @@ const data = {
       y: data_all[item]['mean'],
     },],
     fill: false,
+    
     borderColor: 'rgb(54, 162, 235)'
-  }, 
-{ type: 'scatter',                                                                                                        label: 'Data',                                                                                                          data: array_obj,
-    backgroundColor: 'rgb(0, 99, 132)'                                                                                    },{label:''}]
+  },{label:''}]
 };
 console.log(xx);
 console.log('Min xx =='+Math.min.apply(Math, xx));
@@ -831,33 +747,6 @@ const data = {
     label: 'Data',
     data: array_obj,
     backgroundColor: 'rgb(0, 99, 132)'
-  },{
-    type: 'line',
-    label: 'Minimum : '+data_all[item]['minpersen']+'%',
-    data: [{
-      x: Math.min.apply(Math, xx),
-      y: data_all[item]['minpersen'],
-    }, {
-      x: Math.max.apply(Math, xx),
-      y: data_all[item]['minpersen'],
-    },],
-    fill: false,
-    borderDash: [10, 30],//untuk bintik bintik
-    borderColor: 'rgb(255, 0, 0)'
-  },{
-    type: 'line',
-    label: 'Max : '+data_all[item]['maxpersen']+'%',
-    data: [{
-      x: Math.min.apply(Math, xx),
-      y: data_all[item]['maxpersen'],
-    }, {
-      x: Math.max.apply(Math, xx),
-      y: data_all[item]['maxpersen'],
-    },],
-    fill: false,
-
-    borderDash: [10, 30],//untuk bintik bintik
-    borderColor: 'rgb(255, 0, 0)'
   },{
     type: 'line',
     label: 'Mean : '+mean+'%',
@@ -969,7 +858,7 @@ const data = {
   },
   {
     type: 'line',
-    label: 'Garis Korelasi',
+    label: 'Garis Regresi',
     data: array_obj2,
     fill: false,
     
@@ -1472,40 +1361,27 @@ var euCountries  = {
 							}
 						},onEachFeature: function(feature,layer){
                             // layer._path.id = feature.properties.id;
- var icon =L.divIcon({
-      className: 'location-pin', 
-       html: ` <div onclick="gantiwarna(`+feature.properties.id+`)"> 
-         <div> 
-         
-         <div style="width:10px;height:10px" class="label pin maroon" id='`+feature.properties.id+`' ></div>     
-         
-          </div>  
-           <div class="label-text">`+feature.properties.name.replace('Kabupaten','KAB.').toUpperCase()+`</div>
-
-                        </div>`
-                                             //      iconSize: [60, 30],     
-                                              //     iconAnchor: [30,25], 
-                                                //      tooltipAnchor: [20,0],     
-                        });    
+                            var icon =L.divIcon({
+									className: 'location-pin',
+									html: `
+										<div class="map-pin relative" style="width:100px;margin-left:-20px" onclick="gantiwarna(`+feature.properties.id+`)">
+											<div class="flex center mb-1" style="pointer-events:none">
+												<div style="width:20px;height:20px" class="label pin maroon" id='`+feature.properties.id+`' ></div>
+											</div>
+											<div class="label-text">`+feature.properties.name.replace('Kabupaten','KAB.').toUpperCase()+`</div>
+										</div>
+									`,
+									iconSize: [60, 30],
+									iconAnchor: [30,25],
+									tooltipAnchor: [20,0],
+								});
+                        
                         // if (feature.geometry.type === 'Polygon') {
                             console.log('Polygon detected');
                             var centroid = turf.centroid(feature);
                             var lon = centroid.geometry.coordinates[0];
                             var lat = centroid.geometry.coordinates[1];
-                            
-	 if(feature.properties.name == "GRESIK"){
-                              var lon = 112.51910230998608;
-                              var lat =  -7.123780699604654;
-                            }
-
-                            if(feature.properties.name == "SUMENEP"){
-                              var lon = 113.86667;
-                              var lat =  -7.01667;
-                            }
- if(feature.properties.name == "SITUBONDO"){var lon = 113.9952789;
-                                      var lat =  -7.7050532;
-                            }  
-				var marker = L.marker([lat,lon],{icon:icon}).addTo(map);
+                            var marker = L.marker([lat,lon],{icon:icon}).addTo(map);
                             // marker.bindPopup(feature.properties.name);
                         // }
                 }

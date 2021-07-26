@@ -103,8 +103,7 @@ class PerbandinganController extends Controller
 
 	// return $pearson;
         };
-
-        $data_all = $data_all->sortBy('titik')->values()->all();
+        // return $data_all;
         // return $data_all;
         // return pearson_correlation($data_all->m1,$data_all->m2);
         // return $data_all;

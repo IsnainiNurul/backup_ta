@@ -35,7 +35,7 @@ class PerbandinganController extends Controller
                 $by+=pow($yr,2);
             }   
             $b = sqrt($bx*$by);
-            return  round($a/$b,3);
+            return $a/$b;
         }
 
 
@@ -103,8 +103,7 @@ class PerbandinganController extends Controller
 
 	// return $pearson;
         };
-
-        $data_all = $data_all->sortBy('titik')->values()->all();
+        // return $data_all;
         // return $data_all;
         // return pearson_correlation($data_all->m1,$data_all->m2);
         // return $data_all;
@@ -133,7 +132,6 @@ class PerbandinganController extends Controller
         $tanggal = $tanggal->update();
     
         // return $tanggal;
-//	return $request->mulai." ".$request->akhir;
         $process = shell_exec("python3 tetangga.py ".$request->mulai." ".$request->akhir);
     
         return redirect()->back();

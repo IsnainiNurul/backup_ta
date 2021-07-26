@@ -73,7 +73,7 @@ try:
    predict = loaded_model.predict(data_cn.iloc[12:,1:])
 except Exception as e:
    print(e)
-#y = data_cn.iloc[12:,0]
-#print(predict*data.to_numpy().max())
-#print('%%'+str(r2_score(y*data.to_numpy().max(),predict*data.to_numpy().max())))
-print('lancar')
+y = data_cn.iloc[12:,0]
+print(predict*data.to_numpy().max())
+print('%%'+str(r2_score(y*data.to_numpy().max(),predict*data.to_numpy().max())))
+#print('lancar')
